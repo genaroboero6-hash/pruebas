@@ -99,6 +99,52 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
 @media(max-width:1180px){header{padding-inline:24px}.hero{grid-template-columns:1fr 450px}.services-grid{grid-template-columns:repeat(3,1fr)}.benefits-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:900px){header{flex-wrap:wrap;padding:16px 20px;gap:13px}.logo-text{font-size:26px}nav{order:3;flex-basis:100%;overflow-x:auto;justify-content:flex-start;padding-bottom:2px}nav a{white-space:nowrap}.hero{grid-template-columns:1fr;min-height:auto;padding-top:65px}.hero-text{max-width:760px}.card-container{max-width:620px;margin:0 auto}.hero:after{display:none}.services-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){header{min-height:auto}.nav-social{display:none}.hero{padding:48px 16px 45px;background-position:62% center}.hero-title{font-size:59px;letter-spacing:-1px}.hero-subtitle{font-size:12px}.turno-card-unified{padding:13px;border-radius:16px}.tabs-header{grid-template-columns:repeat(5,minmax(82px,1fr));overflow-x:auto;justify-content:start}.tab-btn{font-size:7px}.form-grid-2{grid-template-columns:1fr}.form-group-sm.full{grid-column:auto}.main-section{padding:62px 16px}.section-title{font-size:34px}.section-title:before,.section-title:after{max-width:45px}.services-grid{grid-template-columns:1fr}.service-card{min-height:165px}.benefits-grid{grid-template-columns:1fr}.benefits-bar{padding:35px 16px}.benefit-item{padding:14px}.logo-text:after{font-size:6px}}
+
+/* ===== MEJORAS FUNCIONALES MAS RACING — MISMO DISEÑO ===== */
+.loyalty-progress{height:7px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
+.loyalty-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:99px}
+.coupon-card{background:linear-gradient(135deg,rgba(229,36,33,.07),rgba(255,255,255,.025));border:1px solid rgba(49,209,124,.35);border-radius:12px;padding:14px;margin-top:12px}
+.coupon-card.used,.coupon-card.expired{opacity:.55;border-color:var(--line)}
+.coupon-head{display:flex;justify-content:space-between;gap:10px}
+.coupon-big{font-family:'Barlow Condensed',sans-serif;font-size:29px;font-weight:900;font-style:italic;color:var(--green);line-height:1}
+.coupon-status{font-size:8px;font-weight:900;letter-spacing:1px;color:var(--green);margin-top:4px}
+.coupon-status.bad{color:var(--muted)}
+.coupon-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.coupon-meta div{background:rgba(7,9,11,.7);border:1px solid var(--line);border-radius:8px;padding:8px}
+.coupon-meta small{display:block;color:var(--muted-2);font-size:7px;text-transform:uppercase}
+.coupon-meta strong{display:block;font-size:10px;margin-top:2px}
+.qr-box{background:#fff;border-radius:9px;padding:9px;width:max-content;margin:12px auto 7px}
+.qr-box canvas,.qr-box img{display:block!important}
+.coupon-code{text-align:center;font:800 10px monospace;letter-spacing:2px}
+.btn-mini{background:#171a1e;border:1px solid var(--line-strong);color:#fff;border-radius:7px;padding:7px 9px;font-size:8px;font-weight:900;cursor:pointer;text-transform:uppercase}
+.btn-mini:hover{border-color:var(--red)}
+.history-actions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.history-actions .btn-mini.danger{border-color:rgba(229,36,33,.35);color:#ff625e}
+.history-actions .btn-mini.success{border-color:rgba(49,209,124,.35);color:#63e99a}
+.edit-box{margin:8px 0 10px;padding:11px;border:1px solid rgba(229,36,33,.3);background:rgba(229,36,33,.035);border-radius:10px}
+.edit-box-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.edit-box input,.edit-box select{width:100%;height:36px;background:#0b0d10;border:1px solid var(--line);border-radius:7px;color:#fff;padding:0 9px;font-size:9px}
+.edit-box .full{grid-column:1/-1}
+.workshop-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}
+.workshop-stat{background:rgba(7,9,11,.65);border:1px solid var(--line);border-radius:9px;padding:9px}
+.workshop-stat small{display:block;color:var(--muted-2);font-size:7px;text-transform:uppercase}
+.workshop-stat strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:21px;margin-top:1px}
+.qr-panel{margin-top:15px;padding:12px;border:1px solid rgba(229,36,33,.3);border-radius:12px;background:rgba(229,36,33,.035)}
+.qr-panel p{font-size:9px;color:var(--muted);margin:4px 0 9px}
+#qr-reader{display:none;margin-top:10px;border-radius:10px;overflow:hidden;background:#000}
+#qr-reader video{width:100%!important}
+.qr-result{margin-top:9px;padding:11px;border-radius:9px;font-size:9px;line-height:1.55}
+.qr-result.ok{border:1px solid rgba(49,209,124,.35);background:rgba(49,209,124,.07)}
+.qr-result.bad{border:1px solid rgba(229,36,33,.4);background:rgba(229,36,33,.07)}
+.qr-result.ok strong{color:var(--green)}
+.qr-result.bad strong{color:#ff625e}
+.logout-btn{width:100%;margin-top:8px;padding:9px;background:#171a1e;border:1px solid var(--line);color:#9da4ae;border-radius:8px;font-size:8px;font-weight:900;text-transform:uppercase;cursor:pointer}
+@media(max-width:620px){
+  .edit-box-grid{grid-template-columns:1fr}
+  .edit-box .full{grid-column:auto}
+  .workshop-stats{grid-template-columns:1fr 1fr 1fr}
+}
+
 </style>
 </head>
 <body>
@@ -136,6 +182,7 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                     <button class="tab-btn" id="btn-tab-cancelar" onclick="switchTab('tab-cancelar')"><i class="fa-regular fa-calendar-xmark"></i> 3. Mis Turnos</button>
                     <button class="tab-btn" id="btn-tab-perfil" onclick="switchTab('tab-perfil')"><i class="fa-solid fa-motorcycle"></i> 4. Panel Taller</button>
                     <button class="tab-btn" id="btn-tab-miperfil" onclick="switchTab('tab-miperfil')"><i class="fa-solid fa-user"></i> 5. Mi Perfil</button>
+                    <button class="tab-btn" id="btn-tab-descuentos" onclick="switchTab('tab-descuentos')"><i class="fa-solid fa-ticket"></i> 6. Descuentos</button>
                 </div>
 
                 <!-- PESTAÑA 1: REGISTRO / MI PERFIL (PRIMERA) -->
@@ -172,7 +219,7 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                     <div id="clienteBox" class="profile-badge" style="display:none;">
                         <p><strong id="badgeNombre">Juan Pérez</strong> (DNI: <span id="badgeDni"></span>)</p>
                         <p>Trabajos realizados: <strong id="badgeTrabajos">0</strong></p>
-                        <div id="badgeDescuento" class="discount-tag" style="display:none;">¡Tenés 10% de Descuento por Cliente Frecuente!</div>
+                        <div id="badgeDescuento" class="discount-tag" style="display:none;">¡Tenés 15% OFF EN MANO DE OBRA!</div>
                         <p id="badgeHistorial" style="font-size:10px; color:var(--texto-gris); margin-top:8px; line-height:1.6;"></p>
                     </div>
 
@@ -262,6 +309,7 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                             <input type="password" id="tallerClave" placeholder="Clave del taller">
                         </div>
                         <button type="button" class="btn-red" onclick="ingresarPanelTaller()">INGRESAR</button>
+                        <button type="button" class="logout-btn" onclick="cerrarSesionTaller()">CERRAR SESIÓN</button>
                     </div>
 
                     <div id="tallerPanel" style="display:none;">
@@ -343,11 +391,23 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                             <i class="fa-solid fa-floppy-disk"></i> GUARDAR EN EL HISTORIAL
                         </button>
 
+                        <div id="tallerStatsPro" class="workshop-stats"></div>
                         <button type="button" class="btn-red" style="background:linear-gradient(135deg,#2c3038,#1a1d22); box-shadow:none; border-color:var(--gris-borde);" onclick="toggleHistorialGlobalTaller()">
                             <i class="fa-solid fa-layer-group"></i> VER HISTORIAL COMPLETO DEL TALLER
                         </button>
 
                         <div id="tallerHistorialGlobalContainer" style="display:none; margin-top:15px;"></div>
+
+
+                        <div class="qr-panel">
+                            <h4 style="font-size:13px;">VALIDAR CUPÓN 15% OFF</h4>
+                            <p>Escaneá el QR que muestra el cliente. El descuento aplica únicamente a la mano de obra.</p>
+                            <button type="button" class="btn-red" onclick="abrirScannerPro()">
+                                <i class="fa-solid fa-qrcode"></i> ESCANEAR CUPÓN
+                            </button>
+                            <div id="qr-reader"></div>
+                            <div id="qr-verificacion-pro"></div>
+                        </div>
 
                         <h4 style="font-size:13px; margin:20px 0 8px;">HISTORIAL DE ESTE CLIENTE</h4>
                         <div id="tallerHistorial"></div>
@@ -368,6 +428,23 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                     </button>
 
                     <div id="clienteMiPerfilResultado" style="margin-top:15px;"></div>
+
+                <!-- PESTAÑA 6: FIDELIDAD -->
+                <div id="tab-descuentos" class="tab-content">
+                    <h4 style="font-size:14px; margin-bottom:8px;">FIDELIDAD MAS RACING</h4>
+                    <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">
+                        Cada <strong>3 SERVICES</strong> realizados habilita automáticamente un <strong style="color:var(--green);">15% OFF EN MANO DE OBRA</strong>.
+                    </p>
+                    <div class="form-group-sm">
+                        <label>DNI</label>
+                        <input type="number" id="descuentoDni" placeholder="Tu DNI">
+                    </div>
+                    <button type="button" class="btn-red" onclick="verMisDescuentosPro()">
+                        <i class="fa-solid fa-ticket"></i> VER MIS BENEFICIOS
+                    </button>
+                    <div id="descuentosResultadoPro" style="margin-top:15px;"></div>
+                </div>
+
                 </div>
 
             </div>
@@ -496,6 +573,381 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
         let clientesBD = JSON.parse(localStorage.getItem('masracing_clientes')) || {};
         let turnosBD = JSON.parse(localStorage.getItem('masracing_turnos')) || [];
 
+
+        // ============================================================
+        // MAS RACING PRO — FIDELIDAD, EDICIÓN, SEGURIDAD DE SESIÓN
+        // ============================================================
+        const SERVICES_PARA_CUPON = 3;
+        const DESCUENTO_MANO_OBRA = 15;
+        const VIGENCIA_CUPON_DIAS = 90;
+
+        let cuponesBD = JSON.parse(localStorage.getItem('masracing_cupones')) || {};
+        let scannerPro = null;
+
+        function esService(h) {
+            return String(h?.servicio || '').toLowerCase().startsWith('service completo') ||
+                   String(h?.servicio || '').toLowerCase() === 'service';
+        }
+
+        function contarServices(dni) {
+            const cliente = clientesBD[dni];
+            if (!cliente) return 0;
+            return (cliente.historialServicios || []).filter(esService).length;
+        }
+
+        function guardarClientesPro() {
+            localStorage.setItem('masracing_clientes', JSON.stringify(clientesBD));
+        }
+
+        function guardarCuponesPro() {
+            localStorage.setItem('masracing_cupones', JSON.stringify(cuponesBD));
+        }
+
+        function codigoUnicoPro() {
+            const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+            let r = "";
+            for (let i=0;i<9;i++) r += chars[Math.floor(Math.random()*chars.length)];
+            return r;
+        }
+
+        function crearCuponPro(dni, numeroService) {
+            if (!cuponesBD[dni]) cuponesBD[dni] = [];
+            if (cuponesBD[dni].some(c => c.numeroService === numeroService && !c.invalidado)) return;
+
+            const vence = new Date();
+            vence.setDate(vence.getDate() + VIGENCIA_CUPON_DIAS);
+
+            cuponesBD[dni].push({
+                id: "CPN-" + Date.now().toString(36).toUpperCase() + "-" + codigoUnicoPro().slice(0,4),
+                codigo: "MAS15-" + codigoUnicoPro(),
+                dni: String(dni),
+                numeroService,
+                descuento: DESCUENTO_MANO_OBRA,
+                emitido: new Date().toISOString(),
+                vence: vence.toISOString(),
+                usado: false,
+                invalidado: false,
+                usadoEn: null
+            });
+        }
+
+        function sincronizarFidelidad(dni) {
+            const total = contarServices(dni);
+            if (!cuponesBD[dni]) cuponesBD[dni] = [];
+
+            for (let n=SERVICES_PARA_CUPON; n<=total; n+=SERVICES_PARA_CUPON) {
+                crearCuponPro(dni, n);
+            }
+
+            // Si se editó/eliminó un service y el cliente ya no llegó a ese hito,
+            // el cupón correspondiente deja de ser válido.
+            cuponesBD[dni].forEach(c => {
+                if (!c.usado && c.numeroService > total) c.invalidado = true;
+            });
+
+            guardarCuponesPro();
+        }
+
+        function cuponValidoPro(c) {
+            return c && !c.usado && !c.invalidado && new Date(c.vence).getTime() > Date.now();
+        }
+
+        function qrPayloadPro(c) {
+            return ["MASRACING","15MO","HAND",c.id,c.codigo,c.dni,c.numeroService,c.vence].join("|");
+        }
+
+        function dibujarQRPro(id, payload) {
+            const el = document.getElementById(id);
+            if (!el || typeof QRCode === "undefined") return;
+            el.innerHTML = "";
+            new QRCode(el, {
+                text: payload,
+                width: 190,
+                height: 190,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        function descargarQRPro(id, codigo) {
+            const canvas = document.querySelector("#"+id+" canvas");
+            if (!canvas) return;
+            const a = document.createElement("a");
+            a.href = canvas.toDataURL("image/png");
+            a.download = codigo + ".png";
+            a.click();
+        }
+
+        function verMisDescuentosPro() {
+            const dni = document.getElementById("descuentoDni").value.trim();
+            const box = document.getElementById("descuentosResultadoPro");
+            if (!dni) { alert("Ingresá tu DNI."); return; }
+
+            if (!clientesBD[dni]) {
+                box.innerHTML = `<div class="profile-badge"><p><strong>DNI no encontrado.</strong></p><p style="color:var(--texto-gris);">Registrate primero como cliente.</p></div>`;
+                return;
+            }
+
+            sincronizarFidelidad(dni);
+            const total = contarServices(dni);
+            const progreso = total % SERVICES_PARA_CUPON;
+            const faltan = progreso === 0 ? SERVICES_PARA_CUPON : SERVICES_PARA_CUPON - progreso;
+            const porcentaje = progreso === 0 ? 0 : Math.round(progreso/3*100);
+
+            let html = `
+                <div class="profile-badge" style="border-color:rgba(49,209,124,.35);">
+                    <p><strong>${clientesBD[dni].nombre}</strong> · DNI ${dni}</p>
+                    <p>Services realizados: <strong>${total}</strong></p>
+                    <div class="loyalty-progress"><span style="width:${porcentaje}%"></span></div>
+                    <p style="font-size:9px;color:var(--texto-gris);margin-top:7px;">
+                        ${progreso===0 && total>=3 ? "¡Tenés un nuevo beneficio disponible!" : `Faltan ${faltan} service${faltan===1?"":"s"} para generar otro 15% OFF.`}
+                    </p>
+                </div>`;
+
+            const cupones = (cuponesBD[dni] || []).slice().reverse();
+            if (!cupones.length) {
+                html += `<div class="profile-badge"><p style="color:var(--texto-gris);">Todavía no tenés cupones. Completá 3 services.</p></div>`;
+            }
+
+            cupones.forEach((c,i) => {
+                const estado = c.usado ? "UTILIZADO" : c.invalidado ? "INVALIDADO" : cuponValidoPro(c) ? "VÁLIDO" : "VENCIDO";
+                const qid = "qrpro-" + c.id.replace(/[^a-zA-Z0-9]/g,"") + "-" + i;
+                html += `
+                    <div class="coupon-card ${estado!=="VÁLIDO" ? "expired" : ""}">
+                        <div class="coupon-head">
+                            <div>
+                                <div class="coupon-big">${c.descuento}% OFF</div>
+                                <div class="coupon-status ${estado!=="VÁLIDO"?"bad":""}">${estado}</div>
+                            </div>
+                            <i class="fa-solid fa-ticket" style="font-size:25px;color:${estado==="VÁLIDO"?"var(--green)":"var(--muted-2)"}"></i>
+                        </div>
+                        <div class="coupon-meta">
+                            <div><small>Hito</small><strong>Service #${c.numeroService}</strong></div>
+                            <div><small>Vence</small><strong>${formatearFecha(c.vence.slice(0,10))}</strong></div>
+                        </div>
+                        <div class="qr-box" id="${qid}"></div>
+                        <div class="coupon-code">${c.codigo}</div>
+                        ${estado==="VÁLIDO" ? `<button type="button" class="btn-mini" style="width:100%;margin-top:8px;" onclick="descargarQRPro('${qid}','${c.codigo}')"><i class="fa-solid fa-download"></i> GUARDAR QR</button>` : ""}
+                    </div>`;
+            });
+
+            box.innerHTML = html;
+            cupones.forEach((c,i) => {
+                const qid = "qrpro-" + c.id.replace(/[^a-zA-Z0-9]/g,"") + "-" + i;
+                dibujarQRPro(qid, qrPayloadPro(c));
+            });
+        }
+
+        // ---------- Editar historial sin cambiar el diseño ----------
+        function abrirEditorTrabajo(dni, idx) {
+            const cliente = clientesBD[dni];
+            const h = cliente?.historialServicios?.[idx];
+            if (!h) return;
+
+            const cont = document.getElementById("tallerHistorial");
+            const editId = "editor-" + dni + "-" + idx;
+
+            // Cierra otros editores y conserva el mismo bloque visual.
+            document.querySelectorAll(".edit-box").forEach(e => e.remove());
+
+            const editor = document.createElement("div");
+            editor.className = "edit-box";
+            editor.id = editId;
+            editor.innerHTML = `
+                <div class="edit-box-grid">
+                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Fecha</label><input type="date" id="editFecha" value="${h.fecha||""}"></div>
+                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Km</label><input type="number" id="editKm" value="${h.km||""}"></div>
+                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Marca</label><input id="editMarca" value="${(h.moto||"").split(" ")[0]||""}"></div>
+                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Modelo</label><input id="editModelo" value="${(h.moto||"").split(" ").slice(1).join(" ")||""}"></div>
+                    <div class="full"><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Trabajo / notas</label><input id="editServicio" value="${String(h.servicio||"").replace(/"/g,"&quot;")}"></div>
+                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Mano de obra</label><input id="editMO" value="${h.montoTrabajo||0}"></div>
+                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Repuestos</label><input id="editRepMonto" value="${h.montoRepuestos||0}"></div>
+                    <div class="full"><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Detalle repuestos</label><input id="editRepDetalle" value="${String(h.repuestosDetalle||"").replace(/"/g,"&quot;")}"></div>
+                </div>
+                <div style="display:flex;gap:7px;margin-top:9px;">
+                    <button type="button" class="btn-mini success" onclick="guardarEdicionTrabajo('${dni}',${idx})"><i class="fa-solid fa-check"></i> GUARDAR CAMBIOS</button>
+                    <button type="button" class="btn-mini" onclick="document.getElementById('${editId}').remove()">CANCELAR</button>
+                </div>`;
+
+            // Insertar antes del item correspondiente.
+            const items = cont.querySelectorAll(".turno-item");
+            const reversedIndex = (cliente.historialServicios.length - 1) - idx;
+            if (items[reversedIndex]) items[reversedIndex].before(editor);
+            else cont.prepend(editor);
+        }
+
+        function guardarEdicionTrabajo(dni, idx) {
+            const h = clientesBD[dni]?.historialServicios?.[idx];
+            if (!h) return;
+
+            const marca = document.getElementById("editMarca").value.trim();
+            const modelo = document.getElementById("editModelo").value.trim();
+            const fecha = document.getElementById("editFecha").value;
+            if (!fecha || !marca || !modelo) { alert("Completá fecha, marca y modelo."); return; }
+
+            h.fecha = fecha;
+            h.km = document.getElementById("editKm").value.trim() || null;
+            h.moto = `${marca} ${modelo}`;
+            h.servicio = document.getElementById("editServicio").value.trim() || "Otro";
+            h.montoTrabajo = parsearMonto(document.getElementById("editMO").value);
+            h.montoRepuestos = parsearMonto(document.getElementById("editRepMonto").value);
+            h.repuestosDetalle = document.getElementById("editRepDetalle").value.trim();
+            h.usoRepuestos = h.montoRepuestos > 0 || !!h.repuestosDetalle;
+            h.montoTotal = h.montoTrabajo + h.montoRepuestos;
+
+            // El contador ya no depende de trabajos no-service: se recalcula.
+            clientesBD[dni].trabajosRealizados = (clientesBD[dni].historialServicios || []).length;
+            sincronizarFidelidad(dni);
+            guardarClientesPro();
+            alert("Historial actualizado correctamente.");
+            buscarClienteTaller();
+        }
+
+        // ---------- Eliminación mejorada ----------
+        const eliminarTrabajoTallerOriginal = eliminarTrabajoTaller;
+        function eliminarTrabajoTallerPro(dni, idx) {
+            if (!confirm("¿Eliminar este trabajo del historial? Esta acción no se puede deshacer.")) return;
+            if (!clientesBD[dni]?.historialServicios) return;
+
+            clientesBD[dni].historialServicios.splice(idx,1);
+            clientesBD[dni].trabajosRealizados = clientesBD[dni].historialServicios.length;
+            sincronizarFidelidad(dni);
+            guardarClientesPro();
+            buscarClienteTaller();
+        }
+
+        // ---------- Scanner ----------
+        async function abrirScannerPro() {
+            const reader = document.getElementById("qr-reader");
+            if (scannerPro) {
+                try { await scannerPro.stop(); } catch(e) {}
+                scannerPro = null;
+                reader.style.display = "none";
+                return;
+            }
+            if (typeof Html5Qrcode === "undefined") {
+                alert("No se pudo cargar el lector QR.");
+                return;
+            }
+            reader.style.display = "block";
+            scannerPro = new Html5Qrcode("qr-reader");
+            try {
+                await scannerPro.start(
+                    {facingMode:"environment"},
+                    {fps:10,qrbox:{width:220,height:220}},
+                    async text => {
+                        await cerrarScannerPro();
+                        verificarCuponPro(text);
+                    },
+                    () => {}
+                );
+            } catch(e) {
+                reader.style.display = "none";
+                scannerPro = null;
+                alert("No se pudo acceder a la cámara. Permití el acceso desde el navegador.");
+            }
+        }
+
+        async function cerrarScannerPro() {
+            if (scannerPro) {
+                try { await scannerPro.stop(); } catch(e) {}
+                scannerPro = null;
+            }
+            const reader = document.getElementById("qr-reader");
+            if (reader) reader.style.display = "none";
+        }
+
+        function verificarCuponPro(texto) {
+            const box = document.getElementById("qr-verificacion-pro");
+            const p = String(texto).split("|");
+            if (p.length !== 8 || p[0]!=="MASRACING" || p[1]!=="15MO" || p[2]!=="HAND") {
+                box.innerHTML = `<div class="qr-result bad"><strong>✕ QR NO VÁLIDO</strong><br>No corresponde a un cupón MAS RACING de mano de obra.</div>`;
+                return;
+            }
+
+            const [, , , id, codigo, dni, numeroService, vence] = p;
+            const cupon = (cuponesBD[dni]||[]).find(c => c.id===id && c.codigo===codigo);
+
+            if (!cupon) {
+                box.innerHTML = `<div class="qr-result bad"><strong>✕ CUPÓN NO REGISTRADO</strong><br>El código fue leído, pero no está registrado en este dispositivo.</div>`;
+                return;
+            }
+            if (cupon.usado) {
+                box.innerHTML = `<div class="qr-result bad"><strong>✕ CUPÓN YA UTILIZADO</strong><br>Usado el ${cupon.usadoEn ? new Date(cupon.usadoEn).toLocaleString("es-AR") : "fecha no disponible"}.</div>`;
+                return;
+            }
+            if (cupon.invalidado || new Date(vence).getTime() <= Date.now()) {
+                box.innerHTML = `<div class="qr-result bad"><strong>✕ CUPÓN NO VÁLIDO</strong><br>El beneficio está vencido o fue invalidado.</div>`;
+                return;
+            }
+
+            const cliente = clientesBD[dni];
+            const nombre = cliente ? cliente.nombre : dni;
+            box.innerHTML = `
+                <div class="qr-result ok">
+                    <strong>✓ CUPÓN VÁLIDO — ${cupon.descuento}% OFF EN MANO DE OBRA</strong><br>
+                    Cliente: ${nombre}<br>
+                    DNI: ${dni}<br>
+                    Generado por: service #${numeroService}<br>
+                    Vence: ${formatearFecha(vence.slice(0,10))}
+                    <button type="button" class="btn-red" style="margin-top:10px;" onclick="usarCuponPro('${dni}','${id}')">
+                        <i class="fa-solid fa-check"></i> APLICAR Y MARCAR UTILIZADO
+                    </button>
+                </div>`;
+        }
+
+        function usarCuponPro(dni,id) {
+            const c = (cuponesBD[dni]||[]).find(x=>x.id===id);
+            if (!c || !cuponValidoPro(c)) return;
+            if (!confirm(`Confirmar ${c.descuento}% OFF en MANO DE OBRA para ${clientesBD[dni]?.nombre || dni}?`)) return;
+            c.usado = true;
+            c.usadoEn = new Date().toISOString();
+            guardarCuponesPro();
+            document.getElementById("qr-verificacion-pro").innerHTML =
+                `<div class="qr-result ok"><strong>✓ DESCUENTO APLICADO</strong><br>El cupón ${c.codigo} quedó marcado como utilizado.</div>`;
+        }
+
+        // ---------- Panel: estadísticas ----------
+        function calcularEstadisticasTaller() {
+            const clientes = Object.keys(clientesBD).length;
+            let trabajos = 0, services = 0, facturado = 0;
+            Object.values(clientesBD).forEach(c => {
+                const h = c.historialServicios || [];
+                trabajos += h.length;
+                services += h.filter(esService).length;
+                facturado += h.reduce((a,x)=>a+(x.montoTotal||0),0);
+            });
+            return {clientes,trabajos,services,facturado};
+        }
+
+        function renderStatsTaller() {
+            const box = document.getElementById("tallerStatsPro");
+            if (!box) return;
+            const s = calcularEstadisticasTaller();
+            box.innerHTML = `
+                <div class="workshop-stat"><small>Clientes</small><strong>${s.clientes}</strong></div>
+                <div class="workshop-stat"><small>Services</small><strong>${s.services}</strong></div>
+                <div class="workshop-stat"><small>Facturado</small><strong>$${s.facturado.toLocaleString("es-AR")}</strong></div>`;
+        }
+
+        function cerrarSesionTaller() {
+            sessionStorage.removeItem("taller_autenticado");
+            document.getElementById("tallerLogin").style.display = "block";
+            document.getElementById("tallerPanel").style.display = "none";
+            document.getElementById("tallerClave").value = "";
+        }
+
+        // Genera beneficios para historiales existentes.
+        function inicializarFidelidadExistente() {
+            Object.keys(clientesBD).forEach(dni => {
+                clientesBD[dni].trabajosRealizados = (clientesBD[dni].historialServicios||[]).length;
+                sincronizarFidelidad(dni);
+            });
+            guardarClientesPro();
+        }
+
+
         // Cambio de pestañas
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -512,6 +964,7 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                 if (!document.getElementById('tallerFecha').value) {
                     document.getElementById('tallerFecha').value = new Date().toISOString().split('T')[0];
                 }
+                renderStatsTaller();
             }
         }
 
@@ -668,18 +1121,7 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
 
             turnosBD.push(nuevoTurno);
             
-            // Registrar el servicio en el historial del cliente y sumar al contador
-            if (!clientesBD[dni].historialServicios) {
-                clientesBD[dni].historialServicios = [];
-            }
-            clientesBD[dni].historialServicios.push({
-                fecha: fecha,
-                hora: hora,
-                servicio: servicioSeleccionado,
-                moto: `${marca} ${modelo}`,
-                km: km || null
-            });
-            clientesBD[dni].trabajosRealizados += 1;
+            // El turno queda reservado. El historial se actualiza cuando el taller registra el trabajo realizado.
 
             // Guardar cambios
             localStorage.setItem('masracing_turnos', JSON.stringify(turnosBD));
@@ -857,7 +1299,8 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                 montoRepuestos: montoRepuestos,
                 montoTotal: montoTrabajo + montoRepuestos
             });
-            clientesBD[dni].trabajosRealizados += 1;
+            clientesBD[dni].trabajosRealizados = clientesBD[dni].historialServicios.length;
+            sincronizarFidelidad(dni);
 
             localStorage.setItem('masracing_clientes', JSON.stringify(clientesBD));
 
@@ -922,7 +1365,10 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                             <button class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" onclick="generarBoleta('${dni}', ${h._idx})">
                                 <i class="fa-solid fa-receipt"></i>
                             </button>
-                            <button class="btn-red btn-cancel" style="width:auto; padding:6px 10px; margin-top:0;" onclick="eliminarTrabajoTaller('${dni}', ${h._idx})">
+                            <button class="btn-mini" onclick="abrirEditorTrabajo('${dni}', ${h._idx})" title="Editar historial">
+                                <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="btn-red btn-cancel" style="width:auto; padding:6px 10px; margin-top:0;" onclick="eliminarTrabajoTallerPro('${dni}', ${h._idx})">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
@@ -1122,112 +1568,3 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                     <button class="btn-imprimir" onclick="window.print()">Imprimir / Guardar como PDF</button>
                 </body>
                 </html>
-            `);
-            ventana.document.close();
-        }
-
-        // Normaliza un teléfono argentino para wa.me (agrega código de país si falta)
-        function normalizarTelefonoAR(tel) {
-            let limpio = (tel || '').replace(/[^0-9]/g, '');
-            if (limpio.startsWith('54')) return limpio;
-            if (limpio.length === 10) return '549' + limpio; // 10 dígitos = celular AR sin código de país
-            return limpio;
-        }
-
-        // Prepara y abre WhatsApp con el recordatorio, listo para enviar al cliente
-        function enviarRecordatorioWhatsApp(dni) {
-            const cliente = clientesBD[dni];
-            if (!cliente) return;
-
-            if (!cliente.telefono) {
-                alert('Este cliente no tiene un teléfono cargado. Agregalo registrándolo de nuevo en la pestaña 1, o cargalo manualmente.');
-                return;
-            }
-
-            const historial = cliente.historialServicios || [];
-            const info = calcularProximoService(historial);
-            if (!info) {
-                alert('Todavía no hay kilometraje cargado para este cliente, no se puede armar el recordatorio.');
-                return;
-            }
-
-            const telWa = normalizarTelefonoAR(cliente.telefono);
-            const mensaje = `Hola ${cliente.nombre}! Te escribimos de *MAS RACING* 🏍️%0A%0A` +
-                            `Según nuestro registro, tu último trabajo (${info.ultimo.servicio}) fue el ${formatearFecha(info.ultimo.fecha)} con ${parseInt(info.ultimo.km).toLocaleString('es-AR')} km.%0A%0A` +
-                            `Te recomendamos el próximo service antes de los ${info.proximoKm.toLocaleString('es-AR')} km, o antes del ${formatearFecha(info.fechaProximaISO)}.%0A%0A` +
-                            `¿Coordinamos un turno? 🛠️`;
-
-            window.open(`https://wa.me/${telWa}?text=${mensaje}`, '_blank');
-        }
-
-        // MI PERFIL (CLIENTES): historial completo + recomendación de próximo trabajo
-        function verMiPerfilCliente() {
-            const dni = document.getElementById('clienteMiPerfilDni').value.trim();
-            const contenedor = document.getElementById('clienteMiPerfilResultado');
-            contenedor.innerHTML = '';
-
-            if (!dni) {
-                alert('Ingresá tu DNI para ver tu historial.');
-                return;
-            }
-
-            if (!clientesBD[dni]) {
-                contenedor.innerHTML = "<p style='font-size:12px; color:var(--texto-gris); margin-top:10px;'>No encontramos ese DNI. Registrate primero en la pestaña '1. Registro'.</p>";
-                return;
-            }
-
-            const cliente = clientesBD[dni];
-            const historial = (cliente.historialServicios || []).slice();
-
-            let html = `
-                <div class="profile-badge">
-                    <p><strong>${cliente.nombre}</strong> (DNI: ${dni})</p>
-                    <p>Total de trabajos realizados: <strong>${cliente.trabajosRealizados}</strong></p>
-                    ${cliente.trabajosRealizados >= 3 ? '<div class="discount-tag">¡Tenés 10% de Descuento por Cliente Frecuente!</div>' : ''}
-                </div>
-            `;
-
-            const info = calcularProximoService(historial);
-            if (info) {
-                html += `
-                    <div class="profile-badge" style="border-color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">
-                        <p style="font-size:10px; color:var(--texto-gris);">TE RECOMENDAMOS VOLVER</p>
-                        <p><strong style="color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">Antes de los ${info.proximoKm.toLocaleString('es-AR')} km o antes del ${formatearFecha(info.fechaProximaISO)}</strong></p>
-                        ${info.vencidoPorFecha ? "<p style='color:var(--rojo-racing); font-weight:800; font-size:11px; margin-top:4px;'>⚠️ Ya pasó el tiempo recomendado desde tu último trabajo. ¡Pedí tu turno!</p>" : ''}
-                    </div>
-                `;
-            } else {
-                html += `
-                    <div class="profile-badge" style="border-color: var(--gris-borde);">
-                        <p style="font-size:11px; color:var(--texto-gris);">Todavía no tenemos tu kilometraje registrado. La próxima vez que pidas un turno, contanos los km para poder recomendarte cuándo volver.</p>
-                    </div>
-                `;
-            }
-
-            html += `<h4 style="font-size:13px; margin:15px 0 8px;">REGISTRO DE TRABAJOS</h4>`;
-
-            if (historial.length === 0) {
-                html += `<p style="font-size:12px; color:var(--texto-gris);">Todavía no tenés trabajos registrados.</p>`;
-            } else {
-                html += `<div class="my-turnos-list" style="max-height: 250px;">`;
-                historial.slice().reverse().forEach(h => {
-                    html += `
-                        <div class="turno-item" style="align-items:flex-start;">
-                            <div>
-                                <strong>${h.fecha}</strong> — ${h.servicio}<br>
-                                <span style="color:var(--texto-gris);">${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}</span>
-                            </div>
-                        </div>
-                    `;
-                });
-                html += `</div>`;
-            }
-
-            contenedor.innerHTML = html;
-        }
-
-        // Inicialización
-        document.getElementById('turnoFecha').min = new Date().toISOString().split("T")[0];
-    </script>
-</body>
-</html>
