@@ -320,7 +320,7 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
 
                             <div class="form-group-sm">
                                 <label><i class="fa-solid fa-sack-dollar"></i> MANO DE OBRA ($)</label>
-                                <input type="number" id="tallerMontoTrabajo" placeholder="Ej: 15000" min="0">
+                                <input type="text" inputmode="numeric" id="tallerMontoTrabajo" placeholder="Ej: 9500 (sin puntos ni comas)">
                             </div>
                             <div class="form-group-sm" style="display:flex; align-items:flex-end;">
                                 <label style="display:flex; align-items:center; gap:8px; margin-bottom:11px; cursor:pointer;">
@@ -335,7 +335,7 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                             </div>
                             <div class="form-group-sm full" id="tallerRepuestosMontoBox" style="display:none;">
                                 <label><i class="fa-solid fa-box-open"></i> COSTO DE REPUESTOS ($)</label>
-                                <input type="number" id="tallerMontoRepuestos" placeholder="Ej: 8000" min="0">
+                                <input type="text" inputmode="numeric" id="tallerMontoRepuestos" placeholder="Ej: 3000 (sin puntos ni comas)">
                             </div>
                         </div>
 
@@ -794,6 +794,12 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
             renderHistorialTaller(dni);
         }
 
+        // Interpreta un monto tipeado libremente (con puntos, comas o espacios) como pesos enteros
+        function parsearMonto(valorTexto) {
+            const soloDigitos = (valorTexto || '').replace(/[^0-9]/g, '');
+            return soloDigitos ? parseInt(soloDigitos, 10) : 0;
+        }
+
         // Muestra/oculta los campos de repuestos según el checkbox
         function toggleRepuestosBox() {
             const marcado = document.getElementById('tallerUsoRepuestos').checked;
@@ -812,8 +818,8 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
             const notas = document.getElementById('tallerNotas').value.trim();
             const usoRepuestos = document.getElementById('tallerUsoRepuestos').checked;
             const repuestosDetalle = usoRepuestos ? document.getElementById('tallerRepuestosDetalle').value.trim() : '';
-            const montoRepuestos = usoRepuestos ? (parseFloat(document.getElementById('tallerMontoRepuestos').value) || 0) : 0;
-            const montoTrabajo = parseFloat(document.getElementById('tallerMontoTrabajo').value) || 0;
+            const montoRepuestos = usoRepuestos ? parsearMonto(document.getElementById('tallerMontoRepuestos').value) : 0;
+            const montoTrabajo = parsearMonto(document.getElementById('tallerMontoTrabajo').value);
 
             if (!dni || !fecha || !marca || !modelo) {
                 alert('Completá al menos DNI, fecha, marca y modelo.');
@@ -1038,32 +1044,41 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                 <head>
                     <meta charset="UTF-8">
                     <title>Boleta N° ${numeroBoleta} - MAS RACING</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
                     <style>
                         * { box-sizing: border-box; }
-                        body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; max-width: 650px; margin: 30px auto; padding: 0 20px; }
-                        .encabezado { display:flex; justify-content:space-between; align-items:flex-start; border-bottom: 3px solid #E52421; padding-bottom: 16px; margin-bottom: 20px; }
-                        .encabezado h1 { font-size: 22px; letter-spacing: 1px; margin-bottom: 4px; }
-                        .encabezado p { font-size: 11px; color: #555; line-height: 1.5; }
-                        .boleta-info { text-align: right; font-size: 12px; }
-                        .boleta-info .num { font-size: 16px; font-weight: 800; color: #E52421; }
-                        .datos { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px; font-size: 12px; }
-                        .datos div { background: #f7f7f7; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px 12px; }
-                        .datos h4 { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px; }
-                        table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 10px; }
-                        th { text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: #888; border-bottom: 1px solid #ddd; padding: 6px 4px; }
-                        td { padding: 8px 4px; border-bottom: 1px solid #eee; }
-                        .total-row td { border-top: 2px solid #1a1a1a; border-bottom: none; font-weight: 800; font-size: 14px; padding-top: 12px; }
-                        .footer { margin-top: 40px; text-align: center; font-size: 11px; color: #888; border-top: 1px solid #e5e5e5; padding-top: 16px; }
-                        .firma { margin-top: 50px; display: flex; justify-content: space-between; font-size: 11px; }
-                        .firma div { width: 45%; text-align: center; border-top: 1px solid #999; padding-top: 6px; }
-                        .btn-imprimir { display:block; width:100%; margin-top:24px; padding:12px; background:#E52421; color:#fff; border:none; border-radius:8px; font-weight:800; font-size:13px; cursor:pointer; text-transform:uppercase; letter-spacing:1px; }
+                        body {
+                            font-family: 'Montserrat', sans-serif;
+                            background: #0b0d0f;
+                            color: #fff;
+                            max-width: 650px;
+                            margin: 30px auto;
+                            padding: 0 20px 30px;
+                            -webkit-print-color-adjust: exact;
+                            print-color-adjust: exact;
+                        }
+                        .encabezado { display:flex; justify-content:space-between; align-items:flex-start; border-bottom: 3px solid #e52421; padding-bottom: 18px; margin-bottom: 22px; }
+                        .encabezado h1 { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 30px; letter-spacing: -0.5px; margin-bottom: 6px; text-transform: uppercase; }
+                        .encabezado p { font-size: 11px; color: #9299a5; line-height: 1.6; }
+                        .boleta-info { text-align: right; font-size: 12px; color: #9299a5; }
+                        .boleta-info .num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: #ff4b47; letter-spacing: .5px; }
+                        .datos { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; font-size: 12px; }
+                        .datos div { background: #111417; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; padding: 12px 14px; }
+                        .datos h4 { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: #68707c; margin-bottom: 8px; font-weight: 800; }
+                        .datos p { line-height: 1.7; }
+                        table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 6px; background: #111417; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; overflow: hidden; }
+                        th { text-align: left; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #68707c; border-bottom: 1px solid rgba(255,255,255,.09); padding: 10px 12px; font-weight: 800; }
+                        td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.06); }
+                        .total-row td { border-top: 2px solid #e52421; border-bottom: none; font-weight: 800; font-size: 15px; padding-top: 14px; color: #ff4b47; }
+                        .footer { margin-top: 30px; text-align: center; font-size: 10px; color: #68707c; border-top: 1px solid rgba(255,255,255,.09); padding-top: 16px; }
+                        .btn-imprimir { display:block; width:100%; margin-top:24px; padding:13px; background:linear-gradient(135deg,#ed2b27,#bf1714); color:#fff; border:none; border-radius:10px; font-weight:900; font-size:12px; cursor:pointer; text-transform:uppercase; letter-spacing:1px; }
                         @media print { .btn-imprimir { display:none; } body { margin: 0; } }
                     </style>
                 </head>
                 <body>
                     <div class="encabezado">
                         <div>
-                            <h1>MAS RACING</h1>
+                            <h1>MAS <span style="color:#e52421;">RACING</span></h1>
                             <p>Motomecánica<br>Av. Luján 4156, Santo Tomé, Santa Fe<br>Instagram: @masracingmotomecanica</p>
                         </div>
                         <div class="boleta-info">
@@ -1099,11 +1114,6 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="firma">
-                        <div>Firma del taller</div>
-                        <div>Firma del cliente</div>
-                    </div>
 
                     <div class="footer">
                         Gracias por confiar en MAS RACING · Documento no válido como factura fiscal
