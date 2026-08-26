@@ -3,1409 +3,474 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAS RACING - Motomecánica Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>MAS RACING - Motomecánica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            /* Sistema de colores de alto contraste */
-            --bg-primary: #0a0a0b;
-            --bg-secondary: #111113;
-            --bg-tertiary: #1a1a1d;
-            --bg-elevated: #222226;
-            
-            --accent-primary: #ff2d2d;
-            --accent-secondary: #ff5252;
-            --accent-glow: rgba(255, 45, 45, 0.3);
-            
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1aa;
-            --text-tertiary: #71717a;
-            
-            --success: #22c55e;
-            --success-bg: rgba(34, 197, 94, 0.1);
-            --warning: #eab308;
-            
-            --border: rgba(255, 255, 255, 0.08);
-            --border-strong: rgba(255, 255, 255, 0.15);
-            
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 40px rgba(255, 45, 45, 0.15);
-            
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Efecto de ruido sutil */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.03;
-            z-index: -1;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        /* Gradiente de fondo */
-        body::after {
-            content: "";
-            position: fixed;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255, 45, 45, 0.08) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* HEADER MODERNO */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 72px;
-            padding: 0 clamp(20px, 5vw, 80px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            background: rgba(10, 10, 11, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 45, 45, 0.4);
-        }
-
-        .logo-text-main {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-primary);
-        }
-
-        .logo-text-main span {
-            color: var(--accent-primary);
-        }
-
-        .logo-sub {
-            font-size: 10px;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            margin-top: -2px;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        nav a {
-            position: relative;
-            padding: 10px 18px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            border-radius: var(--radius-md);
-            transition: all 0.2s ease;
-        }
-
-        nav a:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        nav a.active {
-            color: var(--text-primary);
-            background: rgba(255, 45, 45, 0.1);
-        }
-
-        nav a.active::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 2px;
-            background: var(--accent-primary);
-            border-radius: 2px;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-header {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            color: var(--text-primary);
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .btn-header:hover {
-            background: var(--bg-elevated);
-            border-color: var(--border-strong);
-            transform: translateY(-1px);
-        }
-
-        .btn-header-primary {
-            background: var(--accent-primary);
-            border-color: var(--accent-primary);
-            color: white;
-        }
-
-        .btn-header-primary:hover {
-            background: var(--accent-secondary);
-            box-shadow: 0 4px 20px rgba(255, 45, 45, 0.4);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            padding: 120px clamp(20px, 5vw, 80px) 80px;
-            display: grid;
-            grid-template-columns: 1fr 520px;
-            align-items: center;
-            gap: 80px;
-            max-width: 1600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(255, 45, 45, 0.1);
-            border: 1px solid rgba(255, 45, 45, 0.2);
-            border-radius: 999px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--accent-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }
-
-        .hero-badge i {
-            font-size: 10px;
-        }
-
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(48px, 6vw, 72px);
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -2px;
-            margin-bottom: 24px;
-        }
-
-        .hero-title .highlight {
-            display: block;
-            color: var(--accent-primary);
-            text-shadow: 0 0 60px rgba(255, 45, 45, 0.5);
-        }
-
-        .hero-description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 32px;
-            max-width: 540px;
-        }
-
-        .hero-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: var(--text-tertiary);
-            font-weight: 500;
-        }
-
-        .hero-feature i {
-            color: var(--accent-primary);
-            font-size: 14px;
-        }
-
-        /* CARD PRINCIPAL */
-        .main-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg), var(--shadow-glow);
-        }
-
-        .card-header {
-            padding: 24px 28px;
-            border-bottom: 1px solid var(--border);
-            background: linear-gradient(to right, rgba(255, 45, 45, 0.05), transparent);
-        }
-
-        .card-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .card-subtitle {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        /* TABS MODERNOS */
-        .tabs-container {
-            display: flex;
-            border-bottom: 1px solid var(--border);
-            background: var(--bg-tertiary);
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .tabs-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tab-btn {
-            flex: 1;
-            min-width: 100px;
-            padding: 16px 20px;
-            background: transparent;
-            border: none;
-            color: var(--text-tertiary);
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-            white-space: nowrap;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .tab-btn i {
-            font-size: 16px;
-        }
-
-        .tab-btn:hover {
-            color: var(--text-secondary);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .tab-btn.active {
-            color: var(--accent-primary);
-            background: rgba(255, 45, 45, 0.05);
-        }
-
-        .tab-btn.active::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent-primary);
-        }
-
-        .tab-content {
-            display: none;
-            padding: 28px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* FORMULARIOS MODERNOS */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input {
-            width: 100%;
-            height: 48px;
-            padding: 0 16px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            color: var(--text-primary);
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .form-input:hover {
-            border-color: var(--border-strong);
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(255, 45, 45, 0.1);
-        }
-
-        .form-input::placeholder {
-            color: var(--text-tertiary);
-        }
-
-        select.form-input {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2371717a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 16px center;
-            padding-right: 40px;
-        }
-
-        .form-grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .form-grid-2 .form-group.full {
-            grid-column: 1 / -1;
-        }
-
-        /* BOTONES */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            height: 48px;
-            padding: 0 24px;
-            border-radius: var(--radius-md);
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--accent-primary);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 45, 45, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 45, 45, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--bg-elevated);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-tertiary);
-            border-color: var(--border-strong);
-        }
-
-        .btn-danger {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .btn-danger:hover {
-            background: rgba(239, 68, 68, 0.2);
-        }
-
-        .btn-block {
-            width: 100%;
-        }
-
-        /* BADGES Y ALERTAS */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            border-radius: var(--radius-sm);
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .badge-success {
-            background: var(--success-bg);
-            color: var(--success);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-        }
-
-        .badge-warning {
-            background: rgba(234, 179, 8, 0.1);
-            color: var(--warning);
-            border: 1px solid rgba(234, 179, 8, 0.2);
-        }
-
-        .info-box {
-            padding: 16px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            margin-bottom: 20px;
-        }
-
-        .info-box-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .info-box-content {
-            font-size: 15px;
-            color: var(--text-primary);
-        }
-
-        /* SERVICIOS GRID */
-        .section {
-            padding: 100px clamp(20px, 5vw, 80px);
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-label {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(255, 45, 45, 0.1);
-            border: 1px solid rgba(255, 45, 45, 0.2);
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--accent-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .section-description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .service-card {
-            position: relative;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-strong);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card.selected {
-            border-color: var(--accent-primary);
-            background: rgba(255, 45, 45, 0.05);
-        }
-
-        .service-card.selected::before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--bg-tertiary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--accent-primary);
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            background: var(--accent-primary);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .service-card.selected .service-icon {
-            background: var(--accent-primary);
-            color: white;
-        }
-
-        .service-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .service-description {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .service-select-indicator {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--border-strong);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .service-card.selected .service-select-indicator {
-            background: var(--accent-primary);
-            border-color: var(--accent-primary);
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            padding: 60px clamp(20px, 5vw, 80px) 30px;
-        }
-
-        .footer-grid {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-
-        .footer-item {
-            display: flex;
-            gap: 16px;
-        }
-
-        .footer-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--bg-tertiary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            color: var(--accent-primary);
-            flex-shrink: 0;
-        }
-
-        .footer-content h4 {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-content p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-        }
-
-        .footer-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--accent-secondary);
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-link:hover {
-            color: var(--accent-primary);
-        }
-
-        .footer-bottom {
-            max-width: 1600px;
-            margin: 50px auto 0;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-tertiary);
-        }
-
-        .footer-bottom a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .footer-bottom a:hover {
-            color: var(--text-primary);
-        }
-
-        /* LISTAS DE TURNOS */
-        .turnos-list {
-            max-height: 300px;
-            overflow-y: auto;
-            padding-right: 8px;
-        }
-
-        .turnos-list::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .turnos-list::-webkit-scrollbar-track {
-            background: var(--bg-tertiary);
-            border-radius: 3px;
-        }
-
-        .turnos-list::-webkit-scrollbar-thumb {
-            background: var(--border-strong);
-            border-radius: 3px;
-        }
-
-        .turno-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            margin-bottom: 12px;
-            transition: all 0.2s;
-        }
-
-        .turno-item:hover {
-            border-color: var(--border-strong);
-        }
-
-        .turno-info h4 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .turno-info p {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        /* HISTORIAL */
-        .historial-empty {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-tertiary);
-        }
-
-        .historial-empty i {
-            font-size: 48px;
-            margin-bottom: 16px;
-            opacity: 0.5;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 1200px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 60px;
-                padding-top: 100px;
-            }
-
-            .hero-content {
-                text-align: center;
-                max-width: 100%;
-            }
-
-            .hero-description {
-                margin: 0 auto 32px;
-            }
-
-            .hero-features {
-                justify-content: center;
-            }
-
-            .main-card {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 0 20px;
-                height: 64px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .hero-title {
-                font-size: 40px;
-            }
-
-            .form-grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tab-btn {
-                padding: 12px 16px;
-                font-size: 11px;
-            }
-
-            .tab-btn span {
-                display: none;
-            }
-
-            .section {
-                padding: 60px 20px;
-            }
-        }
-
-        /* UTILIDADES */
-        .hidden {
-            display: none !important;
-        }
-
-        .text-success {
-            color: var(--success);
-        }
-
-        .text-accent {
-            color: var(--accent-primary);
-        }
-
-        .mb-4 {
-            margin-bottom: 16px;
-        }
-
-        .mt-4 {
-            margin-top: 16px;
-        }
-    </style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --red:#e52421;--red-dark:#b91512;--red-soft:#ff4b47;--black:#070809;--bg:#0b0d0f;
+  --surface:#111417;--surface-2:#171a1e;--surface-3:#1d2126;--input:#0b0d10;
+  --line:rgba(255,255,255,.09);--line-strong:rgba(255,255,255,.15);
+  --white:#fff;--muted:#9299a5;--muted-2:#68707c;--green:#31d17c;
+  --shadow:0 24px 70px rgba(0,0,0,.42);--radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:radial-gradient(circle at 70% 10%,rgba(229,36,33,.07),transparent 28%),var(--black);color:var(--white);line-height:1.5;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 75%);z-index:-1}
+a{color:inherit}
+button,input,select{font:inherit}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:1000;min-height:76px;padding:0 clamp(20px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:28px;background:rgba(7,8,9,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+header:after{content:"";position:absolute;left:0;bottom:-1px;width:34%;height:2px;background:linear-gradient(90deg,var(--red),transparent)}
+.logo-text{position:relative;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;line-height:1;text-decoration:none;font-style:italic;letter-spacing:-1px;text-transform:uppercase;white-space:nowrap}
+.logo-text:after{content:"MOTOMECÁNICA";display:block;margin-top:5px;font-family:'Montserrat',sans-serif;font-size:7px;letter-spacing:3px;font-style:normal;color:var(--muted);font-weight:700}
+.logo-text span{color:var(--red);text-shadow:0 0 25px rgba(229,36,33,.25)}
+nav{display:flex;align-items:center;justify-content:center;gap:6px;flex:1}
+nav a{position:relative;padding:10px 13px;color:#c9cdd4;text-decoration:none;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.3px;border-radius:9px;transition:.25s ease}
+nav a:after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:.25s}
+nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.045)}
+nav a:hover:after,nav a.active:after{transform:scaleX(1)}
+.nav-social{display:flex;align-items:center}
+.btn-ig{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.08);font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:.25s}
+.btn-ig:hover{transform:translateY(-2px);border-color:rgba(225,48,108,.55);box-shadow:0 10px 30px rgba(225,48,108,.16)}
+
+/* HERO */
+.hero{position:relative;isolation:isolate;max-width:1500px;min-height:650px;margin:0 auto;padding:clamp(42px,6vw,84px) clamp(22px,5vw,72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,500px);align-items:center;gap:clamp(35px,7vw,100px);overflow:hidden;background:linear-gradient(90deg,rgba(7,8,9,.98) 0%,rgba(7,8,9,.88) 34%,rgba(7,8,9,.45) 65%,rgba(7,8,9,.9) 100%),url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;border-bottom:1px solid var(--line)}
+.hero:before{content:"";position:absolute;inset:auto -10% -180px auto;width:620px;height:620px;background:radial-gradient(circle,rgba(229,36,33,.18),transparent 66%);filter:blur(20px);z-index:-1}
+.hero:after{content:"MAS RACING // 2026";position:absolute;right:35px;bottom:28px;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:4px;color:rgba(255,255,255,.28);transform:rotate(-90deg);transform-origin:right bottom}
+.hero-text{max-width:650px;padding-top:0;animation:rise .7s ease both}
+.hero-text:before{content:"MOTOMECÁNICA · SERVICIO · PERFORMANCE";display:inline-flex;padding:7px 11px;margin-bottom:20px;border:1px solid rgba(229,36,33,.35);border-radius:999px;background:rgba(229,36,33,.08);color:#ff7773;font-size:9px;font-weight:800;letter-spacing:2px}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(58px,7vw,100px);font-weight:900;font-style:italic;line-height:.86;letter-spacing:-2px;text-transform:uppercase;margin-bottom:24px;text-wrap:balance}
+.hero-title span{display:block;color:var(--red);text-shadow:0 8px 35px rgba(229,36,33,.18)}
+.hero-subtitle{max-width:570px;color:#b7bdc7;font-size:14px;line-height:1.8;margin-bottom:30px}
+.hero-text:after{content:"TURNOS ONLINE  •  HISTORIAL DIGITAL  •  ATENCIÓN PERSONALIZADA";display:block;color:var(--muted-2);font-size:9px;font-weight:800;letter-spacing:1.5px}
+.card-container{width:100%;animation:rise .8s .08s ease both}
+.turno-card-unified{position:relative;background:linear-gradient(145deg,rgba(25,29,34,.97),rgba(12,14,17,.98));border:1px solid var(--line-strong);border-radius:22px;padding:22px;box-shadow:var(--shadow),0 0 0 1px rgba(229,36,33,.035);overflow:hidden}
+.turno-card-unified:before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red),#ff615d,transparent)}
+.turno-card-unified:after{content:"";position:absolute;right:-90px;top:-90px;width:180px;height:180px;border-radius:50%;background:rgba(229,36,33,.07);filter:blur(5px);pointer-events:none}
+.tabs-header{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:22px;padding:5px;border:1px solid var(--line);border-radius:13px;background:#0a0c0f}
+.tab-btn{min-width:0;background:transparent;border:0;color:#727a86;font-weight:800;font-size:8px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;padding:10px 5px;border-radius:9px;transition:.22s;line-height:1.25}
+.tab-btn i{display:block;font-size:13px;margin-bottom:5px}
+.tab-btn:hover{color:#fff;background:rgba(255,255,255,.04)}
+.tab-btn.active{color:#fff;background:linear-gradient(135deg,var(--red),#bd1714);box-shadow:0 8px 18px rgba(229,36,33,.22)}
+.tab-content{display:none;animation:fadeIn .3s ease}.tab-content.active{display:block}
+.tab-content h4{font-family:'Barlow Condensed',sans-serif;font-size:21px;letter-spacing:.3px}
+.tab-content>p{color:var(--muted);line-height:1.6}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-group-sm{margin-bottom:13px}.form-group-sm.full{grid-column:1/-1}
+.form-group-sm label{display:flex;align-items:center;gap:6px;margin-bottom:6px;color:#8f97a3;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
+.form-group-sm input,.form-group-sm select{width:100%;height:43px;background:rgba(6,8,10,.8);border:1px solid var(--line);border-radius:10px;color:#fff;padding:0 12px;font-size:11px;outline:none;transition:.2s;appearance:auto}
+.form-group-sm input::placeholder{color:#555d68}.form-group-sm input:hover,.form-group-sm select:hover{border-color:rgba(255,255,255,.16)}
+.form-group-sm input:focus,.form-group-sm select:focus{border-color:rgba(229,36,33,.8);box-shadow:0 0 0 3px rgba(229,36,33,.1)}
+.form-group-sm input[type=date]{color-scheme:dark}
+.btn-red{width:100%;min-height:44px;background:linear-gradient(135deg,#ed2b27,#bf1714);color:#fff;border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:10px;font-weight:900;font-size:10px;text-transform:uppercase;cursor:pointer;letter-spacing:1px;display:flex;justify-content:center;align-items:center;gap:8px;transition:.25s;box-shadow:0 8px 22px rgba(229,36,33,.16);margin-top:10px}
+.btn-red:hover{transform:translateY(-2px);background:linear-gradient(135deg,#ff3935,#d41b18);box-shadow:0 12px 28px rgba(229,36,33,.25)}
+.btn-cancel{background:rgba(160,25,25,.16);border-color:rgba(229,36,33,.35);box-shadow:none}.btn-cancel:hover{background:#8d1715}
+.profile-badge{background:linear-gradient(135deg,rgba(229,36,33,.075),rgba(255,255,255,.025));border:1px solid rgba(229,36,33,.42);border-radius:12px;padding:13px;margin-bottom:15px;font-size:10px}
+.profile-badge p{margin-bottom:4px}.discount-tag{display:inline-block;background:rgba(49,209,124,.12);border:1px solid rgba(49,209,124,.25);color:#58e493;font-weight:800;padding:4px 8px;border-radius:999px;font-size:8px;margin-top:6px}
+.my-turnos-list{max-height:230px;overflow-y:auto;margin-top:15px;padding-right:3px}.my-turnos-list::-webkit-scrollbar{width:4px}.my-turnos-list::-webkit-scrollbar-thumb{background:#333;border-radius:99px}
+.turno-item{background:rgba(7,9,11,.72);border:1px solid var(--line);border-radius:10px;padding:11px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:9px}
+
+/* SERVICES */
+.main-section{max-width:1500px;margin:0 auto;padding:90px clamp(22px,5vw,72px)}
+.section-title{display:flex;align-items:center;justify-content:center;gap:16px;font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;font-style:italic;letter-spacing:.5px;text-transform:uppercase;margin-bottom:38px}
+.section-title:before,.section-title:after{content:"";height:1px;flex:1;max-width:170px;background:linear-gradient(90deg,transparent,var(--line-strong))}.section-title:after{background:linear-gradient(90deg,var(--line-strong),transparent)}
+.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.service-card{position:relative;min-height:190px;background:linear-gradient(160deg,#171b20,#0f1114);border:1px solid var(--line);border-radius:16px;padding:25px 18px 18px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:.28s}
+.service-card:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(229,36,33,.12),transparent 45%);opacity:0;transition:.28s}
+.service-card:hover{transform:translateY(-7px);border-color:rgba(229,36,33,.42);box-shadow:0 18px 45px rgba(0,0,0,.35)}.service-card:hover:before{opacity:1}
+.service-card i{position:relative;z-index:1;font-size:27px;color:var(--red);margin-bottom:22px}.service-card h4{position:relative;z-index:1;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;font-style:italic;letter-spacing:.6px;margin-bottom:20px}
+.service-card:after{content:"SERVICIO PROFESIONAL";position:absolute;top:17px;right:16px;font-size:6px;letter-spacing:1.3px;color:#555d68;font-weight:800}
+.btn-outline{position:relative;z-index:2;border:1px solid rgba(229,36,33,.5);color:#ff625e;background:rgba(229,36,33,.035);padding:9px 12px;border-radius:8px;font-size:8px;font-weight:900;cursor:pointer;width:100%;letter-spacing:1px;transition:.22s}.btn-outline:hover,.btn-outline.selected{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 20px rgba(229,36,33,.2)}
+
+/* FOOTER / CONTACT */
+.benefits-bar{position:relative;background:#080a0c;border-top:1px solid var(--line);padding:48px clamp(22px,5vw,72px);margin-top:0;overflow:hidden}.benefits-bar:before{content:"";position:absolute;left:50%;top:-250px;transform:translateX(-50%);width:600px;height:350px;background:radial-gradient(circle,rgba(229,36,33,.08),transparent 68%)}
+.benefits-grid{position:relative;z-index:1;max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:22px;align-items:stretch}.benefit-item{display:flex;align-items:flex-start;gap:13px;padding:16px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.018)}.benefit-item i{flex:0 0 auto;font-size:18px;color:var(--red);margin-top:2px}.benefit-info h5{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.benefit-info p{font-size:9px;color:var(--muted);line-height:1.5}.btn-maps{background:rgba(255,255,255,.035);border:1px solid var(--line-strong);color:#fff;padding:7px 9px;border-radius:7px;font-size:7px;font-weight:800;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:.2s;margin-top:8px}.btn-maps:hover{background:var(--red);border-color:var(--red)}
+body>div:last-child{background:#060708!important;border-color:var(--line)!important;color:#454c56!important}body>div:last-child a{color:#454c56!important}
+
+/* MOTION */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* RESPONSIVE */
+@media(max-width:1180px){header{padding-inline:24px}.hero{grid-template-columns:1fr 450px}.services-grid{grid-template-columns:repeat(3,1fr)}.benefits-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){header{flex-wrap:wrap;padding:16px 20px;gap:13px}.logo-text{font-size:26px}nav{order:3;flex-basis:100%;overflow-x:auto;justify-content:flex-start;padding-bottom:2px}nav a{white-space:nowrap}.hero{grid-template-columns:1fr;min-height:auto;padding-top:65px}.hero-text{max-width:760px}.card-container{max-width:620px;margin:0 auto}.hero:after{display:none}.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){header{min-height:auto}.nav-social{display:none}.hero{padding:48px 16px 45px;background-position:62% center}.hero-title{font-size:59px;letter-spacing:-1px}.hero-subtitle{font-size:12px}.turno-card-unified{padding:13px;border-radius:16px}.tabs-header{grid-template-columns:repeat(5,minmax(82px,1fr));overflow-x:auto;justify-content:start}.tab-btn{font-size:7px}.form-grid-2{grid-template-columns:1fr}.form-group-sm.full{grid-column:auto}.main-section{padding:62px 16px}.section-title{font-size:34px}.section-title:before,.section-title:after{max-width:45px}.services-grid{grid-template-columns:1fr}.service-card{min-height:165px}.benefits-grid{grid-template-columns:1fr}.benefits-bar{padding:35px 16px}.benefit-item{padding:14px}.logo-text:after{font-size:6px}}
+</style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo-container">
-            <div class="logo-icon">
-                <i class="fa-solid fa-motorcycle"></i>
-            </div>
-            <div>
-                <div class="logo-text-main">MAS <span>RACING</span></div>
-                <div class="logo-sub">Motomecánica Premium</div>
-            </div>
-        </a>
+        <a href="#" class="logo-text">MAS <span>RACING</span></a>
         
         <nav>
             <a href="#inicio" class="active">Inicio</a>
             <a href="#servicios">Servicios</a>
-            <a href="#turnos">Turnos</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#turnos">Turnos y Registro</a>
+            <a href="#contacto">Ubicación</a>
         </nav>
 
-        <div class="header-actions">
-            <a href="https://www.instagram.com/masracingmotomecanica" target="_blank" class="btn-header">
+        <div class="nav-social">
+            <a href="https://www.instagram.com/masracingmotomecanica" target="_blank" class="btn-ig">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
         </div>
     </header>
 
     <section class="hero" id="inicio">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fa-solid fa-star"></i>
-                Servicio Premium desde 2020
-            </div>
-            <h1 class="hero-title">
-                Tu moto en las
-                <span class="highlight">mejores manos</span>
-            </h1>
-            <p class="hero-description">
-                Mantenimiento profesional, repuestos de primera calidad y registro digital de historial. 
-                Clientes frecuentes obtienen descuentos exclusivos y seguimiento personalizado.
-            </p>
-            <div class="hero-features">
-                <div class="hero-feature">
-                    <i class="fa-solid fa-check-circle"></i>
-                    Turnos online 24/7
-                </div>
-                <div class="hero-feature">
-                    <i class="fa-solid fa-check-circle"></i>
-                    Historial digital
-                </div>
-                <div class="hero-feature">
-                    <i class="fa-solid fa-check-circle"></i>
-                    Atención personalizada
-                </div>
-            </div>
+        <div class="hero-text">
+            <h1 class="hero-title">TU MOTO <span>EN LAS MEJORES MANOS</span></h1>
+            <p class="hero-subtitle">Mantenimiento profesional, repuestos de primera y registro de historial para descuentos exclusivos.</p>
         </div>
 
-        <div class="main-card" id="turnos">
-            <div class="card-header">
-                <div class="card-title">Sistema de Turnos</div>
-                <div class="card-subtitle">Registrate, agendá y gestioná tus servicios</div>
-            </div>
-            
-            <div class="tabs-container">
-                <button class="tab-btn active" onclick="switchTab('tab-registro', this)">
-                    <i class="fa-solid fa-id-card"></i>
-                    <span>1. Registro</span>
-                </button>
-                <button class="tab-btn" onclick="switchTab('tab-turno', this)">
-                    <i class="fa-regular fa-calendar-plus"></i>
-                    <span>2. Pedir Turno</span>
-                </button>
-                <button class="tab-btn" onclick="switchTab('tab-cancelar', this)">
-                    <i class="fa-regular fa-calendar-xmark"></i>
-                    <span>3. Mis Turnos</span>
-                </button>
-                <button class="tab-btn" onclick="switchTab('tab-perfil', this)">
-                    <i class="fa-solid fa-wrench"></i>
-                    <span>4. Panel Taller</span>
-                </button>
-                <button class="tab-btn" onclick="switchTab('tab-miperfil', this)">
-                    <i class="fa-solid fa-user"></i>
-                    <span>5. Mi Perfil</span>
-                </button>
-            </div>
-
-            <!-- PESTAÑA 1: REGISTRO -->
-            <div id="tab-registro" class="tab-content active">
-                <div class="info-box">
-                    <div class="info-box-title">Beneficios del registro</div>
-                    <div class="info-box-content">Accedé a descuentos por cliente frecuente y mantené el historial completo de tu moto.</div>
-                </div>
+        <div class="card-container" id="turnos">
+            <div class="turno-card-unified">
                 
-                <form id="formRegistro">
-                    <div class="form-group">
-                        <label class="form-label">DNI</label>
-                        <input type="number" class="form-input" id="regDni" placeholder="Tu número de DNI" required>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Nombre y Apellido</label>
-                        <input type="text" class="form-input" id="regNombre" placeholder="Ej: Juan Pérez" required>
-                    </div>
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Teléfono (WhatsApp)</label>
-                            <input type="tel" class="form-input" id="regTelefono" placeholder="Ej: 3425688013" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-input" id="regEmail" placeholder="ejemplo@email.com" required>
-                        </div>
-                    </div>
+                <!-- PESTAÑAS DE NAVEGACIÓN (ORDENADAS: 1. REGISTRO, 2. PEDIR TURNO, 3. MIS TURNOS, 4. PANEL TALLER, 5. MI PERFIL) -->
+                <div class="tabs-header">
+                    <button class="tab-btn active" id="btn-tab-registro" onclick="switchTab('tab-registro')"><i class="fa-solid fa-id-card"></i> 1. Registro</button>
+                    <button class="tab-btn" id="btn-tab-turno" onclick="switchTab('tab-turno')"><i class="fa-regular fa-calendar-plus"></i> 2. Pedir Turno</button>
+                    <button class="tab-btn" id="btn-tab-cancelar" onclick="switchTab('tab-cancelar')"><i class="fa-regular fa-calendar-xmark"></i> 3. Mis Turnos</button>
+                    <button class="tab-btn" id="btn-tab-perfil" onclick="switchTab('tab-perfil')"><i class="fa-solid fa-motorcycle"></i> 4. Panel Taller</button>
+                    <button class="tab-btn" id="btn-tab-miperfil" onclick="switchTab('tab-miperfil')"><i class="fa-solid fa-user"></i> 5. Mi Perfil</button>
+                </div>
+
+                <!-- PESTAÑA 1: REGISTRO / MI PERFIL (PRIMERA) -->
+                <div id="tab-registro" class="tab-content active">
+                    <h4 style="font-size:14px; margin-bottom:8px;">REGISTRATE Y OBTENÉ DESCUENTOS</h4>
+                    <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">Creá tu ficha de cliente para registrar los services de tu moto y acceder a beneficios.</p>
                     
-                    <button type="button" class="btn btn-primary btn-block" onclick="registrarCliente()">
-                        <i class="fa-solid fa-user-plus"></i> Registrarme como Cliente
-                    </button>
-                </form>
-            </div>
-
-            <!-- PESTAÑA 2: SOLICITAR TURNO -->
-            <div id="tab-turno" class="tab-content">
-                <div id="clienteBox" class="info-box hidden">
-                    <div class="info-box-title">Cliente Registrado</div>
-                    <div class="info-box-content">
-                        <strong id="badgeNombre"></strong> (DNI: <span id="badgeDni"></span>)
-                        <div style="margin-top: 8px;">
-                            Trabajos realizados: <strong id="badgeTrabajos">0</strong>
-                            <span id="badgeDescuento" class="badge badge-success hidden" style="margin-left: 8px;">
-                                <i class="fa-solid fa-tag"></i> 10% Descuento
-                            </span>
+                    <form id="formRegistro">
+                        <div class="form-group-sm">
+                            <label>DNI</label>
+                            <input type="number" id="regDni" placeholder="Tu número de DNI" required>
                         </div>
-                        <div id="badgeHistorial" style="margin-top: 12px; font-size: 12px; color: var(--text-secondary);"></div>
-                    </div>
-                </div>
-
-                <div class="info-box" id="servicioBox">
-                    <div class="info-box-title">Servicio Seleccionado</div>
-                    <div class="info-box-content" id="servicioSeleccionadoTexto" style="color: var(--text-tertiary);">
-                        Ninguno todavía — elegí uno en la sección "Servicios Disponibles" ⬇️
-                    </div>
-                </div>
-
-                <form id="formTurno">
-                    <div class="form-group">
-                        <label class="form-label">DNI del Cliente</label>
-                        <input type="number" class="form-input" id="turnoDni" placeholder="Ingresá tu DNI" onchange="verificarDniAuto()" required>
-                    </div>
-
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Marca de Moto</label>
-                            <select class="form-input" id="motoMarca">
-                                <option value="Honda">Honda</option>
-                                <option value="Yamaha">Yamaha</option>
-                                <option value="Motomel">Motomel</option>
-                                <option value="Corven">Corven</option>
-                                <option value="Zanella">Zanella</option>
-                                <option value="Otra">Otra Marca</option>
-                            </select>
+                        <div class="form-group-sm">
+                            <label>Nombre y Apellido</label>
+                            <input type="text" id="regNombre" placeholder="Ej: Juan Pérez" required>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Modelo / Cilindrada</label>
-                            <input type="text" class="form-input" id="motoModelo" placeholder="Ej: XR 150L" required>
+                        <div class="form-group-sm">
+                            <label>Teléfono (WhatsApp)</label>
+                            <input type="tel" id="regTelefono" placeholder="Ej: 3425688013" required>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Fecha</label>
-                            <input type="date" class="form-input" id="turnoFecha" onchange="actualizarHorariosDisponibles()" required>
+                        <div class="form-group-sm">
+                            <label>Correo Electrónico</label>
+                            <input type="email" id="regEmail" placeholder="ejemplo@email.com" required>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Horario Disponible</label>
-                            <select class="form-input" id="turnoHora" required>
-                                <option value="">Seleccioná una fecha primero</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Kilometraje Actual</label>
-                            <input type="number" class="form-input" id="motoKm" placeholder="Ej: 12500" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Provisión de Repuestos</label>
-                            <select class="form-input" id="repuestosModo">
-                                <option value="Se encarga el taller">Se encarga el taller</option>
-                                <option value="Llevo mis propios repuestos">Llevo mis propios repuestos</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn btn-primary btn-block mt-4" onclick="reservarYEnviarWhatsApp()">
-                        <i class="fa-regular fa-calendar-check"></i> Agendar y Reservar Turno
-                    </button>
-                </form>
-            </div>
-
-            <!-- PESTAÑA 3: MIS TURNOS -->
-            <div id="tab-cancelar" class="tab-content">
-                <div class="form-group">
-                    <label class="form-label">Ingresá tu DNI para ver tus turnos</label>
-                    <div style="display: flex; gap: 12px;">
-                        <input type="number" class="form-input" id="buscarDni" placeholder="Tu DNI" style="flex: 1;">
-                        <button type="button" class="btn btn-primary" onclick="buscarTurnosCliente()">
-                            <i class="fa-solid fa-search"></i> Buscar
+                        
+                        <button type="button" class="btn-red" onclick="registrarCliente()">
+                            <i class="fa-solid fa-user-plus"></i> REGISTRARME COMO CLIENTE
                         </button>
-                    </div>
+                    </form>
                 </div>
 
-                <div class="turnos-list" id="listaMisTurnos">
-                    <div class="historial-empty">
-                        <i class="fa-regular fa-calendar"></i>
-                        <p>Ingresá tu DNI para ver tus turnos agendados</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PESTAÑA 4: PANEL DEL TALLER -->
-            <div id="tab-perfil" class="tab-content">
-                <div id="tallerLogin">
-                    <div class="info-box">
-                        <div class="info-box-title">Acceso Restringido</div>
-                        <div class="info-box-content">Solo para personal de MAS RACING. Ingresá la clave para acceder.</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Clave de Acceso</label>
-                        <input type="password" class="form-input" id="tallerClave" placeholder="••••••••">
-                    </div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="ingresarPanelTaller()">
-                        <i class="fa-solid fa-lock"></i> Ingresar al Panel
-                    </button>
-                </div>
-
-                <div id="tallerPanel" class="hidden">
-                    <div class="info-box">
-                        <div class="info-box-title">Cargar Trabajo Realizado</div>
-                        <div class="info-box-content">Buscá al cliente por DNI y registrá el servicio realizado.</div>
+                <!-- PESTAÑA 2: SOLICITAR TURNO (SEGUNDA) -->
+                <div id="tab-turno" class="tab-content">
+                    <div id="clienteBox" class="profile-badge" style="display:none;">
+                        <p><strong id="badgeNombre">Juan Pérez</strong> (DNI: <span id="badgeDni"></span>)</p>
+                        <p>Trabajos realizados: <strong id="badgeTrabajos">0</strong></p>
+                        <div id="badgeDescuento" class="discount-tag" style="display:none;">¡Tenés 10% de Descuento por Cliente Frecuente!</div>
+                        <p id="badgeHistorial" style="font-size:10px; color:var(--texto-gris); margin-top:8px; line-height:1.6;"></p>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label">DNI del Cliente</label>
-                        <input type="number" class="form-input" id="tallerDni" placeholder="DNI del cliente" onchange="buscarClienteTaller()">
+                    <div class="profile-badge" id="servicioBox" style="border-color: var(--gris-borde);">
+                        <p style="font-size:10px; color:var(--texto-gris); margin-bottom:2px;">SERVICIO SELECCIONADO:</p>
+                        <p><strong id="servicioSeleccionadoTexto" style="color: var(--rojo-racing);">Ninguno todavía — elegí uno en "Servicios Disponibles" ⬇️</strong></p>
                     </div>
 
-                    <div id="tallerClienteInfo" class="info-box hidden">
-                        <div class="info-box-title">Cliente Encontrado</div>
-                        <div class="info-box-content">
-                            <strong id="tallerClienteNombre"></strong>
-                            <div style="margin-top: 4px; font-size: 13px; color: var(--text-secondary);">
-                                Trabajos previos: <strong id="tallerClienteTrabajos">0</strong>
+                    <form id="formTurno">
+                        <div class="form-grid-2">
+                            <div class="form-group-sm full">
+                                <label>DNI del Cliente (Para verificar registro)</label>
+                                <input type="number" id="turnoDni" placeholder="Ingresá tu DNI" onchange="verificarDniAuto()" required>
+                            </div>
+
+                            <div class="form-group-sm">
+                                <label>MARCA DE MOTO</label>
+                                <select id="motoMarca">
+                                    <option value="Honda">Honda</option>
+                                    <option value="Yamaha">Yamaha</option>
+                                    <option value="Motomel">Motomel</option>
+                                    <option value="Corven">Corven</option>
+                                    <option value="Zanella">Zanella</option>
+                                    <option value="Otra">Otra Marca</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group-sm">
+                                <label>MODELO / CILINDRADA</label>
+                                <input type="text" id="motoModelo" placeholder="Ej: XR 150L" required>
+                            </div>
+
+                            <div class="form-group-sm">
+                                <label><i class="fa-regular fa-calendar"></i> FECHA</label>
+                                <input type="date" id="turnoFecha" onchange="actualizarHorariosDisponibles()" required>
+                            </div>
+
+                            <div class="form-group-sm">
+                                <label><i class="fa-regular fa-clock"></i> HORARIO DISPONIBLE</label>
+                                <select id="turnoHora" required>
+                                    <!-- Se cargan dinámicamente según la fecha -->
+                                </select>
+                            </div>
+
+                            <div class="form-group-sm">
+                                <label><i class="fa-solid fa-gauge-high"></i> KILOMETRAJE ACTUAL</label>
+                                <input type="number" id="motoKm" placeholder="Ej: 12500" min="0">
+                            </div>
+
+                            <div class="form-group-sm full">
+                                <label><i class="fa-solid fa-box-open"></i> PROVISIÓN DE REPUESTOS</label>
+                                <select id="repuestosModo">
+                                    <option value="Se encarga el taller (Nosotros los conseguimos)">Se encarga el taller (Nosotros los conseguimos)</option>
+                                    <option value="Llevo mis propios repuestos">Llevo mis propios repuestos (Comprados por el cliente)</option>
+                                </select>
                             </div>
                         </div>
+
+                        <button type="button" class="btn-red" onclick="reservarYEnviarWhatsApp()">
+                            <i class="fa-regular fa-calendar-check"></i> AGENDAR Y RESERVAR TURNO
+                        </button>
+                    </form>
+                </div>
+
+                <!-- PESTAÑA 3: MIS TURNOS / CANCELAR (TERCERA) -->
+                <div id="tab-cancelar" class="tab-content">
+                    <h4 style="font-size:14px; margin-bottom:10px;">CONSULTAR O CANCELAR TURNO</h4>
+                    <div class="form-group-sm">
+                        <label>Ingresá tu DNI para ver tus turnos agendados</label>
+                        <input type="number" id="buscarDni" placeholder="Tu DNI">
+                    </div>
+                    <button type="button" class="btn-red" onclick="buscarTurnosCliente()">BUSCAR MIS TURNOS</button>
+
+                    <div class="my-turnos-list" id="listaMisTurnos">
+                        <!-- Se llena vía JavaScript -->
+                    </div>
+                </div>
+
+                <!-- PESTAÑA 4: PANEL DEL TALLER (CUARTA) -->
+                <div id="tab-perfil" class="tab-content">
+
+                    <div id="tallerLogin">
+                        <h4 style="font-size:14px; margin-bottom:8px;">PANEL DEL TALLER</h4>
+                        <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">Acceso solo para MAS RACING. Ingresá la clave para cargar el trabajo hecho en el historial de un cliente.</p>
+                        <div class="form-group-sm">
+                            <label>Clave de acceso</label>
+                            <input type="password" id="tallerClave" placeholder="Clave del taller">
+                        </div>
+                        <button type="button" class="btn-red" onclick="ingresarPanelTaller()">INGRESAR</button>
                     </div>
 
-                    <div id="tallerNombreNuevoBox" class="form-group hidden">
-                        <label class="form-label">Nombre del Cliente (nuevo)</label>
-                        <input type="text" class="form-input" id="tallerNombreNuevo" placeholder="Nombre y Apellido">
-                    </div>
+                    <div id="tallerPanel" style="display:none;">
+                        <h4 style="font-size:14px; margin-bottom:8px;">CARGAR TRABAJO REALIZADO</h4>
+                        <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">Buscá al cliente por DNI y registrá qué se le hizo a la moto ese día.</p>
 
-                    <div class="form-grid-2">
-                        <div class="form-group">
-                            <label class="form-label">Fecha del Trabajo</label>
-                            <input type="date" class="form-input" id="tallerFecha">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Kilometraje</label>
-                            <input type="number" class="form-input" id="tallerKm" placeholder="Ej: 14200">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Marca</label>
-                            <input type="text" class="form-input" id="tallerMarca" placeholder="Ej: Honda">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Modelo</label>
-                            <input type="text" class="form-input" id="tallerModelo" placeholder="Ej: XR 150L">
-                        </div>
-                    </div>
+                        <div class="form-grid-2">
+                            <div class="form-group-sm full">
+                                <label>DNI del Cliente</label>
+                                <input type="number" id="tallerDni" placeholder="DNI del cliente" onchange="buscarClienteTaller()">
+                            </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Servicio Realizado</label>
-                        <select class="form-input" id="tallerServicio">
-                            <option value="Service Completo">Service Completo</option>
-                            <option value="Frenos">Frenos</option>
-                            <option value="Transmisión">Transmisión</option>
-                            <option value="Amortiguación">Amortiguación</option>
-                            <option value="Diagnóstico">Diagnóstico</option>
-                            <option value="Otro">Otro (especificar en notas)</option>
-                        </select>
-                    </div>
+                            <div class="form-group-sm full" id="tallerClienteInfo" style="display:none;">
+                                <div class="profile-badge" style="margin-bottom:0;">
+                                    <p><strong id="tallerClienteNombre"></strong></p>
+                                    <p style="font-size:10px; color:var(--texto-gris);">Trabajos previos: <strong id="tallerClienteTrabajos">0</strong></p>
+                                </div>
+                            </div>
 
-                    <div class="form-group">
-                        <label class="form-label">Notas (Opcional)</label>
-                        <input type="text" class="form-input" id="tallerNotas" placeholder="Detalles, repuestos usados, etc.">
-                    </div>
+                            <div class="form-group-sm full" id="tallerNombreNuevoBox" style="display:none;">
+                                <label>Cliente no encontrado — cargá su nombre</label>
+                                <input type="text" id="tallerNombreNuevo" placeholder="Nombre y Apellido">
+                            </div>
 
-                    <button type="button" class="btn btn-primary btn-block" onclick="guardarTrabajoTaller()">
-                        <i class="fa-solid fa-floppy-disk"></i> Guardar en el Historial
-                    </button>
+                            <div class="form-group-sm">
+                                <label>FECHA DEL TRABAJO</label>
+                                <input type="date" id="tallerFecha">
+                            </div>
+                            <div class="form-group-sm">
+                                <label>KILOMETRAJE</label>
+                                <input type="number" id="tallerKm" placeholder="Ej: 14200" min="0">
+                            </div>
+                            <div class="form-group-sm">
+                                <label>MARCA</label>
+                                <input type="text" id="tallerMarca" placeholder="Ej: Honda">
+                            </div>
+                            <div class="form-group-sm">
+                                <label>MODELO</label>
+                                <input type="text" id="tallerModelo" placeholder="Ej: XR 150L">
+                            </div>
+                            <div class="form-group-sm full">
+                                <label>TRABAJO REALIZADO</label>
+                                <select id="tallerServicio">
+                                    <option value="Service Completo">Service Completo</option>
+                                    <option value="Frenos">Frenos</option>
+                                    <option value="Transmisión">Transmisión</option>
+                                    <option value="Amortiguación">Amortiguación</option>
+                                    <option value="Diagnóstico">Diagnóstico</option>
+                                    <option value="Otro">Otro (especificar en notas)</option>
+                                </select>
+                            </div>
+                            <div class="form-group-sm full">
+                                <label>NOTAS (OPCIONAL)</label>
+                                <input type="text" id="tallerNotas" placeholder="Detalles, repuestos usados, etc.">
+                            </div>
 
-                    <div style="margin-top: 24px;">
-                        <div style="font-size: 13px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
-                            Historial del Cliente
+                            <div class="form-group-sm">
+                                <label><i class="fa-solid fa-sack-dollar"></i> MANO DE OBRA ($)</label>
+                                <input type="number" id="tallerMontoTrabajo" placeholder="Ej: 15000" min="0">
+                            </div>
+                            <div class="form-group-sm" style="display:flex; align-items:flex-end;">
+                                <label style="display:flex; align-items:center; gap:8px; margin-bottom:11px; cursor:pointer;">
+                                    <input type="checkbox" id="tallerUsoRepuestos" onchange="toggleRepuestosBox()" style="width:auto; height:auto;">
+                                    ¿Se compraron repuestos?
+                                </label>
+                            </div>
+
+                            <div class="form-group-sm full" id="tallerRepuestosBox" style="display:none;">
+                                <label>DETALLE DE REPUESTOS COMPRADOS</label>
+                                <input type="text" id="tallerRepuestosDetalle" placeholder="Ej: Pastillas de freno + kit de arrastre">
+                            </div>
+                            <div class="form-group-sm full" id="tallerRepuestosMontoBox" style="display:none;">
+                                <label><i class="fa-solid fa-box-open"></i> COSTO DE REPUESTOS ($)</label>
+                                <input type="number" id="tallerMontoRepuestos" placeholder="Ej: 8000" min="0">
+                            </div>
                         </div>
+
+                        <button type="button" class="btn-red" onclick="guardarTrabajoTaller()">
+                            <i class="fa-solid fa-floppy-disk"></i> GUARDAR EN EL HISTORIAL
+                        </button>
+
+                        <button type="button" class="btn-red" style="background:linear-gradient(135deg,#2c3038,#1a1d22); box-shadow:none; border-color:var(--gris-borde);" onclick="toggleHistorialGlobalTaller()">
+                            <i class="fa-solid fa-layer-group"></i> VER HISTORIAL COMPLETO DEL TALLER
+                        </button>
+
+                        <div id="tallerHistorialGlobalContainer" style="display:none; margin-top:15px;"></div>
+
+                        <h4 style="font-size:13px; margin:20px 0 8px;">HISTORIAL DE ESTE CLIENTE</h4>
                         <div id="tallerHistorial"></div>
                     </div>
                 </div>
-            </div>
 
-            <!-- PESTAÑA 5: MI PERFIL -->
-            <div id="tab-miperfil" class="tab-content">
-                <div class="form-group">
-                    <label class="form-label">Ingresá tu DNI</label>
-                    <div style="display: flex; gap: 12px;">
-                        <input type="number" class="form-input" id="clienteMiPerfilDni" placeholder="Tu DNI" style="flex: 1;">
-                        <button type="button" class="btn btn-primary" onclick="verMiPerfilCliente()">
-                            <i class="fa-solid fa-clock-rotate-left"></i> Ver Historial
-                        </button>
+                <!-- PESTAÑA 5: MI PERFIL (CLIENTES) -->
+                <div id="tab-miperfil" class="tab-content">
+                    <h4 style="font-size:14px; margin-bottom:8px;">HISTORIAL DE TU MOTO</h4>
+                    <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">Ingresá tu DNI para ver cada trabajo que le hicimos a tu moto y cuándo te recomendamos volver.</p>
+
+                    <div class="form-group-sm">
+                        <label>DNI</label>
+                        <input type="number" id="clienteMiPerfilDni" placeholder="Tu DNI">
                     </div>
+                    <button type="button" class="btn-red" onclick="verMiPerfilCliente()">
+                        <i class="fa-solid fa-clock-rotate-left"></i> VER MI HISTORIAL
+                    </button>
+
+                    <div id="clienteMiPerfilResultado" style="margin-top:15px;"></div>
                 </div>
 
-                <div id="clienteMiPerfilResultado"></div>
             </div>
         </div>
     </section>
 
-    <!-- SERVICIOS -->
-    <section class="section" id="servicios">
-        <div class="section-header">
-            <div class="section-label">Nuestros Servicios</div>
-            <h2 class="section-title">Servicios Disponibles</h2>
-            <p class="section-description">Seleccioná el servicio que necesita tu moto para agendar tu turno</p>
-        </div>
-        
+    <!-- SECCIÓN DE SERVICIOS -->
+    <section class="main-section" id="servicios">
+        <h2 class="section-title">SERVICIOS DISPONIBLES</h2>
         <div class="services-grid">
-            <div class="service-card" onclick="seleccionarServicio(this, 'Service Completo')">
-                <div class="service-select-indicator">
-                    <i class="fa-solid fa-check" style="color: white; font-size: 12px;"></i>
-                </div>
-                <div class="service-icon">
-                    <i class="fa-solid fa-wrench"></i>
-                </div>
-                <h3 class="service-title">Service Completo</h3>
-                <p class="service-description">Mantenimiento integral con revisión de todos los sistemas y ajustes necesarios.</p>
+            <div class="service-card">
+                <i class="fa-solid fa-wrench"></i>
+                <h4>SERVICE</h4>
+                <button class="btn-outline" onclick="seleccionarServicio(this, 'Service Completo')">SELECCIONAR</button>
             </div>
-            
-            <div class="service-card" onclick="seleccionarServicio(this, 'Frenos')">
-                <div class="service-select-indicator">
-                    <i class="fa-solid fa-check" style="color: white; font-size: 12px;"></i>
-                </div>
-                <div class="service-icon">
-                    <i class="fa-solid fa-circle-dot"></i>
-                </div>
-                <h3 class="service-title">Frenos</h3>
-                <p class="service-description">Revisión, limpieza y ajuste del sistema de frenos. Cambio de pastillas y líquido.</p>
+            <div class="service-card">
+                <i class="fa-solid fa-circle-dot"></i>
+                <h4>FRENOS</h4>
+                <button class="btn-outline" onclick="seleccionarServicio(this, 'Frenos')">SELECCIONAR</button>
             </div>
-            
-            <div class="service-card" onclick="seleccionarServicio(this, 'Transmisión')">
-                <div class="service-select-indicator">
-                    <i class="fa-solid fa-check" style="color: white; font-size: 12px;"></i>
-                </div>
-                <div class="service-icon">
-                    <i class="fa-solid fa-link"></i>
-                </div>
-                <h3 class="service-title">Transmisión</h3>
-                <p class="service-description">Ajuste y lubricación de cadena, revisión de piñones y relación de transmisión.</p>
+            <div class="service-card">
+                <i class="fa-solid fa-link"></i>
+                <h4>TRANSMISIÓN</h4>
+                <button class="btn-outline" onclick="seleccionarServicio(this, 'Transmisión')">SELECCIONAR</button>
             </div>
-            
-            <div class="service-card" onclick="seleccionarServicio(this, 'Amortiguación')">
-                <div class="service-select-indicator">
-                    <i class="fa-solid fa-check" style="color: white; font-size: 12px;"></i>
-                </div>
-                <div class="service-icon">
-                    <i class="fa-solid fa-arrows-up-down"></i>
-                </div>
-                <h3 class="service-title">Amortiguación</h3>
-                <p class="service-description">Revisión de suspensiones delanteras y traseras. Cambio de aceite y retenes.</p>
+            <div class="service-card">
+                <i class="fa-solid fa-arrows-up-down"></i>
+                <h4>AMORTIGUACIÓN</h4>
+                <button class="btn-outline" onclick="seleccionarServicio(this, 'Amortiguación')">SELECCIONAR</button>
             </div>
-            
-            <div class="service-card" onclick="seleccionarServicio(this, 'Diagnóstico')">
-                <div class="service-select-indicator">
-                    <i class="fa-solid fa-check" style="color: white; font-size: 12px;"></i>
-                </div>
-                <div class="service-icon">
-                    <i class="fa-solid fa-clipboard-check"></i>
-                </div>
-                <h3 class="service-title">Diagnóstico</h3>
-                <p class="service-description">Chequeo completo del estado general de la moto con informe detallado.</p>
+            <div class="service-card">
+                <i class="fa-solid fa-clipboard-check"></i>
+                <h4>DIAGNÓSTICO</h4>
+                <button class="btn-outline" onclick="seleccionarServicio(this, 'Diagnóstico')">SELECCIONAR</button>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer" id="contacto">
-        <div class="footer-grid">
-            <div class="footer-item">
-                <div class="footer-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="footer-content">
-                    <h4>Ubicación</h4>
+    <!-- FOOTER Y UBICACIÓN CON MAPS E INSTAGRAM -->
+    <div class="benefits-bar" id="contacto">
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div class="benefit-info">
+                    <h5>UBICACIÓN</h5>
                     <p>Av. Luján 4156, Santo Tomé</p>
-                    <a href="https://maps.app.goo.gl/iBWNATXhKhPDkS2x8" target="_blank" class="footer-link">
-                        Cómo llegar <i class="fa-solid fa-arrow-right" style="font-size: 10px;"></i>
+                    <a href="https://maps.app.goo.gl/iBWNATXhKhPDkS2x8" target="_blank" class="btn-maps">
+                        <i class="fa-solid fa-map-location-dot"></i> Cómo Llegar
                     </a>
                 </div>
             </div>
-            
-            <div class="footer-item">
-                <div class="footer-icon">
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
-                <div class="footer-content">
-                    <h4>Instagram</h4>
+            <div class="benefit-item">
+                <i class="fa-brands fa-instagram"></i>
+                <div class="benefit-info">
+                    <h5>INSTAGRAM</h5>
                     <p>@masracingmotomecanica</p>
-                    <a href="https://www.instagram.com/masracingmotomecanica" target="_blank" class="footer-link">
-                        Seguir <i class="fa-solid fa-arrow-right" style="font-size: 10px;"></i>
+                    <a href="https://www.instagram.com/masracingmotomecanica" target="_blank" class="btn-maps">
+                        <i class="fa-brands fa-instagram"></i> Seguir
                     </a>
                 </div>
             </div>
-            
-            <div class="footer-item">
-                <div class="footer-icon">
-                    <i class="fa-solid fa-headset"></i>
-                </div>
-                <div class="footer-content">
-                    <h4>Atención</h4>
-                    <p>Asesoramiento personalizado a medida de tus necesidades.</p>
+            <div class="benefit-item">
+                <i class="fa-solid fa-headset"></i>
+                <div class="benefit-info">
+                    <h5>ATENCIÓN</h5>
+                    <p>Asesoramiento a medida</p>
                 </div>
             </div>
-            
-            <div class="footer-item">
-                <div class="footer-icon">
-                    <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <div class="footer-content">
-                    <h4>Garantía</h4>
-                    <p>Calidad certificada y respaldo en todos nuestros trabajos.</p>
+            <div class="benefit-item">
+                <i class="fa-solid fa-shield"></i>
+                <div class="benefit-info">
+                    <h5>GARANTÍA</h5>
+                    <p>Calidad y respaldo</p>
                 </div>
             </div>
-            
-            <div class="footer-item">
-                <div class="footer-icon">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-                <div class="footer-content">
-                    <h4>Pasión</h4>
-                    <p>Somos motociclistas. Entendemos lo que significa tu moto.</p>
+            <div class="benefit-item">
+                <i class="fa-solid fa-heart"></i>
+                <div class="benefit-info">
+                    <h5>PASIÓN</h5>
+                    <p>Somos motociclistas</p>
                 </div>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            Desarrollado por <strong>Genaro Courtalon Boero</strong> · 
-            <a href="mailto:genaroboero6@gmail.com">genaroboero6@gmail.com</a> · 
-            <a href="https://www.instagram.com/gena.courtalon/" target="_blank">@gena.courtalon</a>
-        </div>
-    </footer>
+    </div>
+
+    <div style="text-align:center; padding: 14px 20px; font-size: 10px; color: #4A4E57; border-top: 1px solid var(--gris-borde);">
+        Desarrollado por Genaro Courtalon Boero ·
+        <a href="mailto:genaroboero6@gmail.com" style="color:#4A4E57; text-decoration:none;">genaroboero6@gmail.com</a> ·
+        <a href="https://www.instagram.com/gena.courtalon/" target="_blank" style="color:#4A4E57; text-decoration:none;">@gena.courtalon</a>
+    </div>
 
     <script>
         const NUMERO_WHATSAPP = "5493425688013";
-        const HORARIOS_DISPONIBLES = ["09:00", "11:00", "15:00", "17:00"];
-        const INTERVALO_SERVICE_KM = 2000;
-        const INTERVALO_SERVICE_MESES = 6;
-        const CLAVE_TALLER = "masracing2026";
-
-        let servicioSeleccionado = null;
-        let clientesBD = JSON.parse(localStorage.getItem('masracing_clientes')) || {};
-        let turnosBD = JSON.parse(localStorage.getItem('masracing_turnos')) || [];
+        const HORARIOS_DISPONIBLES = ["09:00 HS", "11:00 HS", "15:00 HS", "17:00 HS"];
+        const INTERVALO_SERVICE_KM = 2000; // cada cuántos km sugerimos el próximo service
+        const INTERVALO_SERVICE_MESES = 6; // o cada cuántos meses, lo que ocurra primero
 
         function formatearFecha(fechaISO) {
             const [y, m, d] = fechaISO.split('-');
             return `${d}/${m}/${y}`;
         }
 
+        // Calcula el próximo service sugerido (por km y por tiempo) a partir del historial
         function calcularProximoService(historial) {
             const conKm = (historial || []).filter(h => h.km);
             if (conKm.length === 0) return null;
@@ -1426,35 +491,43 @@
                 vencidoPorFecha: vencidoPorFecha
             };
         }
+        
+        let servicioSeleccionado = null;
+        let clientesBD = JSON.parse(localStorage.getItem('masracing_clientes')) || {};
+        let turnosBD = JSON.parse(localStorage.getItem('masracing_turnos')) || [];
 
-        function switchTab(tabId, btn) {
+        // Cambio de pestañas
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
             
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
+            const selectedBtn = document.getElementById('btn-' + tabId);
+            if(selectedBtn) selectedBtn.classList.add('active');
+            
+            document.getElementById(tabId).classList.add('active');
 
             if (tabId === 'tab-perfil' && sessionStorage.getItem('taller_autenticado') === 'true') {
-                document.getElementById('tallerLogin').classList.add('hidden');
-                document.getElementById('tallerPanel').classList.remove('hidden');
+                document.getElementById('tallerLogin').style.display = 'none';
+                document.getElementById('tallerPanel').style.display = 'block';
                 if (!document.getElementById('tallerFecha').value) {
                     document.getElementById('tallerFecha').value = new Date().toISOString().split('T')[0];
                 }
             }
         }
 
-        function seleccionarServicio(card, servicio) {
-            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
-            card.classList.add('selected');
+        function seleccionarServicio(btn, servicio) {
+            document.querySelectorAll('.btn-outline').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
             servicioSeleccionado = servicio;
 
             const texto = document.getElementById('servicioSeleccionadoTexto');
-            texto.innerHTML = `<i class="fa-solid fa-check-circle text-success"></i> <strong>${servicio}</strong>`;
-            texto.style.color = "var(--text-primary)";
-
-            document.getElementById('turnos').scrollIntoView({ behavior: 'smooth' });
+            if (texto) {
+                texto.innerText = "✅ " + servicio;
+                texto.style.color = "var(--verde-exito)";
+            }
         }
 
+        // REGISTRO DE CLIENTES (DNI, Tel, Mail)
         function registrarCliente() {
             const dni = document.getElementById('regDni').value.trim();
             const nombre = document.getElementById('regNombre').value.trim();
@@ -1475,15 +548,15 @@
             };
 
             localStorage.setItem('masracing_clientes', JSON.stringify(clientesBD));
-            alert("¡Registro exitoso! Ya podés solicitar tus turnos.");
+            alert("¡Registro exitoso! Ya podés solicitar tus turnos con tu DNI.");
             
+            // Auto-completar en el turno y pasar a la pestaña de pedir turno
             document.getElementById('turnoDni').value = dni;
             verificarDniAuto();
-            
-            const tabTurno = document.querySelector('.tab-btn:nth-child(2)');
-            switchTab('tab-turno', tabTurno);
+            switchTab('tab-turno');
         }
 
+        // VERIFICAR DNI Y APLICAR DESCUENTOS
         function verificarDniAuto() {
             const dni = document.getElementById('turnoDni').value.trim();
             const badge = document.getElementById('clienteBox');
@@ -1494,30 +567,32 @@
                 document.getElementById('badgeDni').innerText = dni;
                 document.getElementById('badgeTrabajos').innerText = cliente.trabajosRealizados;
                 
-                const descuentoEl = document.getElementById('badgeDescuento');
+                // Aplicar descuento si tiene 3 o más trabajos acumulados
                 if (cliente.trabajosRealizados >= 3) {
-                    descuentoEl.classList.remove('hidden');
+                    document.getElementById('badgeDescuento').style.display = "inline-block";
                 } else {
-                    descuentoEl.classList.add('hidden');
+                    document.getElementById('badgeDescuento').style.display = "none";
                 }
 
+                // Mostrar los últimos servicios realizados a la moto
                 const historial = cliente.historialServicios || [];
                 const cajaHistorial = document.getElementById('badgeHistorial');
                 if (historial.length > 0) {
-                    cajaHistorial.innerHTML = "<strong>Últimos servicios:</strong><br>" +
+                    cajaHistorial.innerHTML = "<strong style='color:var(--texto-blanco);'>ÚLTIMOS SERVICIOS:</strong><br>" +
                         historial.slice(-3).reverse()
-                            .map(h => `• ${h.servicio} — ${h.fecha}`)
+                            .map(h => `• ${h.servicio} (${h.moto}) — ${h.fecha}`)
                             .join("<br>");
                 } else {
                     cajaHistorial.innerHTML = "Todavía no tiene servicios registrados.";
                 }
 
-                badge.classList.remove('hidden');
+                badge.style.display = "block";
             } else {
-                badge.classList.add('hidden');
+                badge.style.display = "none";
             }
         }
 
+        // FILTRAR HORARIOS BLOQUEADOS
         function actualizarHorariosDisponibles() {
             const fecha = document.getElementById('turnoFecha').value;
             const selectHora = document.getElementById('turnoHora');
@@ -1525,6 +600,7 @@
 
             if (!fecha) return;
 
+            // Buscar horarios ocupados en esa fecha
             const ocupados = turnosBD
                 .filter(t => t.fecha === fecha && t.estado === "AGENDADO")
                 .map(t => t.hora);
@@ -1533,15 +609,16 @@
                 const option = document.createElement("option");
                 option.value = hora;
                 if (ocupados.includes(hora)) {
-                    option.text = `${hora}hs - NO DISPONIBLE`;
+                    option.text = `${hora} - (NO DISPONIBLE / RESERVADO)`;
                     option.disabled = true;
                 } else {
-                    option.text = `${hora}hs`;
+                    option.text = hora;
                 }
                 selectHora.appendChild(option);
             });
         }
 
+        // AGENDAR Y BLOQUEAR TURNO
         function reservarYEnviarWhatsApp() {
             const dni = document.getElementById('turnoDni').value.trim();
             const fecha = document.getElementById('turnoFecha').value;
@@ -1552,29 +629,30 @@
             const repuestos = document.getElementById('repuestosModo').value;
 
             if (!servicioSeleccionado) {
-                alert("Primero seleccioná un servicio de la sección 'Servicios Disponibles'.");
+                alert("Antes de agendar, elegí qué necesita tu moto en la sección 'Servicios Disponibles' (más abajo en la página).");
                 document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
                 return;
             }
 
             if (!dni) {
-                alert("Por favor ingresá tu DNI.");
+                alert("Por favor ingresá tu DNI o registrate en la pestaña '1. Registro'.");
+                switchTab('tab-registro');
                 return;
             }
 
             if (!clientesBD[dni]) {
-                alert("Este DNI no está registrado. Registrate primero.");
-                const tabRegistro = document.querySelector('.tab-btn:nth-child(1)');
-                switchTab('tab-registro', tabRegistro);
+                alert("Este DNI no está registrado. Te redirigimos a la pestaña '1. Registro' para registrarte.");
+                switchTab('tab-registro');
                 document.getElementById('regDni').value = dni;
                 return;
             }
 
             if (!fecha || !hora) {
-                alert("Elegí una fecha y horario.");
+                alert("Elegí una fecha y horario válidos.");
                 return;
             }
 
+            // Guardar turno en la base de datos local
             const nuevoTurno = {
                 id: Date.now(),
                 dni: dni,
@@ -1590,6 +668,7 @@
 
             turnosBD.push(nuevoTurno);
             
+            // Registrar el servicio en el historial del cliente y sumar al contador
             if (!clientesBD[dni].historialServicios) {
                 clientesBD[dni].historialServicios = [];
             }
@@ -1602,48 +681,50 @@
             });
             clientesBD[dni].trabajosRealizados += 1;
 
+            // Guardar cambios
             localStorage.setItem('masracing_turnos', JSON.stringify(turnosBD));
             localStorage.setItem('masracing_clientes', JSON.stringify(clientesBD));
 
-            const mensaje = `Hola *MAS RACING*! Confirmación de Turno:%0A%0A` +
+            // Notificación e integración con WhatsApp
+            const mensaje = `Hola *MAS RACING*! Confirmación de Turno Reservado:%0A%0A` +
                             `👤 *Cliente:* ${clientesBD[dni].nombre} (DNI: ${dni})%0A` +
                             `🏍️ *Moto:* ${marca} ${modelo}${km ? ' (' + km + ' km)' : ''}%0A` +
                             `🛠️ *Servicio:* ${servicioSeleccionado}%0A` +
                             `📦 *Repuestos:* ${repuestos}%0A` +
                             `📅 *Fecha:* ${fecha}%0A` +
-                            `⏰ *Hora:* ${hora}hs%0A%0A` +
-                            `¡Nos vemos!`;
+                            `⏰ *Hora:* ${hora}%0A%0A` +
+                            `*Turno bloqueado en el sistema.* ¡Nos vemos ese día!`;
 
-            alert("¡Turno reservado exitosamente!");
+            alert("¡Turno reservado exitosamente! Ya quedó bloqueado para otros clientes.");
             actualizarHorariosDisponibles();
             verificarDniAuto();
             window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensaje}`, '_blank');
 
+            // Reseteo la selección de servicio para el próximo turno
             servicioSeleccionado = null;
-            document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+            document.querySelectorAll('.btn-outline').forEach(b => b.classList.remove('selected'));
             const texto = document.getElementById('servicioSeleccionadoTexto');
-            texto.innerText = "Ninguno todavía — elegí uno en 'Servicios Disponibles' ⬇️";
-            texto.style.color = "var(--text-tertiary)";
+            if (texto) {
+                texto.innerText = "Ninguno todavía — elegí uno en \"Servicios Disponibles\" ⬇️";
+                texto.style.color = "var(--rojo-racing)";
+            }
         }
 
+        // CANCELAR TURNO
         function buscarTurnosCliente() {
             const dni = document.getElementById('buscarDni').value.trim();
             const contenedor = document.getElementById('listaMisTurnos');
             contenedor.innerHTML = "";
 
             if (!dni) {
-                alert("Ingresá tu DNI.");
+                alert("Ingresá tu DNI para buscar tus turnos.");
                 return;
             }
 
             const misTurnos = turnosBD.filter(t => t.dni === dni && t.estado === "AGENDADO");
 
             if (misTurnos.length === 0) {
-                contenedor.innerHTML = `
-                    <div class="historial-empty">
-                        <i class="fa-regular fa-calendar-xmark"></i>
-                        <p>No tenés turnos vigentes agendados</p>
-                    </div>`;
+                contenedor.innerHTML = "<p style='font-size:12px; color:var(--texto-gris); margin-top:10px;'>No tenés turnos vigentes agendados.</p>";
                 return;
             }
 
@@ -1651,12 +732,12 @@
                 const item = document.createElement('div');
                 item.className = 'turno-item';
                 item.innerHTML = `
-                    <div class="turno-info">
-                        <h4>${t.servicio}</h4>
-                        <p>${t.fecha} a las ${t.hora}hs · ${t.marca} ${t.modelo}</p>
+                    <div>
+                        <strong>${t.fecha} - ${t.hora}</strong><br>
+                        <span>${t.servicio} (${t.marca} ${t.modelo})</span>
                     </div>
-                    <button class="btn btn-danger" onclick="cancelarTurno(${t.id})">
-                        <i class="fa-solid fa-trash"></i>
+                    <button class="btn-red btn-cancel" style="width:auto; padding:6px 10px;" onclick="cancelarTurno(${t.id})">
+                        Cancelar
                     </button>
                 `;
                 contenedor.appendChild(item);
@@ -1664,31 +745,35 @@
         }
 
         function cancelarTurno(turnoId) {
-            if (confirm("¿Cancelar este turno?")) {
+            if (confirm("¿Estás seguro de que querés cancelar este turno? Se liberará el horario inmediatamente.")) {
                 turnosBD = turnosBD.map(t => {
                     if (t.id === turnoId) t.estado = "CANCELADO";
                     return t;
                 });
 
                 localStorage.setItem('masracing_turnos', JSON.stringify(turnosBD));
-                alert("Turno cancelado.");
+                alert("Tu turno ha sido cancelado y el horario quedó disponible nuevamente.");
                 buscarTurnosCliente();
                 actualizarHorariosDisponibles();
             }
         }
 
+        // PANEL DEL TALLER: acceso con clave
+        const CLAVE_TALLER = "masracing2026"; // cambiá esta clave por la que prefieras
+
         function ingresarPanelTaller() {
             const clave = document.getElementById('tallerClave').value;
             if (clave === CLAVE_TALLER) {
                 sessionStorage.setItem('taller_autenticado', 'true');
-                document.getElementById('tallerLogin').classList.add('hidden');
-                document.getElementById('tallerPanel').classList.remove('hidden');
+                document.getElementById('tallerLogin').style.display = 'none';
+                document.getElementById('tallerPanel').style.display = 'block';
                 document.getElementById('tallerFecha').value = new Date().toISOString().split('T')[0];
             } else {
                 alert('Clave incorrecta.');
             }
         }
 
+        // Buscar cliente por DNI y mostrar su info + historial
         function buscarClienteTaller() {
             const dni = document.getElementById('tallerDni').value.trim();
             const infoBox = document.getElementById('tallerClienteInfo');
@@ -1699,16 +784,24 @@
             if (clientesBD[dni]) {
                 document.getElementById('tallerClienteNombre').innerText = clientesBD[dni].nombre;
                 document.getElementById('tallerClienteTrabajos').innerText = clientesBD[dni].trabajosRealizados;
-                infoBox.classList.remove('hidden');
-                nuevoBox.classList.add('hidden');
+                infoBox.style.display = 'block';
+                nuevoBox.style.display = 'none';
             } else {
-                infoBox.classList.add('hidden');
-                nuevoBox.classList.remove('hidden');
+                infoBox.style.display = 'none';
+                nuevoBox.style.display = 'block';
             }
 
             renderHistorialTaller(dni);
         }
 
+        // Muestra/oculta los campos de repuestos según el checkbox
+        function toggleRepuestosBox() {
+            const marcado = document.getElementById('tallerUsoRepuestos').checked;
+            document.getElementById('tallerRepuestosBox').style.display = marcado ? 'block' : 'none';
+            document.getElementById('tallerRepuestosMontoBox').style.display = marcado ? 'block' : 'none';
+        }
+
+        // Guardar el trabajo realizado en el historial del cliente
         function guardarTrabajoTaller() {
             const dni = document.getElementById('tallerDni').value.trim();
             const fecha = document.getElementById('tallerFecha').value;
@@ -1717,16 +810,20 @@
             const modelo = document.getElementById('tallerModelo').value.trim();
             const servicio = document.getElementById('tallerServicio').value;
             const notas = document.getElementById('tallerNotas').value.trim();
+            const usoRepuestos = document.getElementById('tallerUsoRepuestos').checked;
+            const repuestosDetalle = usoRepuestos ? document.getElementById('tallerRepuestosDetalle').value.trim() : '';
+            const montoRepuestos = usoRepuestos ? (parseFloat(document.getElementById('tallerMontoRepuestos').value) || 0) : 0;
+            const montoTrabajo = parseFloat(document.getElementById('tallerMontoTrabajo').value) || 0;
 
             if (!dni || !fecha || !marca || !modelo) {
-                alert('Completá DNI, fecha, marca y modelo.');
+                alert('Completá al menos DNI, fecha, marca y modelo.');
                 return;
             }
 
             if (!clientesBD[dni]) {
                 const nombreNuevo = document.getElementById('tallerNombreNuevo').value.trim();
                 if (!nombreNuevo) {
-                    alert('Cliente nuevo: cargá el nombre.');
+                    alert('Este DNI no está registrado. Cargá el nombre del cliente para crear su ficha.');
                     return;
                 }
                 clientesBD[dni] = {
@@ -1747,64 +844,82 @@
                 hora: '',
                 servicio: servicio + (notas ? ' — ' + notas : ''),
                 moto: `${marca} ${modelo}`,
-                km: km || null
+                km: km || null,
+                montoTrabajo: montoTrabajo,
+                usoRepuestos: usoRepuestos,
+                repuestosDetalle: repuestosDetalle,
+                montoRepuestos: montoRepuestos,
+                montoTotal: montoTrabajo + montoRepuestos
             });
             clientesBD[dni].trabajosRealizados += 1;
 
             localStorage.setItem('masracing_clientes', JSON.stringify(clientesBD));
 
-            alert('Trabajo guardado.');
+            alert('Trabajo guardado en el historial del cliente.');
 
+            // Limpio solo los campos del trabajo, mantengo el DNI cargado
             document.getElementById('tallerKm').value = '';
             document.getElementById('tallerNotas').value = '';
-            buscarClienteTaller();
-        }
+            document.getElementById('tallerMontoTrabajo').value = '';
+            document.getElementById('tallerMontoRepuestos').value = '';
+            document.getElementById('tallerRepuestosDetalle').value = '';
+            document.getElementById('tallerUsoRepuestos').checked = false;
+            toggleRepuestosBox();
 
+            buscarClienteTaller();
+
+            const contGlobal = document.getElementById('tallerHistorialGlobalContainer');
+            if (contGlobal.style.display !== 'none') {
+                renderHistorialGlobalTaller();
+            }
+        }
         function renderHistorialTaller(dni) {
             const contenedor = document.getElementById('tallerHistorial');
             contenedor.innerHTML = '';
 
             if (!clientesBD[dni]) {
-                contenedor.innerHTML = '<p style="color: var(--text-tertiary); font-size: 13px;">Cliente nuevo.</p>';
+                contenedor.innerHTML = "<p style='font-size:12px; color:var(--texto-gris);'>Cliente nuevo, todavía sin historial.</p>";
                 return;
             }
 
             const historial = (clientesBD[dni].historialServicios || []).slice();
 
+            // Próximo service sugerido
             const info = calcularProximoService(historial);
             if (info) {
                 contenedor.innerHTML += `
-                    <div class="info-box" style="border-color: ${info.vencidoPorFecha ? 'var(--accent-primary)' : 'var(--success)'};">
-                        <div class="info-box-title">Próximo Service Sugerido</div>
-                        <div class="info-box-content">
-                            <strong style="color: ${info.vencidoPorFecha ? 'var(--accent-primary)' : 'var(--success)'};">
-                                Antes de ${info.proximoKm.toLocaleString('es-AR')} km o ${formatearFecha(info.fechaProximaISO)}
-                            </strong>
-                            ${info.vencidoPorFecha ? '<div style="margin-top: 8px; color: var(--accent-primary); font-weight: 600;">⚠️ Tiempo recomendado superado</div>' : ''}
-                        </div>
+                    <div class="profile-badge" style="border-color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">
+                        <p style="font-size:10px; color:var(--texto-gris);">PRÓXIMO SERVICE SUGERIDO</p>
+                        <p><strong style="color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">Antes de los ${info.proximoKm.toLocaleString('es-AR')} km o antes del ${formatearFecha(info.fechaProximaISO)}</strong></p>
+                        ${info.vencidoPorFecha ? "<p style='color:var(--rojo-racing); font-weight:800; font-size:11px; margin-top:4px;'>⚠️ Ya pasó el tiempo recomendado desde el último trabajo.</p>" : ''}
                     </div>
-                    <button type="button" class="btn btn-primary btn-block mb-4" onclick="enviarRecordatorioWhatsApp('${dni}')">
-                        <i class="fa-brands fa-whatsapp"></i> Enviar Recordatorio por WhatsApp
+                    <button type="button" class="btn-red" style="margin-bottom:15px;" onclick="enviarRecordatorioWhatsApp('${dni}')">
+                        <i class="fa-brands fa-whatsapp"></i> ENVIAR RECORDATORIO POR WHATSAPP
                     </button>
                 `;
             }
 
             if (historial.length === 0) {
-                contenedor.innerHTML += '<p style="color: var(--text-tertiary); font-size: 13px;">Sin trabajos registrados.</p>';
+                contenedor.innerHTML += "<p style='font-size:12px; color:var(--texto-gris);'>Sin trabajos registrados todavía.</p>";
                 return;
             }
 
-            let html = `<div class="turnos-list">`;
+            let html = `<div class="my-turnos-list" style="max-height:220px;">`;
             historial.map((h, i) => ({ ...h, _idx: i })).reverse().forEach(h => {
                 html += `
-                    <div class="turno-item">
-                        <div class="turno-info">
-                            <h4>${h.fecha}</h4>
-                            <p>${h.servicio} · ${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}</p>
+                    <div class="turno-item" style="align-items:flex-start;">
+                        <div>
+                            <strong>${h.fecha}</strong> — ${h.servicio}<br>
+                            <span style="color:var(--texto-gris);">${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}${h.montoTotal ? ' · $' + h.montoTotal.toLocaleString('es-AR') : ''}</span>
                         </div>
-                        <button class="btn btn-danger" onclick="eliminarTrabajoTaller('${dni}', ${h._idx})">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+                        <div style="display:flex; gap:6px;">
+                            <button class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" onclick="generarBoleta('${dni}', ${h._idx})">
+                                <i class="fa-solid fa-receipt"></i>
+                            </button>
+                            <button class="btn-red btn-cancel" style="width:auto; padding:6px 10px; margin-top:0;" onclick="eliminarTrabajoTaller('${dni}', ${h._idx})">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 `;
             });
@@ -1812,8 +927,9 @@
             contenedor.innerHTML += html;
         }
 
+        // Elimina un trabajo puntual del historial de un cliente
         function eliminarTrabajoTaller(dni, idx) {
-            if (!confirm('¿Eliminar este trabajo?')) return;
+            if (!confirm('¿Eliminar este trabajo del historial? No se puede deshacer.')) return;
             if (!clientesBD[dni] || !clientesBD[dni].historialServicios) return;
 
             clientesBD[dni].historialServicios.splice(idx, 1);
@@ -1825,54 +941,228 @@
             buscarClienteTaller();
         }
 
+        // Muestra/oculta el historial completo del taller (todas las motos, todos los clientes)
+        function toggleHistorialGlobalTaller() {
+            const cont = document.getElementById('tallerHistorialGlobalContainer');
+            if (cont.style.display === 'none') {
+                cont.style.display = 'block';
+                renderHistorialGlobalTaller();
+            } else {
+                cont.style.display = 'none';
+            }
+        }
+
+        // Junta el historial de TODOS los clientes en una sola lista, ordenada por fecha
+        function renderHistorialGlobalTaller() {
+            const cont = document.getElementById('tallerHistorialGlobalContainer');
+
+            let items = [];
+            Object.keys(clientesBD).forEach(dniCliente => {
+                const cliente = clientesBD[dniCliente];
+                (cliente.historialServicios || []).forEach((h, idx) => {
+                    items.push({ ...h, dni: dniCliente, nombre: cliente.nombre, _idx: idx });
+                });
+            });
+
+            if (items.length === 0) {
+                cont.innerHTML = "<p style='font-size:12px; color:var(--texto-gris);'>Todavía no hay ningún trabajo cargado en el sistema.</p>";
+                return;
+            }
+
+            // Más reciente primero
+            items.sort((a, b) => (a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : 0));
+
+            const totalFacturado = items.reduce((acc, h) => acc + (h.montoTotal || 0), 0);
+
+            let html = `
+                <div class="profile-badge" style="border-color: var(--verde-exito);">
+                    <p style="font-size:9px; color:var(--texto-gris);">TOTAL FACTURADO (HISTÓRICO)</p>
+                    <p><strong style="color: var(--verde-exito); font-size:15px;">$${totalFacturado.toLocaleString('es-AR')}</strong></p>
+                    <p style="font-size:9px; color:var(--texto-gris); margin-top:4px;">${items.length} trabajo${items.length === 1 ? '' : 's'} registrado${items.length === 1 ? '' : 's'} en total</p>
+                </div>
+                <div class="my-turnos-list" style="max-height:280px;">
+            `;
+
+            items.forEach(h => {
+                html += `
+                    <div class="turno-item" style="align-items:flex-start;">
+                        <div>
+                            <strong>${h.fecha}</strong> — ${h.servicio}<br>
+                            <span style="color:var(--texto-gris);">${h.nombre} (DNI ${h.dni}) · ${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}${h.montoTotal ? ' · $' + h.montoTotal.toLocaleString('es-AR') : ''}</span>
+                        </div>
+                        <button class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" onclick="generarBoleta('${h.dni}', ${h._idx})">
+                            <i class="fa-solid fa-receipt"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            html += `</div>`;
+            cont.innerHTML = html;
+        }
+
+        // Lleva la numeración correlativa de boletas emitidas
+        function obtenerNumeroBoleta() {
+            let n = parseInt(localStorage.getItem('masracing_boleta_contador') || '0') + 1;
+            localStorage.setItem('masracing_boleta_contador', n);
+            return n;
+        }
+
+        // Genera una boleta profesional imprimible para un trabajo puntual del historial
+        function generarBoleta(dni, idx) {
+            const cliente = clientesBD[dni];
+            if (!cliente || !cliente.historialServicios || !cliente.historialServicios[idx]) {
+                alert('No se encontró ese trabajo.');
+                return;
+            }
+
+            const h = cliente.historialServicios[idx];
+            const numeroBoleta = obtenerNumeroBoleta();
+            const fechaEmision = new Date().toLocaleDateString('es-AR');
+
+            const montoTrabajo = h.montoTrabajo || 0;
+            const montoRepuestos = h.montoRepuestos || 0;
+            const montoTotal = h.montoTotal || (montoTrabajo + montoRepuestos);
+
+            const filaRepuestos = h.usoRepuestos ? `
+                <tr>
+                    <td>Repuestos${h.repuestosDetalle ? ' — ' + h.repuestosDetalle : ''}</td>
+                    <td style="text-align:right;">$${montoRepuestos.toLocaleString('es-AR')}</td>
+                </tr>
+            ` : '';
+
+            const ventana = window.open('', '_blank', 'width=650,height=800');
+            ventana.document.write(`
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Boleta N° ${numeroBoleta} - MAS RACING</title>
+                    <style>
+                        * { box-sizing: border-box; }
+                        body { font-family: 'Segoe UI', Arial, sans-serif; color: #1a1a1a; max-width: 650px; margin: 30px auto; padding: 0 20px; }
+                        .encabezado { display:flex; justify-content:space-between; align-items:flex-start; border-bottom: 3px solid #E52421; padding-bottom: 16px; margin-bottom: 20px; }
+                        .encabezado h1 { font-size: 22px; letter-spacing: 1px; margin-bottom: 4px; }
+                        .encabezado p { font-size: 11px; color: #555; line-height: 1.5; }
+                        .boleta-info { text-align: right; font-size: 12px; }
+                        .boleta-info .num { font-size: 16px; font-weight: 800; color: #E52421; }
+                        .datos { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 22px; font-size: 12px; }
+                        .datos div { background: #f7f7f7; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px 12px; }
+                        .datos h4 { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px; }
+                        table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 10px; }
+                        th { text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: .5px; color: #888; border-bottom: 1px solid #ddd; padding: 6px 4px; }
+                        td { padding: 8px 4px; border-bottom: 1px solid #eee; }
+                        .total-row td { border-top: 2px solid #1a1a1a; border-bottom: none; font-weight: 800; font-size: 14px; padding-top: 12px; }
+                        .footer { margin-top: 40px; text-align: center; font-size: 11px; color: #888; border-top: 1px solid #e5e5e5; padding-top: 16px; }
+                        .firma { margin-top: 50px; display: flex; justify-content: space-between; font-size: 11px; }
+                        .firma div { width: 45%; text-align: center; border-top: 1px solid #999; padding-top: 6px; }
+                        .btn-imprimir { display:block; width:100%; margin-top:24px; padding:12px; background:#E52421; color:#fff; border:none; border-radius:8px; font-weight:800; font-size:13px; cursor:pointer; text-transform:uppercase; letter-spacing:1px; }
+                        @media print { .btn-imprimir { display:none; } body { margin: 0; } }
+                    </style>
+                </head>
+                <body>
+                    <div class="encabezado">
+                        <div>
+                            <h1>MAS RACING</h1>
+                            <p>Motomecánica<br>Av. Luján 4156, Santo Tomé, Santa Fe<br>Instagram: @masracingmotomecanica</p>
+                        </div>
+                        <div class="boleta-info">
+                            <div class="num">BOLETA N° ${String(numeroBoleta).padStart(5, '0')}</div>
+                            <p>Fecha de emisión: ${fechaEmision}</p>
+                        </div>
+                    </div>
+
+                    <div class="datos">
+                        <div>
+                            <h4>Cliente</h4>
+                            <p><strong>${cliente.nombre}</strong><br>DNI: ${dni}${cliente.telefono ? '<br>Tel: ' + cliente.telefono : ''}</p>
+                        </div>
+                        <div>
+                            <h4>Vehículo</h4>
+                            <p><strong>${h.moto}</strong><br>${h.km ? parseInt(h.km).toLocaleString('es-AR') + ' km' : 'Kilometraje no registrado'}<br>Fecha del trabajo: ${formatearFecha(h.fecha)}</p>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr><th>Concepto</th><th style="text-align:right;">Monto</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>${h.servicio}</td>
+                                <td style="text-align:right;">$${montoTrabajo.toLocaleString('es-AR')}</td>
+                            </tr>
+                            ${filaRepuestos}
+                            <tr class="total-row">
+                                <td>TOTAL</td>
+                                <td style="text-align:right;">$${montoTotal.toLocaleString('es-AR')}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="firma">
+                        <div>Firma del taller</div>
+                        <div>Firma del cliente</div>
+                    </div>
+
+                    <div class="footer">
+                        Gracias por confiar en MAS RACING · Documento no válido como factura fiscal
+                    </div>
+
+                    <button class="btn-imprimir" onclick="window.print()">Imprimir / Guardar como PDF</button>
+                </body>
+                </html>
+            `);
+            ventana.document.close();
+        }
+
+        // Normaliza un teléfono argentino para wa.me (agrega código de país si falta)
         function normalizarTelefonoAR(tel) {
             let limpio = (tel || '').replace(/[^0-9]/g, '');
             if (limpio.startsWith('54')) return limpio;
-            if (limpio.length === 10) return '549' + limpio;
+            if (limpio.length === 10) return '549' + limpio; // 10 dígitos = celular AR sin código de país
             return limpio;
         }
 
+        // Prepara y abre WhatsApp con el recordatorio, listo para enviar al cliente
         function enviarRecordatorioWhatsApp(dni) {
             const cliente = clientesBD[dni];
             if (!cliente) return;
 
             if (!cliente.telefono) {
-                alert('Cliente sin teléfono cargado.');
+                alert('Este cliente no tiene un teléfono cargado. Agregalo registrándolo de nuevo en la pestaña 1, o cargalo manualmente.');
                 return;
             }
 
             const historial = cliente.historialServicios || [];
             const info = calcularProximoService(historial);
             if (!info) {
-                alert('Sin kilometraje registrado.');
+                alert('Todavía no hay kilometraje cargado para este cliente, no se puede armar el recordatorio.');
                 return;
             }
 
             const telWa = normalizarTelefonoAR(cliente.telefono);
             const mensaje = `Hola ${cliente.nombre}! Te escribimos de *MAS RACING* 🏍️%0A%0A` +
-                            `Último trabajo (${info.ultimo.servicio}): ${formatearFecha(info.ultimo.fecha)} con ${parseInt(info.ultimo.km).toLocaleString('es-AR')} km.%0A%0A` +
-                            `Próximo service: antes de ${info.proximoKm.toLocaleString('es-AR')} km o ${formatearFecha(info.fechaProximaISO)}.%0A%0A` +
+                            `Según nuestro registro, tu último trabajo (${info.ultimo.servicio}) fue el ${formatearFecha(info.ultimo.fecha)} con ${parseInt(info.ultimo.km).toLocaleString('es-AR')} km.%0A%0A` +
+                            `Te recomendamos el próximo service antes de los ${info.proximoKm.toLocaleString('es-AR')} km, o antes del ${formatearFecha(info.fechaProximaISO)}.%0A%0A` +
                             `¿Coordinamos un turno? 🛠️`;
 
             window.open(`https://wa.me/${telWa}?text=${mensaje}`, '_blank');
         }
 
+        // MI PERFIL (CLIENTES): historial completo + recomendación de próximo trabajo
         function verMiPerfilCliente() {
             const dni = document.getElementById('clienteMiPerfilDni').value.trim();
             const contenedor = document.getElementById('clienteMiPerfilResultado');
             contenedor.innerHTML = '';
 
             if (!dni) {
-                alert('Ingresá tu DNI.');
+                alert('Ingresá tu DNI para ver tu historial.');
                 return;
             }
 
             if (!clientesBD[dni]) {
-                contenedor.innerHTML = `
-                    <div class="info-box">
-                        <div class="info-box-title">Cliente no encontrado</div>
-                        <div class="info-box-content">Registrate primero en la pestaña 'Registro'.</div>
-                    </div>`;
+                contenedor.innerHTML = "<p style='font-size:12px; color:var(--texto-gris); margin-top:10px;'>No encontramos ese DNI. Registrate primero en la pestaña '1. Registro'.</p>";
                 return;
             }
 
@@ -1880,42 +1170,42 @@
             const historial = (cliente.historialServicios || []).slice();
 
             let html = `
-                <div class="info-box">
-                    <div class="info-box-title">${cliente.nombre}</div>
-                    <div class="info-box-content">
-                        DNI: ${dni} · Trabajos: ${cliente.trabajosRealizados}
-                        ${cliente.trabajosRealizados >= 3 ? '<span class="badge badge-success" style="margin-left: 8px;"><i class="fa-solid fa-tag"></i> 10% Descuento</span>' : ''}
-                    </div>
+                <div class="profile-badge">
+                    <p><strong>${cliente.nombre}</strong> (DNI: ${dni})</p>
+                    <p>Total de trabajos realizados: <strong>${cliente.trabajosRealizados}</strong></p>
+                    ${cliente.trabajosRealizados >= 3 ? '<div class="discount-tag">¡Tenés 10% de Descuento por Cliente Frecuente!</div>' : ''}
                 </div>
             `;
 
             const info = calcularProximoService(historial);
             if (info) {
                 html += `
-                    <div class="info-box" style="border-color: ${info.vencidoPorFecha ? 'var(--accent-primary)' : 'var(--success)'};">
-                        <div class="info-box-title">Próximo Service Recomendado</div>
-                        <div class="info-box-content">
-                            <strong style="color: ${info.vencidoPorFecha ? 'var(--accent-primary)' : 'var(--success)'};">
-                                Antes de ${info.proximoKm.toLocaleString('es-AR')} km o ${formatearFecha(info.fechaProximaISO)}
-                            </strong>
-                            ${info.vencidoPorFecha ? '<div style="margin-top: 8px; color: var(--accent-primary);">⚠️ Tiempo superado. ¡Pedí tu turno!</div>' : ''}
-                        </div>
+                    <div class="profile-badge" style="border-color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">
+                        <p style="font-size:10px; color:var(--texto-gris);">TE RECOMENDAMOS VOLVER</p>
+                        <p><strong style="color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">Antes de los ${info.proximoKm.toLocaleString('es-AR')} km o antes del ${formatearFecha(info.fechaProximaISO)}</strong></p>
+                        ${info.vencidoPorFecha ? "<p style='color:var(--rojo-racing); font-weight:800; font-size:11px; margin-top:4px;'>⚠️ Ya pasó el tiempo recomendado desde tu último trabajo. ¡Pedí tu turno!</p>" : ''}
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="profile-badge" style="border-color: var(--gris-borde);">
+                        <p style="font-size:11px; color:var(--texto-gris);">Todavía no tenemos tu kilometraje registrado. La próxima vez que pidas un turno, contanos los km para poder recomendarte cuándo volver.</p>
                     </div>
                 `;
             }
 
-            html += `<div style="margin-top: 20px; font-size: 13px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">Historial de Trabajos</div>`;
+            html += `<h4 style="font-size:13px; margin:15px 0 8px;">REGISTRO DE TRABAJOS</h4>`;
 
             if (historial.length === 0) {
-                html += `<p style="color: var(--text-tertiary); font-size: 14px;">Sin trabajos registrados.</p>`;
+                html += `<p style="font-size:12px; color:var(--texto-gris);">Todavía no tenés trabajos registrados.</p>`;
             } else {
-                html += `<div class="turnos-list">`;
+                html += `<div class="my-turnos-list" style="max-height: 250px;">`;
                 historial.slice().reverse().forEach(h => {
                     html += `
-                        <div class="turno-item">
-                            <div class="turno-info">
-                                <h4>${h.servicio}</h4>
-                                <p>${h.fecha} · ${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}</p>
+                        <div class="turno-item" style="align-items:flex-start;">
+                            <div>
+                                <strong>${h.fecha}</strong> — ${h.servicio}<br>
+                                <span style="color:var(--texto-gris);">${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}</span>
                             </div>
                         </div>
                     `;
@@ -1926,6 +1216,7 @@
             contenedor.innerHTML = html;
         }
 
+        // Inicialización
         document.getElementById('turnoFecha').min = new Date().toISOString().split("T")[0];
     </script>
 </body>
