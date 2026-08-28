@@ -588,99 +588,150 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
             <div class="moto-loader-spark"></div>
             <div class="moto-loader-spark"></div>
             <div class="moto-loader-spark"></div>
-            <svg class="moto-loader-bike" viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="moto-loader-bike" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="motoFairing" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#ff4b47"/>
-                        <stop offset="55%" stop-color="#e52421"/>
-                        <stop offset="100%" stop-color="#9c1310"/>
+                    <linearGradient id="motoFairingTop" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff5b56"/>
+                        <stop offset="45%" stop-color="#e52421"/>
+                        <stop offset="100%" stop-color="#7a0f0d"/>
+                    </linearGradient>
+                    <linearGradient id="motoFairingLow" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#22262b"/>
+                        <stop offset="100%" stop-color="#0a0c0e"/>
                     </linearGradient>
                     <linearGradient id="motoScreen" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#cfe6f5" stop-opacity="0.55"/>
-                        <stop offset="100%" stop-color="#7fa9c2" stop-opacity="0.25"/>
+                        <stop offset="0%" stop-color="#3a4650" stop-opacity="0.9"/>
+                        <stop offset="100%" stop-color="#12161a" stop-opacity="0.85"/>
+                    </linearGradient>
+                    <radialGradient id="motoRim" cx="35%" cy="30%" r="75%">
+                        <stop offset="0%" stop-color="#7d8590"/>
+                        <stop offset="55%" stop-color="#33383f"/>
+                        <stop offset="100%" stop-color="#0a0c0e"/>
+                    </radialGradient>
+                    <linearGradient id="motoExhaust" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e8ecef"/>
+                        <stop offset="45%" stop-color="#9aa3ab"/>
+                        <stop offset="100%" stop-color="#4c5359"/>
+                    </linearGradient>
+                    <linearGradient id="motoTank" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff4b47"/>
+                        <stop offset="100%" stop-color="#b81a17"/>
                     </linearGradient>
                 </defs>
 
-                <ellipse cx="122" cy="116" rx="82" ry="6" fill="#000" opacity="0.38"/>
+                <ellipse cx="132" cy="124" rx="96" ry="6.5" fill="#000" opacity="0.42"/>
+
+                <!-- linea de movimiento -->
+                <g opacity="0.5">
+                    <line x1="4" y1="70" x2="34" y2="70" stroke="#e52421" stroke-width="2.4" stroke-linecap="round"/>
+                    <line x1="0" y1="82" x2="22" y2="82" stroke="#e52421" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+                    <line x1="6" y1="94" x2="28" y2="94" stroke="#e52421" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
+                </g>
+
+                <!-- swingarm / basculante -->
+                <path d="M112 88 L166 84 L200 104 L128 110 Z" fill="url(#motoFairingLow)" stroke="#000" stroke-width="0.6"/>
+                <path d="M118 90 L160 87" stroke="#3a3f46" stroke-width="1.2" opacity="0.7"/>
 
                 <!-- rueda trasera -->
-                <g class="moto-loader-wheel" style="transform-origin:196px 98px;">
-                    <circle cx="196" cy="98" r="23" fill="#0c0e10" stroke="#2b2f35" stroke-width="2"/>
-                    <circle cx="196" cy="98" r="15" fill="none" stroke="#4a5058" stroke-width="1.4"/>
-                    <g stroke="#4a5058" stroke-width="1.6">
-                        <line x1="196" y1="83" x2="196" y2="113"/>
-                        <line x1="181" y1="98" x2="211" y2="98"/>
-                        <line x1="186.4" y1="87.4" x2="205.6" y2="108.6"/>
-                        <line x1="205.6" y1="87.4" x2="186.4" y2="108.6"/>
-                        <line x1="190" y1="82.5" x2="202" y2="113.5"/>
-                        <line x1="202" y1="82.5" x2="190" y2="113.5"/>
+                <g class="moto-loader-wheel" style="transform-origin:212px 104px;">
+                    <circle cx="212" cy="104" r="27" fill="#050607" stroke="#25292e" stroke-width="2.5"/>
+                    <circle cx="212" cy="104" r="27" fill="url(#motoRim)" opacity="0.18"/>
+                    <circle cx="212" cy="104" r="18" fill="#0a0c0e" stroke="#454b53" stroke-width="1.2"/>
+                    <g stroke="#5b626b" stroke-width="1.5">
+                        <line x1="212" y1="86" x2="212" y2="122"/>
+                        <line x1="194" y1="104" x2="230" y2="104"/>
+                        <line x1="199.2" y1="91.2" x2="224.8" y2="116.8"/>
+                        <line x1="224.8" y1="91.2" x2="199.2" y2="116.8"/>
+                        <line x1="203.5" y1="88" x2="220.5" y2="120"/>
+                        <line x1="220.5" y1="88" x2="203.5" y2="120"/>
+                        <line x1="196" y1="112" x2="228" y2="96"/>
+                        <line x1="196" y1="96" x2="228" y2="112"/>
                     </g>
-                    <circle cx="196" cy="98" r="5" fill="#e52421"/>
+                    <circle cx="212" cy="104" r="6" fill="#111417" stroke="#5b626b" stroke-width="1"/>
+                    <circle cx="212" cy="104" r="19" fill="none" stroke="#e52421" stroke-width="1.4" opacity="0.85"/>
                 </g>
 
-                <!-- rueda delantera -->
-                <g class="moto-loader-wheel" style="transform-origin:56px 98px;">
-                    <circle cx="56" cy="98" r="23" fill="#0c0e10" stroke="#2b2f35" stroke-width="2"/>
-                    <circle cx="56" cy="98" r="15" fill="none" stroke="#4a5058" stroke-width="1.4"/>
-                    <g stroke="#4a5058" stroke-width="1.6">
-                        <line x1="56" y1="83" x2="56" y2="113"/>
-                        <line x1="41" y1="98" x2="71" y2="98"/>
-                        <line x1="46.4" y1="87.4" x2="65.6" y2="108.6"/>
-                        <line x1="65.6" y1="87.4" x2="46.4" y2="108.6"/>
-                        <line x1="50" y1="82.5" x2="62" y2="113.5"/>
-                        <line x1="62" y1="82.5" x2="50" y2="113.5"/>
+                <!-- rueda delantera con disco de freno -->
+                <g class="moto-loader-wheel" style="transform-origin:60px 104px;">
+                    <circle cx="60" cy="104" r="27" fill="#050607" stroke="#25292e" stroke-width="2.5"/>
+                    <circle cx="60" cy="104" r="24" fill="none" stroke="#c7ccd1" stroke-width="1.6" opacity="0.75"/>
+                    <circle cx="60" cy="104" r="18" fill="#0a0c0e" stroke="#454b53" stroke-width="1.2"/>
+                    <g stroke="#5b626b" stroke-width="1.5">
+                        <line x1="60" y1="86" x2="60" y2="122"/>
+                        <line x1="42" y1="104" x2="78" y2="104"/>
+                        <line x1="47.2" y1="91.2" x2="72.8" y2="116.8"/>
+                        <line x1="72.8" y1="91.2" x2="47.2" y2="116.8"/>
+                        <line x1="51.5" y1="88" x2="68.5" y2="120"/>
+                        <line x1="68.5" y1="88" x2="51.5" y2="120"/>
+                        <line x1="44" y1="112" x2="76" y2="96"/>
+                        <line x1="44" y1="96" x2="76" y2="112"/>
                     </g>
-                    <circle cx="56" cy="98" r="5" fill="#e52421"/>
+                    <circle cx="60" cy="104" r="6" fill="#111417" stroke="#5b626b" stroke-width="1"/>
+                    <path d="M46 92 A19 19 0 0 1 74 92" fill="none" stroke="#dfe3e6" stroke-width="2" opacity="0.5"/>
                 </g>
+                <!-- pinza de freno -->
+                <path d="M76 96 L86 92 L88 106 L78 110 Z" fill="#1a1d22" stroke="#3a3f46" stroke-width="0.8"/>
 
-                <!-- escape deportivo -->
-                <path d="M170 92 Q194 84 206 68 Q210 62 204 60 Q192 58 182 66 Q166 78 160 90 Z" fill="#1a1d22" stroke="#33383f" stroke-width="1"/>
-                <ellipse cx="205" cy="63" rx="5" ry="4" fill="#0c0e10"/>
+                <!-- horquilla delantera -->
+                <path d="M60 104 L96 66" stroke="url(#motoExhaust)" stroke-width="7" stroke-linecap="round"/>
+                <path d="M60 104 L96 66" stroke="#0a0c0e" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
 
-                <!-- basculante / motor -->
-                <path d="M100 78 L150 78 L172 96 L118 100 Z" fill="#14171a" stroke="#26292e" stroke-width="1"/>
-                <path d="M100 78 L56 98" stroke="#1a1d22" stroke-width="8" stroke-linecap="round"/>
-                <path d="M150 78 L196 98" stroke="#1a1d22" stroke-width="8" stroke-linecap="round"/>
+                <!-- chasis trellis -->
+                <path d="M118 60 L150 58 L156 78 L128 88 L108 78 Z" fill="none" stroke="#3a3f46" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M118 60 L128 88" stroke="#3a3f46" stroke-width="2.4"/>
 
-                <!-- cola afilada -->
-                <path d="M150 60 Q192 58 204 68 Q198 76 176 78 L150 70 Z" fill="url(#motoFairing)"/>
-                <path d="M150 60 Q192 58 204 68" stroke="#7a0f0d" stroke-width="1.4" fill="none"/>
-                <path d="M172 63 Q188 62 198 68" stroke="#ffdad8" stroke-width="1.6" fill="none" opacity="0.7"/>
+                <!-- escape deportivo cromado -->
+                <path d="M170 96 Q198 90 214 70 Q219 63 212 61 Q198 58 186 68 Q168 82 160 96 Z" fill="url(#motoExhaust)" stroke="#2c3136" stroke-width="1"/>
+                <ellipse cx="212" cy="65" rx="6" ry="5" fill="#12151a"/>
+                <ellipse cx="212" cy="65" rx="3.2" ry="2.6" fill="#000"/>
+                <path d="M176 92 Q196 86 208 72" stroke="#fff" stroke-width="1.2" opacity="0.45" fill="none"/>
 
-                <!-- tanque / colin -->
-                <path d="M96 56 Q126 44 152 52 Q158 62 150 70 L104 74 Q92 66 96 56 Z" fill="url(#motoFairing)"/>
-                <path d="M104 58 Q126 50 144 55" stroke="#ffb3af" stroke-width="1.6" fill="none" opacity="0.6"/>
+                <!-- panel motor -->
+                <path d="M108 78 L150 78 L156 96 L120 104 Z" fill="url(#motoFairingLow)"/>
+                <path d="M112 80 L146 80" stroke="#3a3f46" stroke-width="1" opacity="0.6"/>
 
-                <!-- carenado delantero / nariz -->
-                <path d="M40 82 Q46 62 68 52 Q90 44 104 52 Q100 64 96 74 Q80 84 60 88 Q46 90 40 82 Z" fill="url(#motoFairing)"/>
-                <path d="M50 70 Q64 58 88 54" stroke="#ffdad8" stroke-width="1.6" fill="none" opacity="0.55"/>
-                <path d="M40 82 Q46 62 68 52" stroke="#7a0f0d" stroke-width="1.2" fill="none"/>
+                <!-- carenado bajo / panza -->
+                <path d="M92 92 Q116 80 150 82 Q166 84 172 96 Q150 104 118 106 Q98 106 92 92 Z" fill="url(#motoFairingLow)"/>
+                <path d="M96 90 Q120 80 150 84" stroke="#e52421" stroke-width="1.6" fill="none" opacity="0.8"/>
 
-                <!-- franja negra decorativa -->
-                <path d="M60 60 Q90 50 108 56 L104 64 Q84 58 62 66 Z" fill="#101214"/>
+                <!-- cola afilada / colin trasero -->
+                <path d="M154 60 L196 56 Q214 58 220 70 Q212 80 190 82 L156 74 Z" fill="url(#motoFairingTop)"/>
+                <path d="M154 60 L196 56 Q214 58 220 70" stroke="#5c0a08" stroke-width="1.4" fill="none"/>
+                <path d="M178 61 Q200 60 212 68" stroke="#ffb3af" stroke-width="1.6" fill="none" opacity="0.55"/>
+                <!-- luz trasera -->
+                <path d="M216 62 L221 63 L220 71 L215 71 Z" fill="#ff8b83"/>
 
-                <!-- parabrisas -->
-                <path d="M78 52 Q92 36 110 40 Q104 50 98 58 Q86 56 78 52 Z" fill="url(#motoScreen)" stroke="#9fc4dc" stroke-width="0.8"/>
+                <!-- tanque / carena central -->
+                <path d="M98 54 Q130 40 158 50 Q166 60 158 70 L110 76 Q94 66 98 54 Z" fill="url(#motoTank)"/>
+                <path d="M104 56 Q130 46 150 52" stroke="#ffb3af" stroke-width="1.6" fill="none" opacity="0.55"/>
+                <path d="M98 54 Q130 40 158 50" stroke="#5c0a08" stroke-width="1.2" fill="none"/>
 
-                <!-- optica delantera -->
-                <ellipse cx="45" cy="72" rx="6" ry="8" fill="#fff4d6"/>
-                <ellipse cx="45" cy="72" rx="3.4" ry="5" fill="#ffe9a8"/>
+                <!-- carenado frontal / nariz agresiva -->
+                <path d="M38 88 Q42 62 66 50 Q92 38 112 48 Q108 62 102 74 Q84 88 60 92 Q42 94 38 88 Z" fill="url(#motoFairingTop)"/>
+                <path d="M38 88 Q42 62 66 50" stroke="#5c0a08" stroke-width="1.4" fill="none"/>
+                <path d="M50 68 Q66 54 92 50" stroke="#ffb3af" stroke-width="1.8" fill="none" opacity="0.55"/>
+                <!-- toma de aire agresiva -->
+                <path d="M52 78 L74 72 L78 82 L56 88 Z" fill="#0a0c0e"/>
+                <path d="M52 78 L74 72" stroke="#e52421" stroke-width="1.2" opacity="0.8"/>
 
-                <!-- manubrio -->
-                <path d="M96 52 Q108 44 118 46" stroke="#1a1d22" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <!-- panel negro inferior del carenado -->
+                <path d="M44 84 Q54 68 78 58 Q76 68 68 78 Q56 88 44 84 Z" fill="url(#motoFairingLow)"/>
 
-                <!-- piloto agachado -->
-                <g>
-                    <path d="M104 50 Q112 30 132 24 Q140 22 146 26" fill="#12151a"/>
-                    <circle cx="146" cy="26" r="10" fill="#0d0f12"/>
-                    <path d="M138 22 Q146 16 154 22" stroke="#e52421" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <path d="M110 48 Q118 32 132 26" stroke="#e52421" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9"/>
-                    <path d="M114 52 Q108 46 100 50" stroke="#12151a" stroke-width="6" fill="none" stroke-linecap="round"/>
-                </g>
+                <!-- parabrisas ahumado -->
+                <path d="M84 50 Q98 30 120 34 Q114 46 106 56 Q92 54 84 50 Z" fill="url(#motoScreen)" stroke="#5b626b" stroke-width="0.8"/>
+                <path d="M90 46 Q100 36 112 38" stroke="#fff" stroke-width="1" opacity="0.35" fill="none"/>
 
-                <!-- numero de carrera -->
-                <circle cx="82" cy="66" r="9" fill="#0c0e10" opacity="0.85"/>
-                <text x="82" y="70" font-family="Barlow Condensed, sans-serif" font-size="11" font-weight="900" fill="#fff" text-anchor="middle">26</text>
+                <!-- optica LED doble -->
+                <path d="M40 74 L52 70 L54 78 L42 82 Z" fill="#fff4d6"/>
+                <path d="M42 75 L50 72 L51 77 L43 80 Z" fill="#ffe28a"/>
+                <path d="M40 74 L52 70" stroke="#c9861f" stroke-width="0.6"/>
+
+                <!-- espejo -->
+                <path d="M96 44 L108 36" stroke="#1a1d22" stroke-width="3" stroke-linecap="round"/>
+                <ellipse cx="110" cy="34" rx="6" ry="3.6" fill="#1a1d22" stroke="#3a3f46" stroke-width="0.8"/>
+
+                <!-- pinza / disco frontal reflejo -->
+                <circle cx="60" cy="104" r="27" fill="none" stroke="#e52421" stroke-width="1" opacity="0.35"/>
             </svg>
         </div>
         <div class="moto-loader-text" id="moto-loader-texto">Acelerando<span>...</span></div>
