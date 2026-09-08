@@ -364,6 +364,9 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                                 <div class="profile-badge" style="margin-bottom:0;">
                                     <p><strong id="tallerClienteNombre"></strong></p>
                                     <p style="font-size:10px; color:var(--texto-gris);">Trabajos previos: <strong id="tallerClienteTrabajos">0</strong></p>
+                                    <button type="button" class="btn-red btn-cancel" style="margin-top:10px;" onclick="eliminarClienteTaller(document.getElementById('tallerDni').value.trim())">
+                                        <i class="fa-solid fa-user-xmark"></i> ELIMINAR CUENTA DE ESTE CLIENTE
+                                    </button>
                                 </div>
                             </div>
 
@@ -1512,7 +1515,12 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                             <span style="color:var(--texto-gris);">${c.telefono || 'Sin teléfono'}${c.email ? ' · ' + c.email : ''}</span><br>
                             <span style="color:var(--muted-2);">Registrado: ${fechaTxt} · ${c.trabajosRealizados || 0} trabajo(s) · ${services} service(s)</span>
                         </div>
-                        ${c.telefono ? `<a class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; text-decoration:none; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" href="https://wa.me/54${c.telefono.replace(/[^0-9]/g,'')}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
+                        <div style="display:flex; gap:6px;">
+                            ${c.telefono ? `<a class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; text-decoration:none; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" href="https://wa.me/54${c.telefono.replace(/[^0-9]/g,'')}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
+                            <button type="button" class="btn-red btn-cancel" style="width:auto; padding:6px 10px; margin-top:0;" onclick="eliminarClienteTaller('${c.dni}')" title="Eliminar cliente">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
                 `;
             });
@@ -1527,6 +1535,48 @@ body>div:last-child{background:#060708!important;border-color:var(--line)!import
                 renderClientesRegistrados();
             }
             renderStatsTaller();
+        }
+
+        function eliminarClienteTaller(dni) {
+            dni = String(dni || '').trim();
+            if (!dni || !clientesBD[dni]) {
+                alert('No se encontró ese cliente.');
+                return;
+            }
+
+            const nombre = clientesBD[dni].nombre || 'este cliente';
+            const trabajos = (clientesBD[dni].historialServicios || []).length;
+
+            const advertencia = trabajos > 0
+                ? `Vas a eliminar a "${nombre}" (DNI ${dni}) junto con su historial de ${trabajos} trabajo(s), sus cupones y sus turnos agendados.\n\nEsta acción NO se puede deshacer. ¿Confirmás?`
+                : `Vas a eliminar a "${nombre}" (DNI ${dni}) y sus turnos agendados.\n\nEsta acción NO se puede deshacer. ¿Confirmás?`;
+
+            if (!confirm(advertencia)) return;
+            if (!confirm(`Última confirmación: ¿eliminar definitivamente la cuenta de "${nombre}"?`)) return;
+
+            delete clientesBD[dni];
+            guardarClientesPro();
+
+            if (cuponesBD[dni]) {
+                delete cuponesBD[dni];
+                guardarCuponesPro();
+            }
+
+            turnosBD = turnosBD.filter(t => t.dni !== dni);
+            localStorage.setItem('masracing_turnos', JSON.stringify(turnosBD));
+
+            alert(`Cuenta de "${nombre}" eliminada correctamente.`);
+
+            document.getElementById('tallerDni').value = '';
+            document.getElementById('tallerClienteInfo').style.display = 'none';
+            document.getElementById('tallerHistorial').innerHTML = '';
+
+            actualizarVistasClientesRegistrados();
+
+            const contGlobal = document.getElementById('tallerHistorialGlobalContainer');
+            if (contGlobal && contGlobal.style.display !== 'none') {
+                renderHistorialGlobalTaller();
+            }
         }
 
         // Mantiene el listado de clientes actualizado si el panel del taller está abierto
