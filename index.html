@@ -211,7 +211,7 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
           <div class="pay-row"><span class="label">Titular</span><strong style="font-size:.83rem">Bruno Nicolas Perez</strong></div>
         </div>
         <div class="actions"><button class="btn btn-blue" type="button" onclick="payDeposit()">Pagar seña · Abrir Mercado Pago</button><button class="btn btn-green" type="button" onclick="confirmWhatsApp()">Enviar comprobante por WhatsApp</button></div>
-        <p class="notice">WhatsApp incluye automáticamente tu nombre, día, horario, servicio y monto de la seña. Adjuntá el comprobante antes de enviarlo.</p>
+        <p class="notice">Al solicitar el turno se abre WhatsApp con tu nombre, día, hora y la seña (50% del corte). Adjuntá el comprobante antes de enviarlo.</p>
 
         <div class="fidelity" id="fidelityCard">
           <div class="kicker">Programa de fidelidad</div><h3 style="margin-top:4px;font-family:Oswald,sans-serif;text-transform:uppercase">Cada 3 cortes · 10% OFF</h3>
@@ -460,8 +460,31 @@ function requestAppointment(){
   if(!selectedDate||!selectedTime){showToast('Elegí un día y un horario.');return;}
   if(isTaken(selectedDate,selectedTime)){showToast('Ese horario acaba de ocuparse. Elegí otro.');renderTimes();return;}
   const price=currentPrice(client.id);
+  const deposit=Math.round(price*CONFIG.depositRate);
   const ap={id:uid('turno'),clientId:client.id,date:selectedDate,time:selectedTime,price,status:'pending',createdAt:new Date().toISOString(),service:'Corte completo'};
-  state.appointments.push(ap);saveState();openCustomerPanel();showToast('Turno creado. Ahora pagá la seña y mandá el comprobante.');
+  state.appointments.push(ap);saveState();
+
+  // Mensaje automático a Bruno por WhatsApp
+  const msg =
+`Hola Bruno! 👋
+Soy *${client.firstName} ${client.lastName}*.
+Acabo de solicitar un turno en *Brussy Barbería*:
+
+📅 Día: ${dateLabel(selectedDate)}
+🕐 Hora: ${selectedTime}
+✂️ Servicio: Corte completo
+💰 Seña: 50% del valor del corte (${money(deposit)})
+
+Para la seña podés usar Mercado Pago:
+• Alias: ${CONFIG.mpAlias}
+• CVU: ${CONFIG.mpCvu}
+• Titular: ${CONFIG.mpHolder}
+
+Adjunto el comprobante de la seña. ¡Gracias!`;
+
+  window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
+  openCustomerPanel();
+  showToast('Turno creado. Se abrió WhatsApp para avisar a Bruno.');
 }
 function openCustomerPanel(){ renderCustomerPanel(); const sec=document.getElementById('customerPanel'); sec.classList.add('show'); sec.scrollIntoView({behavior:'smooth'}); }
 function renderCustomerPanel(){
@@ -477,7 +500,27 @@ function statusLabel(s){return s==='pending'?'Pendiente':s==='confirmed'?'Confir
 function cancelAppointment(id){ const a=state.appointments.find(x=>x.id===id); if(!a)return; if(!confirm('¿Cancelar este turno?'))return; a.status='cancelled';a.cancelledAt=new Date().toISOString();saveState();showToast('Turno cancelado.'); }
 function whatsappAppointment(id){ const a=state.appointments.find(x=>x.id===id), c=getClient(); if(!a||!c)return; const msg=`Hola Bruno! Soy ${c.firstName} ${c.lastName}. Te envío/consulto por mi turno del ${dateLabel(a.date)} a las ${a.time}. Servicio: ${a.service}. Precio: ${money(a.price)}. Estado: ${statusLabel(a.status)}.`; window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer'); }
 function payDeposit(){ const c=getClient(); if(!c){openRegister();showToast('Registrate para continuar.');return;} const amount=currentDeposit(c.id); copyText(CONFIG.mpAlias,true); showToast(`Seña ${money(amount)}. Alias copiado: ${CONFIG.mpAlias}.`); const popup=window.open('https://www.mercadopago.com.ar/','_blank','noopener,noreferrer'); window.location.href='mercadopago://'; setTimeout(()=>{ if(popup&&!popup.closed) popup.focus?.(); },500); }
-function confirmWhatsApp(){ const c=getClient(); if(!c){openRegister();return;} if(!selectedDate||!selectedTime){showToast('Elegí día y horario antes de enviar el comprobante.');return;} const amount=currentDeposit(c.id); const msg=`Hola Bruno! Soy ${c.firstName} ${c.lastName}. Quiero confirmar mi turno para el ${dateLabel(selectedDate)} a las ${selectedTime}. Servicio: Corte completo. Precio del corte: ${money(currentPrice(c.id))}. Pagué la seña de ${money(amount)} por transferencia al alias ${CONFIG.mpAlias}. Adjunto el comprobante. Titular: ${CONFIG.mpHolder}.`; window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer'); }
+function confirmWhatsApp(){
+  const c=getClient(); if(!c){openRegister();return;}
+  if(!selectedDate||!selectedTime){showToast('Elegí día y horario antes de enviar el comprobante.');return;}
+  const price=currentPrice(c.id);
+  const amount=currentDeposit(c.id);
+  const msg =
+`Hola Bruno! 👋
+Soy *${c.firstName} ${c.lastName}*.
+Quiero confirmar mi turno en *Brussy Barbería*:
+
+📅 Día: ${dateLabel(selectedDate)}
+🕐 Hora: ${selectedTime}
+✂️ Servicio: Corte completo
+💰 Seña: 50% del valor del corte (${money(amount)})
+
+Transferí al alias *${CONFIG.mpAlias}*
+Titular: ${CONFIG.mpHolder}
+
+Adjunto el comprobante de la seña. ¡Gracias!`;
+  window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
+}
 async function copyText(v,quiet=false){ try{await navigator.clipboard.writeText(v);if(!quiet)showToast('Dato copiado.');}catch{const ta=document.createElement('textarea');ta.value=v;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();if(!quiet)showToast('Dato copiado.');} }
 function openBarberLogin(){ if(barberLogged){openBarberPanel();return;} document.getElementById('barberPin').value='';document.getElementById('barberError').classList.remove('show');showModal('barberLoginModal'); }
 function loginBarber(){ const pin=document.getElementById('barberPin').value.trim(); if(pin!==state.settings.barberPin){document.getElementById('barberError').textContent='Contraseña incorrecta.';document.getElementById('barberError').classList.add('show');return;} barberLogged=true;sessionStorage.setItem('brussy_barber_logged','1');hideModal('barberLoginModal');openBarberPanel(); }
