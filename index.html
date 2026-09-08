@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
 <meta name="theme-color" content="#06110c">
 <title>Brussy Barbería · Turnos</title>
 <meta name="description" content="Reservá tu corte con Bruno Pérez, gestioná tus turnos y disfrutá de beneficios por fidelidad.">
@@ -129,6 +129,18 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
   .instagram-3d{font-size:.86rem;padding:13px 12px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-art img{animation:none}.btn,.day,.instagram-3d{transition:none}.instagram-3d,.instagram-3d:hover,.instagram-3d:active{transform:none}}
+
+/* Optimización uso móvil (sin cambiar diseño) */
+html,body{overscroll-behavior-y:contain}
+.date-strip{-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;touch-action:pan-x}
+.date-strip .day{scroll-snap-align:start;flex:none}
+.btn,.day,.time,.service,.copy,.panel-nav button,.close{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.field input{font-size:16px} /* evita zoom automático en iOS */
+.times .time,.nav-actions .btn,.actions .btn{min-height:44px}
+.modal{overscroll-behavior:contain}
+.topbar{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+body{padding-bottom:env(safe-area-inset-bottom)}
+
 /* Persistencia reforzada: mismo diseño, más protección de datos */
 .data-status{font-size:.72rem;color:var(--muted);margin-top:9px}
 .data-status.ok{color:var(--green-2)}
@@ -211,7 +223,7 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
           <div class="pay-row"><span class="label">Titular</span><strong style="font-size:.83rem">Bruno Nicolas Perez</strong></div>
         </div>
         <div class="actions"><button class="btn btn-blue" type="button" onclick="payDeposit()">Pagar seña · Abrir Mercado Pago</button><button class="btn btn-green" type="button" onclick="confirmWhatsApp()">Enviar comprobante por WhatsApp</button></div>
-        <p class="notice">Al solicitar el turno se abre WhatsApp con tu nombre, día, hora y la seña (50% del corte). Adjuntá el comprobante antes de enviarlo.</p>
+        <p class="notice">Al solicitar el turno se abre WhatsApp con tu nombre, día y hora. Pagá la seña (50% del corte) por Mercado Pago y podés enviar el comprobante desde acá.</p>
 
         <div class="fidelity" id="fidelityCard">
           <div class="kicker">Programa de fidelidad</div><h3 style="margin-top:4px;font-family:Oswald,sans-serif;text-transform:uppercase">Cada 3 cortes · 10% OFF</h3>
@@ -464,7 +476,7 @@ function requestAppointment(){
   const ap={id:uid('turno'),clientId:client.id,date:selectedDate,time:selectedTime,price,status:'pending',createdAt:new Date().toISOString(),service:'Corte completo'};
   state.appointments.push(ap);saveState();
 
-  // Mensaje automático a Bruno por WhatsApp
+  // Mensaje automático a Bruno por WhatsApp (solo info del turno)
   const msg =
 `Hola Bruno! 👋
 Soy *${client.firstName} ${client.lastName}*.
@@ -473,14 +485,8 @@ Acabo de solicitar un turno en *Brussy Barbería*:
 📅 Día: ${dateLabel(selectedDate)}
 🕐 Hora: ${selectedTime}
 ✂️ Servicio: Corte completo
-💰 Seña: 50% del valor del corte (${money(deposit)})
 
-Para la seña podés usar Mercado Pago:
-• Alias: ${CONFIG.mpAlias}
-• CVU: ${CONFIG.mpCvu}
-• Titular: ${CONFIG.mpHolder}
-
-Adjunto el comprobante de la seña. ¡Gracias!`;
+¡Gracias!`;
 
   window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
   openCustomerPanel();
@@ -503,8 +509,6 @@ function payDeposit(){ const c=getClient(); if(!c){openRegister();showToast('Reg
 function confirmWhatsApp(){
   const c=getClient(); if(!c){openRegister();return;}
   if(!selectedDate||!selectedTime){showToast('Elegí día y horario antes de enviar el comprobante.');return;}
-  const price=currentPrice(c.id);
-  const amount=currentDeposit(c.id);
   const msg =
 `Hola Bruno! 👋
 Soy *${c.firstName} ${c.lastName}*.
@@ -513,12 +517,8 @@ Quiero confirmar mi turno en *Brussy Barbería*:
 📅 Día: ${dateLabel(selectedDate)}
 🕐 Hora: ${selectedTime}
 ✂️ Servicio: Corte completo
-💰 Seña: 50% del valor del corte (${money(amount)})
 
-Transferí al alias *${CONFIG.mpAlias}*
-Titular: ${CONFIG.mpHolder}
-
-Adjunto el comprobante de la seña. ¡Gracias!`;
+Adjunto el comprobante de la seña (50% del corte). ¡Gracias!`;
   window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
 }
 async function copyText(v,quiet=false){ try{await navigator.clipboard.writeText(v);if(!quiet)showToast('Dato copiado.');}catch{const ta=document.createElement('textarea');ta.value=v;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();if(!quiet)showToast('Dato copiado.');} }
