@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#06110c">
 <title>Brussy Barbería · Turnos</title>
 <meta name="description" content="Reservá tu corte con Bruno Pérez, gestioná tus turnos y disfrutá de beneficios por fidelidad.">
@@ -30,7 +30,7 @@
   --shadow:0 24px 70px rgba(0,0,0,.36);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
 body{
   min-height:100vh;
   font-family:'DM Sans',system-ui,sans-serif;
@@ -78,55 +78,90 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
 @media (hover:none){.btn:hover,.day:hover,.instagram-3d:hover{transform:none;filter:none}}
 @media (max-width:900px){.hero-grid,.booking-grid,.panel-grid{grid-template-columns:1fr}.hero-art{min-height:240px}.hero-art img{width:52%}.info-grid{grid-template-columns:1fr}.panel-nav{grid-template-columns:repeat(4,1fr);display:grid}.panel-nav button{text-align:center;font-size:.7rem}.reward{grid-template-columns:1fr}.section-title{flex-wrap:wrap}.panel-content{overflow-x:auto}}
 @media (max-width:640px){
-  .container{width:min(1180px,calc(100% - 20px))}
+  .container{width:calc(100% - 16px);max-width:100%;padding-left:0;padding-right:0;margin-left:auto;margin-right:auto}
   .nav{height:auto;padding:10px 0 12px;align-items:stretch;flex-wrap:wrap;gap:10px}
   .brand{min-width:0}
   .brand-copy strong{font-size:1rem}.brand-copy span{letter-spacing:.12em;font-size:.62rem}
   .nav-actions{max-width:none;width:100%;display:grid;grid-template-columns:1fr;gap:8px}
-  .nav-actions .btn{width:100%;padding:12px 14px;min-height:44px}
-  .hero{padding:28px 0 18px}
-  .hero h1{font-size:clamp(2.35rem,12.5vw,3.15rem);margin:10px 0 12px}
-  .hero p{font-size:.95rem;line-height:1.6}
-  .hero-meta{margin-top:16px;gap:8px}
+  .nav-actions .btn{width:100%;padding:14px 14px;min-height:48px;font-size:.95rem}
+  .hero{padding:24px 0 16px}
+  .hero h1{font-size:clamp(2.2rem,11vw,3rem);margin:10px 0 12px}
+  .hero p{font-size:.95rem;line-height:1.55}
+  .hero-meta{margin-top:14px;gap:8px}
   .pill{font-size:.74rem;padding:8px 10px}
-  .hero-actions{width:100%;margin-top:18px}
+  .hero-actions{width:100%;margin-top:16px}
   .instagram-3d{width:100%;min-height:52px;padding:14px 16px;font-size:.92rem;border-radius:14px;transform:none;letter-spacing:.01em;box-shadow:0 6px 0 #5b1a6f,0 12px 22px rgba(131,58,180,.34),inset 0 2px 0 rgba(255,255,255,.32)}
   .instagram-3d:hover{transform:none}
   .instagram-3d:active{transform:translateY(4px);box-shadow:0 2px 0 #5b1a6f,0 6px 12px rgba(131,58,180,.28),inset 0 1px 0 rgba(255,255,255,.2)}
-  .hero-art{min-height:210px;border-radius:22px}
-  .hero-art img{width:62%;max-width:220px}
-  .section{padding:18px 0 6px}
+  .hero-art{min-height:200px;border-radius:22px}
+  .hero-art img{width:58%;max-width:200px}
+  .section{padding:16px 0 6px}
   .section-title{flex-direction:column;align-items:flex-start;gap:6px}
-  .section-title h2{font-size:1.55rem}
-  .times{grid-template-columns:repeat(2,1fr)}
-  .time{min-height:44px}
-  .form-grid,.price-box{grid-template-columns:1fr}
-  .day{min-width:70px}
-  .card{padding:16px;border-radius:18px}
-  .card h3{font-size:1.35rem}
-  .user-status{flex-direction:column;align-items:stretch}
-  .user-status .btn{width:100%}
-  .pay-row{flex-wrap:wrap;align-items:flex-start;gap:6px}
-  .copy{text-align:left;word-break:break-all}
-  .summary{flex-wrap:wrap;gap:6px}
-  .summary .amount{font-size:1.7rem}
-  .panel-nav{grid-template-columns:repeat(2,1fr)}
+  .section-title h2{font-size:1.45rem}
+  .info-grid{gap:10px}
+  .info-card{padding:14px}
+  .info-card h3{font-size:1.3rem}
+  .info-card p{font-size:.88rem}
+
+  /* RESERVA - pensado para el dedo, sin zoom */
+  .card{padding:14px;border-radius:16px}
+  .card h3{font-size:1.25rem}
+  .kicker{font-size:.68rem}
+  .user-status{flex-direction:column;align-items:stretch;gap:10px;padding:14px}
+  .user-status .btn{width:100%;min-height:48px}
+  .date-strip{gap:8px;padding:4px 2px 10px;margin:0 -2px}
+  .day{min-width:76px;padding:14px 10px;min-height:88px}
+  .day .dom{font-size:1.75rem}
+  .day .dow,.day .mon{font-size:.7rem}
+  .times{grid-template-columns:repeat(2,1fr);gap:10px}
+  .time{min-height:52px;padding:14px 10px;font-size:1rem;font-weight:600}
+  .service{padding:16px;min-height:64px}
+  .service strong{font-size:1rem}
+  .service small{font-size:.82rem}
+  .price{font-size:1.35rem}
+  .price-box{grid-template-columns:1fr;gap:8px}
+  .price-item{padding:14px}
+  .price-item strong{font-size:1.55rem}
+  .summary{flex-wrap:wrap;gap:8px;align-items:center}
+  .summary .amount{font-size:1.85rem}
+  .actions{gap:10px}
+  .actions .btn{width:100%;min-height:52px;padding:16px;font-size:1rem}
+  .form-grid{grid-template-columns:1fr;gap:12px}
+  .field input{padding:16px;font-size:16px;min-height:52px;border-radius:14px}
+  .field label{font-size:.75rem;margin-bottom:8px}
+  .pay-row{flex-wrap:wrap;align-items:flex-start;gap:8px;padding-top:12px}
+  .copy{text-align:left;word-break:break-word;font-size:.9rem;padding:6px 0}
+  .step{padding:14px}
+  .flow{gap:8px}
+  .payment{padding:14px}
+  .fidelity{padding:16px}
+
+  .panel-nav{grid-template-columns:repeat(2,1fr);gap:8px}
+  .panel-nav button{min-height:44px;padding:12px 8px;font-size:.75rem}
   .client-card{flex-direction:column;align-items:flex-start}
   .client-actions{justify-content:flex-start;width:100%}
-  .client-actions .tiny{min-height:40px}
-  .modal{padding:10px;padding-bottom:max(12px,env(safe-area-inset-bottom))}
-  .modal-card{padding:16px;border-radius:18px;max-height:min(92vh,100dvh)}
-  .modal h3{font-size:1.4rem}
-  .modal-actions{flex-direction:column}
-  .modal-actions .btn{width:100%;min-height:44px}
-  footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom))}
-  .toast{bottom:max(12px,env(safe-area-inset-bottom));width:calc(100% - 24px)}
+  .client-actions .tiny{min-height:44px;padding:10px 12px}
+  .table th,.table td{padding:10px 6px;font-size:.74rem}
+
+  .modal{padding:8px;padding-bottom:max(12px,env(safe-area-inset-bottom));align-items:flex-end}
+  .modal-card{padding:18px 16px;border-radius:20px 20px 12px 12px;max-height:min(92vh,100dvh);width:100%}
+  .modal h3{font-size:1.35rem}
+  .modal-actions{flex-direction:column;gap:8px}
+  .modal-actions .btn{width:100%;min-height:50px;font-size:1rem}
+  .close{width:44px;height:44px}
+
+  footer{padding:24px 0 calc(24px + env(safe-area-inset-bottom));font-size:.72rem}
+  .toast{bottom:max(14px,env(safe-area-inset-bottom));width:calc(100% - 20px);font-size:.9rem;padding:14px 16px}
 }
 @media (max-width:400px){
-  .hero h1{font-size:clamp(2.05rem,13vw,2.6rem)}
-  .times{grid-template-columns:1fr 1fr}
-  .nav-actions .btn{font-size:.86rem}
-  .instagram-3d{font-size:.86rem;padding:13px 12px}
+  .hero h1{font-size:clamp(2rem,12vw,2.5rem)}
+  .times{grid-template-columns:1fr 1fr;gap:8px}
+  .time{min-height:50px;font-size:.95rem}
+  .day{min-width:70px;min-height:84px}
+  .nav-actions .btn{font-size:.9rem}
+  .instagram-3d{font-size:.88rem;padding:14px 12px}
+  .actions .btn{min-height:50px}
+  .container{width:calc(100% - 12px)}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-art img{animation:none}.btn,.day,.instagram-3d{transition:none}.instagram-3d,.instagram-3d:hover,.instagram-3d:active{transform:none}}
 
