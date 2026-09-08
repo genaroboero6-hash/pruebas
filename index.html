@@ -630,6 +630,629 @@ body::after{
   }
 }
 
+
+/* =========================================================
+   BRUSSY — CYBER URBAN / NEW-YORK 3D VISUAL LAYER
+   ========================================================= */
+
+.hero-meta{
+  align-items:stretch;
+}
+
+.hero-meta .pill,
+.hero-meta .instagram-btn{
+  min-height:54px;
+  border-radius:17px;
+  position:relative;
+  transform-style:preserve-3d;
+}
+
+.hero-meta .pill::marker{display:none;}
+
+.hero-meta .pill:hover,
+.hero-meta .instagram-btn:hover{
+  transform:translateY(-6px) perspective(900px) rotateX(2deg) rotateY(-3deg) translateZ(16px);
+}
+
+.hero-meta .pill::after,
+.hero-meta .instagram-btn::after{
+  content:"";
+  position:absolute;
+  inset:6px;
+  border:1px solid rgba(85,243,155,.08);
+  border-radius:13px;
+  transform:translateZ(8px);
+  pointer-events:none;
+}
+
+/* Urban corner cuts */
+.hero-meta .pill:first-child,
+.hero-meta .pill:nth-child(2),
+.hero-meta .pill:nth-child(3){
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+}
+
+/* Chrome / stencil-style micro accent */
+.hero-meta .pill::before,
+.hero-meta .instagram-btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:16px;
+  right:16px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#d8fff0 18%,#55f39b 50%,transparent 82%);
+  opacity:.55;
+  filter:drop-shadow(0 0 7px rgba(85,243,155,.65));
+  animation:urbanTracer 4s linear infinite;
+  pointer-events:none;
+}
+
+/* 3D urban framing around the hero artwork */
+.hero-art{
+  transform-style:preserve-3d;
+  isolation:isolate;
+}
+
+.hero-art .urban-frame-one,
+.hero-art .urban-frame-two{
+  display:none;
+}
+
+.hero-art::before{
+  box-shadow:
+    0 0 0 28px rgba(85,243,155,.045),
+    0 0 0 56px rgba(85,243,155,.026),
+    0 0 0 88px rgba(85,243,155,.015),
+    0 0 36px rgba(85,243,155,.18),
+    inset 0 0 18px rgba(85,243,155,.12);
+  transform:translateZ(22px);
+}
+
+.hero-art::after{
+  background:
+    linear-gradient(135deg,transparent 0 21%,rgba(85,243,155,.08) 21.3% 21.55%,transparent 21.9% 74%,rgba(85,243,155,.06) 74.3% 74.55%,transparent 74.9%),
+    linear-gradient(158deg,transparent 0 36%,rgba(255,255,255,.05) 36.2% 36.35%,transparent 36.6% 61%,rgba(85,243,155,.04) 61.2% 61.35%,transparent 61.7%),
+    repeating-linear-gradient(-22deg,transparent 0 18px,rgba(255,255,255,.032) 19px 20px,transparent 21px 39px);
+  mix-blend-mode:screen;
+}
+
+.hero-art .stamp{
+  padding:7px 10px;
+  border:1px solid rgba(85,243,155,.18);
+  background:rgba(2,10,7,.42);
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 18px rgba(24,201,107,.07);
+}
+
+/* Card edges with urban / graffiti-like pulse */
+.info-card,
+.card,
+.fidelity,
+.service,
+.client-card{
+  position:relative;
+  transform-style:preserve-3d;
+  overflow:hidden;
+}
+
+.info-card::after,
+.card::after,
+.fidelity::after,
+.service::after,
+.client-card::after{
+  content:"";
+  position:absolute;
+  top:-20%;
+  right:-6%;
+  width:42%;
+  height:140%;
+  background:linear-gradient(180deg,transparent,rgba(85,243,155,.07),transparent);
+  transform:rotate(18deg) translateZ(14px);
+  filter:blur(8px);
+  opacity:.35;
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+
+.info-card:hover::after,
+.card:hover::after,
+.fidelity:hover::after,
+.service:hover::after,
+.client-card:hover::after{
+  opacity:.8;
+}
+
+/* Stronger 3D depth for service/time controls */
+.service:hover,
+.time:hover,
+.day:hover,
+.price-item:hover,
+.client-card:hover{
+  transform:translateY(-4px) perspective(900px) rotateX(2deg) rotateY(-2deg) translateZ(9px);
+  border-color:rgba(85,243,155,.46);
+  box-shadow:0 14px 30px rgba(0,0,0,.30),0 0 18px rgba(24,201,107,.10);
+}
+
+/* Ambient neon scan across the whole hero */
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:18%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(85,243,155,.7),transparent);
+  box-shadow:0 0 15px rgba(85,243,155,.45);
+  opacity:.12;
+  animation:heroScan 7s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes urbanTracer{
+  0%,65%{opacity:.18;transform:translateX(-10%)}
+  75%{opacity:.9}
+  100%{opacity:.18;transform:translateX(10%)}
+}
+
+@keyframes heroScan{
+  0%{transform:translateY(0);opacity:0}
+  18%{opacity:.5}
+  50%{opacity:.12}
+  82%{opacity:.35}
+  100%{transform:translateY(170px);opacity:0}
+}
+
+@media(max-width:640px){
+  .hero-meta .pill,
+  .hero-meta .instagram-btn{min-height:50px}
+  .hero-art::before{transform:translateZ(10px) scale(.88)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-meta .pill::before,
+  .hero-meta .instagram-btn::before,
+  .hero::after{animation:none}
+}
+
+
+/* =========================================================
+   BRUSSY — MOBILE / TOUCH OPTIMIZATION
+   Mantiene diseño, colores y estructura original
+   ========================================================= */
+
+html, body{
+  max-width:100%;
+  overflow-x:hidden;
+}
+
+img, svg, canvas{
+  max-width:100%;
+}
+
+button,
+a,
+.day,
+.time,
+.service,
+.price-item{
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+
+@media (max-width: 760px){
+
+  /* Barra superior: misma estética, mejor aprovechamiento horizontal */
+  .topbar{
+    position:sticky;
+    top:0;
+  }
+
+  .nav{
+    min-height:auto;
+    height:auto;
+    padding:10px 0 11px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px;
+  }
+
+  .brand{
+    flex:1 1 auto;
+    min-width:190px;
+  }
+
+  .brand-icon{
+    width:36px;
+    height:44px;
+  }
+
+  .brand-copy strong{
+    font-size:1.02rem;
+  }
+
+  .brand-copy span{
+    font-size:.62rem;
+    letter-spacing:.14em;
+  }
+
+  .nav-actions{
+    width:100%;
+    max-width:none;
+    display:flex;
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    gap:7px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:2px 1px 4px;
+    scrollbar-width:none;
+    overscroll-behavior-x:contain;
+  }
+
+  .nav-actions::-webkit-scrollbar{
+    display:none;
+  }
+
+  .nav-actions .btn{
+    flex:0 0 auto;
+    min-height:44px;
+    padding:10px 13px;
+    white-space:nowrap;
+    font-size:.78rem;
+  }
+
+  /* Hero */
+  .hero{
+    padding:34px 0 22px;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .hero-copy{
+    min-width:0;
+  }
+
+  .hero h1{
+    font-size:clamp(3rem,15vw,4.5rem);
+    line-height:.9;
+    margin:12px 0 15px;
+    word-break:normal;
+  }
+
+  .hero p{
+    font-size:.94rem;
+    line-height:1.62;
+    max-width:100%;
+  }
+
+  /* Los mismos pills, en 2 columnas para no perder el look */
+  .hero-meta{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    margin-top:18px;
+  }
+
+  .hero-meta::before{
+    right:0;
+  }
+
+  .hero-meta .pill,
+  .hero-meta .instagram-btn{
+    width:100%;
+    min-width:0;
+    min-height:58px;
+    padding:10px 11px;
+    border-radius:15px;
+    font-size:.72rem;
+    line-height:1.25;
+    justify-content:flex-start;
+  }
+
+  .hero-meta .pill:hover,
+  .hero-meta .instagram-btn:hover{
+    transform:none;
+  }
+
+  /* Arte principal: mantiene el 3D, pero sin inclinarlo demasiado */
+  .hero-art{
+    width:100%;
+    min-height:280px;
+    max-height:390px;
+    transform:none !important;
+    border-radius:22px;
+  }
+
+  .hero-art img{
+    width:62%;
+    max-width:250px;
+    transform:translateZ(20px) !important;
+  }
+
+  .hero-art::before{
+    width:220px;
+    height:220px;
+    transform:translateZ(10px) scale(.9);
+  }
+
+  .hero-art .stamp{
+    left:12px;
+    bottom:12px;
+    font-size:.66rem;
+    padding:6px 8px;
+  }
+
+  /* Secciones */
+  .section{
+    padding-top:20px;
+  }
+
+  .section-title{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:6px;
+  }
+
+  .section-title h2{
+    font-size:1.75rem;
+  }
+
+  .section-title p{
+    font-size:.76rem;
+  }
+
+  /* Cards */
+  .card,
+  .info-card,
+  .fidelity{
+    border-radius:18px;
+    padding:17px;
+  }
+
+  .card-head{
+    gap:10px;
+    margin-bottom:13px;
+  }
+
+  .card h3{
+    font-size:1.42rem;
+  }
+
+  /* Fechas y horarios: swipe horizontal natural */
+  .date-strip{
+    gap:7px;
+    padding-bottom:9px;
+    margin-right:-4px;
+    padding-right:4px;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+  }
+
+  .day{
+    min-width:72px;
+    padding:10px 9px;
+    scroll-snap-align:start;
+  }
+
+  .times{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+  }
+
+  .time{
+    min-height:44px;
+    padding:11px 9px;
+  }
+
+  /* Servicios */
+  .service{
+    padding:14px;
+    min-height:62px;
+  }
+
+  .service strong{
+    font-size:.9rem;
+  }
+
+  .price{
+    font-size:1.3rem;
+  }
+
+  /* Formularios */
+  .form-grid,
+  .price-box{
+    grid-template-columns:1fr;
+  }
+
+  .field input{
+    min-height:46px;
+    font-size:16px;
+  }
+
+  .actions .btn{
+    min-height:46px;
+  }
+
+  /* Fidelidad / QR */
+  .reward{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .reward-note{
+    font-size:.78rem;
+  }
+
+  .qr-card{
+    width:min(100%,240px);
+    min-height:180px;
+    margin:0 auto;
+  }
+
+  /* Panel barbero */
+  .panel-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .panel-nav{
+    display:flex;
+    gap:7px;
+    overflow-x:auto;
+    padding-bottom:3px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .panel-nav::-webkit-scrollbar{
+    display:none;
+  }
+
+  .panel-nav button{
+    flex:0 0 auto;
+    min-height:44px;
+    text-align:center;
+    white-space:nowrap;
+    padding:10px 12px;
+    font-size:.72rem;
+  }
+
+  /* Tablas: scroll horizontal sin romper la página */
+  .table-wrap,
+  .table-wrap > .table,
+  .card > div[style*="overflow:auto"]{
+    max-width:100%;
+  }
+
+  .table-wrap,
+  .card > div[style*="overflow:auto"]{
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .table{
+    min-width:560px;
+  }
+
+  /* Clientes */
+  .client-card{
+    padding:13px;
+    align-items:flex-start;
+  }
+
+  .client-actions{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .tiny{
+    min-height:40px;
+    padding:8px 10px;
+  }
+
+  /* Modales: aprovechan toda la pantalla sin perder el look */
+  .modal{
+    padding:10px;
+    align-items:center;
+  }
+
+  .modal-card{
+    width:100%;
+    max-height:92vh;
+    border-radius:19px;
+    padding:17px;
+  }
+
+  .modal h3{
+    font-size:1.5rem;
+  }
+
+  .modal-actions .btn{
+    min-height:44px;
+  }
+
+  /* Escáner */
+  .scanner-box{
+    min-height:220px;
+  }
+
+  /* Footer */
+  footer{
+    padding:36px 0 48px;
+    font-size:.7rem;
+  }
+}
+
+@media (max-width:430px){
+
+  .container{
+    width:min(100% - 20px,1180px);
+  }
+
+  .hero{
+    padding-top:28px;
+  }
+
+  .hero h1{
+    font-size:3.2rem;
+  }
+
+  .hero-meta{
+    grid-template-columns:1fr;
+  }
+
+  .hero-meta .pill,
+  .hero-meta .instagram-btn{
+    min-height:54px;
+  }
+
+  .hero-art{
+    min-height:255px;
+  }
+
+  .hero-art img{
+    width:60%;
+  }
+
+  .times{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .nav-actions .btn{
+    padding-left:11px;
+    padding-right:11px;
+  }
+}
+
+/* En pantallas táctiles, evitamos estados hover persistentes */
+@media (hover:none) and (pointer:coarse){
+
+  .btn:hover,
+  .pill:hover,
+  .hero-meta .pill:hover,
+  .hero-meta .instagram-btn:hover,
+  .service:hover,
+  .day:hover,
+  .time:hover,
+  .price-item:hover,
+  .client-card:hover,
+  .info-card:hover,
+  .card:hover,
+  .fidelity:hover{
+    transform:none;
+  }
+
+  .hero-art:hover{
+    box-shadow:var(--shadow);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -758,7 +1381,7 @@ body::after{
 </footer>
 
 <div class="modal" id="registerModal"><div class="modal-card"><div class="modal-head"><div><div class="kicker">Cuenta</div><h3>Registrate / iniciá sesión</h3></div><button class="close" onclick="hideModal('registerModal')">×</button></div><p class="small" style="margin-bottom:15px">Nombre, apellido, teléfono y documento se usan para identificar tu cuenta dentro del sistema de turnos.</p><div class="form-grid"><div class="field"><label>Nombre</label><input id="firstName" placeholder="Bruno" autocomplete="given-name"></div><div class="field"><label>Apellido</label><input id="lastName" placeholder="Pérez" autocomplete="family-name"></div><div class="field"><label>Teléfono</label><input id="phone" inputmode="tel" placeholder="342 555 0105" autocomplete="tel"></div><div class="field"><label>Documento</label><input id="dni" inputmode="numeric" placeholder="12345678"></div></div><p class="error" id="registerError"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('registerModal')">Cancelar</button><button class="btn btn-green" onclick="saveClient()">Guardar y continuar</button></div></div></div>
-<div class="modal" id="barberLoginModal"><div class="modal-card" style="max-width:420px"><div class="modal-head"><div><div class="kicker">Acceso</div><h3>Modo barbero</h3></div><button class="close" onclick="hideModal('barberLoginModal')">×</button></div><p class="small">Ingresá el PIN del barbero. El PIN predeterminado es <strong>1907</strong> y puede cambiarse desde el panel.</p><div class="field" style="margin-top:14px"><label>PIN</label><input id="barberPin" inputmode="numeric" type="password" placeholder="••••"></div><p class="error" id="barberError"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('barberLoginModal')">Cancelar</button><button class="btn btn-green" onclick="loginBarber()">Entrar</button></div></div></div>
+<div class="modal" id="barberLoginModal"><div class="modal-card" style="max-width:420px"><div class="modal-head"><div><div class="kicker">Acceso</div><h3>Modo barbero</h3></div><button class="close" onclick="hideModal('barberLoginModal')">×</button></div><p class="small">Ingresá la contraseña para acceder al panel de barbería.</p><div class="field" style="margin-top:14px"><label>Contraseña</label><input id="barberPin" type="password" autocomplete="current-password" placeholder="Ingresá tu contraseña"></div><p class="error" id="barberError"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('barberLoginModal')">Cancelar</button><button class="btn btn-green" onclick="loginBarber()">Entrar</button></div></div></div>
 <div class="modal" id="manualCutModal"><div class="modal-card" style="max-width:520px"><div class="modal-head"><div><div class="kicker">Historial</div><h3>Registrar corte</h3></div><button class="close" onclick="hideModal('manualCutModal')">×</button></div><div id="manualCutInfo"></div><div class="form-grid" style="margin-top:14px"><div class="field"><label>Fecha</label><input type="date" id="cutDate"></div><div class="field"><label>Hora</label><input type="time" id="cutTime"></div></div><div class="price-box" style="margin-top:14px"><div class="price-item selected"><span>Precio vigente</span><strong id="manualPrice">$12.000</strong></div><div class="price-item" id="manualDiscountBox"><span>Fidelidad</span><strong id="manualDiscount">Sin descuento</strong></div></div><label style="display:flex;gap:9px;align-items:center;margin-top:14px;color:#cfe0d8;font-size:.82rem"><input type="checkbox" id="useReward"> Aplicar 10% del QR ya leído</label><p class="notice">El corte se agregará al historial del cliente y actualizará automáticamente su contador de fidelidad.</p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('manualCutModal')">Cancelar</button><button class="btn btn-green" onclick="saveManualCut()">Registrar corte</button></div></div></div>
 <div class="modal" id="historyModal"><div class="modal-card"><div class="modal-head"><div><div class="kicker">Cliente</div><h3 id="historyModalTitle">Historial</h3></div><button class="close" onclick="hideModal('historyModal')">×</button></div><div id="historyModalBody"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -794,7 +1417,9 @@ function loadState(){
   try{
     const raw=localStorage.getItem(CONFIG.storageKey); if(!raw) return defaultState();
     const parsed=JSON.parse(raw); const base=defaultState();
-    return { ...base, ...parsed, settings:{...base.settings,...(parsed.settings||{})}, rewardRedemptions:parsed.rewardRedemptions||{} };
+    const merged={ ...base, ...parsed, settings:{...base.settings,...(parsed.settings||{})}, rewardRedemptions:parsed.rewardRedemptions||{} };
+    if(['1907','1234'].includes(String(merged.settings.barberPin||''))) merged.settings.barberPin=CONFIG.barberDefaultPin;
+    return merged;
   }catch(e){ return defaultState(); }
 }
 function saveState(){ localStorage.setItem(CONFIG.storageKey,JSON.stringify(state)); renderAll(); }
