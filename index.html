@@ -3,2316 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="128x128" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAYr0lEQVR42u2deYxd133fP+ecu7775s2blUNSG7VRkKzFVhI5UmRFSapUcSTvQB3FDdBGSRNXdorAChCgQdA0QJu4dYMAAWyjhoHAQYImqC0FlZc6Vhy3spVKJkVqjShREjkckrO99b537z3n9I9735uhRFpctfF8AWrIeeu9v+/57b+fRBjFFofzFtLdAkcAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAB0cAh7cevPPhIpVSIARxFOMpj2Sijs4zlg4fRgiJtWb8XCEE1lpmpmeRSmK0IQwD+mlKNsxQnqTb6eB5HnlROAK8NQUuCYIIISAKY+IwxAqB7wdYY5FSIgOBUgqt9TGvtdYSxzWmmtMUlYCtsTQSHzEhsRaSOMEPAvI8Jy9yOu02WZ69Le+VeLvtCRyd0BOd9OZkk8APkVKilEJKiTEGW0oSBGBBeT6DwYB2Z51+vz9+fZLUmWxMIpDlE6l+VJ8rhEBIgdEWKQWe7zFI+xw8dNBpgDdC6NZalPLQuhg/Nvq973vUk4nq5AqMsVirsVYghAVR/jRWonNNGIbMR/P0ej3yvKBWS/A9HyEExujKRbIbP4TAVhpBCDDGoAtNGMYEvk+W544A5wIj4UdhRFyLmWw06fW6rK2vjdW0UoKkVkfrDXtuMRtCRIDdeC+LpSgKBIIoqlGrCawphbpBLAMIrLGl5qAioqg0gwBjNQLw/YAsz1+joUb/Vp5CF9qZgFNFEAREUUjgh8RRrTz9RuMrxSDLSNM+AojiCCElVoNAgBipa1kKZCQzWRJClBJFAMZatDEIQEq5Se1bNlubkkYjMnDMA1oXrK2vMRgOXnMNSZIwP7dAu9Om3++SpunrmrPzkgCbb4iUcmyPlZQYI7BWV0KTWEobXIkEazQWiwCEkNWf6uAbg/IUQkgGgwECKk1R0kApjzAK0VpjtEFIAUKMBSsQmCpSEAjEKHgWFmMAY7FYtClI+ym9tDf2Ker1OrU4QYrSH5FK0mqt02qtUWjtNMDxHLnp5jQIRRQGGGNL+40AK0DaykErvbmxqhaSIs8RsnwkTUtBd3o9hIQwCPA8j3angxCCPMsQlYPoKY+klpDlGQJBHMcktRr9tE9SSygKQxBGGF1gLWXYKGzlWJakNaZ0MJX0sLYkHNYi5SjSqIgtFFJJiiIvzVhr7U3VAm86AUan3vM8JiYahGGIr3wsBmvE6CBW/xFIWf4OSrVd5AXDLCUrCvIsx+gCIQXFSdpbIQRhGDIYDI7/OOB5PpONBtaCH4RIIfB8H6wt/QZrxhECYzNShRsj/2OTvRBCgJUIaemnXVrtNlmWnb8aoFarMd2cQimPQhcb0ZeV4xsqJRhdkOVDtLUM0pTBcPiaOH5DcAI7eiNGpKmiCCkx1vJj734Pn7nrLmr9lC2X7iANfZ5++RUK3+PbjzzCgaNHeerJp+h2u8e8dxSGBEFYao6kXkUluvIjbPV5pf2RYsN/2HAuRalFRuZOCdJhyurqKlrrN1QjvKkEqMU1oigiCqNKHevxqZPSQwgJGNLBgDTtU+iC4XD4uv7D6zlXnlIUWvPlP/pj3vfEXlrf+x6yWUckCdGWBUyzidwyR78Wo7du58W84JGnnubxJ/fwyA8eZdDrjd/L9zyCMCIIA5K4jhSiMgei9BdGF4TYiEQqX2UUj2AtYRiy3lljeXn5DXUOvTdD3QshaDQaNOoNjDVoY7BFXp10iZKKYT6k3++TZdlxhf7qm3Siv29+7uzcPN1Oh+FwgBCCKWMpnn+BWQtiMMCkKdniEhiDRuMJhZqe4T1X7OTWq67C/ut7OfCbn+Qvv/MwX/3G13n++efJi4K86NLrQS/oMlFvkCQ1BBI9cigRpchtGX2MtJG0YOUo/LQYY9+5JmAkhMD3mZxoEkYRxmi0NSghkVIhJXT7XbJhRq/ff5UgxSZF+qPCxpCJRoOV5aOvIYnn+wggz3Nuu+02/uen7uPA/b/LbOijKarTWApGFgZrLDovGA5yUm0YRBHRjh0kN93I4uwUf7e0xJceeJD9+/ePtQqA73tMTjZpTDQocvOqMLIyThs2ASGgKDSHjy6O8xrvuESQtZZGo0EtrpVesM5RUuGhsMLS7rYospz+ID3BKT85nmpd0Ot1j6sJijwvC0PA1oUFskOL+HqI9HwsEqsNtjBlyGlkGVx4iiiJqFXHNn35JbovPkcw1eADN1zP1b/yy/zGn32eo0ePjj8nzwuWl5fpdXtMNpqEYYit0gfj7yTs2Lu1Vd6ieBOKS94bceo9TzEzNYPyvPIGaIHnKYaDId1ul6woxqndza87HTuotUan6dgjfzURJAINCGvJW+sMYp9OkWEzTWAhkKoSiMRKKpNl0dJghEAFEZMyplbkLO7exY733YbWmqt37uSanTvZ/cwzPPfcc0ghSAcpg+GAJKnTnGiOyTf2CapoRlgL5s1xxZTn+b9/LoUfRRFTzSk838dqi1IKISWrq6u0Oi0KXRxTjj2Z993851RhrEEIQbfb5eobf5yJd11LsHMnYnKSXjpkZXWVrJ8irEH6ASiBURqrLFZKrFAYIVlRiuhffJz7/vpvuObKnXzhnl/i3atrfOjuD9AOPJ589tlxBDMcDhnmGcnERHlfTOkLWGHH2ce8yEkHKW80Dc6pDzAzM0MURFUKVqDzgnSQ0hv0ybP8GKIkSZ2LLtnB00/u+ZHO3vHtvk+eb2iQOIqoTzTAWtJBOg7jhBCl+dn03Pn5eW6/+b3c9p4buePHb2Sq12ewazetHz7B4Ll/ws9SoiDA92RVVFKspgOmPnEPf/TKy+zdt48H7vs0u+6/n9paC719K7W7fpGHMfze579Ae319XHaOo5iJep0kaZR1CGmrRFKZ8l5vrbKyuvKGRgFnlQBjRy8ImJ+fQwqJqU59t9+l2+2eMIxL6nUuuvhSnnlqz3Htt5QSz/NJajWMNTSbU1Wq1jAzM0Wn06Xd7iIlBH5ZP5BKgYV+v1+ljiVxFNPptNGmQBvD+lqZkhVCIKXk1ltv5Wd/5qd598UXc00QYnbtpvPo/8MsLjIhBNYU5Fdexa73/gS/+8UvsvvPv8JT//bTzC8vEwQeujCsmoLsx25k9dZb+MyXvsTTzzyD7/vkVbFo25ZthFFMnmdlRGDL1LPyFGvrq6yvr739NMC46qUU27ZuxVceuS4w1rK+tk6v3zvlAohSiqRWo5YkTCR12t0OgRdhKOi0OyivzK9rXeD7ASsrK2PvujQ/IVEUk2UZxhiak81SY/gBcRShq1QtxjIY9Oh2uyyvLZe/A7Zv3877b7+dj9x0E5d1+/Qe/g6rL73Azs/8Dp9+6CH+zUc+wsKD/4viW/+bZhKXvgWgLKymKZ2dV2A/9lE++YXPs2fvk2NNIJVkfnaBKAyrRFYZ4UjpoTxBr99lfb2FMZo8z4mjiEGWYY15a2sAKSXzs7PUajWyLCPXBSvLKydV9BBC4Ps+YRASBH7pBAoo8oLBYIC1UBRnr97ueR61uAaUqeBaHKOUh+d7YA1r6+scOXpk7Gf84p138jsf/Qh+r8vnvvktrr7uWn4tTnjxc3/K1qkmuioLg6laCBRtndO/5BL8j32M3//bB/jbb3xzTAIhBFvmF4iiCJ2bYxxDpUSVEYSiKIhrNYo85/CRJbJs+NYkgOd5zExPM1Fv0Ot1WF1bY1jlt0/m1E82GoRxjLCWTrc77tJ5NUleL9Q80WvKx6rawnGep5TC9318z2OiMUk9qSMQZFnGyuoy7U4bgHq9Trfb5e8/99/ofPa/sFN5VRi5Ee3bqnillEc/z2jPzXL5/fdz92f/mO9///v4VT9hGARs2bJ1XFAalahN1blU/m6k4Xy6vTara6tn1Uc4K1GAUooLL7iAOI7p9XssHTlyyqXO4XBIr9erunPykxb6mZqtzbn5oijIsoxOp0Ov30MKgR+ETEw0mKxPIhFjIkxvXeDOO+5g8Yk9RMMCP/DRo0KPlIyKAEEQILtdFvfu5u77fpO9hw7z0ksv4SlFXhQIIajVa2OtgLTj7yVHGkEqTFUKTwfpWXUQz5gAQgi2LizgKY+jy0dZWV09Y6G82dVJKFVvt9el1+9ijK66hhLiWg1rDH//j4/CFZdx2/vvprV/P8XaClEUYrCbrqEsYfuhh1hvkS8e5Ff/4D/wV9/8FuutFkopsiwrk2PC26goilGiSGzKfwrCIESbgmE2PGv36bQIMO6mEZLt27ZjjGbx0CEGwyHvJAhR2uI0Tcny0pH0pEcc14jCiL/7h+/yRKfNB37j1yEdkL5ygCQOMcYiRyMXwmKNJQ4CsgMH6B48xD+/916+9vB3yIYZxlryLCdJ6qPMcBkVjBNGbPq9JY7L6CE/S/2Hp0wAIcoyq1IeF2zbRqfTYXll5Zh6+DsNQpS+QL/fw1iNGpMg5MlnnuJv/u//4c5fv5dpz6fz3PPUo3Bsx7EWicAaQxKErDzzLFu2beWWe+7hL7/2tVIL5BnaaJIowWJe03E2KifZqkoaBAGdbues3O/T0gBxHHPRBRfS7nRYW1/jtU1y70wSjIggJASeT+CHTDVnOLR4gL/+9re541/ew5QR9F/cTxyFWGOQY3ttMIUm8Xxe2rOHS6+/npes4dl9+1BSkmVDakkdT3kcc/zlqGgsqvJ42YA6GKTkZyEqOi0NMD8/z9HlZdrtVsVCy/mCEQkGw5TJyWZ5sicSWmvrfPW73+XDv/UpGoWm98KL1AIfqzXCGtAWaQXSgmcsB/fu5ZaPfpB/2LePtbW18nQrVXU263HJWEhRtcCNSgdllDEYDMoWtjPUAvJULlxKydaFBVaWl+n3e2+JrtZzJOYytFUezUYTpbxjQk0hBHmes3j4AFJZPM/nogsvJBsO+eCn7qPzC/8MfeklpGla+kumFDzWIBBMBiHB4iJTL7zEPXd/EFtFUp1Oi+GgX7aUVd1kZZnElo2oVXucLgomJibwff+M7/9JE2BUnVteWWYwHL4jhb9xmixxFNNoTDLIhsdUKjeTYDgYcmDxIEWRY1HMzcyz3mrxe1/+Mjs//UmWdYEoCqQ1SCkRFtJ+l8OtVSZ/4kbU5Vfw+BNPjClnjKHdaSOF3NSOvpHHMFU3kad8BoO01BRnaH7fdqNh51L4I8FONaeIooilw0vjQZHXy4DOTs8Rxwl5nrK4dIiH/sdfcPWepzn8+S8yG4a0u310c5LkJ29i6s5f4AfdDp/8wz/k0KFDWGvHeQClFAtz25BKjuUvhAVTVow9pWh326ysLr/1UsFvd8RxjZnpKQSCQ4eXyord62i60eNhGNKcbFKLEpZXjpAVOf/07W/xyh/8R4p9L7Dw8z9P67rr+IvHH+eRXbvYt28fn/j4L/OJn7qZXXuf5Lf+5HN0Ox2MtczPbSGOahhjKueTqh0dLJqlpcWzNlNwzvoB3m6oJwkLW7ZSFAVLRw6fUneOEGJjzCyMSJKE1bVVHn32Oe74+MfpXHst/3nvXn77s5/llaUlfu7W9/Ff7/01fq6XsvjF/85VF13MkZkpdj/1VKkFhKBer2P1RgQx0jTDQZ9Or3vWQu7zXgNEUUSj3qBWq5EXOYcr4Z+6j1NGQ1PNGWpxjSzPOLp8mObkJOutFnEcc98v3cOvXHcd8dPP0PrBo4j1NoHv07voQg7e9X4++tv/Dq01Sirm57fgKf8YvyMIApZXjtCqoq+z4YN555vAN9+4ycYks1MzmKo16+jy0dMUPmM1PRj2SeIacRTTnGyy3lrnrttv59+/73Ymd+2m9yd/ii1ymrU6RRwipGDtxf28Owi44frreeyxxyh0QZZnBF6A2TQqNxwM6Kf9MSHOBuT5KHzf85ibnaPZbGIFaJ1zcPFgmeQ5zZM1ek2aptXMIkxNTiGE4KbrriN5Yg+97z3ClF/OD2AMSheoQjOhczqP/oB/9eEPVasIRFn6rjKJ5QcYlFJ43qsSRY4AJx/e2SqXPjs7R1JLAIE2mqXDh89I+K/+nFa3hZTlMKrRhicWF5m7+SfJfa/cMWAM2DJLaE1BzRN09z7BrZfsKElpLXlelMnf0XdHIJXCnuWekPOCAKNOpempaeZn5/FVWHrXGBYXF8+K8DdrgVarxTAboI1mbn6Or3/zGyxu24p3+WXkWpe9gNXoubAWH+DAQaZb6/zMT98GUKZ686LMH2x6/yRJxibHEeCkkjqQJDW2bNnCRH0Coy1CCrIi5/CRI+RFfk6SWuvrZSfU5ESTbqfLf3rgq8z+7G10irxqORNYW2BNOVgaG0t/127ef8vNAFVHkEGqjeSU0YapySb1erLp+wpHgBOdRs9TzM/NMzM9ixKq6sSFTq/FwYMHSKuJ4HOR0UwHA4zWFIWhUZ/koa8/RO/SHejGBKYoBY8pR8a0kMRxSOeHP+TamWmiOAag025hCrNpOtqSZ5rJxiz1ZKKaQraOAMfDRJKwML9QJlS0xmhdduFkOaurq2ecQj0Z7ZPlQ7CWelKn1e5wwGjCiy5mkA7AKpASKcqFE2EUUqytcUEYcvVVV5WvL/KyrLyx4ASLQQnB7Mw8c7MLJLU6cRyPHc/zlgCjmy6EoNmYZHZmFoFAF0W1FcxDepJWtzXuaTiX2geg30+x1uB7HhjLg489zsR1V9PP8tIZtKLsCJcgPImvNXbpCJdddmmZpVNq47o2vz8WXeQEymN6aob52S0EfnBaJuEdQwBrLWEUsHXLVpqNJkWuN5wlISh0uRiy/5qh03OHQZaS6wxjBb7n8cCDD5JfeAHDJEIIUzqDVEOoBnxryV4+yE/dcMM4pOx02xt1gVclnqyopoq12bQQw54/BNjs6DUaDeZm5wmCgMKUW0KsFUjp0e13WTy0NF7O9IblHIwlL3KsNcw0pzlw8CAHPY/o4gvJhSlPvpQIFGiJr0Laz7/ALde8C1HNEdZq8cbmMqoFZaJcXSeEQMlyb+HU1PRr7sk7mgCbZw+3LWxlqjmNwhvPHxosQRCSDvqsr6+/ae1qWVba8ThJ0Lrgu3v3Ely4nYE15ayhlVXd36IQiPUW7UOHNpzJ/mDcGGoqFpQ7BspopmwkkZxuguBtSwBrLUktYW5ujjCIMLrqoBBgtCUMI/rDPkeWj7wpvQujzxukfQQCT/lIqTja6RJv384wz7FWkFvQtlonoxSkfRaffRbl+1U0kW5qELGbzLxg8w679AQ7jt6xBJifn2dudh5hJYXRGxuBhCWMQvq9HktLi+cszDtZaGvJiqwaPAl4ZNduBmGEwQMkSiiQCpREBQo7TLlkaorLd+wAyjG2zRG/He2d2nRNxhgmG0280fj9KeBtUwwaneKJiQbTzSk8z0cXugx/RHlChBToIqfdbXPkyBF+1CTQG0aAosDzJIXWDNOUl195hSJO6KcpNWPLecKqr1J5kt5gCP1yInl8SoUsBw43/D9s1TouhUVIiRf5p5UT8E5FAMdTcW+kSo3jmMDz6XZ7aFuWTS0bmzY8T9FqtRmO5+eO3fR5ous5m9fyanMjpaTX7eFJj8ZEg263y/PDARff/F6iIELGcVkAkmVquhgM2R/4Vbc1ZEVGr99FKVntMAZDUZr8anZQSIFU4pg1uSf9fV+vH+BE9tP3/dPKR1vLeBlzcQ5253peWXBh08nfWBlXaoQsy48bVp1xd7PYsMu+X6rj0TV6nodSiuFwyDVXXsmvfvhDTM/MlksosNUae0G/3+PPvvIVdj351Cn7Lr7nb+wxrrB5b8JpEaD88j7NqWlmZudKVSskU1NTSOVBNciweZhltJtXyLKNdbxmdbRqvTDs3vWP9Hr906y9byyVuOzSK1B+ua/PWLupjdqgbZluFeP0CUgpaK+3GeYZCFhdPkprffWMJ21G32l6eobLr7waP/DQ2tDvd9n/wj7arfUz0CQlOX3fZ6o5TaPZLDeuGJhoNPA9v7x2UWk2W1URheCR7z18ZibgkosvY35hG3GttmFTKVVPeagUm7dh2nHyZaN7VgpVkUQgheDFl56m1+sz3r59arem2jYW8K533UCcTKCr/YJeZUstFmNEubZ1vCzcVnuZLM2ZuUpLCLYubGM4HHL40EH27993WuZg7J80Jrn62htQno/WBUp4TM9uIalPsOeHj9GtpnlEdR9OBDNaPTs2I4ILL9zB3NwW6o3J0gesIgGtddkrMNqKPsoc2pPLdbqm0PMc7n8a5Qjg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg4Ajg8FbD/wdn0Gjc5d+miQAAAABJRU5ErkJggg==">
-    <link rel="apple-touch-icon" href="data:image/png;base64,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">
-    <title>MAS RACING - Motomecánica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Librerías requeridas para QR y Scanner -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://unpkg.com/html5-qrcode"></script>
-
+    <title>Mi Proyecto</title>
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap');
-
-:root{
-  --red:#e52421;--red-dark:#b91512;--red-soft:#ff4b47;--black:#070809;--bg:#0b0d0f;
-  --surface:#111417;--surface-2:#171a1e;--surface-3:#1d2126;--input:#0b0d10;
-  --line:rgba(255,255,255,.09);--line-strong:rgba(255,255,255,.15);
-  --white:#fff;--muted:#9299a5;--muted-2:#68707c;--green:#31d17c;
-  --shadow:0 24px 70px rgba(0,0,0,.42);--radius:18px;
-  --texto-gris:#9299a5;--rojo-racing:#e52421;--verde-exito:#31d17c;--gris-borde:rgba(255,255,255,.09);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Montserrat',sans-serif;background:radial-gradient(circle at 70% 10%,rgba(229,36,33,.07),transparent 28%),var(--black);color:var(--white);line-height:1.5;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 75%);z-index:-1}
-a{color:inherit}
-button,input,select{font:inherit}
-
-/* HEADER */
-header{position:sticky;top:0;z-index:1000;min-height:76px;padding:0 clamp(20px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:28px;background:rgba(7,8,9,.78);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
-header:after{content:"";position:absolute;left:0;bottom:-1px;width:34%;height:2px;background:linear-gradient(90deg,var(--red),transparent)}
-.logo-text{position:relative;font-family:'Barlow Condensed',sans-serif;font-size:30px;font-weight:900;line-height:1;text-decoration:none;font-style:italic;letter-spacing:-1px;text-transform:uppercase;white-space:nowrap}
-.logo-text:after{content:"MOTOMECÁNICA";display:block;margin-top:5px;font-family:'Montserrat',sans-serif;font-size:7px;letter-spacing:3px;font-style:normal;color:var(--muted);font-weight:700}
-.logo-text span{color:var(--red);text-shadow:0 0 25px rgba(229,36,33,.25)}
-nav{display:flex;align-items:center;justify-content:center;gap:6px;flex:1}
-nav a{position:relative;padding:10px 13px;color:#c9cdd4;text-decoration:none;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.3px;border-radius:99px;transition:.25s ease}
-nav a:after{content:"";position:absolute;left:13px;right:13px;bottom:4px;height:2px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:.25s}
-nav a:hover,nav a.active{color:#fff;background:rgba(255,255,255,.045)}
-nav a:hover:after,nav a.active:after{transform:scaleX(1)}
-.nav-social{display:flex;align-items:center}
-.btn-ig{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:inset 0 1px 0 rgba(255,255,255,.08);font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:.25s}
-.btn-ig:hover{transform:translateY(-2px);border-color:rgba(225,48,108,.55);box-shadow:0 10px 30px rgba(225,48,108,.16)}
-
-/* HERO */
-.hero{position:relative;isolation:isolate;max-width:1500px;min-height:650px;margin:0 auto;padding:clamp(42px,6vw,84px) clamp(22px,5vw,72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(420px,500px);align-items:center;gap:clamp(35px,7vw,100px);overflow:hidden;background:linear-gradient(90deg,rgba(7,8,9,.98) 0%,rgba(7,8,9,.88) 34%,rgba(7,8,9,.45) 65%,rgba(7,8,9,.9) 100%),url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;border-bottom:1px solid var(--line)}
-.hero:before{content:"";position:absolute;inset:auto -10% -180px auto;width:620px;height:620px;background:radial-gradient(circle,rgba(229,36,33,.18),transparent 66%);filter:blur(20px);z-index:-1}
-.hero:after{content:"MAS RACING // 2026";position:absolute;right:35px;bottom:28px;font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:4px;color:rgba(255,255,255,.28);transform:rotate(-90deg);transform-origin:right bottom}
-.hero-text{max-width:650px;padding-top:0;animation:rise .7s ease both}
-.hero-text:before{content:"MOTOMECÁNICA · SERVICIO · PERFORMANCE";display:inline-flex;padding:7px 11px;margin-bottom:20px;border:1px solid rgba(229,36,33,.35);border-radius:999px;background:rgba(229,36,33,.08);color:#ff7773;font-size:9px;font-weight:800;letter-spacing:2px}
-.hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(58px,7vw,100px);font-weight:900;font-style:italic;line-height:.86;letter-spacing:-2px;text-transform:uppercase;margin-bottom:24px;text-wrap:balance}
-.hero-title span{display:block;color:var(--red);text-shadow:0 8px 35px rgba(229,36,33,.18)}
-.hero-subtitle{max-width:570px;color:#b7bdc7;font-size:14px;line-height:1.8;margin-bottom:30px}
-.hero-text:after{content:"TURNOS ONLINE  •  HISTORIAL DIGITAL  •  ATENCIÓN PERSONALIZADA";display:block;color:var(--muted-2);font-size:9px;font-weight:800;letter-spacing:1.5px}
-.card-container{width:100%;animation:rise .8s .08s ease both}
-.turno-card-unified{position:relative;background:linear-gradient(145deg,rgba(25,29,34,.97),rgba(12,14,17,.98));border:1px solid var(--line-strong);border-radius:22px;padding:22px;box-shadow:var(--shadow),0 0 0 1px rgba(229,36,33,.035);overflow:hidden}
-.turno-card-unified:before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--red),#ff615d,transparent)}
-.turno-card-unified:after{content:"";position:absolute;right:-90px;top:-90px;width:180px;height:180px;border-radius:50%;background:rgba(229,36,33,.07);filter:blur(5px);pointer-events:none}
-.tabs-header{position:relative;z-index:2;display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:22px;padding:5px;border:1px solid var(--line);border-radius:13px;background:#0a0c0f}
-.tab-btn{min-width:0;background:transparent;border:0;color:#727a86;font-weight:800;font-size:7.5px;text-transform:uppercase;letter-spacing:.3px;cursor:pointer;padding:8px 3px;border-radius:9px;transition:.22s;line-height:1.25}
-.tab-btn i{display:block;font-size:12px;margin-bottom:4px}
-.tab-btn:hover{color:#fff;background:rgba(255,255,255,.04)}
-.tab-btn.active{color:#fff;background:linear-gradient(135deg,var(--red),#bd1714);box-shadow:0 8px 18px rgba(229,36,33,.22)}
-.tab-content{display:none;animation:fadeIn .3s ease}.tab-content.active{display:block}
-.tab-content h4{font-family:'Barlow Condensed',sans-serif;font-size:21px;letter-spacing:.3px}
-.tab-content>p{color:var(--muted);line-height:1.6}
-.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-group-sm{margin-bottom:13px}.form-group-sm.full{grid-column:1/-1}
-.form-group-sm label{display:flex;align-items:center;gap:6px;margin-bottom:6px;color:#8f97a3;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:1px}
-.form-group-sm input,.form-group-sm select{width:100%;height:43px;background:rgba(6,8,10,.8);border:1px solid var(--line);border-radius:10px;color:#fff;padding:0 12px;font-size:11px;outline:none;transition:.2s;appearance:auto}
-.form-group-sm input::placeholder{color:#555d68}.form-group-sm input:hover,.form-group-sm select:hover{border-color:rgba(255,255,255,.16)}
-.form-group-sm input:focus,.form-group-sm select:focus{border-color:rgba(229,36,33,.8);box-shadow:0 0 0 3px rgba(229,36,33,.1)}
-.form-group-sm input[type=date]{color-scheme:dark}
-.btn-red{width:100%;min-height:44px;background:linear-gradient(135deg,#ed2b27,#bf1714);color:#fff;border:1px solid rgba(255,255,255,.08);padding:12px 16px;border-radius:10px;font-weight:900;font-size:10px;text-transform:uppercase;cursor:pointer;letter-spacing:1px;display:flex;justify-content:center;align-items:center;gap:8px;transition:.25s;box-shadow:0 8px 22px rgba(229,36,33,.16);margin-top:10px}
-.btn-red:hover{transform:translateY(-2px);background:linear-gradient(135deg,#ff3935,#d41b18);box-shadow:0 12px 28px rgba(229,36,33,.25)}
-.btn-cancel{background:rgba(160,25,25,.16);border-color:rgba(229,36,33,.35);box-shadow:none}.btn-cancel:hover{background:#8d1715}
-.profile-badge{background:linear-gradient(135deg,rgba(229,36,33,.075),rgba(255,255,255,.025));border:1px solid rgba(229,36,33,.42);border-radius:12px;padding:13px;margin-bottom:15px;font-size:10px}
-.profile-badge p{margin-bottom:4px}.discount-tag{display:inline-block;background:rgba(49,209,124,.12);border:1px solid rgba(49,209,124,.25);color:#58e493;font-weight:800;padding:4px 8px;border-radius:999px;font-size:8px;margin-top:6px}
-.my-turnos-list{max-height:230px;overflow-y:auto;margin-top:15px;padding-right:3px}.my-turnos-list::-webkit-scrollbar{width:4px}.my-turnos-list::-webkit-scrollbar-thumb{background:#333;border-radius:99px}
-.turno-item{background:rgba(7,9,11,.72);border:1px solid var(--line);border-radius:10px;padding:11px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:9px}
-
-/* SERVICES */
-.main-section{max-width:1500px;margin:0 auto;padding:90px clamp(22px,5vw,72px)}
-.section-title{display:flex;align-items:center;justify-content:center;gap:16px;font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:900;font-style:italic;letter-spacing:.5px;text-transform:uppercase;margin-bottom:38px}
-.section-title:before,.section-title:after{content:"";height:1px;flex:1;max-width:170px;background:linear-gradient(90deg,transparent,var(--line-strong))}.section-title:after{background:linear-gradient(90deg,var(--line-strong),transparent)}
-.services-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.service-card{position:relative;min-height:190px;background:linear-gradient(160deg,#171b20,#0f1114);border:1px solid var(--line);border-radius:16px;padding:25px 18px 18px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:.28s}
-.service-card:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(229,36,33,.12),transparent 45%);opacity:0;transition:.28s}
-.service-card:hover{transform:translateY(-7px);border-color:rgba(229,36,33,.42);box-shadow:0 18px 45px rgba(0,0,0,.35)}.service-card:hover:before{opacity:1}
-.service-card i{position:relative;z-index:1;font-size:27px;color:var(--red);margin-bottom:22px}.service-card h4{position:relative;z-index:1;font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;font-style:italic;letter-spacing:.6px;margin-bottom:20px}
-.service-card:after{content:"SERVICIO PROFESIONAL";position:absolute;top:17px;right:16px;font-size:6px;letter-spacing:1.3px;color:#555d68;font-weight:800}
-.btn-outline{position:relative;z-index:2;border:1px solid rgba(229,36,33,.5);color:#ff625e;background:rgba(229,36,33,.035);padding:9px 12px;border-radius:8px;font-size:8px;font-weight:900;cursor:pointer;width:100%;letter-spacing:1px;transition:.22s}.btn-outline:hover,.btn-outline.selected{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 20px rgba(229,36,33,.2)}
-
-/* FOOTER / CONTACT */
-.benefits-bar{position:relative;background:#080a0c;border-top:1px solid var(--line);padding:48px clamp(22px,5vw,72px);margin-top:0;overflow:hidden}.benefits-bar:before{content:"";position:absolute;left:50%;top:-250px;transform:translateX(-50%);width:600px;height:350px;background:radial-gradient(circle,rgba(229,36,33,.08),transparent 68%)}
-.benefits-grid{position:relative;z-index:1;max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:22px;align-items:stretch}.benefit-item{display:flex;align-items:flex-start;gap:13px;padding:16px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.018)}.benefit-item i{flex:0 0 auto;font-size:18px;color:var(--red);margin-top:2px}.benefit-info h5{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.benefit-info p{font-size:9px;color:var(--muted);line-height:1.5}.btn-maps{background:rgba(255,255,255,.035);border:1px solid var(--line-strong);color:#fff;padding:7px 9px;border-radius:7px;font-size:7px;font-weight:800;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:.2s;margin-top:8px}.btn-maps:hover{background:var(--red);border-color:var(--red)}
-body>div:last-child{background:#060708!important;border-color:var(--line)!important;color:#454c56!important}body>div:last-child a{color:#454c56!important}
-
-/* MOTION */
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-
-/* RESPONSIVE */
-@media(max-width:1180px){header{padding-inline:24px}.hero{grid-template-columns:1fr 450px}.services-grid{grid-template-columns:repeat(3,1fr)}.benefits-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:900px){header{flex-wrap:wrap;padding:16px 20px;gap:13px}.logo-text{font-size:26px}nav{order:3;flex-basis:100%;overflow-x:auto;justify-content:flex-start;padding-bottom:2px}nav a{white-space:nowrap}.hero{grid-template-columns:1fr;min-height:auto;padding-top:65px}.hero-text{max-width:760px}.card-container{max-width:620px;margin:0 auto}.hero:after{display:none}.services-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){header{min-height:auto}.nav-social{display:none}.hero{padding:48px 16px 45px;background-position:62% center}.hero-title{font-size:59px;letter-spacing:-1px}.hero-subtitle{font-size:12px}.turno-card-unified{padding:13px;border-radius:16px}.tabs-header{grid-template-columns:repeat(6,minmax(75px,1fr));overflow-x:auto;justify-content:start}.tab-btn{font-size:6.5px}.form-grid-2{grid-template-columns:1fr}.form-group-sm.full{grid-column:auto}.main-section{padding:62px 16px}.section-title{font-size:34px}.section-title:before,.section-title:after{max-width:45px}.services-grid{grid-template-columns:1fr}.service-card{min-height:165px}.benefits-grid{grid-template-columns:1fr}.benefits-bar{padding:35px 16px}.benefit-item{padding:14px}.logo-text:after{font-size:6px}}
-
-/* MEJORAS FUNCIONALES */
-.loyalty-progress{height:7px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:99px;overflow:hidden;margin-top:8px}
-.loyalty-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:99px}
-.coupon-card{background:linear-gradient(135deg,rgba(229,36,33,.07),rgba(255,255,255,.025));border:1px solid rgba(49,209,124,.35);border-radius:12px;padding:14px;margin-top:12px}
-.coupon-card.used,.coupon-card.expired{opacity:.55;border-color:var(--line)}
-.coupon-head{display:flex;justify-content:space-between;gap:10px}
-.coupon-big{font-family:'Barlow Condensed',sans-serif;font-size:29px;font-weight:900;font-style:italic;color:var(--green);line-height:1}
-.coupon-status{font-size:8px;font-weight:900;letter-spacing:1px;color:var(--green);margin-top:4px}
-.coupon-status.bad{color:var(--muted)}
-.coupon-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
-.coupon-meta div{background:rgba(7,9,11,.7);border:1px solid var(--line);border-radius:8px;padding:8px}
-.coupon-meta small{display:block;color:var(--muted-2);font-size:7px;text-transform:uppercase}
-.coupon-meta strong{display:block;font-size:10px;margin-top:2px}
-.qr-box{background:#fff;border-radius:99px;padding:9px;width:max-content;margin:12px auto 7px}
-.qr-box canvas,.qr-box img{display:block!important;margin:0 auto;}
-.coupon-code{text-align:center;font:800 10px monospace;letter-spacing:2px}
-.btn-mini{background:#171a1e;border:1px solid var(--line-strong);color:#fff;border-radius:7px;padding:7px 9px;font-size:8px;font-weight:900;cursor:pointer;text-transform:uppercase}
-.btn-mini:hover{border-color:var(--red)}
-.history-actions{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-.history-actions .btn-mini.danger{border-color:rgba(229,36,33,.35);color:#ff625e}
-.history-actions .btn-mini.success{border-color:rgba(49,209,124,.35);color:#63e99a}
-.edit-box{margin:8px 0 10px;padding:11px;border:1px solid rgba(229,36,33,.3);background:rgba(229,36,33,.035);border-radius:10px}
-.edit-box-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.edit-box input,.edit-box select{width:100%;height:36px;background:#0b0d10;border:1px solid var(--line);border-radius:7px;color:#fff;padding:0 9px;font-size:9px}
-.edit-box .full{grid-column:1/-1}
-.workshop-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}
-.workshop-stat{background:rgba(7,9,11,.65);border:1px solid var(--line);border-radius:9px;padding:9px}
-.workshop-stat small{display:block;color:var(--muted-2);font-size:7px;text-transform:uppercase}
-.workshop-stat strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:21px;margin-top:1px}
-.qr-panel{margin-top:15px;padding:12px;border:1px solid rgba(229,36,33,.3);border-radius:12px;background:rgba(229,36,33,.035)}
-.qr-panel p{font-size:9px;color:var(--muted);margin:4px 0 9px}
-#qr-reader{display:none;margin-top:10px;border-radius:10px;overflow:hidden;background:#000}
-#qr-reader video{width:100%!important}
-.qr-result{margin-top:9px;padding:11px;border-radius:9px;font-size:9px;line-height:1.55}
-.qr-result.ok{border:1px solid rgba(49,209,124,.35);background:rgba(49,209,124,.07)}
-.qr-result.bad{border:1px solid rgba(229,36,33,.4);background:rgba(229,36,33,.07)}
-.qr-result.ok strong{color:var(--green)}
-.qr-result.bad strong{color:#ff625e}
-.logout-btn{width:100%;margin-top:8px;padding:9px;background:#171a1e;border:1px solid var(--line);color:#9da4ae;border-radius:8px;font-size:8px;font-weight:900;text-transform:uppercase;cursor:pointer}
-@media(max-width:620px){
-  .edit-box-grid{grid-template-columns:1fr}
-  .edit-box .full{grid-column:auto}
-  .workshop-stats{grid-template-columns:1fr 1fr 1fr}
-}
-
-/* ===== LOADER MOTO ===== */
-#moto-loader-overlay{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;flex-direction:column;gap:26px;background:radial-gradient(circle at 50% 35%,rgba(30,10,10,.97),rgba(4,5,6,.99) 70%);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow:hidden}
-#moto-loader-overlay.show{display:flex;animation:loaderFadeIn .25s ease both}
-@keyframes loaderFadeIn{from{opacity:0}to{opacity:1}}
-.moto-loader-road{position:relative;width:min(88vw,460px);height:150px;overflow:hidden}
-.moto-loader-road:before{content:"";position:absolute;left:0;right:0;bottom:26px;height:2px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0 26px,transparent 26px 50px);animation:moto-road-move .55s linear infinite}
-.moto-loader-road:after{content:"";position:absolute;left:0;right:0;bottom:0;height:26px;background:linear-gradient(180deg,rgba(229,36,33,.16),transparent);border-bottom:1px solid rgba(255,255,255,.08)}
-.moto-loader-glow{position:absolute;left:50%;bottom:16px;width:230px;height:70px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(229,36,33,.4),transparent 70%);filter:blur(6px);animation:moto-glow-pulse 1.1s ease-in-out infinite}
-@keyframes moto-glow-pulse{0%,100%{opacity:.55;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.12)}}
-.moto-loader-bike{position:absolute;bottom:22px;left:50%;width:150px;height:auto;transform:translateX(-50%);animation:moto-bounce .42s ease-in-out infinite;filter:drop-shadow(0 10px 14px rgba(229,36,33,.35))}
-@keyframes moto-bounce{0%,100%{transform:translateX(-50%) translateY(0) rotate(0deg)}50%{transform:translateX(-50%) translateY(-5px) rotate(-1deg)}}
-.moto-loader-wheel{transform-origin:center;animation:moto-wheel-spin .35s linear infinite}
-@keyframes moto-wheel-spin{to{transform:rotate(360deg)}}
-.moto-loader-smoke{position:absolute;bottom:24px;border-radius:50%;background:rgba(255,255,255,.12);animation:moto-smoke-puff 1.1s ease-out infinite}
-.moto-loader-smoke.s1{left:calc(50% + 78px);width:10px;height:10px;animation-delay:0s}
-.moto-loader-smoke.s2{left:calc(50% + 92px);width:7px;height:7px;animation-delay:.35s}
-.moto-loader-smoke.s3{left:calc(50% + 104px);width:5px;height:5px;animation-delay:.7s}
-@keyframes moto-smoke-puff{0%{opacity:.55;transform:translate(0,0) scale(.6)}100%{opacity:0;transform:translate(26px,-16px) scale(1.6)}}
-.moto-loader-spark{position:absolute;bottom:23px;left:calc(50% - 78px);width:4px;height:4px;border-radius:50%;background:#ffb199;box-shadow:0 0 6px 1px rgba(255,140,120,.8);animation:moto-spark-fly .5s ease-out infinite}
-.moto-loader-spark:nth-child(2){animation-delay:.18s;bottom:26px}
-.moto-loader-spark:nth-child(3){animation-delay:.34s;bottom:20px}
-@keyframes moto-spark-fly{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(-22px,10px)}}
-.moto-loader-text{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-style:italic;font-size:19px;letter-spacing:.6px;text-transform:uppercase;color:#fff;text-align:center;text-shadow:0 4px 18px rgba(229,36,33,.35)}
-.moto-loader-text span{color:var(--red)}
-.moto-loader-sub{display:flex;align-items:center;gap:6px;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.moto-loader-dot{width:5px;height:5px;border-radius:50%;background:var(--red);animation:moto-dot-blink 1s ease-in-out infinite}
-.moto-loader-dot:nth-child(2){animation-delay:.15s}
-.moto-loader-dot:nth-child(3){animation-delay:.3s}
-@keyframes moto-dot-blink{0%,100%{opacity:.25;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
-.moto-loader-bar{width:min(70vw,260px);height:4px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
-.moto-loader-bar span{display:block;height:100%;width:40%;border-radius:99px;background:linear-gradient(90deg,var(--red),#ff8b62);animation:moto-bar-slide 1.1s ease-in-out infinite}
-@keyframes moto-bar-slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
-@media(max-width:620px){.moto-loader-road{height:120px}.moto-loader-bike{width:118px;bottom:20px}.moto-loader-text{font-size:16px}}
-
-/* ESTADO DE BASE ONLINE */
-.online-status{position:fixed;right:14px;bottom:14px;z-index:9998;padding:7px 10px;border-radius:999px;font-size:8px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;background:rgba(17,20,23,.92);border:1px solid var(--line);color:var(--muted);backdrop-filter:blur(8px);display:none}
-.online-status.ok{display:block;color:#63e99a;border-color:rgba(49,209,124,.35)}
-.online-status.off{display:block;color:#ffb45c;border-color:rgba(255,180,92,.35)}
-</style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --card-bg: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        main {
+            padding: 2rem 0;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="onlineStatus" class="online-status off">☁ Modo local</div>
-
     <header>
-        <a href="#" class="logo-text">MAS <span>RACING</span></a>
-        
-        <nav>
-            <a href="#inicio" class="active">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#turnos">Turnos y Registro</a>
-            <a href="#contacto">Ubicación</a>
-        </nav>
-
-        <div class="nav-social">
-            <a href="https://www.instagram.com/masracingmotomecanica" target="_blank" class="btn-ig">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
+        <div class="container">
+            <h1>Mi Proyecto Web</h1>
+            <p>Una página web moderna y responsiva</p>
         </div>
     </header>
-
-    <section class="hero" id="inicio">
-        <div class="hero-text">
-            <h1 class="hero-title">TU MOTO <span>EN LAS MEJORES MANOS</span></h1>
-            <p class="hero-subtitle">Mantenimiento profesional, repuestos de primera y registro de historial para descuentos exclusivos.</p>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </div>
-
-        <div class="card-container" id="turnos">
-            <div class="turno-card-unified">
-                
-                <!-- PESTAÑAS DE NAVEGACIÓN -->
-                <div class="tabs-header">
-                    <button class="tab-btn active" id="btn-tab-registro" onclick="switchTab('tab-registro')"><i class="fa-solid fa-id-card"></i> 1. Registro</button>
-                    <button class="tab-btn" id="btn-tab-turno" onclick="switchTab('tab-turno')"><i class="fa-regular fa-calendar-plus"></i> 2. Turno</button>
-                    <button class="tab-btn" id="btn-tab-cancelar" onclick="switchTab('tab-cancelar')"><i class="fa-regular fa-calendar-xmark"></i> 3. Mis Turnos</button>
-                    <button class="tab-btn" id="btn-tab-perfil" onclick="switchTab('tab-perfil')"><i class="fa-solid fa-motorcycle"></i> 4. Taller</button>
-                    <button class="tab-btn" id="btn-tab-miperfil" onclick="switchTab('tab-miperfil')"><i class="fa-solid fa-user"></i> 5. Mi Perfil</button>
-                    <button class="tab-btn" id="btn-tab-descuentos" onclick="switchTab('tab-descuentos')"><i class="fa-solid fa-ticket"></i> 6. Cupones</button>
+    </nav>
+    
+    <main class="container">
+        <section id="inicio" class="hero">
+            <h2>Bienvenido a Mi Proyecto</h2>
+            <p>Explora nuestras características y descubre cómo podemos ayudarte</p>
+            <a href="#servicios" class="btn">Explorar más</a>
+        </section>
+        
+        <section id="servicios">
+            <h2>Nuestros Servicios</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Diseño Web</h3>
+                    <p>Creamos sitios web modernos y atractivos que se adaptan a tus necesidades.</p>
+                    <a href="#" class="btn open-modal" data-service="diseño">Saber más</a>
                 </div>
-
-                <!-- PESTAÑA 1: REGISTRO -->
-                <div id="tab-registro" class="tab-content active">
-                    <h4 style="font-size:14px; margin-bottom:8px;">REGISTRATE Y OBTENÉ DESCUENTOS</h4>
-                    <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">Creá tu ficha de cliente para registrar los services de tu moto y acceder a beneficios.</p>
-                    
-                    <form id="formRegistro" onsubmit="event.preventDefault(); registrarCliente();">
-                        <div class="form-group-sm">
-                            <label>DNI</label>
-                            <input type="number" id="regDni" placeholder="Tu número de DNI" required>
-                        </div>
-                        <div class="form-group-sm">
-                            <label>Nombre y Apellido</label>
-                            <input type="text" id="regNombre" placeholder="Ej: Juan Pérez" required>
-                        </div>
-                        <div class="form-group-sm">
-                            <label>Teléfono (WhatsApp)</label>
-                            <input type="tel" id="regTelefono" placeholder="Ej: 3425688013" required>
-                        </div>
-                        <div class="form-group-sm">
-                            <label>Correo Electrónico</label>
-                            <input type="email" id="regEmail" placeholder="ejemplo@email.com" required>
-                        </div>
-                        
-                        <button type="submit" class="btn-red">
-                            <i class="fa-solid fa-user-plus"></i> REGISTRARME COMO CLIENTE
-                        </button>
-                    </form>
+                <div class="card">
+                    <h3>Desarrollo</h3>
+                    <p>Desarrollamos aplicaciones web funcionales con las últimas tecnologías.</p>
+                    <a href="#" class="btn open-modal" data-service="desarrollo">Saber más</a>
                 </div>
-
-                <!-- PESTAÑA 2: SOLICITAR TURNO -->
-                <div id="tab-turno" class="tab-content">
-                    <div id="clienteBox" class="profile-badge" style="display:none;">
-                        <p><strong id="badgeNombre">Juan Pérez</strong> (DNI: <span id="badgeDni"></span>)</p>
-                        <p>Trabajos realizados: <strong id="badgeTrabajos">0</strong></p>
-                        <div id="badgeDescuento" class="discount-tag" style="display:none;">¡Tenés 15% OFF EN MANO DE OBRA!</div>
-                        <p id="badgeHistorial" style="font-size:10px; color:var(--texto-gris); margin-top:8px; line-height:1.6;"></p>
-                    </div>
-
-                    <div class="profile-badge" id="servicioBox" style="border-color: var(--gris-borde);">
-                        <p style="font-size:10px; color:var(--texto-gris); margin-bottom:2px;">SERVICIO SELECCIONADO:</p>
-                        <p><strong id="servicioSeleccionadoTexto" style="color: var(--rojo-racing);">Ninguno todavía — elegí uno en "Servicios Disponibles" ⬇️</strong></p>
-                    </div>
-
-                    <form id="formTurno" onsubmit="event.preventDefault(); reservarYEnviarWhatsApp();">
-                        <div class="form-grid-2">
-                            <div class="form-group-sm full">
-                                <label>DNI del Cliente (Para verificar registro)</label>
-                                <input type="number" id="turnoDni" placeholder="Ingresá tu DNI" onchange="verificarDniAuto()" oninput="verificarDniAuto()" required>
-                            </div>
-
-                            <div class="form-group-sm">
-                                <label>MARCA DE MOTO</label>
-                                <select id="motoMarca">
-                                    <option value="Honda">Honda</option>
-                                    <option value="Yamaha">Yamaha</option>
-                                    <option value="Motomel">Motomel</option>
-                                    <option value="Corven">Corven</option>
-                                    <option value="Zanella">Zanella</option>
-                                    <option value="Otra">Otra Marca</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group-sm">
-                                <label>MODELO / CILINDRADA</label>
-                                <input type="text" id="motoModelo" placeholder="Ej: XR 150L" required>
-                            </div>
-
-                            <div class="form-group-sm">
-                                <label><i class="fa-regular fa-calendar"></i> FECHA</label>
-                                <input type="date" id="turnoFecha" onchange="actualizarHorariosDisponibles()" required>
-                            </div>
-
-                            <div class="form-group-sm">
-                                <label><i class="fa-regular fa-clock"></i> HORARIO DISPONIBLE</label>
-                                <select id="turnoHora" required>
-                                    <!-- Se cargan dinámicamente -->
-                                </select>
-                            </div>
-
-                            <div class="form-group-sm">
-                                <label><i class="fa-solid fa-gauge-high"></i> KILOMETRAJE ACTUAL</label>
-                                <input type="number" id="motoKm" placeholder="Ej: 12500" min="0">
-                            </div>
-
-                            <div class="form-group-sm full">
-                                <label><i class="fa-solid fa-box-open"></i> PROVISIÓN DE REPUESTOS</label>
-                                <select id="repuestosModo">
-                                    <option value="Se encarga el taller (Nosotros los conseguimos)">Se encarga el taller (Nosotros los conseguimos)</option>
-                                    <option value="Llevo mis propios repuestos">Llevo mis propios repuestos (Comprados por el cliente)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn-red">
-                            <i class="fa-regular fa-calendar-check"></i> AGENDAR Y RESERVAR TURNO
-                        </button>
-                    </form>
+                <div class="card">
+                    <h3>Consultoría</h3>
+                    <p>Asesoramos para mejorar tu presencia online y alcanzar tus objetivos.</p>
+                    <a href="#" class="btn open-modal" data-service="consultoría">Saber más</a>
                 </div>
-
-                <!-- PESTAÑA 3: MIS TURNOS / CANCELAR -->
-                <div id="tab-cancelar" class="tab-content">
-                    <h4 style="font-size:14px; margin-bottom:10px;">CONSULTAR O CANCELAR TURNO</h4>
-                    <div class="form-group-sm">
-                        <label>Ingresá tu DNI para ver tus turnos agendados</label>
-                        <input type="number" id="buscarDni" placeholder="Tu DNI">
-                    </div>
-                    <button type="button" class="btn-red" onclick="buscarTurnosCliente()">BUSCAR MIS TURNOS</button>
-
-                    <div class="my-turnos-list" id="listaMisTurnos"></div>
-                </div>
-
-                <!-- PESTAÑA 4: PANEL DEL TALLER -->
-                <div id="tab-perfil" class="tab-content">
-                    <div id="tallerLogin">
-                        <h4 style="font-size:14px; margin-bottom:8px;">PANEL DEL TALLER</h4>
-                        <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">Acceso solo para MAS RACING. Ingresá la clave para cargar el trabajo hecho en el historial de un cliente.</p>
-                        <div class="form-group-sm">
-                            <label>Clave de acceso</label>
-                            <input type="password" id="tallerClave" placeholder="Clave del taller">
-                        </div>
-                        <button type="button" class="btn-red" onclick="ingresarPanelTaller()">INGRESAR</button>
-                    </div>
-
-                    <div id="tallerPanel" style="display:none;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                            <h4 style="font-size:14px;">CARGAR TRABAJO REALIZADO</h4>
-                            <button type="button" class="btn-mini" onclick="cerrarSesionTaller()"><i class="fa-solid fa-right-from-bracket"></i> SALIR</button>
-                        </div>
-                        <p style="font-size:11px; color:var(--texto-gris); margin-bottom:8px;">Buscá al cliente por DNI y registrá qué se le hizo a la moto ese día.</p>
-                        <div style="font-size:8px;color:var(--green);font-weight:800;letter-spacing:.7px;margin-bottom:15px;">
-                            <i class="fa-solid fa-shield-halved"></i> HISTORIAL CON RESPALDO AUTOMÁTICO
-                        </div>
-
-                        <div class="form-grid-2">
-                            <div class="form-group-sm full">
-                                <label>DNI del Cliente</label>
-                                <input type="number" id="tallerDni" placeholder="DNI del cliente" onchange="buscarClienteTaller()" oninput="buscarClienteTaller()">
-                            </div>
-
-                            <div class="form-group-sm full" id="tallerClienteInfo" style="display:none;">
-                                <div class="profile-badge" style="margin-bottom:0;">
-                                    <p><strong id="tallerClienteNombre"></strong></p>
-                                    <p style="font-size:10px; color:var(--texto-gris);">Trabajos previos: <strong id="tallerClienteTrabajos">0</strong></p>
-                                    <button type="button" class="btn-red btn-cancel" style="margin-top:10px;" onclick="eliminarClienteTaller(document.getElementById('tallerDni').value.trim())">
-                                        <i class="fa-solid fa-user-xmark"></i> ELIMINAR CUENTA DE ESTE CLIENTE
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="form-group-sm full" id="tallerNombreNuevoBox" style="display:none;">
-                                <label>Cliente no encontrado — cargá su nombre</label>
-                                <input type="text" id="tallerNombreNuevo" placeholder="Nombre y Apellido">
-                            </div>
-
-                            <div class="form-group-sm">
-                                <label>FECHA DEL TRABAJO</label>
-                                <input type="date" id="tallerFecha">
-                            </div>
-                            <div class="form-group-sm">
-                                <label>KILOMETRAJE</label>
-                                <input type="number" id="tallerKm" placeholder="Ej: 14200" min="0">
-                            </div>
-                            <div class="form-group-sm">
-                                <label>MARCA</label>
-                                <input type="text" id="tallerMarca" placeholder="Ej: Honda">
-                            </div>
-                            <div class="form-group-sm">
-                                <label>MODELO</label>
-                                <input type="text" id="tallerModelo" placeholder="Ej: XR 150L">
-                            </div>
-                            <div class="form-group-sm full">
-                                <label>TRABAJO REALIZADO</label>
-                                <select id="tallerServicio">
-                                    <option value="Service Completo">Service Completo</option>
-                                    <option value="Frenos">Frenos</option>
-                                    <option value="Transmisión">Transmisión</option>
-                                    <option value="Amortiguación">Amortiguación</option>
-                                    <option value="Diagnóstico">Diagnóstico</option>
-                                    <option value="Otro">Otro (especificar en notas)</option>
-                                </select>
-                            </div>
-                            <div class="form-group-sm full">
-                                <label>NOTAS (OPCIONAL)</label>
-                                <input type="text" id="tallerNotas" placeholder="Detalles, repuestos usados, etc.">
-                            </div>
-
-                            <div class="form-group-sm">
-                                <label><i class="fa-solid fa-sack-dollar"></i> MANO DE OBRA ($)</label>
-                                <input type="text" inputmode="numeric" id="tallerMontoTrabajo" placeholder="Ej: 9500">
-                            </div>
-                            <div class="form-group-sm" style="display:flex; align-items:flex-end;">
-                                <label style="display:flex; align-items:center; gap:8px; margin-bottom:11px; cursor:pointer;">
-                                    <input type="checkbox" id="tallerUsoRepuestos" onchange="toggleRepuestosBox()" style="width:auto; height:auto;">
-                                    ¿Se compraron repuestos?
-                                </label>
-                            </div>
-
-                            <div class="form-group-sm full" id="tallerRepuestosBox" style="display:none;">
-                                <label>DETALLE DE REPUESTOS COMPRADOS</label>
-                                <input type="text" id="tallerRepuestosDetalle" placeholder="Ej: Pastillas de freno + kit de arrastre">
-                            </div>
-                            <div class="form-group-sm full" id="tallerRepuestosMontoBox" style="display:none;">
-                                <label><i class="fa-solid fa-box-open"></i> COSTO DE REPUESTOS ($)</label>
-                                <input type="text" inputmode="numeric" id="tallerMontoRepuestos" placeholder="Ej: 3000">
-                            </div>
-                        </div>
-
-                        <button type="button" class="btn-red" onclick="guardarTrabajoTaller()">
-                            <i class="fa-solid fa-floppy-disk"></i> GUARDAR EN EL HISTORIAL
-                        </button>
-
-                        <div id="tallerStatsPro" class="workshop-stats"></div>
-                        <button type="button" class="btn-red" style="background:linear-gradient(135deg,#2c3038,#1a1d22); box-shadow:none; border-color:var(--gris-borde);" onclick="toggleHistorialGlobalTaller()">
-                            <i class="fa-solid fa-layer-group"></i> VER HISTORIAL COMPLETO DEL TALLER
-                        </button>
-
-                        <div id="tallerHistorialGlobalContainer" style="display:none; margin-top:15px;"></div>
-
-                        <button type="button" class="btn-red" style="background:linear-gradient(135deg,#2c3038,#1a1d22); box-shadow:none; border-color:var(--gris-borde); margin-top:8px;" onclick="toggleClientesRegistrados()">
-                            <i class="fa-solid fa-address-book"></i> VER CLIENTES REGISTRADOS
-                        </button>
-
-                        <div id="tallerClientesRegistradosContainer" style="display:none; margin-top:15px;"></div>
-
-                        <div class="qr-panel">
-                            <h4 style="font-size:13px;">VALIDAR CUPÓN 15% OFF</h4>
-                            <p>Escaneá el QR que muestra el cliente. El descuento aplica únicamente a la mano de obra.</p>
-                            <button type="button" class="btn-red" onclick="abrirScannerPro()">
-                                <i class="fa-solid fa-qrcode"></i> ESCANEAR CUPÓN
-                            </button>
-                            <div id="qr-reader"></div>
-                            <div id="qr-verificacion-pro"></div>
-                        </div>
-
-                        <h4 style="font-size:13px; margin:20px 0 8px;">HISTORIAL DE ESTE CLIENTE</h4>
-                        <div id="tallerHistorial"></div>
-                    </div>
-                </div>
-
-                <!-- PESTAÑA 5: MI PERFIL (CLIENTES) -->
-                <div id="tab-miperfil" class="tab-content">
-                    <h4 style="font-size:14px; margin-bottom:8px;">HISTORIAL DE TU MOTO</h4>
-                    <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">Ingresá tu DNI para ver cada trabajo que le hicimos a tu moto y cuándo te recomendamos volver.</p>
-
-                    <div class="form-group-sm">
-                        <label>DNI</label>
-                        <input type="number" id="clienteMiPerfilDni" placeholder="Tu DNI">
-                    </div>
-                    <button type="button" class="btn-red" onclick="verMiPerfilCliente()">
-                        <i class="fa-solid fa-clock-rotate-left"></i> VER MI HISTORIAL
-                    </button>
-
-                    <div id="clienteMiPerfilResultado" style="margin-top:15px;"></div>
-                </div>
-
-                <!-- PESTAÑA 6: FIDELIDAD Y CUPONES -->
-                <div id="tab-descuentos" class="tab-content">
-                    <h4 style="font-size:14px; margin-bottom:8px;">FIDELIDAD MAS RACING</h4>
-                    <p style="font-size:11px; color:var(--texto-gris); margin-bottom:15px;">
-                        Cada <strong>3 SERVICES</strong> realizados habilita automáticamente un <strong style="color:var(--green);">15% OFF EN MANO DE OBRA</strong>.
-                    </p>
-                    <div class="form-group-sm">
-                        <label>DNI</label>
-                        <input type="number" id="descuentoDni" placeholder="Tu DNI">
-                    </div>
-                    <button type="button" class="btn-red" onclick="verMisDescuentosPro()">
-                        <i class="fa-solid fa-ticket"></i> VER MIS BENEFICIOS
-                    </button>
-                    <div id="descuentosResultadoPro" style="margin-top:15px;"></div>
-                </div>
-
             </div>
+        </section>
+        
+        <section id="nosotros">
+            <h2>Sobre Nosotros</h2>
+            <div class="card">
+                <p>Somos un equipo apasionado por el diseño y desarrollo web. Con años de experiencia, hemos ayudado a numerosos clientes a alcanzar sus objetivos digitales.</p>
+                <p>Nuestra misión es crear soluciones web innovadoras que impulsen el crecimiento de nuestros clientes.</p>
+            </div>
+        </section>
+        
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <div class="card">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Mi Proyecto Web. Todos los derechos reservados.</p>
         </div>
-    </section>
-
-    <!-- SECCIÓN DE SERVICIOS -->
-    <section class="main-section" id="servicios">
-        <h2 class="section-title">SERVICIOS DISPONIBLES</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fa-solid fa-wrench"></i>
-                <h4>SERVICE</h4>
-                <button class="btn-outline" onclick="seleccionarServicio(this, 'Service Completo')">SELECCIONAR</button>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-circle-dot"></i>
-                <h4>FRENOS</h4>
-                <button class="btn-outline" onclick="seleccionarServicio(this, 'Frenos')">SELECCIONAR</button>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-link"></i>
-                <h4>TRANSMISIÓN</h4>
-                <button class="btn-outline" onclick="seleccionarServicio(this, 'Transmisión')">SELECCIONAR</button>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-arrows-up-down"></i>
-                <h4>AMORTIGUACIÓN</h4>
-                <button class="btn-outline" onclick="seleccionarServicio(this, 'Amortiguación')">SELECCIONAR</button>
-            </div>
-            <div class="service-card">
-                <i class="fa-solid fa-clipboard-check"></i>
-                <h4>DIAGNÓSTICO</h4>
-                <button class="btn-outline" onclick="seleccionarServicio(this, 'Diagnóstico')">SELECCIONAR</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER Y UBICACIÓN -->
-    <div class="benefits-bar" id="contacto">
-        <div class="benefits-grid">
-            <div class="benefit-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <div class="benefit-info">
-                    <h5>UBICACIÓN</h5>
-                    <p>Av. Luján 4156, Santo Tomé</p>
-                    <a href="https://maps.app.goo.gl/iBWNATXhKhPDkS2x8" target="_blank" class="btn-maps">
-                        <i class="fa-solid fa-map-location-dot"></i> Cómo Llegar
-                    </a>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <i class="fa-brands fa-instagram"></i>
-                <div class="benefit-info">
-                    <h5>INSTAGRAM</h5>
-                    <p>@masracingmotomecanica</p>
-                    <a href="https://www.instagram.com/masracingmotomecanica" target="_blank" class="btn-maps">
-                        <i class="fa-brands fa-instagram"></i> Seguir
-                    </a>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <i class="fa-solid fa-headset"></i>
-                <div class="benefit-info">
-                    <h5>ATENCIÓN</h5>
-                    <p>Asesoramiento a medida</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <i class="fa-solid fa-shield"></i>
-                <div class="benefit-info">
-                    <h5>GARANTÍA</h5>
-                    <p>Calidad y respaldo</p>
-                </div>
-            </div>
-            <div class="benefit-item">
-                <i class="fa-solid fa-heart"></i>
-                <div class="benefit-info">
-                    <h5>PASIÓN</h5>
-                    <p>Somos motociclistas</p>
-                </div>
-            </div>
+    </footer>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Información del Servicio</h2>
+            <p id="modal-description">Aquí encontrarás detalles sobre nuestro servicio.</p>
         </div>
     </div>
-
-    <div style="text-align:center; padding: 14px 20px; font-size: 10px; color: #4A4E57; border-top: 1px solid var(--gris-borde);">
-        Desarrollado por Genaro Courtalon Boero ·
-        <a href="mailto:genaroboero6@gmail.com" style="color:#4A4E57; text-decoration:none;">genaroboero6@gmail.com</a> ·
-        <a href="https://www.instagram.com/gena.courtalon/" target="_blank" style="color:#4A4E57; text-decoration:none;">@gena.courtalon</a>
-    </div>
-
-    <!-- LOADER MOTO -->
-    <div id="moto-loader-overlay">
-        <div class="moto-loader-road">
-            <div class="moto-loader-glow"></div>
-            <div class="moto-loader-smoke s1"></div>
-            <div class="moto-loader-smoke s2"></div>
-            <div class="moto-loader-smoke s3"></div>
-            <div class="moto-loader-spark"></div>
-            <div class="moto-loader-spark"></div>
-            <div class="moto-loader-spark"></div>
-                        <svg class="moto-loader-bike" viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="motoFairingTop" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#ff5b56"/>
-                        <stop offset="45%" stop-color="#e52421"/>
-                        <stop offset="100%" stop-color="#7a0f0d"/>
-                    </linearGradient>
-                    <linearGradient id="motoFairingLow" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#22262b"/>
-                        <stop offset="100%" stop-color="#0a0c0e"/>
-                    </linearGradient>
-                    <linearGradient id="motoScreen" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#3a4650" stop-opacity="0.9"/>
-                        <stop offset="100%" stop-color="#12161a" stop-opacity="0.85"/>
-                    </linearGradient>
-                    <radialGradient id="motoRim" cx="35%" cy="30%" r="75%">
-                        <stop offset="0%" stop-color="#7d8590"/>
-                        <stop offset="55%" stop-color="#33383f"/>
-                        <stop offset="100%" stop-color="#0a0c0e"/>
-                    </radialGradient>
-                    <linearGradient id="motoExhaust" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#e8ecef"/>
-                        <stop offset="45%" stop-color="#9aa3ab"/>
-                        <stop offset="100%" stop-color="#4c5359"/>
-                    </linearGradient>
-                    <linearGradient id="motoTank" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#ff4b47"/>
-                        <stop offset="100%" stop-color="#b81a17"/>
-                    </linearGradient>
-                </defs>
-
-                <ellipse cx="132" cy="124" rx="96" ry="6.5" fill="#000" opacity="0.42"/>
-
-                <!-- linea de movimiento -->
-                <g opacity="0.5">
-                    <line x1="4" y1="70" x2="34" y2="70" stroke="#e52421" stroke-width="2.4" stroke-linecap="round"/>
-                    <line x1="0" y1="82" x2="22" y2="82" stroke="#e52421" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
-                    <line x1="6" y1="94" x2="28" y2="94" stroke="#e52421" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
-                </g>
-
-                <!-- swingarm / basculante -->
-                <path d="M112 88 L166 84 L200 104 L128 110 Z" fill="url(#motoFairingLow)" stroke="#000" stroke-width="0.6"/>
-                <path d="M118 90 L160 87" stroke="#3a3f46" stroke-width="1.2" opacity="0.7"/>
-
-                <!-- rueda trasera -->
-                <g class="moto-loader-wheel" style="transform-origin:212px 104px;">
-                    <circle cx="212" cy="104" r="27" fill="#050607" stroke="#25292e" stroke-width="2.5"/>
-                    <circle cx="212" cy="104" r="27" fill="url(#motoRim)" opacity="0.18"/>
-                    <circle cx="212" cy="104" r="18" fill="#0a0c0e" stroke="#454b53" stroke-width="1.2"/>
-                    <g stroke="#5b626b" stroke-width="1.5">
-                        <line x1="212" y1="86" x2="212" y2="122"/>
-                        <line x1="194" y1="104" x2="230" y2="104"/>
-                        <line x1="199.2" y1="91.2" x2="224.8" y2="116.8"/>
-                        <line x1="224.8" y1="91.2" x2="199.2" y2="116.8"/>
-                        <line x1="203.5" y1="88" x2="220.5" y2="120"/>
-                        <line x1="220.5" y1="88" x2="203.5" y2="120"/>
-                        <line x1="196" y1="112" x2="228" y2="96"/>
-                        <line x1="196" y1="96" x2="228" y2="112"/>
-                    </g>
-                    <circle cx="212" cy="104" r="6" fill="#111417" stroke="#5b626b" stroke-width="1"/>
-                    <circle cx="212" cy="104" r="19" fill="none" stroke="#e52421" stroke-width="1.4" opacity="0.85"/>
-                </g>
-
-                <!-- rueda delantera con disco de freno -->
-                <g class="moto-loader-wheel" style="transform-origin:60px 104px;">
-                    <circle cx="60" cy="104" r="27" fill="#050607" stroke="#25292e" stroke-width="2.5"/>
-                    <circle cx="60" cy="104" r="24" fill="none" stroke="#c7ccd1" stroke-width="1.6" opacity="0.75"/>
-                    <circle cx="60" cy="104" r="18" fill="#0a0c0e" stroke="#454b53" stroke-width="1.2"/>
-                    <g stroke="#5b626b" stroke-width="1.5">
-                        <line x1="60" y1="86" x2="60" y2="122"/>
-                        <line x1="42" y1="104" x2="78" y2="104"/>
-                        <line x1="47.2" y1="91.2" x2="72.8" y2="116.8"/>
-                        <line x1="72.8" y1="91.2" x2="47.2" y2="116.8"/>
-                        <line x1="51.5" y1="88" x2="68.5" y2="120"/>
-                        <line x1="68.5" y1="88" x2="51.5" y2="120"/>
-                        <line x1="44" y1="112" x2="76" y2="96"/>
-                        <line x1="44" y1="96" x2="76" y2="112"/>
-                    </g>
-                    <circle cx="60" cy="104" r="6" fill="#111417" stroke="#5b626b" stroke-width="1"/>
-                    <path d="M46 92 A19 19 0 0 1 74 92" fill="none" stroke="#dfe3e6" stroke-width="2" opacity="0.5"/>
-                </g>
-                <!-- pinza de freno -->
-                <path d="M76 96 L86 92 L88 106 L78 110 Z" fill="#1a1d22" stroke="#3a3f46" stroke-width="0.8"/>
-
-                <!-- horquilla delantera -->
-                <path d="M60 104 L96 66" stroke="url(#motoExhaust)" stroke-width="7" stroke-linecap="round"/>
-                <path d="M60 104 L96 66" stroke="#0a0c0e" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-
-                <!-- chasis trellis -->
-                <path d="M118 60 L150 58 L156 78 L128 88 L108 78 Z" fill="none" stroke="#3a3f46" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M118 60 L128 88" stroke="#3a3f46" stroke-width="2.4"/>
-
-                <!-- escape deportivo cromado -->
-                <path d="M170 96 Q198 90 214 70 Q219 63 212 61 Q198 58 186 68 Q168 82 160 96 Z" fill="url(#motoExhaust)" stroke="#2c3136" stroke-width="1"/>
-                <ellipse cx="212" cy="65" rx="6" ry="5" fill="#12151a"/>
-                <ellipse cx="212" cy="65" rx="3.2" ry="2.6" fill="#000"/>
-                <path d="M176 92 Q196 86 208 72" stroke="#fff" stroke-width="1.2" opacity="0.45" fill="none"/>
-
-                <!-- panel motor -->
-                <path d="M108 78 L150 78 L156 96 L120 104 Z" fill="url(#motoFairingLow)"/>
-                <path d="M112 80 L146 80" stroke="#3a3f46" stroke-width="1" opacity="0.6"/>
-
-                <!-- carenado bajo / panza -->
-                <path d="M92 92 Q116 80 150 82 Q166 84 172 96 Q150 104 118 106 Q98 106 92 92 Z" fill="url(#motoFairingLow)"/>
-                <path d="M96 90 Q120 80 150 84" stroke="#e52421" stroke-width="1.6" fill="none" opacity="0.8"/>
-
-                <!-- cola afilada / colin trasero -->
-                <path d="M154 60 L196 56 Q214 58 220 70 Q212 80 190 82 L156 74 Z" fill="url(#motoFairingTop)"/>
-                <path d="M154 60 L196 56 Q214 58 220 70" stroke="#5c0a08" stroke-width="1.4" fill="none"/>
-                <path d="M178 61 Q200 60 212 68" stroke="#ffb3af" stroke-width="1.6" fill="none" opacity="0.55"/>
-                <!-- luz trasera -->
-                <path d="M216 62 L221 63 L220 71 L215 71 Z" fill="#ff8b83"/>
-
-                <!-- tanque / carena central -->
-                <path d="M98 54 Q130 40 158 50 Q166 60 158 70 L110 76 Q94 66 98 54 Z" fill="url(#motoTank)"/>
-                <path d="M104 56 Q130 46 150 52" stroke="#ffb3af" stroke-width="1.6" fill="none" opacity="0.55"/>
-                <path d="M98 54 Q130 40 158 50" stroke="#5c0a08" stroke-width="1.2" fill="none"/>
-
-                <!-- carenado frontal / nariz agresiva -->
-                <path d="M38 88 Q42 62 66 50 Q92 38 112 48 Q108 62 102 74 Q84 88 60 92 Q42 94 38 88 Z" fill="url(#motoFairingTop)"/>
-                <path d="M38 88 Q42 62 66 50" stroke="#5c0a08" stroke-width="1.4" fill="none"/>
-                <path d="M50 68 Q66 54 92 50" stroke="#ffb3af" stroke-width="1.8" fill="none" opacity="0.55"/>
-                <!-- toma de aire agresiva -->
-                <path d="M52 78 L74 72 L78 82 L56 88 Z" fill="#0a0c0e"/>
-                <path d="M52 78 L74 72" stroke="#e52421" stroke-width="1.2" opacity="0.8"/>
-
-                <!-- panel negro inferior del carenado -->
-                <path d="M44 84 Q54 68 78 58 Q76 68 68 78 Q56 88 44 84 Z" fill="url(#motoFairingLow)"/>
-
-                <!-- parabrisas ahumado -->
-                <path d="M84 50 Q98 30 120 34 Q114 46 106 56 Q92 54 84 50 Z" fill="url(#motoScreen)" stroke="#5b626b" stroke-width="0.8"/>
-                <path d="M90 46 Q100 36 112 38" stroke="#fff" stroke-width="1" opacity="0.35" fill="none"/>
-
-                <!-- optica LED doble -->
-                <path d="M40 74 L52 70 L54 78 L42 82 Z" fill="#fff4d6"/>
-                <path d="M42 75 L50 72 L51 77 L43 80 Z" fill="#ffe28a"/>
-                <path d="M40 74 L52 70" stroke="#c9861f" stroke-width="0.6"/>
-
-                <!-- espejo -->
-                <path d="M96 44 L108 36" stroke="#1a1d22" stroke-width="3" stroke-linecap="round"/>
-                <ellipse cx="110" cy="34" rx="6" ry="3.6" fill="#1a1d22" stroke="#3a3f46" stroke-width="0.8"/>
-
-                <!-- pinza / disco frontal reflejo -->
-                <circle cx="60" cy="104" r="27" fill="none" stroke="#e52421" stroke-width="1" opacity="0.35"/>
-            </svg>
-        </div>
-        <div class="moto-loader-text" id="moto-loader-texto">Acelerando<span>...</span></div>
-        <div class="moto-loader-bar"><span></span></div>
-        <div class="moto-loader-sub">
-            <span class="moto-loader-dot"></span><span class="moto-loader-dot"></span><span class="moto-loader-dot"></span>
-            MAS RACING
-        </div>
-    </div>
-
+    
     <script>
-        const NUMERO_WHATSAPP = "5493425688013";
-        const HORARIOS_DISPONIBLES = ["09:00 HS", "11:00 HS", "15:00 HS", "17:00 HS"];
-        const INTERVALO_SERVICE_KM = 2000; 
-        const INTERVALO_SERVICE_MESES = 6; 
-        const CLAVE_TALLER = "masracing2026";
-
-        // ============================================================
-        // BASE DE DATOS ONLINE (SUPABASE)
-        // ============================================================
-        // Pegá acá la URL y la PUBLISHABLE KEY de tu proyecto.
-        // NUNCA pongas la service_role key en este HTML.
-        const SUPABASE_URL = "PEGAR_AQUI_URL_DE_TU_PROYECTO";
-        const SUPABASE_PUBLISHABLE_KEY = "PEGAR_AQUI_PUBLISHABLE_KEY";
-        const SUPABASE_TABLE = "mas_racing_data";
-        let supabaseClient = null;
-        let ONLINE_DB_ACTIVA = false;
-        let ONLINE_DB_INICIALIZADA = false;
-
-        function inicializarSupabase() {
-            try {
-                if (!window.supabase || !SUPABASE_URL.startsWith("https://") || SUPABASE_PUBLISHABLE_KEY.includes("PEGAR_AQUI")) return false;
-                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
-                    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
-                });
-                ONLINE_DB_ACTIVA = true;
-                return true;
-            } catch (error) {
-                console.error("No se pudo inicializar Supabase:", error);
-                return false;
-            }
-        }
-
-        const SERVICES_PARA_CUPON = 3;
-        const DESCUENTO_MANO_OBRA = 15;
-        const VIGENCIA_CUPON_DIAS = 90;
-
-        let servicioSeleccionado = null;
-
-        /*
-         * ============================================================
-         * PERSISTENCIA SEGURA MAS RACING
-         * ============================================================
-         * Los datos NO dependen del código HTML que publiques.
-         * Se guardan en:
-         *   1) localStorage principal
-         *   2) copia de respaldo localStorage
-         *   3) IndexedDB (copia adicional)
-         *
-         * Así, una actualización del sitio, una recarga o un problema
-         * de almacenamiento no debería dejar el historial en blanco.
-         *
-         * IMPORTANTE: esto mantiene los datos en ESTE navegador/dispositivo.
-         * Para compartir el mismo historial entre celulares y PCs hace falta
-         * una base de datos online (Firebase/Supabase).
-         * ============================================================
-         */
-        const PERSISTENCIA_IDB_DB = 'MAS_RACING_PERSISTENCIA';
-        const PERSISTENCIA_IDB_STORE = 'datos';
-        const PERSISTENCIA_VERSION = '2';
-
-        function leerJSONSeguro(valor, fallback) {
-            try {
-                if (valor === null || valor === undefined || valor === '') return fallback;
-                const parsed = JSON.parse(valor);
-                return parsed ?? fallback;
-            } catch (error) {
-                return fallback;
-            }
-        }
-
-        function esObjetoValido(v) {
-            return v && typeof v === 'object' && !Array.isArray(v);
-        }
-
-        function leerDatoPersistente(clave, fallback) {
-            let principal = null;
-            let principalValido = false;
-
-            try {
-                const raw = localStorage.getItem(clave);
-                if (raw !== null) {
-                    principal = JSON.parse(raw);
-                    principalValido = true;
-                }
-            } catch (error) {
-                principalValido = false;
-            }
-
-            if (principalValido) return principal;
-
-            // Si la entrada principal está dañada o desapareció, recuperamos
-            // automáticamente la copia de respaldo antes de continuar.
-            try {
-                const backup = localStorage.getItem(clave + '_backup');
-                if (backup !== null) {
-                    const recuperado = JSON.parse(backup);
-                    if (recuperado !== null && recuperado !== undefined) {
-                        try { localStorage.setItem(clave, JSON.stringify(recuperado)); } catch (_) {}
-                        return recuperado;
-                    }
-                }
-            } catch (error) {}
-
-            return fallback;
-        }
-
-        let clientesBD = leerDatoPersistente('masracing_clientes', {});
-        let turnosBD = leerDatoPersistente('masracing_turnos', []);
-        let cuponesBD = leerDatoPersistente('masracing_cupones', {});
-        let scannerPro = null;
-
-        function abrirDBPersistencia() {
-            return new Promise((resolve, reject) => {
-                if (!('indexedDB' in window)) {
-                    resolve(null);
-                    return;
-                }
-
-                const request = indexedDB.open(PERSISTENCIA_IDB_DB, 1);
-
-                request.onupgradeneeded = () => {
-                    const db = request.result;
-                    if (!db.objectStoreNames.contains(PERSISTENCIA_IDB_STORE)) {
-                        db.createObjectStore(PERSISTENCIA_IDB_STORE);
-                    }
-                };
-
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => reject(request.error);
-            });
-        }
-
-        async function guardarEnIndexedDB(clave, datos) {
-            try {
-                const db = await abrirDBPersistencia();
-                if (!db) return;
-
-                await new Promise((resolve, reject) => {
-                    const tx = db.transaction(PERSISTENCIA_IDB_STORE, 'readwrite');
-                    tx.objectStore(PERSISTENCIA_IDB_STORE).put(
-                        JSON.stringify(datos),
-                        clave
-                    );
-                    tx.oncomplete = resolve;
-                    tx.onerror = () => reject(tx.error);
-                    tx.onabort = () => reject(tx.error);
-                });
-
-                db.close();
-            } catch (error) {
-                // localStorage sigue siendo el almacenamiento principal.
-            }
-        }
-
-        async function leerDesdeIndexedDB(clave) {
-            try {
-                const db = await abrirDBPersistencia();
-                if (!db) return null;
-
-                const resultado = await new Promise((resolve, reject) => {
-                    const tx = db.transaction(PERSISTENCIA_IDB_STORE, 'readonly');
-                    const req = tx.objectStore(PERSISTENCIA_IDB_STORE).get(clave);
-                    req.onsuccess = () => resolve(req.result ?? null);
-                    req.onerror = () => reject(req.error);
-                });
-
-                db.close();
-                return resultado ? JSON.parse(resultado) : null;
-            } catch (error) {
-                return null;
-            }
-        }
-
-        async function guardarTodoEnRespaldo() {
-            await Promise.all([
-                guardarEnIndexedDB('masracing_clientes', clientesBD),
-                guardarEnIndexedDB('masracing_turnos', turnosBD),
-                guardarEnIndexedDB('masracing_cupones', cuponesBD)
-            ]);
-        }
-
-        async function recuperarDesdeIndexedDBSiHaceFalta() {
-            const claves = [
-                ['masracing_clientes', clientesBD, {}],
-                ['masracing_turnos', turnosBD, []],
-                ['masracing_cupones', cuponesBD, {}]
-            ];
-
-            for (const [clave, actual, fallback] of claves) {
-                let existePrincipal = false;
-                try { existePrincipal = localStorage.getItem(clave) !== null; } catch (_) {}
-
-                // Solo recuperamos automáticamente si la clave principal no existe.
-                // Esto evita revivir datos después de una eliminación intencional.
-                if (!existePrincipal) {
-                    const recuperado = await leerDesdeIndexedDB(clave);
-                    const tieneDatos = Array.isArray(recuperado)
-                        ? recuperado.length > 0
-                        : esObjetoValido(recuperado) && Object.keys(recuperado).length > 0;
-
-                    if (tieneDatos) {
-                        if (clave === 'masracing_clientes') clientesBD = recuperado;
-                        if (clave === 'masracing_turnos') turnosBD = recuperado;
-                        if (clave === 'masracing_cupones') cuponesBD = recuperado;
-
-                        try {
-                            localStorage.setItem(clave, JSON.stringify(recuperado));
-                            localStorage.setItem(clave + '_backup', JSON.stringify(recuperado));
-                        } catch (_) {}
-                    }
-                }
-            }
-
-            actualizarVistasClientesRegistrados();
-            const tallerHist = document.getElementById('tallerHistorial');
-            const tallerDni = document.getElementById('tallerDni')?.value?.trim();
-            if (tallerHist && tallerDni) renderHistorialTaller(tallerDni);
-        }
-
-        async function cargarDatoOnline(clave) {
-            if (!ONLINE_DB_ACTIVA || !supabaseClient) return null;
-            try {
-                const { data, error } = await supabaseClient.from(SUPABASE_TABLE).select("id,data,updated_at").eq("id", clave).maybeSingle();
-                if (error) throw error;
-                return data || null;
-            } catch (error) {
-                console.error("Error leyendo " + clave + " desde Supabase:", error);
-                return null;
-            }
-        }
-
-        async function guardarDatoOnline(clave, datos) {
-            if (!ONLINE_DB_ACTIVA || !supabaseClient) return false;
-            try {
-                const { error } = await supabaseClient.from(SUPABASE_TABLE).upsert({
-                    id: clave, data: datos, updated_at: new Date().toISOString()
-                }, { onConflict: "id" });
-                if (error) throw error;
-                return true;
-            } catch (error) {
-                console.error("Error guardando " + clave + " en Supabase:", error);
-                return false;
-            }
-        }
-
-        function fusionarClientes(locales, remotos) {
-            const resultado = { ...(remotos || {}) };
-            Object.entries(locales || {}).forEach(([dni, local]) => {
-                const remoto = resultado[dni];
-                if (!remoto) { resultado[dni] = local; return; }
-                const histLocal = Array.isArray(local.historialServicios) ? local.historialServicios : [];
-                const histRemoto = Array.isArray(remoto.historialServicios) ? remoto.historialServicios : [];
-                const mapa = new Map();
-                [...histRemoto, ...histLocal].forEach(h => {
-                    const key = [h.fecha || "", h.hora || "", h.moto || "", h.servicio || "", h.km || "", h.montoTotal || "", h.notas || ""].join("|");
-                    mapa.set(key, h);
-                });
-                resultado[dni] = { ...remoto, ...local, historialServicios: Array.from(mapa.values()) };
-                resultado[dni].trabajosRealizados = resultado[dni].historialServicios.length;
-            });
-            return resultado;
-        }
-
-        function fusionarTurnos(locales, remotos) {
-            const mapa = new Map();
-            [...(remotos || []), ...(locales || [])].forEach(t => mapa.set(String(t.id), t));
-            return Array.from(mapa.values()).sort((a,b) => Number(a.id || 0) - Number(b.id || 0));
-        }
-
-        function fusionarCupones(locales, remotos) {
-            const resultado = JSON.parse(JSON.stringify(remotos || {}));
-            Object.entries(locales || {}).forEach(([dni, lista]) => {
-                const mapa = new Map();
-                [...(resultado[dni] || []), ...(lista || [])].forEach(c => mapa.set(String(c.id), c));
-                resultado[dni] = Array.from(mapa.values());
-            });
-            return resultado;
-        }
-
-        async function inicializarBaseOnline() {
-            if (!inicializarSupabase()) return;
-            try {
-                const [rClientes, rTurnos, rCupones] = await Promise.all([
-                    cargarDatoOnline("clientes"), cargarDatoOnline("turnos"), cargarDatoOnline("cupones")
-                ]);
-
-                if (rClientes?.data && Object.keys(rClientes.data).length) clientesBD = fusionarClientes(clientesBD, rClientes.data);
-                else if (Object.keys(clientesBD).length) await guardarDatoOnline("clientes", clientesBD);
-
-                if (Array.isArray(rTurnos?.data) && rTurnos.data.length) turnosBD = fusionarTurnos(turnosBD, rTurnos.data);
-                else if (turnosBD.length) await guardarDatoOnline("turnos", turnosBD);
-
-                if (rCupones?.data && Object.keys(rCupones.data).length) cuponesBD = fusionarCupones(cuponesBD, rCupones.data);
-                else if (Object.keys(cuponesBD).length) await guardarDatoOnline("cupones", cuponesBD);
-
-                ONLINE_DB_INICIALIZADA = true;
-                const status = document.getElementById("onlineStatus");
-                if (status) { status.className = "online-status ok"; status.textContent = "☁ Base online conectada"; }
-            } catch (error) {
-                const status = document.getElementById("onlineStatus");
-                if (status) { status.className = "online-status off"; status.textContent = "☁ Modo local — sin conexión"; }
-                console.error("No se pudo inicializar la base online:", error);
-            }
-        }
-
-        function guardarClientesPro() {
-            const json = JSON.stringify(clientesBD);
-
-            // La copia de respaldo se escribe ANTES de la principal.
-            // Si una actualización/corrupción afecta la principal, queda otra copia.
-            try {
-                localStorage.setItem('masracing_clientes_backup', json);
-                localStorage.setItem('masracing_clientes', json);
-                localStorage.setItem('masracing_clientes_version', PERSISTENCIA_VERSION);
-                localStorage.setItem('masracing_clientes_ultima_actualizacion', new Date().toISOString());
-            } catch (error) {
-                console.error('No se pudo guardar clientes en localStorage:', error);
-            }
-
-            guardarEnIndexedDB('masracing_clientes', clientesBD);
-            if (ONLINE_DB_ACTIVA) guardarDatoOnline('clientes', clientesBD);
-        }
-
-        function guardarTurnosPro() {
-            const json = JSON.stringify(turnosBD);
-            try {
-                localStorage.setItem('masracing_turnos_backup', json);
-                localStorage.setItem('masracing_turnos', json);
-                localStorage.setItem('masracing_turnos_version', PERSISTENCIA_VERSION);
-                localStorage.setItem('masracing_turnos_ultima_actualizacion', new Date().toISOString());
-            } catch (error) {
-                console.error('No se pudo guardar turnos en localStorage:', error);
-            }
-
-            guardarEnIndexedDB('masracing_turnos', turnosBD);
-            if (ONLINE_DB_ACTIVA) guardarDatoOnline('turnos', turnosBD);
-        }
-
-        function guardarCuponesPro() {
-            const json = JSON.stringify(cuponesBD);
-            try {
-                localStorage.setItem('masracing_cupones_backup', json);
-                localStorage.setItem('masracing_cupones', json);
-                localStorage.setItem('masracing_cupones_version', PERSISTENCIA_VERSION);
-                localStorage.setItem('masracing_cupones_ultima_actualizacion', new Date().toISOString());
-            } catch (error) {
-                console.error('No se pudo guardar cupones en localStorage:', error);
-            }
-
-            guardarEnIndexedDB('masracing_cupones', cuponesBD);
-            if (ONLINE_DB_ACTIVA) guardarDatoOnline('cupones', cuponesBD);
-        }
-
-
-        function mostrarLoaderMoto(texto, duracionMs = 1500) {
-            const overlay = document.getElementById('moto-loader-overlay');
-            const textoEl = document.getElementById('moto-loader-texto');
-            if (!overlay) return Promise.resolve();
-
-            textoEl.innerHTML = (texto || 'Cargando') + '<span>...</span>';
-            overlay.classList.add('show');
-            document.body.style.overflow = 'hidden';
-
-            return new Promise(resolve => setTimeout(resolve, duracionMs));
-        }
-
-        function ocultarLoaderMoto() {
-            const overlay = document.getElementById('moto-loader-overlay');
-            if (!overlay) return;
-            overlay.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-
-        function formatearFecha(fechaISO) {
-            if (!fechaISO) return '';
-            const parts = fechaISO.split('-');
-            if (parts.length < 3) return fechaISO;
-            return `${parts[2]}/${parts[1]}/${parts[0]}`;
-        }
-
-        function calcularProximoService(historial) {
-            const conKm = (historial || []).filter(h => h.km);
-            if (conKm.length === 0) return null;
-
-            const ultimo = conKm[conKm.length - 1];
-            const proximoKm = parseInt(ultimo.km) + INTERVALO_SERVICE_KM;
-
-            const fechaUltimo = new Date(ultimo.fecha + 'T00:00:00');
-            const fechaProxima = new Date(fechaUltimo);
-            fechaProxima.setMonth(fechaProxima.getMonth() + INTERVALO_SERVICE_MESES);
-
-            const vencidoPorFecha = new Date() >= fechaProxima;
-
-            return {
-                ultimo: ultimo,
-                proximoKm: proximoKm,
-                fechaProximaISO: fechaProxima.toISOString().split('T')[0],
-                vencidoPorFecha: vencidoPorFecha
-            };
-        }
-
-        function esService(h) {
-            return String(h?.servicio || '').toLowerCase().includes('service');
-        }
-
-        function contarServices(dni) {
-            const cliente = clientesBD[dni];
-            if (!cliente) return 0;
-            return (cliente.historialServicios || []).filter(esService).length;
-        }
-
-        function codigoUnicoPro() {
-            const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-            let r = "";
-            for (let i=0;i<9;i++) r += chars[Math.floor(Math.random()*chars.length)];
-            return r;
-        }
-
-        function crearCuponPro(dni, numeroService) {
-            if (!cuponesBD[dni]) cuponesBD[dni] = [];
-            if (cuponesBD[dni].some(c => c.numeroService === numeroService && !c.invalidado)) return;
-
-            const vence = new Date();
-            vence.setDate(vence.getDate() + VIGENCIA_CUPON_DIAS);
-
-            cuponesBD[dni].push({
-                id: "CPN-" + Date.now().toString(36).toUpperCase() + "-" + codigoUnicoPro().slice(0,4),
-                codigo: "MAS15-" + codigoUnicoPro(),
-                dni: String(dni),
-                numeroService,
-                descuento: DESCUENTO_MANO_OBRA,
-                emitido: new Date().toISOString(),
-                vence: vence.toISOString(),
-                usado: false,
-                invalidado: false,
-                usadoEn: null
-            });
-        }
-
-        function sincronizarFidelidad(dni) {
-            const total = contarServices(dni);
-            if (!cuponesBD[dni]) cuponesBD[dni] = [];
-
-            for (let n=SERVICES_PARA_CUPON; n<=total; n+=SERVICES_PARA_CUPON) {
-                crearCuponPro(dni, n);
-            }
-
-            cuponesBD[dni].forEach(c => {
-                if (!c.usado && c.numeroService > total) c.invalidado = true;
-            });
-
-            guardarCuponesPro();
-        }
-
-        function cuponValidoPro(c) {
-            return c && !c.usado && !c.invalidado && new Date(c.vence).getTime() > Date.now();
-        }
-
-        function qrPayloadPro(c) {
-            return ["MASRACING","15MO","HAND",c.id,c.codigo,c.dni,c.numeroService,c.vence].join("|");
-        }
-
-        function dibujarQRPro(id, payload) {
-            const el = document.getElementById(id);
-            if (!el || typeof QRCode === "undefined") return;
-            el.innerHTML = "";
-            new QRCode(el, {
-                text: payload,
-                width: 160,
-                height: 160,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        }
-
-        function descargarQRPro(id, codigo) {
-            const canvas = document.querySelector("#"+id+" canvas");
-            if (!canvas) return;
-            const a = document.createElement("a");
-            a.href = canvas.toDataURL("image/png");
-            a.download = codigo + ".png";
-            a.click();
-        }
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
-            const selectedBtn = document.getElementById('btn-' + tabId);
-            if(selectedBtn) selectedBtn.classList.add('active');
-            
-            const tabContainer = document.getElementById(tabId);
-            if(tabContainer) tabContainer.classList.add('active');
-
-            if (tabId === 'tab-perfil' && sessionStorage.getItem('taller_autenticado') === 'true') {
-                document.getElementById('tallerLogin').style.display = 'none';
-                document.getElementById('tallerPanel').style.display = 'block';
-                if (!document.getElementById('tallerFecha').value) {
-                    document.getElementById('tallerFecha').value = new Date().toISOString().split('T')[0];
-                }
-                renderStatsTaller();
-            }
-        }
-
-        function seleccionarServicio(btn, servicio) {
-            document.querySelectorAll('.btn-outline').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            servicioSeleccionado = servicio;
-
-            const texto = document.getElementById('servicioSeleccionadoTexto');
-            if (texto) {
-                texto.innerText = "✅ " + servicio;
-                texto.style.color = "var(--verde-exito)";
-            }
-
-            switchTab('tab-turno');
-            document.getElementById('turnos').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        async function registrarCliente() {
-            const dni = document.getElementById('regDni').value.trim();
-            const nombre = document.getElementById('regNombre').value.trim();
-            const telefono = document.getElementById('regTelefono').value.trim();
-            const email = document.getElementById('regEmail').value.trim();
-
-            if (!dni || !nombre || !telefono || !email) {
-                alert("Por favor completá todos los campos para registrarte.");
-                return;
-            }
-
-            await mostrarLoaderMoto("Creando tu ficha de cliente...");
-
-            const yaExistia = !!clientesBD[dni];
-
-            clientesBD[dni] = {
-                nombre: nombre,
-                telefono: telefono,
-                email: email,
-                fechaRegistro: (clientesBD[dni] && clientesBD[dni].fechaRegistro) ? clientesBD[dni].fechaRegistro : new Date().toISOString(),
-                trabajosRealizados: clientesBD[dni] ? clientesBD[dni].trabajosRealizados : 0,
-                historialServicios: clientesBD[dni] ? (clientesBD[dni].historialServicios || []) : []
-            };
-
-            guardarClientesPro();
-            actualizarVistasClientesRegistrados();
-            ocultarLoaderMoto();
-            alert(yaExistia ? "¡Datos actualizados correctamente!" : "¡Registro exitoso! Ya podés solicitar tus turnos con tu DNI.");
-            
-            document.getElementById('turnoDni').value = dni;
-            verificarDniAuto();
-            switchTab('tab-turno');
-        }
-
-        function verificarDniAuto() {
-            const dni = document.getElementById('turnoDni').value.trim();
-            const badge = document.getElementById('clienteBox');
-
-            if (clientesBD[dni]) {
-                const cliente = clientesBD[dni];
-                document.getElementById('badgeNombre').innerText = cliente.nombre;
-                document.getElementById('badgeDni').innerText = dni;
-                document.getElementById('badgeTrabajos').innerText = cliente.trabajosRealizados || 0;
-                
-                if ((cliente.trabajosRealizados || 0) >= 3) {
-                    document.getElementById('badgeDescuento').style.display = "inline-block";
-                } else {
-                    document.getElementById('badgeDescuento').style.display = "none";
-                }
-
-                const historial = cliente.historialServicios || [];
-                const cajaHistorial = document.getElementById('badgeHistorial');
-                if (historial.length > 0) {
-                    cajaHistorial.innerHTML = "<strong style='color:#fff;'>ÚLTIMOS SERVICIOS:</strong><br>" +
-                        historial.slice(-3).reverse()
-                            .map(h => `• ${h.servicio} (${h.moto}) — ${formatearFecha(h.fecha)}`)
-                            .join("<br>");
-                } else {
-                    cajaHistorial.innerHTML = "Todavía no tiene servicios registrados.";
-                }
-
-                badge.style.display = "block";
-            } else {
-                badge.style.display = "none";
-            }
-        }
-
-        function actualizarHorariosDisponibles() {
-            const fecha = document.getElementById('turnoFecha').value;
-            const selectHora = document.getElementById('turnoHora');
-            selectHora.innerHTML = "";
-
-            if (!fecha) return;
-
-            const ocupados = turnosBD
-                .filter(t => t.fecha === fecha && t.estado === "AGENDADO")
-                .map(t => t.hora);
-
-            HORARIOS_DISPONIBLES.forEach(hora => {
-                const option = document.createElement("option");
-                option.value = hora;
-                if (ocupados.includes(hora)) {
-                    option.text = `${hora} - (NO DISPONIBLE / RESERVADO)`;
-                    option.disabled = true;
-                } else {
-                    option.text = hora;
-                }
-                selectHora.appendChild(option);
-            });
-        }
-
-        async function reservarYEnviarWhatsApp() {
-            const dni = document.getElementById('turnoDni').value.trim();
-            const fecha = document.getElementById('turnoFecha').value;
-            const hora = document.getElementById('turnoHora').value;
-            const marca = document.getElementById('motoMarca').value;
-            const modelo = document.getElementById('motoModelo').value || "No especificado";
-            const km = document.getElementById('motoKm').value.trim();
-            const repuestos = document.getElementById('repuestosModo').value;
-
-            if (!servicioSeleccionado) {
-                alert("Antes de agendar, elegí qué necesita tu moto en la sección 'Servicios Disponibles'.");
-                document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
-            if (!dni) {
-                alert("Por favor ingresá tu DNI o registrate en la pestaña '1. Registro'.");
-                switchTab('tab-registro');
-                return;
-            }
-
-            if (!clientesBD[dni]) {
-                alert("Este DNI no está registrado. Te redirigimos a la pestaña '1. Registro'.");
-                switchTab('tab-registro');
-                document.getElementById('regDni').value = dni;
-                return;
-            }
-
-            if (!fecha || !hora) {
-                alert("Elegí una fecha y horario válidos.");
-                return;
-            }
-
-            await mostrarLoaderMoto("Reservando tu turno...");
-
-            const nuevoTurno = {
-                id: Date.now(),
-                dni: dni,
-                clienteNombre: clientesBD[dni].nombre,
-                fecha: fecha,
-                hora: hora,
-                marca: marca,
-                modelo: modelo,
-                servicio: servicioSeleccionado,
-                repuestos: repuestos,
-                estado: "AGENDADO"
-            };
-
-            turnosBD.push(nuevoTurno);
-            guardarTurnosPro();
-
-            const mensaje = `Hola *MAS RACING*! Confirmación de Turno Reservado:%0A%0A` +
-                            `👤 *Cliente:* ${clientesBD[dni].nombre} (DNI: ${dni})%0A` +
-                            `🏍️ *Moto:* ${marca} ${modelo}${km ? ' (' + km + ' km)' : ''}%0A` +
-                            `🛠️ *Servicio:* ${servicioSeleccionado}%0A` +
-                            `📦 *Repuestos:* ${repuestos}%0A` +
-                            `📅 *Fecha:* ${formatearFecha(fecha)}%0A` +
-                            `⏰ *Hora:* ${hora}%0A%0A` +
-                            `*Turno bloqueado en el sistema.* ¡Nos vemos ese día!`;
-
-            ocultarLoaderMoto();
-            alert("¡Turno reservado exitosamente!");
-            actualizarHorariosDisponibles();
-            verificarDniAuto();
-            window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${mensaje}`, '_blank');
-
-            servicioSeleccionado = null;
-            document.querySelectorAll('.btn-outline').forEach(b => b.classList.remove('selected'));
-            const texto = document.getElementById('servicioSeleccionadoTexto');
-            if (texto) {
-                texto.innerText = "Ninguno todavía — elegí uno en \"Servicios Disponibles\" ⬇️";
-                texto.style.color = "var(--rojo-racing)";
-            }
-        }
-
-        function buscarTurnosCliente() {
-            const dni = document.getElementById('buscarDni').value.trim();
-            const contenedor = document.getElementById('listaMisTurnos');
-            contenedor.innerHTML = "";
-
-            if (!dni) {
-                alert("Ingresá tu DNI para buscar tus turnos.");
-                return;
-            }
-
-            const misTurnos = turnosBD.filter(t => t.dni === dni && t.estado === "AGENDADO");
-
-            if (misTurnos.length === 0) {
-                contenedor.innerHTML = "<p style='font-size:12px; color:var(--texto-gris); margin-top:10px;'>No tenés turnos vigentes agendados.</p>";
-                return;
-            }
-
-            misTurnos.forEach(t => {
-                const item = document.createElement('div');
-                item.className = 'turno-item';
-                item.innerHTML = `
-                    <div>
-                        <strong>${formatearFecha(t.fecha)} - ${t.hora}</strong><br>
-                        <span>${t.servicio} (${t.marca} ${t.modelo})</span>
-                    </div>
-                    <button class="btn-red btn-cancel" style="width:auto; padding:6px 10px;" onclick="cancelarTurno(${t.id})">
-                        Cancelar
-                    </button>
-                `;
-                contenedor.appendChild(item);
-            });
-        }
-
-        function cancelarTurno(turnoId) {
-            if (confirm("¿Estás seguro de que querés cancelar este turno?")) {
-                turnosBD = turnosBD.map(t => {
-                    if (t.id === turnoId) t.estado = "CANCELADO";
-                    return t;
-                });
-
-                guardarTurnosPro();
-                alert("Tu turno ha sido cancelado.");
-                buscarTurnosCliente();
-                actualizarHorariosDisponibles();
-            }
-        }
-
-        function ingresarPanelTaller() {
-            const clave = document.getElementById('tallerClave').value;
-            if (clave === CLAVE_TALLER) {
-                sessionStorage.setItem('taller_autenticado', 'true');
-                document.getElementById('tallerLogin').style.display = 'none';
-                document.getElementById('tallerPanel').style.display = 'block';
-                document.getElementById('tallerFecha').value = new Date().toISOString().split('T')[0];
-                renderStatsTaller();
-            } else {
-                alert('Clave incorrecta.');
-            }
-        }
-
-        function cerrarSesionTaller() {
-            sessionStorage.removeItem("taller_autenticado");
-            document.getElementById("tallerLogin").style.display = "block";
-            document.getElementById("tallerPanel").style.display = "none";
-            document.getElementById("tallerClave").value = "";
-        }
-
-        function buscarClienteTaller() {
-            const dni = document.getElementById('tallerDni').value.trim();
-            const infoBox = document.getElementById('tallerClienteInfo');
-            const nuevoBox = document.getElementById('tallerNombreNuevoBox');
-
-            if (!dni) return;
-
-            if (clientesBD[dni]) {
-                document.getElementById('tallerClienteNombre').innerText = clientesBD[dni].nombre;
-                document.getElementById('tallerClienteTrabajos').innerText = clientesBD[dni].trabajosRealizados || 0;
-                infoBox.style.display = 'block';
-                nuevoBox.style.display = 'none';
-            } else {
-                infoBox.style.display = 'none';
-                nuevoBox.style.display = 'block';
-            }
-
-            renderHistorialTaller(dni);
-        }
-
-        function parsearMonto(valorTexto) {
-            const soloDigitos = (valorTexto || '').replace(/[^0-9]/g, '');
-            return soloDigitos ? parseInt(soloDigitos, 10) : 0;
-        }
-
-        function toggleRepuestosBox() {
-            const marcado = document.getElementById('tallerUsoRepuestos').checked;
-            document.getElementById('tallerRepuestosBox').style.display = marcado ? 'block' : 'none';
-            document.getElementById('tallerRepuestosMontoBox').style.display = marcado ? 'block' : 'none';
-        }
-
-        function guardarTrabajoTaller() {
-            const dni = document.getElementById('tallerDni').value.trim();
-            const fecha = document.getElementById('tallerFecha').value;
-            const km = document.getElementById('tallerKm').value.trim();
-            const marca = document.getElementById('tallerMarca').value.trim();
-            const modelo = document.getElementById('tallerModelo').value.trim();
-            const servicio = document.getElementById('tallerServicio').value;
-            const notas = document.getElementById('tallerNotas').value.trim();
-            const usoRepuestos = document.getElementById('tallerUsoRepuestos').checked;
-            const repuestosDetalle = usoRepuestos ? document.getElementById('tallerRepuestosDetalle').value.trim() : '';
-            const montoRepuestos = usoRepuestos ? parsearMonto(document.getElementById('tallerMontoRepuestos').value) : 0;
-            const montoTrabajo = parsearMonto(document.getElementById('tallerMontoTrabajo').value);
-
-            if (!dni || !fecha || !marca || !modelo) {
-                alert('Completá al menos DNI, fecha, marca y modelo.');
-                return;
-            }
-
-            if (!clientesBD[dni]) {
-                const nombreNuevo = document.getElementById('tallerNombreNuevo').value.trim();
-                if (!nombreNuevo) {
-                    alert('Este DNI no está registrado. Cargá el nombre del cliente.');
-                    return;
-                }
-                clientesBD[dni] = {
-                    nombre: nombreNuevo,
-                    telefono: '',
-                    email: '',
-                    fechaRegistro: new Date().toISOString(),
-                    trabajosRealizados: 0,
-                    historialServicios: []
-                };
-            }
-
-            if (!clientesBD[dni].historialServicios) {
-                clientesBD[dni].historialServicios = [];
-            }
-
-            clientesBD[dni].historialServicios.push({
-                fecha: fecha,
-                hora: '',
-                servicio: servicio + (notas ? ' — ' + notas : ''),
-                moto: `${marca} ${modelo}`,
-                km: km || null,
-                montoTrabajo: montoTrabajo,
-                usoRepuestos: usoRepuestos,
-                repuestosDetalle: repuestosDetalle,
-                montoRepuestos: montoRepuestos,
-                montoTotal: montoTrabajo + montoRepuestos
-            });
-
-            clientesBD[dni].trabajosRealizados = clientesBD[dni].historialServicios.length;
-            sincronizarFidelidad(dni);
-            guardarClientesPro();
-
-            alert('Trabajo guardado en el historial.');
-
-            document.getElementById('tallerKm').value = '';
-            document.getElementById('tallerNotas').value = '';
-            document.getElementById('tallerMontoTrabajo').value = '';
-            document.getElementById('tallerMontoRepuestos').value = '';
-            document.getElementById('tallerRepuestosDetalle').value = '';
-            document.getElementById('tallerUsoRepuestos').checked = false;
-            toggleRepuestosBox();
-
-            buscarClienteTaller();
-            renderStatsTaller();
-            actualizarVistasClientesRegistrados();
-
-            const contGlobal = document.getElementById('tallerHistorialGlobalContainer');
-            if (contGlobal && contGlobal.style.display !== 'none') {
-                renderHistorialGlobalTaller();
-            }
-        }
-
-        function renderHistorialTaller(dni) {
-            const contenedor = document.getElementById('tallerHistorial');
-            contenedor.innerHTML = '';
-
-            if (!clientesBD[dni]) {
-                contenedor.innerHTML = "<p style='font-size:12px; color:var(--texto-gris);'>Cliente nuevo, todavía sin historial.</p>";
-                return;
-            }
-
-            const historial = (clientesBD[dni].historialServicios || []).slice();
-
-            const info = calcularProximoService(historial);
-            if (info) {
-                contenedor.innerHTML += `
-                    <div class="profile-badge" style="border-color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">
-                        <p style="font-size:10px; color:var(--texto-gris);">PRÓXIMO SERVICE SUGERIDO</p>
-                        <p><strong style="color: ${info.vencidoPorFecha ? 'var(--rojo-racing)' : 'var(--verde-exito)'};">Antes de los ${info.proximoKm.toLocaleString('es-AR')} km o antes del ${formatearFecha(info.fechaProximaISO)}</strong></p>
-                        ${info.vencidoPorFecha ? "<p style='color:var(--rojo-racing); font-weight:800; font-size:11px; margin-top:4px;'>⚠️ Ya pasó el tiempo recomendado.</p>" : ''}
-                    </div>
-                    <button type="button" class="btn-red" style="margin-bottom:15px;" onclick="enviarRecordatorioWhatsApp('${dni}')">
-                        <i class="fa-brands fa-whatsapp"></i> ENVIAR RECORDATORIO POR WHATSAPP
-                    </button>
-                `;
-            }
-
-            if (historial.length === 0) {
-                contenedor.innerHTML += "<p style='font-size:12px; color:var(--texto-gris);'>Sin trabajos registrados todavía.</p>";
-                return;
-            }
-
-            let html = `<div class="my-turnos-list" style="max-height:220px;">`;
-            historial.map((h, i) => ({ ...h, _idx: i })).reverse().forEach(h => {
-                html += `
-                    <div class="turno-item" style="align-items:flex-start;">
-                        <div>
-                            <strong>${formatearFecha(h.fecha)}</strong> — ${h.servicio}<br>
-                            <span style="color:var(--texto-gris);">${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}${h.montoTotal ? ' · $' + h.montoTotal.toLocaleString('es-AR') : ''}</span>
-                        </div>
-                        <div style="display:flex; gap:6px;">
-                            <button class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" onclick="generarBoleta('${dni}', ${h._idx})">
-                                <i class="fa-solid fa-receipt"></i>
-                            </button>
-                            <button class="btn-mini" onclick="abrirEditorTrabajo('${dni}', ${h._idx})" title="Editar">
-                                <i class="fa-solid fa-pen"></i>
-                            </button>
-                            <button class="btn-red btn-cancel" style="width:auto; padding:6px 10px; margin-top:0;" onclick="eliminarTrabajoTallerPro('${dni}', ${h._idx})">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-            html += `</div>`;
-            contenedor.innerHTML += html;
-        }
-
-        function enviarRecordatorioWhatsApp(dni) {
-            const cliente = clientesBD[dni];
-            if (!cliente) return;
-            const info = calcularProximoService(cliente.historialServicios);
-            if (!info) return;
-
-            const msg = `Hola *${cliente.nombre}*! 👋 Te escribimos de *MAS RACING*.%0A%0A` +
-                        `Te recordamos que le corresponde el próximo service a tu moto (${info.ultimo.moto}).%0A` +
-                        `📅 Fecha sugerida: *${formatearFecha(info.fechaProximaISO)}*%0A` +
-                        `🛵 Kilometraje sugerido: *${info.proximoKm.toLocaleString('es-AR')} km*%0A%0A` +
-                        `¡Pedí tu turno respondiendo este mensaje! 🛠️`;
-
-            window.open(`https://wa.me/${cliente.telefono || NUMERO_WHATSAPP}?text=${msg}`, '_blank');
-        }
-
-        function abrirEditorTrabajo(dni, idx) {
-            const cliente = clientesBD[dni];
-            const h = cliente?.historialServicios?.[idx];
-            if (!h) return;
-
-            const cont = document.getElementById("tallerHistorial");
-            const editId = "editor-" + dni + "-" + idx;
-
-            document.querySelectorAll(".edit-box").forEach(e => e.remove());
-
-            const editor = document.createElement("div");
-            editor.className = "edit-box";
-            editor.id = editId;
-            editor.innerHTML = `
-                <div class="edit-box-grid">
-                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Fecha</label><input type="date" id="editFecha" value="${h.fecha||""}"></div>
-                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Km</label><input type="number" id="editKm" value="${h.km||""}"></div>
-                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Marca</label><input id="editMarca" value="${(h.moto||"").split(" ")[0]||""}"></div>
-                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Modelo</label><input id="editModelo" value="${(h.moto||"").split(" ").slice(1).join(" ")||""}"></div>
-                    <div class="full"><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Trabajo / notas</label><input id="editServicio" value="${String(h.servicio||"").replace(/"/g,"&quot;")}"></div>
-                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Mano de obra</label><input id="editMO" value="${h.montoTrabajo||0}"></div>
-                    <div><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Repuestos</label><input id="editRepMonto" value="${h.montoRepuestos||0}"></div>
-                    <div class="full"><label style="font-size:7px;color:var(--muted);text-transform:uppercase;">Detalle repuestos</label><input id="editRepDetalle" value="${String(h.repuestosDetalle||"").replace(/"/g,"&quot;")}"></div>
-                </div>
-                <div style="display:flex;gap:7px;margin-top:9px;">
-                    <button type="button" class="btn-mini success" onclick="guardarEdicionTrabajo('${dni}',${idx})"><i class="fa-solid fa-check"></i> GUARDAR</button>
-                    <button type="button" class="btn-mini" onclick="document.getElementById('${editId}').remove()">CANCELAR</button>
-                </div>`;
-
-            cont.prepend(editor);
-        }
-
-        function guardarEdicionTrabajo(dni, idx) {
-            const h = clientesBD[dni]?.historialServicios?.[idx];
-            if (!h) return;
-
-            const marca = document.getElementById("editMarca").value.trim();
-            const modelo = document.getElementById("editModelo").value.trim();
-            const fecha = document.getElementById("editFecha").value;
-            if (!fecha || !marca || !modelo) { alert("Completá fecha, marca y modelo."); return; }
-
-            h.fecha = fecha;
-            h.km = document.getElementById("editKm").value.trim() || null;
-            h.moto = `${marca} ${modelo}`;
-            h.servicio = document.getElementById("editServicio").value.trim() || "Otro";
-            h.montoTrabajo = parsearMonto(document.getElementById("editMO").value);
-            h.montoRepuestos = parsearMonto(document.getElementById("editRepMonto").value);
-            h.repuestosDetalle = document.getElementById("editRepDetalle").value.trim();
-            h.usoRepuestos = h.montoRepuestos > 0 || !!h.repuestosDetalle;
-            h.montoTotal = h.montoTrabajo + h.montoRepuestos;
-
-            clientesBD[dni].trabajosRealizados = (clientesBD[dni].historialServicios || []).length;
-            sincronizarFidelidad(dni);
-            guardarClientesPro();
-            alert("Historial actualizado correctamente.");
-            buscarClienteTaller();
-        }
-
-        function eliminarTrabajoTallerPro(dni, idx) {
-            if (!confirm("¿Eliminar este trabajo del historial?")) return;
-            if (!clientesBD[dni]?.historialServicios) return;
-
-            clientesBD[dni].historialServicios.splice(idx,1);
-            clientesBD[dni].trabajosRealizados = clientesBD[dni].historialServicios.length;
-            sincronizarFidelidad(dni);
-            guardarClientesPro();
-            buscarClienteTaller();
-        }
-
-        function toggleHistorialGlobalTaller() {
-            const cont = document.getElementById('tallerHistorialGlobalContainer');
-            if (cont.style.display === 'none') {
-                cont.style.display = 'block';
-                renderHistorialGlobalTaller();
-            } else {
-                cont.style.display = 'none';
-            }
-        }
-
-        function renderHistorialGlobalTaller() {
-            const cont = document.getElementById('tallerHistorialGlobalContainer');
-            let items = [];
-            Object.keys(clientesBD).forEach(dniCliente => {
-                const cliente = clientesBD[dniCliente];
-                (cliente.historialServicios || []).forEach((h, idx) => {
-                    items.push({ ...h, dni: dniCliente, nombre: cliente.nombre, _idx: idx });
-                });
-            });
-
-            if (items.length === 0) {
-                cont.innerHTML = "<p style='font-size:12px; color:var(--texto-gris);'>Todavía no hay ningún trabajo cargado en el sistema.</p>";
-                return;
-            }
-
-            items.sort((a, b) => (a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : 0));
-            const totalFacturado = items.reduce((acc, h) => acc + (h.montoTotal || 0), 0);
-
-            let html = `
-                <div class="profile-badge" style="border-color: var(--verde-exito);">
-                    <p style="font-size:9px; color:var(--texto-gris);">TOTAL FACTURADO (HISTÓRICO)</p>
-                    <p><strong style="color: var(--verde-exito); font-size:15px;">$${totalFacturado.toLocaleString('es-AR')}</strong></p>
-                    <p style="font-size:9px; color:var(--texto-gris); margin-top:4px;">${items.length} trabajos en total</p>
-                </div>
-                <div class="my-turnos-list" style="max-height:280px;">
-            `;
-
-            items.forEach(h => {
-                html += `
-                    <div class="turno-item" style="align-items:flex-start;">
-                        <div>
-                            <strong>${formatearFecha(h.fecha)}</strong> — ${h.servicio}<br>
-                            <span style="color:var(--texto-gris);">${h.nombre} (DNI ${h.dni}) · ${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}${h.montoTotal ? ' · $' + h.montoTotal.toLocaleString('es-AR') : ''}</span>
-                        </div>
-                        <button class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" onclick="generarBoleta('${h.dni}', ${h._idx})">
-                            <i class="fa-solid fa-receipt"></i>
-                        </button>
-                    </div>
-                `;
-            });
-
-            html += `</div>`;
-            cont.innerHTML = html;
-        }
-
-        function toggleClientesRegistrados() {
-            const cont = document.getElementById('tallerClientesRegistradosContainer');
-            if (cont.style.display === 'none') {
-                cont.style.display = 'block';
-                renderClientesRegistrados();
-            } else {
-                cont.style.display = 'none';
-            }
-        }
-
-        function renderClientesRegistrados() {
-            const cont = document.getElementById('tallerClientesRegistradosContainer');
-            if (!cont) return;
-
-            const lista = Object.keys(clientesBD).map(dni => ({ dni, ...clientesBD[dni] }));
-
-            if (lista.length === 0) {
-                cont.innerHTML = "<p style='font-size:12px; color:var(--texto-gris);'>Todavía no hay clientes registrados.</p>";
-                return;
-            }
-
-            lista.sort((a, b) => {
-                const fa = a.fechaRegistro ? new Date(a.fechaRegistro).getTime() : 0;
-                const fb = b.fechaRegistro ? new Date(b.fechaRegistro).getTime() : 0;
-                return fb - fa;
-            });
-
-            let html = `
-                <div class="profile-badge" style="border-color: rgba(229,36,33,.42);">
-                    <p style="font-size:9px; color:var(--texto-gris);">TOTAL DE CLIENTES REGISTRADOS</p>
-                    <p><strong style="color:#fff; font-size:15px;">${lista.length}</strong></p>
-                </div>
-                <div class="my-turnos-list" style="max-height:280px;">
-            `;
-
-            lista.forEach(c => {
-                const services = (c.historialServicios || []).filter(esService).length;
-                const fechaTxt = c.fechaRegistro ? formatearFecha(new Date(c.fechaRegistro).toISOString().split('T')[0]) : 'Sin datos';
-                html += `
-                    <div class="turno-item" style="align-items:flex-start;">
-                        <div>
-                            <strong>${c.nombre || 'Sin nombre'}</strong> — DNI ${c.dni}<br>
-                            <span style="color:var(--texto-gris);">${c.telefono || 'Sin teléfono'}${c.email ? ' · ' + c.email : ''}</span><br>
-                            <span style="color:var(--muted-2);">Registrado: ${fechaTxt} · ${c.trabajosRealizados || 0} trabajo(s) · ${services} service(s)</span>
-                        </div>
-                        <div style="display:flex; gap:6px;">
-                            ${c.telefono ? `<a class="btn-red" style="width:auto; padding:6px 10px; margin-top:0; text-decoration:none; background:linear-gradient(135deg,#2c3038,#1a1d22); border-color:var(--gris-borde);" href="https://wa.me/54${c.telefono.replace(/[^0-9]/g,'')}" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>` : ''}
-                            <button type="button" class="btn-red btn-cancel" style="width:auto; padding:6px 10px; margin-top:0;" onclick="eliminarClienteTaller('${c.dni}')" title="Eliminar cliente">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            html += `</div>`;
-            cont.innerHTML = html;
-        }
-
-        function actualizarVistasClientesRegistrados() {
-            const cont = document.getElementById('tallerClientesRegistradosContainer');
-            if (cont && cont.style.display !== 'none') {
-                renderClientesRegistrados();
-            }
-            renderStatsTaller();
-        }
-
-        function eliminarClienteTaller(dni) {
-            dni = String(dni || '').trim();
-            if (!dni || !clientesBD[dni]) {
-                alert('No se encontró ese cliente.');
-                return;
-            }
-
-            const nombre = clientesBD[dni].nombre || 'este cliente';
-            const trabajos = (clientesBD[dni].historialServicios || []).length;
-
-            const advertencia = trabajos > 0
-                ? `Vas a eliminar a "${nombre}" (DNI ${dni}) junto con su historial de ${trabajos} trabajo(s), sus cupones y sus turnos agendados.\n\nEsta acción NO se puede deshacer. ¿Confirmás?`
-                : `Vas a eliminar a "${nombre}" (DNI ${dni}) y sus turnos agendados.\n\nEsta acción NO se puede deshacer. ¿Confirmás?`;
-
-            if (!confirm(advertencia)) return;
-            if (!confirm(`Última confirmación: ¿eliminar definitivamente la cuenta de "${nombre}"?`)) return;
-
-            delete clientesBD[dni];
-            guardarClientesPro();
-
-            if (cuponesBD[dni]) {
-                delete cuponesBD[dni];
-                guardarCuponesPro();
-            }
-
-            turnosBD = turnosBD.filter(t => t.dni !== dni);
-            guardarTurnosPro();
-
-            alert(`Cuenta de "${nombre}" eliminada correctamente.`);
-
-            document.getElementById('tallerDni').value = '';
-            document.getElementById('tallerClienteInfo').style.display = 'none';
-            document.getElementById('tallerHistorial').innerHTML = '';
-
-            actualizarVistasClientesRegistrados();
-
-            const contGlobal = document.getElementById('tallerHistorialGlobalContainer');
-            if (contGlobal && contGlobal.style.display !== 'none') {
-                renderHistorialGlobalTaller();
-            }
-        }
-
-        // Mantiene el listado de clientes actualizado si el panel del taller está abierto
-        // en otra pestaña/dispositivo mientras alguien se registra desde otra sesión.
-        window.addEventListener('storage', (e) => {
-            if (e.key === 'masracing_clientes') {
-                clientesBD = JSON.parse(e.newValue || '{}');
-                actualizarVistasClientesRegistrados();
-            }
-            if (e.key === 'masracing_turnos') {
-                turnosBD = JSON.parse(e.newValue || '[]');
-            }
-            if (e.key === 'masracing_cupones') {
-                cuponesBD = JSON.parse(e.newValue || '{}');
-            }
-        });
-
-        function verMiPerfilCliente() {
-            const dni = document.getElementById("clienteMiPerfilDni").value.trim();
-            const res = document.getElementById("clienteMiPerfilResultado");
-            if (!dni) { alert("Ingresá tu DNI."); return; }
-            if (!clientesBD[dni]) {
-                res.innerHTML = `<div class="profile-badge"><p><strong>DNI no encontrado.</strong></p><p style="color:var(--muted);">Registrate en la Pestaña 1 primero.</p></div>`;
-                return;
-            }
-            const cliente = clientesBD[dni];
-            const historial = cliente.historialServicios || [];
-            const info = calcularProximoService(historial);
-
-            let html = `
-                <div class="profile-badge">
-                    <p><strong style="font-size:13px;">${cliente.nombre}</strong></p>
-                    <p style="color:var(--muted); font-size:10px; margin-top:2px;">DNI: ${dni} | Tel: ${cliente.telefono || 'Sin registrar'}</p>
-                    <p style="margin-top:6px;">Trabajos realizados: <strong>${historial.length}</strong></p>
-                </div>
-            `;
-
-            if (info) {
-                html += `
-                    <div class="profile-badge" style="border-color:${info.vencidoPorFecha ? 'var(--red)' : 'var(--green)'};">
-                        <p style="font-size:9px; color:var(--muted); font-weight:800;">PRÓXIMO SERVICE SUGERIDO</p>
-                        <p style="margin-top:4px;"><strong style="color:${info.vencidoPorFecha ? '#ff625e' : 'var(--green)'};">Antes de los ${info.proximoKm.toLocaleString('es-AR')} km o antes del ${formatearFecha(info.fechaProximaISO)}</strong></p>
-                    </div>
-                `;
-            }
-
-            if (historial.length === 0) {
-                html += `<p style="font-size:11px; color:var(--muted); margin-top:10px;">Aún no tenés trabajos registrados.</p>`;
-            } else {
-                html += `<div class="my-turnos-list" style="max-height:250px; margin-top:10px;">`;
-                historial.slice().reverse().forEach(h => {
-                    html += `
-                        <div class="turno-item">
-                            <div>
-                                <strong>${formatearFecha(h.fecha)}</strong> — ${h.servicio}<br>
-                                <span style="color:var(--muted);">${h.moto}${h.km ? ' · ' + parseInt(h.km).toLocaleString('es-AR') + ' km' : ''}</span>
-                            </div>
-                        </div>
-                    `;
-                });
-                html += `</div>`;
-            }
-            res.innerHTML = html;
-        }
-
-        function verMisDescuentosPro() {
-            const dni = document.getElementById("descuentoDni").value.trim();
-            const box = document.getElementById("descuentosResultadoPro");
-            if (!dni) { alert("Ingresá tu DNI."); return; }
-
-            if (!clientesBD[dni]) {
-                box.innerHTML = `<div class="profile-badge"><p><strong>DNI no encontrado.</strong></p><p style="color:var(--texto-gris);">Registrate primero como cliente.</p></div>`;
-                return;
-            }
-
-            sincronizarFidelidad(dni);
-            const total = contarServices(dni);
-            const progreso = total % SERVICES_PARA_CUPON;
-            const faltan = progreso === 0 ? SERVICES_PARA_CUPON : SERVICES_PARA_CUPON - progreso;
-            const porcentaje = progreso === 0 ? 0 : Math.round(progreso/3*100);
-
-            let html = `
-                <div class="profile-badge" style="border-color:rgba(49,209,124,.35);">
-                    <p><strong>${clientesBD[dni].nombre}</strong> · DNI ${dni}</p>
-                    <p>Services realizados: <strong>${total}</strong></p>
-                    <div class="loyalty-progress"><span style="width:${porcentaje}%"></span></div>
-                    <p style="font-size:9px;color:var(--texto-gris);margin-top:7px;">
-                        ${progreso===0 && total>=3 ? "¡Tenés un nuevo beneficio disponible!" : `Faltan ${faltan} service${faltan===1?"":"s"} para generar otro 15% OFF.`}
-                    </p>
-                </div>`;
-
-            const cupones = (cuponesBD[dni] || []).slice().reverse();
-            if (!cupones.length) {
-                html += `<div class="profile-badge"><p style="color:var(--texto-gris);">Todavía no tenés cupones. Completá 3 services.</p></div>`;
-            }
-
-            cupones.forEach((c,i) => {
-                const estado = c.usado ? "UTILIZADO" : c.invalidado ? "INVALIDADO" : cuponValidoPro(c) ? "VÁLIDO" : "VENCIDO";
-                const qid = "qrpro-" + c.id.replace(/[^a-zA-Z0-9]/g,"") + "-" + i;
-                html += `
-                    <div class="coupon-card ${estado!=="VÁLIDO" ? "expired" : ""}">
-                        <div class="coupon-head">
-                            <div>
-                                <div class="coupon-big">${c.descuento}% OFF</div>
-                                <div class="coupon-status ${estado!=="VÁLIDO"?"bad":""}">${estado}</div>
-                            </div>
-                            <i class="fa-solid fa-ticket" style="font-size:25px;color:${estado==="VÁLIDO"?"var(--green)":"var(--muted-2)"}"></i>
-                        </div>
-                        <div class="coupon-meta">
-                            <div><small>Hito</small><strong>Service #${c.numeroService}</strong></div>
-                            <div><small>Vence</small><strong>${formatearFecha(c.vence.slice(0,10))}</strong></div>
-                        </div>
-                        <div class="qr-box" id="${qid}"></div>
-                        <div class="coupon-code">${c.codigo}</div>
-                        ${estado==="VÁLIDO" ? `<button type="button" class="btn-mini" style="width:100%;margin-top:8px;" onclick="descargarQRPro('${qid}','${c.codigo}')"><i class="fa-solid fa-download"></i> GUARDAR QR</button>` : ""}
-                    </div>`;
-            });
-
-            box.innerHTML = html;
-            cupones.forEach((c,i) => {
-                const qid = "qrpro-" + c.id.replace(/[^a-zA-Z0-9]/g,"") + "-" + i;
-                dibujarQRPro(qid, qrPayloadPro(c));
-            });
-        }
-
-        async function abrirScannerPro() {
-            const reader = document.getElementById("qr-reader");
-            if (scannerPro) {
-                try { await scannerPro.stop(); } catch(e) {}
-                scannerPro = null;
-                reader.style.display = "none";
-                return;
-            }
-            if (typeof Html5Qrcode === "undefined") {
-                alert("No se pudo cargar el lector QR.");
-                return;
-            }
-            reader.style.display = "block";
-            scannerPro = new Html5Qrcode("qr-reader");
-            try {
-                await scannerPro.start(
-                    {facingMode:"environment"},
-                    {fps:10,qrbox:{width:220,height:220}},
-                    async text => {
-                        await cerrarScannerPro();
-                        verificarCuponPro(text);
-                    },
-                    () => {}
-                );
-            } catch(e) {
-                reader.style.display = "none";
-                scannerPro = null;
-                alert("No se pudo acceder a la cámara.");
-            }
-        }
-
-        async function cerrarScannerPro() {
-            if (scannerPro) {
-                try { await scannerPro.stop(); } catch(e) {}
-                scannerPro = null;
-            }
-            const reader = document.getElementById("qr-reader");
-            if (reader) reader.style.display = "none";
-        }
-
-        function verificarCuponPro(texto) {
-            const box = document.getElementById("qr-verificacion-pro");
-            const p = String(texto).split("|");
-            if (p.length !== 8 || p[0]!=="MASRACING" || p[1]!=="15MO" || p[2]!=="HAND") {
-                box.innerHTML = `<div class="qr-result bad"><strong>✕ QR NO VÁLIDO</strong><br>No corresponde a un cupón MAS RACING.</div>`;
-                return;
-            }
-
-            const [, , , id, codigo, dni, numeroService, vence] = p;
-            const cupon = (cuponesBD[dni]||[]).find(c => c.id===id && c.codigo===codigo);
-
-            if (!cupon) {
-                box.innerHTML = `<div class="qr-result bad"><strong>✕ CUPÓN NO REGISTRADO</strong><br>No existe en este dispositivo.</div>`;
-                return;
-            }
-            if (cupon.usado) {
-                box.innerHTML = `<div class="qr-result bad"><strong>✕ CUPÓN YA UTILIZADO</strong></div>`;
-                return;
-            }
-            if (cupon.invalidado || new Date(vence).getTime() <= Date.now()) {
-                box.innerHTML = `<div class="qr-result bad"><strong>✕ CUPÓN NO VÁLIDO O VENCIDO</strong></div>`;
-                return;
-            }
-
-            const cliente = clientesBD[dni];
-            const nombre = cliente ? cliente.nombre : dni;
-            box.innerHTML = `
-                <div class="qr-result ok">
-                    <strong>✓ CUPÓN VÁLIDO — ${cupon.descuento}% OFF EN MANO DE OBRA</strong><br>
-                    Cliente: ${nombre}<br>
-                    DNI: ${dni}<br>
-                    Generado por: service #${numeroService}<br>
-                    Vence: ${formatearFecha(vence.slice(0,10))}
-                    <button type="button" class="btn-red" style="margin-top:10px;" onclick="usarCuponPro('${dni}','${id}')">
-                        <i class="fa-solid fa-check"></i> APLICAR Y MARCAR UTILIZADO
-                    </button>
-                </div>`;
-        }
-
-        function usarCuponPro(dni,id) {
-            const c = (cuponesBD[dni]||[]).find(x=>x.id===id);
-            if (!c || !cuponValidoPro(c)) return;
-            if (!confirm(`Confirmar ${c.descuento}% OFF en MANO DE OBRA?`)) return;
-            c.usado = true;
-            c.usadoEn = new Date().toISOString();
-            guardarCuponesPro();
-            document.getElementById("qr-verificacion-pro").innerHTML =
-                `<div class="qr-result ok"><strong>✓ DESCUENTO APLICADO</strong></div>`;
-        }
-
-        function calcularEstadisticasTaller() {
-            const clientes = Object.keys(clientesBD).length;
-            let trabajos = 0, services = 0, facturado = 0;
-            Object.values(clientesBD).forEach(c => {
-                const h = c.historialServicios || [];
-                trabajos += h.length;
-                services += h.filter(esService).length;
-                facturado += h.reduce((a,x)=>a+(x.montoTotal||0),0);
-            });
-            return {clientes,trabajos,services,facturado};
-        }
-
-        function renderStatsTaller() {
-            const box = document.getElementById("tallerStatsPro");
-            if (!box) return;
-            const s = calcularEstadisticasTaller();
-            box.innerHTML = `
-                <div class="workshop-stat"><small>Clientes</small><strong>${s.clientes}</strong></div>
-                <div class="workshop-stat"><small>Services</small><strong>${s.services}</strong></div>
-                <div class="workshop-stat"><small>Facturado</small><strong>$${s.facturado.toLocaleString("es-AR")}</strong></div>`;
-        }
-
-        function obtenerNumeroBoleta() {
-            let n = parseInt(localStorage.getItem('masracing_boleta_contador') || '0') + 1;
-            localStorage.setItem('masracing_boleta_contador', n);
-            return n;
-        }
-
-        function generarBoleta(dni, idx) {
-            const cliente = clientesBD[dni];
-            if (!cliente || !cliente.historialServicios || !cliente.historialServicios[idx]) {
-                alert('No se encontró ese trabajo.');
-                return;
-            }
-
-            const h = cliente.historialServicios[idx];
-            const numeroBoleta = obtenerNumeroBoleta();
-            const fechaEmision = new Date().toLocaleDateString('es-AR');
-
-            const montoTrabajo = h.montoTrabajo || 0;
-            const montoRepuestos = h.montoRepuestos || 0;
-            const montoTotal = h.montoTotal || (montoTrabajo + montoRepuestos);
-
-            const filaRepuestos = h.usoRepuestos ? `
-                <tr>
-                    <td>Repuestos${h.repuestosDetalle ? ' — ' + h.repuestosDetalle : ''}</td>
-                    <td style="text-align:right;">$${montoRepuestos.toLocaleString('es-AR')}</td>
-                </tr>
-            ` : '';
-
-            const ventana = window.open('', '_blank', 'width=650,height=800');
-            ventana.document.write(`
-                <!DOCTYPE html>
-                <html lang="es">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Boleta N° ${numeroBoleta} - MAS RACING</title>
-                    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-                    <style>
-                        * { box-sizing: border-box; }
-                        body {
-                            font-family: 'Montserrat', sans-serif;
-                            background: #0b0d0f;
-                            color: #fff;
-                            max-width: 650px;
-                            margin: 30px auto;
-                            padding: 0 20px 30px;
-                            -webkit-print-color-adjust: exact;
-                            print-color-adjust: exact;
-                        }
-                        .encabezado { display:flex; justify-content:space-between; align-items:flex-start; border-bottom: 3px solid #e52421; padding-bottom: 18px; margin-bottom: 22px; }
-                        .encabezado h1 { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 30px; letter-spacing: -0.5px; margin-bottom: 6px; text-transform: uppercase; }
-                        .encabezado p { font-size: 11px; color: #9299a5; line-height: 1.6; }
-                        .boleta-info { text-align: right; font-size: 12px; color: #9299a5; }
-                        .boleta-info .num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: #ff4b47; letter-spacing: .5px; }
-                        .datos { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; font-size: 12px; }
-                        .datos div { background: #111417; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; padding: 12px 14px; }
-                        .datos h4 { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: #68707c; margin-bottom: 8px; font-weight: 800; }
-                        .datos p { line-height: 1.7; }
-                        table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 6px; background: #111417; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; overflow: hidden; }
-                        th { text-align: left; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #68707c; border-bottom: 1px solid rgba(255,255,255,.09); padding: 10px 12px; font-weight: 800; }
-                        td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.06); }
-                        .total-row td { border-top: 2px solid #e52421; border-bottom: none; font-weight: 800; font-size: 15px; padding-top: 14px; color: #ff4b47; }
-                        .footer { margin-top: 30px; text-align: center; font-size: 10px; color: #68707c; border-top: 1px solid rgba(255,255,255,.09); padding-top: 16px; }
-                        .btn-imprimir { display:block; width:100%; margin-top:24px; padding:13px; background:linear-gradient(135deg,#ed2b27,#bf1714); color:#fff; border:none; border-radius:10px; font-weight:900; font-size:12px; cursor:pointer; text-transform:uppercase; letter-spacing:1px; }
-                        @media print { .btn-imprimir { display:none; } body { margin: 0; } }
-                    </style>
-                </head>
-                <body>
-                    <div class="encabezado">
-                        <div>
-                            <h1>MAS <span style="color:#e52421;">RACING</span></h1>
-                            <p>Motomecánica<br>Av. Luján 4156, Santo Tomé, Santa Fe<br>Instagram: @masracingmotomecanica</p>
-                        </div>
-                        <div class="boleta-info">
-                            <div class="num">BOLETA N° ${String(numeroBoleta).padStart(5, '0')}</div>
-                            <p>Fecha de emisión: ${fechaEmision}</p>
-                        </div>
-                    </div>
-
-                    <div class="datos">
-                        <div>
-                            <h4>Cliente</h4>
-                            <p><strong>${cliente.nombre}</strong><br>DNI: ${dni}${cliente.telefono ? '<br>Tel: ' + cliente.telefono : ''}</p>
-                        </div>
-                        <div>
-                            <h4>Vehículo</h4>
-                            <p><strong>${h.moto}</strong><br>${h.km ? parseInt(h.km).toLocaleString('es-AR') + ' km' : 'Kilometraje no registrado'}<br>Fecha del trabajo: ${formatearFecha(h.fecha)}</p>
-                        </div>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr><th>Concepto</th><th style="text-align:right;">Monto</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>${h.servicio}</td>
-                                <td style="text-align:right;">$${montoTrabajo.toLocaleString('es-AR')}</td>
-                            </tr>
-                            ${filaRepuestos}
-                            <tr class="total-row">
-                                <td>TOTAL</td>
-                                <td style="text-align:right;">$${montoTotal.toLocaleString('es-AR')}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="footer">
-                        Gracias por confiar en MAS RACING · Documento no válido como factura fiscal
-                    </div>
-
-                    <button class="btn-imprimir" onclick="window.print()">Imprimir / Guardar como PDF</button>
-                </body>
-                </html>
-            `);
-        }
-
-        document.addEventListener("visibilitychange", async () => {
-            if (document.visibilityState === "visible" && ONLINE_DB_ACTIVA) {
-                await inicializarBaseOnline();
-                actualizarVistasClientesRegistrados();
-                const dni = document.getElementById("tallerDni")?.value?.trim();
-                if (dni) renderHistorialTaller(dni);
-            }
-        });
-
-        // Inicialización
-        window.addEventListener('DOMContentLoaded', async () => {
-            // Pedimos almacenamiento persistente cuando el navegador lo permite.
-            // No es obligatorio para funcionar, pero ayuda a evitar purgas automáticas.
-            try {
-                if (navigator.storage && navigator.storage.persist) {
-                    await navigator.storage.persist();
-                }
-            } catch (_) {}
-
-            await recuperarDesdeIndexedDBSiHaceFalta();
-            await inicializarBaseOnline();
-
-            Object.keys(clientesBD).forEach(dni => {
-                clientesBD[dni].trabajosRealizados = (clientesBD[dni].historialServicios||[]).length;
-                sincronizarFidelidad(dni);
-            });
-
-            // Si ya existían datos, se vuelven a respaldar en ambos sistemas.
-            guardarClientesPro();
-            guardarTurnosPro();
-            guardarCuponesPro();
-        });
-
-        // Guardado final de seguridad cuando la página pasa a segundo plano o se cierra.
-        window.addEventListener('pagehide', () => {
-            try {
-                localStorage.setItem('masracing_clientes_backup', JSON.stringify(clientesBD));
-                localStorage.setItem('masracing_turnos_backup', JSON.stringify(turnosBD));
-                localStorage.setItem('masracing_cupones_backup', JSON.stringify(cuponesBD));
-            } catch (_) {}
-        });
-    </script>
-</body>
-</html>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navegación suave
+            document.querySelectorAll('nav a').
