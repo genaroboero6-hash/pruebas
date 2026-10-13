@@ -1227,130 +1227,24 @@ button,a{touch-action:manipulation}
 
 
 
-/* Bloqueos de agenda: controles separados y cómodos en escritorio y móvil */
-.block-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 24px}
-.block-option{min-width:0;padding:20px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(16,39,29,.96),rgba(7,17,12,.98));box-shadow:0 14px 32px rgba(0,0,0,.14)}
-.block-option-slot{border-top:3px solid var(--green)}.block-option-day{border-top:3px solid #ffd166}
-.block-option-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.block-option-symbol{display:grid;place-items:center;width:43px;height:43px;border-radius:14px;background:rgba(85,243,155,.1);color:var(--green-2);font-size:1.65rem}
-.block-option-day .block-option-symbol{background:rgba(255,209,102,.1);color:#ffe09a}
-.block-option-tag{font-size:.65rem;font-weight:800;letter-spacing:.13em;color:var(--muted);border:1px solid var(--line);padding:6px 9px;border-radius:999px}
-.block-option h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:1.45rem;margin:0 0 6px}
-.block-option p{min-height:47px;color:#b4c8bf;font-size:.86rem;line-height:1.55;margin:0 0 18px}
-.block-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}.block-fields-one{grid-template-columns:1fr}
-.block-option .field input,.block-option .field select{display:block;width:100%;min-width:0;min-height:49px;padding:12px;border-radius:12px;border:1px solid var(--line);background:#07130d;color:#f3faf6;font-size:16px}
-.block-option .field select{appearance:auto}.block-submit{width:100%;min-height:49px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:800;padding:13px 15px}
-.block-active-section{border-top:1px solid var(--line);padding-top:20px}.block-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.block-section-heading h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:1.4rem;margin-top:3px}.block-count{font-size:.74rem;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#d6e6dd;white-space:nowrap}
-.block-active-groups{display:grid;grid-template-columns:1fr 1fr;gap:16px}.block-active-group{padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.018);min-width:0}.block-active-group>h4{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.87rem;margin-bottom:10px}.block-active-group>h4 span{font-size:.7rem;color:var(--muted);padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.05)}
-.block-active-item{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid rgba(255,255,255,.06);min-width:0}.block-active-icon{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:11px;background:rgba(85,243,155,.09);color:var(--green-2);font-size:1.15rem}.block-active-group:nth-child(2) .block-active-icon{background:rgba(255,209,102,.09);color:#ffe09a}.block-active-info{display:grid;gap:3px;min-width:0;flex:1}.block-active-info strong{font-size:.8rem}.block-active-info span{font-size:.72rem;color:var(--muted)}.block-empty{padding:13px 8px;text-align:center;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:.77rem}
-@media(max-width:720px){.block-options-grid,.block-active-groups{grid-template-columns:1fr}.block-option{padding:16px}.block-option p{min-height:0;margin-bottom:15px}.block-fields{grid-template-columns:1fr}.block-section-heading{align-items:flex-start}.block-active-item{gap:8px}.block-active-info strong{font-size:.78rem}.block-active-info span{font-size:.7rem}.block-active-item .btn{flex:none}}
-</style>
-<style id="responsive-device-optimization">
-
-/* Optimización adaptativa: conserva el diseño original y solo mejora la adaptación por dispositivo. */
-:root{scroll-padding-top:calc(82px + env(safe-area-inset-top))}
-img,video,canvas,svg{max-width:100%}
-button,input,select,textarea{font:inherit}
-button,a,input,select,textarea{touch-action:manipulation}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}
-.container,.card,.panel-content,.panel-grid,.booking-grid,.hero-grid,.form-grid,.block-options-grid,.block-active-groups{min-width:0}
-.table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
-
-/* Escritorio: aprovechar el espacio disponible sin estirar los controles. */
-@media (min-width:1100px){
-  .panel-grid{grid-template-columns:minmax(220px,260px) minmax(0,1fr);align-items:start}
-  .panel-nav{position:sticky;top:92px}
-  .panel-content{min-width:0}
-  .table-wrap .table{min-width:0}
-  .block-options-grid,.block-active-groups{align-items:stretch}
+/* Controles de agenda y estados de bloqueo */
+.field select,.field textarea{
+  width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);
+  background:#07130d;color:#f3faf6;font:inherit;min-height:46px;
 }
-
-/* Tablet y pantallas medianas. */
-@media (min-width:641px) and (max-width:1099px){
-  .container{width:min(100% - 28px,900px)}
-  .panel-grid{grid-template-columns:minmax(0,1fr)}
-  .panel-nav{display:flex;gap:8px;overflow-x:auto;max-width:100%;padding:2px 2px 8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
-  .panel-nav button{flex:0 0 auto;min-height:44px;white-space:nowrap;text-align:center}
-  .panel-content{min-width:0}
-  .block-options-grid,.block-active-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+.field textarea{resize:vertical;min-height:76px;line-height:1.45}
+.field select:focus-visible,.field textarea:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}
+.time.blocked{opacity:.55;background:rgba(255,109,114,.12);border-color:rgba(255,109,114,.36);color:#ffb0b4;text-decoration:line-through;cursor:not-allowed}
+.day.day-blocked{opacity:.45;border-color:rgba(255,109,114,.38);background:rgba(255,109,114,.07);cursor:not-allowed}
+.block-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025);margin-top:9px}
+.block-item p{color:var(--muted);font-size:.78rem;line-height:1.45;margin-top:4px}
+.block-item strong{font-size:.9rem}
+.block-item .btn{flex:none}
+@media(max-width:640px){
+  .field select,.field textarea{font-size:16px;min-height:50px}
+  .block-item{align-items:stretch;flex-direction:column}
+  .block-item .btn{width:100%;min-height:44px}
 }
-
-/* Celular: controles cómodos con el pulgar, paneles compactos y sin desbordes. */
-@media (max-width:640px){
-  html{scroll-padding-top:76px}
-  body{width:100%;min-width:0;overflow-x:hidden;padding-bottom:calc(12px + env(safe-area-inset-bottom))}
-  .container{width:calc(100% - 24px);max-width:100%;padding-left:0;padding-right:0}
-  .nav{min-height:66px;height:auto;gap:8px;padding:8px 0;align-items:center}
-  .brand{gap:7px;min-width:0}
-  .brand-icon{width:34px;height:42px;flex:0 0 auto}
-  .brand-copy strong{font-size:1rem;letter-spacing:.06em}
-  .brand-copy span{font-size:.58rem;letter-spacing:.1em}
-  .nav-actions{gap:6px;align-items:center}
-  .nav-actions .btn{padding:9px 10px;font-size:.78rem;min-height:40px}
-  .hero-grid,.booking-grid,.panel-grid{grid-template-columns:minmax(0,1fr)}
-  .section{padding-top:26px;padding-bottom:26px}
-  .section-title{gap:10px;align-items:flex-start}
-  .section-title h2{font-size:clamp(1.45rem,6vw,2rem);line-height:1.12}
-  .section-title>.btn{flex:0 0 auto;padding:9px 11px;min-height:42px}
-  .card{padding:15px;border-radius:18px}
-  .form-grid{grid-template-columns:minmax(0,1fr);gap:12px}
-  .field input,.field select,.field textarea,input,select,textarea{font-size:16px;max-width:100%}
-  .field input,.field select,.field textarea{min-height:46px;padding:12px}
-  .btn,button{min-height:44px}
-  .actions,.hero-actions,.modal-actions{gap:8px}
-  .actions>.btn,.modal-actions>.btn{flex:1 1 140px;min-width:0}
-  .panel-grid{gap:12px}
-  .panel-nav{display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 2px 9px;scrollbar-width:thin;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
-  .panel-nav button{flex:0 0 auto;min-height:44px;padding:10px 13px;white-space:nowrap;text-align:center;scroll-snap-align:start}
-  .panel-content{width:100%;min-width:0;overflow:visible}
-  .panel-content>div{min-width:0}
-  .table-wrap{width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;border-radius:12px;scrollbar-width:thin}
-  .table-wrap .table{min-width:590px}
-  .client-card,.appointment-card,.block-active-item{min-width:0;overflow-wrap:anywhere}
-  .block-options-grid,.block-active-groups{grid-template-columns:minmax(0,1fr);gap:12px}
-  .block-option{padding:15px;border-radius:17px}
-  .block-option input,.block-option select{width:100%;min-width:0}
-  .block-option .btn{width:100%}
-  .block-active-group{min-width:0;padding:12px}
-  .block-active-item{align-items:flex-start;gap:8px}
-  .block-active-item>div{min-width:0;overflow-wrap:anywhere}
-  .times{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .times button,.day{min-height:44px}
-  .date-strip{max-width:100%;overscroll-behavior-x:contain}
-  .modal{padding:8px;align-items:end;place-items:end center;padding-bottom:max(8px,env(safe-area-inset-bottom))}
-  .modal-card{width:100%;max-width:620px;max-height:min(88dvh,900px);overflow-y:auto;border-radius:22px 22px 14px 14px;padding:17px;overscroll-behavior:contain}
-  .modal h3{font-size:1.5rem}
-  .modal-head{position:sticky;top:-17px;z-index:2;background:linear-gradient(145deg,#0f2419,#0b1c14);padding:8px 0;margin-top:-8px}
-  .summary{align-items:flex-start;flex-wrap:wrap}
-  .summary .amount{font-size:1.9rem}
-  .user-status{align-items:flex-start;flex-direction:column;gap:5px}
-  .scanner-box{min-height:200px;padding:6px}
-  footer{padding:30px 0 40px}
-}
-
-/* Celulares angostos. */
-@media (max-width:380px){
-  .container{width:calc(100% - 18px)}
-  .brand-copy span{display:none}
-  .nav-actions .btn{padding:8px;font-size:.72rem}
-  .card{padding:12px}
-  .section-title>.btn{padding:8px}
-  .times{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .block-option-top{align-items:flex-start}
-  .block-count{white-space:normal;text-align:center}
-}
-
-/* Pantalla horizontal en móvil: mantener navegación y acciones accesibles. */
-@media (max-width:900px) and (orientation:landscape){
-  .modal-card{max-height:82dvh}
-  .panel-nav{position:sticky;left:0}
-  .hero{padding-top:22px}
-}
-
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-}
-
 </style>
 </head>
 <body>
@@ -1461,9 +1355,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
   <div class="container">
     <div class="section-title"><div><div class="kicker">Modo barbero</div><h2>Panel de Bruno</h2></div><button class="btn btn-ghost" type="button" onclick="closeSection('barberPanel')">Cerrar</button></div>
     <div class="panel-grid">
-      <div class="panel-nav"><button class="active" data-tab="clients" onclick="showBarberTab('clients',this)">Clientes</button><button data-tab="appointments" onclick="showBarberTab('appointments',this)">Turnos</button><button data-tab="history" onclick="showBarberTab('history',this)">Historial</button><button data-tab="scanner" onclick="showBarberTab('scanner',this)">Escanear QR</button><button data-tab="backup" onclick="showBarberTab('backup',this)">Respaldo</button><button data-tab="blocks" onclick="showBarberTab('blocks',this)">Bloquear horarios</button></div>
+      <div class="panel-nav"><button class="active" data-tab="clients" onclick="showBarberTab('clients',this)">Clientes</button><button data-tab="appointments" onclick="showBarberTab('appointments',this)">Turnos</button><button data-tab="schedule" onclick="showBarberTab('schedule',this)">Bloquear horarios</button><button data-tab="history" onclick="showBarberTab('history',this)">Historial</button><button data-tab="scanner" onclick="showBarberTab('scanner',this)">Escanear QR</button><button data-tab="backup" onclick="showBarberTab('backup',this)">Respaldo</button></div>
       <div class="panel-content">
-        <div id="tab-clients"></div><div id="tab-appointments" style="display:none"></div><div id="tab-history" style="display:none"></div><div id="tab-scanner" style="display:none"></div><div id="tab-backup" style="display:none"></div><div id="tab-blocks" style="display:none"></div>
+        <div id="tab-clients"></div><div id="tab-appointments" style="display:none"></div><div id="tab-schedule" style="display:none"></div><div id="tab-history" style="display:none"></div><div id="tab-scanner" style="display:none"></div><div id="tab-backup" style="display:none"></div>
       </div>
     </div>
   </div>
@@ -1482,7 +1376,7 @@ Brussy Barbería · Turnos online con Bruno Pérez · Historial protegido con re
 </div></footer>
 
 
-<div class="modal" id="registerModal"><div class="modal-card"><div class="modal-head"><div><div class="kicker">Cuenta</div><h3>Registro / inicio sesión</h3></div><button class="close" onclick="hideModal('registerModal')">×</button></div><div class="modal-actions" style="justify-content:flex-start;margin:0 0 14px"><button class="btn btn-green" type="button" id="accountModeCreate" onclick="setAccountMode('create')">Crear mi cuenta</button><button class="btn btn-ghost" type="button" id="accountModeLogin" onclick="setAccountMode('login')">Iniciar sesión</button></div><p class="small" id="accountModeText" style="margin-bottom:15px">Creá tu cuenta para reservar turnos, consultar tu historial y recibir tus beneficios.</p><div class="form-grid"><div class="field"><label>Nombre</label><input id="firstName" placeholder="Bruno" autocomplete="given-name"></div><div class="field"><label>Apellido</label><input id="lastName" placeholder="Pérez" autocomplete="family-name"></div><div class="field"><label>Teléfono</label><input id="phone" inputmode="tel" placeholder="342 555 0105" autocomplete="tel"></div><div class="field"><label>Documento</label><input id="dni" inputmode="numeric" placeholder="12345678"></div></div><p class="error" id="registerError"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('registerModal')">Cancelar</button><button class="btn btn-green" id="accountSubmit" onclick="submitAccount()">Crear cuenta y continuar</button></div></div></div>
+<div class="modal" id="registerModal"><div class="modal-card"><div class="modal-head"><div><div class="kicker">Cuenta</div><h3>Registro / inicio sesión</h3></div><button class="close" onclick="hideModal('registerModal')">×</button></div><div class="modal-actions" style="justify-content:flex-start;margin:0 0 14px"><button class="btn btn-green" type="button" id="accountModeCreate" onclick="setAccountMode('create')">Crear mi cuenta</button><button class="btn btn-ghost" type="button" id="accountModeLogin" onclick="setAccountMode('login')">Iniciar sesión</button></div><p class="small" id="accountModeText" style="margin-bottom:15px">Creá tu cuenta para reservar turnos, consultar tu historial y recibir tus beneficios.</p><div class="form-grid"><div class="field" id="firstNameField"><label>Nombre</label><input id="firstName" placeholder="Bruno" autocomplete="given-name"></div><div class="field" id="lastNameField"><label>Apellido</label><input id="lastName" placeholder="Pérez" autocomplete="family-name"></div><div class="field"><label>Teléfono</label><input id="phone" inputmode="tel" placeholder="342 555 0105" autocomplete="tel"></div><div class="field"><label>Documento</label><input id="dni" inputmode="numeric" placeholder="12345678" autocomplete="off" aria-describedby="registerError"></div></div><p class="error" id="registerError" role="alert" aria-live="polite"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('registerModal')">Cancelar</button><button class="btn btn-green" id="accountSubmit" type="button" onclick="submitAccount()">Crear cuenta y continuar</button></div></div></div>
 <div class="modal" id="barberLoginModal"><div class="modal-card" style="max-width:420px"><div class="modal-head"><div><div class="kicker">Acceso</div><h3>Modo barbero</h3></div><button class="close" onclick="hideModal('barberLoginModal')">×</button></div><p class="small">Introduzca contraseña</p><div class="field" style="margin-top:14px"><label>Contraseña</label><input id="barberPin" type="password" placeholder="Contraseña" autocomplete="current-password"></div><p class="error" id="barberError"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('barberLoginModal')">Cancelar</button><button class="btn btn-green" onclick="loginBarber()">Entrar</button></div></div></div>
 <div class="modal" id="manualCutModal"><div class="modal-card" style="max-width:520px"><div class="modal-head"><div><div class="kicker">Historial</div><h3>Registrar corte</h3></div><button class="close" onclick="hideModal('manualCutModal')">×</button></div><div id="manualCutInfo"></div><div class="form-grid" style="margin-top:14px"><div class="field"><label>Fecha</label><input type="date" id="cutDate"></div><div class="field"><label>Hora</label><input type="time" id="cutTime"></div></div><div class="price-box" style="margin-top:14px"><div class="price-item selected"><span>Precio vigente</span><strong id="manualPrice">$12.000</strong></div><div class="price-item" id="manualDiscountBox"><span>Fidelidad</span><strong id="manualDiscount">Sin descuento</strong></div></div><label style="display:flex;gap:9px;align-items:center;margin-top:14px;color:#cfe0d8;font-size:.82rem"><input type="checkbox" id="useReward"> Aplicar 10% del QR ya leído</label><p class="notice">El corte se agregará al historial del cliente y actualizará automáticamente su contador de fidelidad.</p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('manualCutModal')">Cancelar</button><button class="btn btn-green" onclick="saveManualCut()">Registrar corte</button></div></div></div>
 <div class="modal" id="historyModal"><div class="modal-card"><div class="modal-head"><div><div class="kicker">Cliente</div><h3 id="historyModalTitle">Historial</h3></div><button class="close" onclick="hideModal('historyModal')">×</button></div><div id="historyModalBody"></div></div></div>
@@ -1521,24 +1415,33 @@ let clientHasBookedThisSession=false;
 
 let cloudSyncing=false;
 let cloudPollingTimer=null;
+let scheduleBlocksTableAvailable=false;
+let accountBusy=false;
 
 async function supabaseRequest(path, options={}){
   const headers={
     'apikey':CONFIG.supabaseKey,
-    'Authorization':'Bearer '+CONFIG.supabaseKey,
     'Content-Type':'application/json',
     'Accept':'application/json',
     ...(options.headers||{})
   };
-  const res=await fetch(CONFIG.supabaseUrl+'/rest/v1/'+path,{...options,headers});
-  const text=await res.text();
-  let data=null; try{data=text?JSON.parse(text):null;}catch(_){data=text;}
-  if(!res.ok){ const msg=data?.message||data?.hint||data?.details||res.statusText; throw new Error(msg); }
-  return data;
+  const controller=new AbortController();
+  const timeoutId=setTimeout(()=>controller.abort(),15000);
+  try{
+    const res=await fetch(CONFIG.supabaseUrl+'/rest/v1/'+path,{...options,headers,signal:options.signal||controller.signal});
+    const text=await res.text();
+    let data=null;try{data=text?JSON.parse(text):null;}catch(_){data=text;}
+    if(!res.ok){const msg=data?.message||data?.hint||data?.details||res.statusText;throw new Error(msg);}
+    return data;
+  }catch(e){
+    if(e?.name==='AbortError')throw new Error('La conexión con Supabase tardó demasiado. Intentá nuevamente.');
+    throw e;
+  }finally{clearTimeout(timeoutId);}
 }
 
 function cloudClientFromRow(r){return {id:r.id,firstName:r.first_name,lastName:r.last_name,phone:r.phone,dni:r.dni,createdAt:r.created_at,updatedAt:r.updated_at};}
 function cloudAppointmentFromRow(r){return {id:r.id,clientId:r.client_id,date:r.date,time:String(r.time).slice(0,5),price:r.price,status:r.status,createdAt:r.created_at,confirmedAt:r.confirmed_at||undefined,cancelledAt:r.cancelled_at||undefined,completedAt:r.completed_at||undefined,cutId:r.cut_id||undefined,service:r.service||'Corte completo'};}
+function cloudBlockFromRow(r){return {id:r.id,date:r.block_date,allDay:!!r.all_day,startTime:r.start_time?String(r.start_time).slice(0,5):null,endTime:r.end_time?String(r.end_time).slice(0,5):null,reason:r.reason||'',createdAt:r.created_at||new Date().toISOString()};}
 
 async function migrateCurrentCompletedAppointments(appointments){
   const today=isoDateLocal(new Date());
@@ -1572,49 +1475,71 @@ async function loadCloudState({quiet=false}={}){
       supabaseRequest('clients?select=*&order=created_at.asc'),
       supabaseRequest('appointments?select=*&order=date.asc,time.asc')
     ]);
+    let blocks=null;
+    try{
+      blocks=await supabaseRequest('schedule_blocks?select=*&order=block_date.asc,start_time.asc');
+      scheduleBlocksTableAvailable=true;
+    }catch(blockError){
+      scheduleBlocksTableAvailable=false;
+      if(!quiet)console.warn('La tabla schedule_blocks todavía no está instalada en Supabase:',blockError);
+    }
     await migrateCurrentCompletedAppointments(appointments);
     const currentClientId=activeClientId;
-    const merged=normalizeState({clients:clients.map(cloudClientFromRow),appointments:appointments.map(cloudAppointmentFromRow),cuts:state.cuts,rewardRedemptions:state.rewardRedemptions,settings:state.settings});
+    const merged=normalizeState({
+      clients:clients.map(cloudClientFromRow),
+      appointments:appointments.map(cloudAppointmentFromRow),
+      blocks:Array.isArray(blocks)?blocks.map(cloudBlockFromRow):state.blocks,
+      cuts:state.cuts,rewardRedemptions:state.rewardRedemptions,settings:state.settings
+    });
     state=merged;
-    try{ const blocks=await supabaseRequest('schedule_blocks?select=*&order=date.asc,time.asc'); state.scheduleBlocks=blocks.map(b=>({id:b.id,date:b.date,time:b.time?String(b.time).slice(0,5):null,kind:b.kind||(b.time?'slot':'day')})); }catch(blockError){}
     if(currentClientId && !state.clients.some(c=>c.id===currentClientId)){
       const old=JSON.parse(localStorage.getItem('brussy_active_client_data')||'null');
       if(old){
         const found=state.clients.find(c=>digits(c.phone)===digits(old.phone)&&digits(c.dni)===digits(old.dni));
-        if(found){activeClientId=found.id;localStorage.setItem('brussy_active_client',found.id);}
+        if(found){activeClientId=found.id;localStorage.setItem('brussy_active_client',found.id);localStorage.setItem('brussy_active_client_data',JSON.stringify(found));}
       }
     }
-    try{localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));}catch(_){ }
+    try{localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));}catch(_){}
     renderAllPreserveScroll();
-  }catch(e){ if(!quiet) console.warn('No se pudo sincronizar con Supabase:',e); }
-  finally{cloudSyncing=false;}
+  }catch(e){
+    if(!quiet)console.warn('No se pudo sincronizar con Supabase:',e);
+  }finally{cloudSyncing=false;}
 }
 
 async function saveClientToCloud(client){
   const phone=digits(client.phone), dni=digits(client.dni);
-  let existing=null;
-  try{
-    const byPhone=await supabaseRequest('clients?select=*&phone=eq.'+encodeURIComponent(phone)+'&limit=1');
-    existing=byPhone?.[0]||null;
-    if(!existing){
-      const byDni=await supabaseRequest('clients?select=*&dni=eq.'+encodeURIComponent(dni)+'&limit=1');
-      existing=byDni?.[0]||null;
+  const [byPhone,byDni]=await Promise.all([
+    supabaseRequest('clients?select=*&phone=eq.'+encodeURIComponent(phone)+'&limit=5'),
+    supabaseRequest('clients?select=*&dni=eq.'+encodeURIComponent(dni)+'&limit=5')
+  ]);
+  const phoneMatch=(byPhone||[]).find(r=>digits(r.phone)===phone)||null;
+  const dniMatch=(byDni||[]).find(r=>digits(r.dni)===dni)||null;
+  if(phoneMatch&&dniMatch&&phoneMatch.id!==dniMatch.id){
+    throw new Error('Ese teléfono y ese documento pertenecen a dos cuentas diferentes. Revisá los datos o contactá a Bruno.');
+  }
+  const existing=phoneMatch||dniMatch;
+  if(existing){
+    if(digits(existing.phone)!==phone||digits(existing.dni)!==dni){
+      throw new Error('El teléfono o el documento ya está asociado a otra cuenta. Iniciá sesión con los datos correctos.');
     }
-    const body={first_name:client.firstName,last_name:client.lastName,phone,dni};
-    let row;
-    if(existing){
-      row=(await supabaseRequest('clients?id=eq.'+existing.id,{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)}))[0];
-    }else{
-      row=(await supabaseRequest('clients',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)}))[0];
-    }
-    const cloud=cloudClientFromRow(row);
-    const idx=state.clients.findIndex(c=>c.id===client.id||c.id===cloud.id);
-    if(idx>=0)state.clients[idx]=cloud;else state.clients.push(cloud);
-    activeClientId=cloud.id;
-    localStorage.setItem('brussy_active_client',cloud.id);
-    localStorage.setItem('brussy_active_client_data',JSON.stringify(cloud));
-    return cloud;
-  }catch(e){throw e;}
+    // Si coincide la identidad completa, recuperar el registro original sin sobrescribir nombre ni historial.
+    const existingClient=cloudClientFromRow(existing);
+    const idx=state.clients.findIndex(c=>c.id===existingClient.id);
+    if(idx>=0)state.clients[idx]=existingClient;else state.clients.push(existingClient);
+    activeClientId=existingClient.id;
+    localStorage.setItem('brussy_active_client',existingClient.id);
+    localStorage.setItem('brussy_active_client_data',JSON.stringify(existingClient));
+    return existingClient;
+  }
+  const body={first_name:client.firstName,last_name:client.lastName,phone,dni};
+  const rows=await supabaseRequest('clients',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)});
+  if(!rows?.[0])throw new Error('Supabase no devolvió el registro creado.');
+  const cloud=cloudClientFromRow(rows[0]);
+  state.clients.push(cloud);
+  activeClientId=cloud.id;
+  localStorage.setItem('brussy_active_client',cloud.id);
+  localStorage.setItem('brussy_active_client_data',JSON.stringify(cloud));
+  return cloud;
 }
 
 async function createAppointmentOnline(client,date,time,price){
@@ -1637,12 +1562,12 @@ async function syncCloudPeriodically(){
 
 function startCloudSync(){syncCloudPeriodically();}
 
-function defaultState(){ return {version:4, clients:[], appointments:[], cuts:[], rewardRedemptions:{}, settings:{barberPin:CONFIG.barberDefaultPin}, scheduleBlocks:[]}; }
+function defaultState(){ return {version:5, clients:[], appointments:[], blocks:[], cuts:[], rewardRedemptions:{}, settings:{barberPin:CONFIG.barberDefaultPin}}; }
 function normalizeState(parsed){
   const base=defaultState();
-  const merged = { ...base, ...(parsed||{}), version:4, clients:Array.isArray(parsed?.clients)?parsed.clients:[], appointments:Array.isArray(parsed?.appointments)?parsed.appointments:[], cuts:Array.isArray(parsed?.cuts)?parsed.cuts:[], rewardRedemptions:parsed?.rewardRedemptions||{}, scheduleBlocks:Array.isArray(parsed?.scheduleBlocks)?parsed.scheduleBlocks:[], settings:{...base.settings,...(parsed?.settings||{})} };
+  const merged = { ...base, ...(parsed||{}), version:5, clients:Array.isArray(parsed?.clients)?parsed.clients:[], appointments:Array.isArray(parsed?.appointments)?parsed.appointments:[], blocks:Array.isArray(parsed?.blocks)?parsed.blocks:[], cuts:Array.isArray(parsed?.cuts)?parsed.cuts:[], rewardRedemptions:parsed?.rewardRedemptions||{}, settings:{...base.settings,...(parsed?.settings||{})} };
   // Contraseña fija del panel barbero
-  merged.settings.barberPin = CONFIG.barberDefaultPin;
+  merged.settings.barberPin = String(parsed?.settings?.barberPin || CONFIG.barberDefaultPin);
   return merged;
 }
 function loadState(){
@@ -1761,28 +1686,58 @@ function buildTimes(dateStr){
   }
   return out;
 }
-function isTaken(date,time,ignoreId=null){ return (state.scheduleBlocks||[]).some(b=>b.date===date&&(!b.time||b.time===time)) || state.appointments.some(a=>a.date===date&&a.time===time&&['pending','confirmed'].includes(a.status)&&a.id!==ignoreId); }
+function isTaken(date,time,ignoreId=null){ return state.appointments.some(a=>a.date===date&&a.time===time&&['pending','confirmed'].includes(a.status)&&a.id!==ignoreId); }
+function isDayFullyBlocked(date){return (state.blocks||[]).some(b=>b.date===date&&b.allDay);}
+function isBlocked(date,time){
+  return (state.blocks||[]).some(b=>{
+    if(b.date!==date)return false;
+    if(b.allDay)return true;
+    return !!(b.startTime&&b.endTime&&time>=b.startTime&&time<b.endTime);
+  });
+}
 function renderCalendar(){
-  const strip=document.getElementById('dateStrip'); strip.innerHTML='';
-  const now=new Date(); let firstValid=null; const months=new Set();
+  const strip=document.getElementById('dateStrip');strip.innerHTML='';
+  const now=new Date(),dates=[],months=new Set();
   for(let i=0;i<21;i++){
-    const d=new Date(now); d.setDate(now.getDate()+i); const ds=isoDateLocal(d), closed=d.getDay()===0; months.add(MONTHS[d.getMonth()]);
-    const btn=document.createElement('button'); btn.type='button'; btn.className='day'+(closed?' disabled':'')+(selectedDate===ds?' active':''); btn.disabled=closed;
+    const d=new Date(now);d.setDate(now.getDate()+i);
+    const ds=isoDateLocal(d),closed=d.getDay()===0,dayBlocked=isDayFullyBlocked(ds);
+    months.add(MONTHS[d.getMonth()]);
+    dates.push({d,ds,closed,dayBlocked});
+  }
+  const firstValid=dates.find(item=>!item.closed&&!item.dayBlocked&&buildTimes(item.ds).length)?.ds||null;
+  if(!selectedDate||!dates.some(item=>item.ds===selectedDate)||dates.some(item=>item.ds===selectedDate&&(item.closed||item.dayBlocked))){
+    selectedDate=firstValid;
+    selectedTime=null;
+  }
+  for(const item of dates){
+    const {d,ds,closed,dayBlocked}=item;
+    const unavailable=closed||dayBlocked;
+    const btn=document.createElement('button');btn.type='button';
+    btn.className='day'+(unavailable?' disabled':'')+(dayBlocked?' day-blocked':'')+(selectedDate===ds?' active':'');
+    btn.disabled=unavailable;
+    btn.title=dayBlocked?'Día bloqueado por el barbero':closed?'El local está cerrado':'Elegir fecha';
     btn.innerHTML=`<span class="dow">${DAYS[d.getDay()]}</span><span class="dom">${String(d.getDate()).padStart(2,'0')}</span><span class="mon">${MONTHS[d.getMonth()].slice(0,3)}</span>`;
-    if(!closed){ if(!firstValid) firstValid=ds; btn.onclick=()=>{selectedDate=ds;selectedTime=null;renderCalendar();renderTimes();}; }
+    if(!unavailable)btn.onclick=()=>{selectedDate=ds;selectedTime=null;renderCalendar();renderTimes();};
     strip.appendChild(btn);
   }
-  if(!selectedDate || !buildTimes(selectedDate).length) selectedDate=firstValid;
   document.getElementById('monthLabel').textContent=[...months].slice(0,2).join(' / ');
-  /* No mover la página automáticamente al refrescar el calendario. */
 }
 function renderTimes(){
-  const grid=document.getElementById('timeGrid'); grid.innerHTML='';
-  if(!selectedDate){ grid.innerHTML='<div class="closed">Seleccioná una fecha.</div>'; return; }
-  if((state.scheduleBlocks||[]).some(b=>b.date===selectedDate&&!b.time)){ grid.innerHTML='<div class="closed">El barbero bloqueó este día completo. Elegí otra fecha.</div>'; return; }
+  const grid=document.getElementById('timeGrid');grid.innerHTML='';
+  if(!selectedDate){grid.innerHTML='<div class="closed">No hay días disponibles en el calendario mostrado. Consultá con Bruno.</div>';return;}
+  if(isDayFullyBlocked(selectedDate)){grid.innerHTML='<div class="closed">Este día fue bloqueado por el barbero. Elegí otra fecha.</div>';return;}
   const slots=buildTimes(selectedDate);
-  if(!slots.length){ grid.innerHTML='<div class="closed">Domingo: el local está cerrado.</div>'; return; }
-  for(const t of slots){ const btn=document.createElement('button'); btn.type='button'; const taken=isTaken(selectedDate,t); btn.className='time'+(selectedTime===t?' active':'')+(taken?' taken':''); btn.disabled=taken; btn.textContent=t; if(!taken) btn.onclick=()=>{selectedTime=t;renderTimes();}; grid.appendChild(btn); }
+  if(!slots.length){grid.innerHTML='<div class="closed">Domingo: el local está cerrado.</div>';return;}
+  for(const t of slots){
+    const btn=document.createElement('button');btn.type='button';
+    const blocked=isBlocked(selectedDate,t),taken=isTaken(selectedDate,t);
+    btn.className='time'+(selectedTime===t?' active':'')+(taken?' taken':'')+(blocked?' blocked':'');
+    btn.disabled=taken||blocked;
+    btn.title=blocked?'Horario bloqueado por el barbero':taken?'Horario ocupado':'Elegir horario';
+    btn.textContent=blocked?'Bloqueado · '+t:taken?'Ocupado · '+t:t;
+    if(!taken&&!blocked)btn.onclick=()=>{selectedTime=t;renderTimes();};
+    grid.appendChild(btn);
+  }
 }
 function updateUserStatus(){
   const box=document.getElementById('userStatus'), client=getClient();
@@ -1828,69 +1783,163 @@ function decodePayload(value){
 }
 let accountMode='create';
 function setAccountMode(mode){
-  accountMode=mode;
+  accountMode=mode==='login'?'login':'create';
   const create=document.getElementById('accountModeCreate'), login=document.getElementById('accountModeLogin'), text=document.getElementById('accountModeText'), submit=document.getElementById('accountSubmit');
   if(!create||!login||!text||!submit)return;
-  create.className=mode==='create'?'btn btn-green':'btn btn-ghost'; login.className=mode==='login'?'btn btn-green':'btn btn-ghost';
-  if(mode==='create'){text.textContent='Creá tu cuenta para reservar turnos, consultar tu historial y recibir tus beneficios.';submit.textContent='Crear cuenta y continuar';document.getElementById('firstName').disabled=false;document.getElementById('lastName').disabled=false;document.getElementById('phone').disabled=false;}
-  else{text.textContent='Ingresá tu teléfono y documento para recuperar tu cuenta y todo tu historial guardado.';submit.textContent='Iniciar sesión';document.getElementById('firstName').disabled=true;document.getElementById('lastName').disabled=true;document.getElementById('phone').disabled=false;}
+  create.className=accountMode==='create'?'btn btn-green':'btn btn-ghost';
+  login.className=accountMode==='login'?'btn btn-green':'btn btn-ghost';
+  const nameField=document.getElementById('firstNameField'),lastField=document.getElementById('lastNameField');
+  document.getElementById('firstName').disabled=accountMode==='login';
+  document.getElementById('lastName').disabled=accountMode==='login';
+  if(nameField)nameField.style.display=accountMode==='login'?'none':'';
+  if(lastField)lastField.style.display=accountMode==='login'?'none':'';
+  document.getElementById('phone').disabled=false;
+  document.getElementById('dni').disabled=false;
+  document.getElementById('phone').autocomplete=accountMode==='login'?'username':'tel';
+  document.getElementById('dni').autocomplete='off';
+  text.textContent=accountMode==='create'
+    ?'Creá tu cuenta para reservar turnos, consultar tu historial y recibir tus beneficios.'
+    :'Ingresá el mismo teléfono y documento que usaste al registrarte para recuperar tu cuenta y tu historial.';
+  submit.textContent=accountBusy?'Procesando…':(accountMode==='create'?'Crear cuenta y continuar':'Iniciar sesión');
+  const err=document.getElementById('registerError');err.textContent='';err.classList.remove('show');
 }
 function openRegister(){
-  const client=getClient(); document.getElementById('firstName').value=client?.firstName||''; document.getElementById('lastName').value=client?.lastName||''; document.getElementById('phone').value=client?.phone||''; document.getElementById('dni').value=client?.dni||''; document.getElementById('registerError').classList.remove('show'); setAccountMode(client?'login':'create'); showModal('registerModal');
+  const client=getClient();
+  document.getElementById('firstName').value=client?.firstName||'';
+  document.getElementById('lastName').value=client?.lastName||'';
+  document.getElementById('phone').value=client?.phone||'';
+  document.getElementById('dni').value=client?.dni||'';
+  document.getElementById('registerError').textContent='';
+  document.getElementById('registerError').classList.remove('show');
+  setAccountMode(client?'login':'create');
+  showModal('registerModal');
 }
-function submitAccount(){ if(accountMode==='login') loginClient(); else saveClient(); }
-async function loginClient(){
-  const phone=digits(document.getElementById('phone').value), dni=digits(document.getElementById('dni').value), err=document.getElementById('registerError');
+async function submitAccount(){
+  if(accountBusy)return;
+  accountBusy=true;
+  const submit=document.getElementById('accountSubmit');
+  if(submit){submit.disabled=true;submit.textContent='Procesando…';}
   try{
-    const rows=await supabaseRequest('clients?select=*&phone=eq.'+encodeURIComponent(phone)+'&dni=eq.'+encodeURIComponent(dni)+'&limit=1');
-    const client=rows?.[0]?cloudClientFromRow(rows[0]):null;
-    if(!client){err.textContent='No encontramos una cuenta con esos datos. Elegí “Crear mi cuenta” si todavía no estás registrado.';err.classList.add('show');return;}
-    state.clients=state.clients.filter(c=>c.id!==client.id).concat(client);
-    activeClientId=client.id;localStorage.setItem('brussy_active_client',client.id);localStorage.setItem('brussy_active_client_data',JSON.stringify(client));hideModal('registerModal');renderAll();showToast(`Bienvenido, ${client.firstName}. Historial recuperado.`);openCustomerPanel();
-  }catch(e){err.textContent='No se pudo consultar la cuenta online. Revisá tu conexión e intentá de nuevo.';err.classList.add('show');}
-}
-
-async function saveClient(){
-  const firstName=document.getElementById('firstName').value.trim(), lastName=document.getElementById('lastName').value.trim(), phone=digits(document.getElementById('phone').value), dni=digits(document.getElementById('dni').value), err=document.getElementById('registerError');
-  if(firstName.length<2||lastName.length<2||phone.length<8||dni.length<6){err.textContent='Completá nombre, apellido, teléfono y documento con datos válidos.';err.classList.add('show');return;}
-  let client=state.clients.find(c=>digits(c.phone)===phone&&digits(c.dni)===dni)||{id:uid('cli'),firstName,lastName,phone,dni,createdAt:new Date().toISOString()};
-  client={...client,firstName,lastName,phone,dni};
-  try{
-    client=await saveClientToCloud(client);
-  }catch(e){
-    err.textContent='No se pudo guardar la cuenta online. Revisá tu conexión e intentá de nuevo.';err.classList.add('show');return;
+    if(accountMode==='login')await loginClient();
+    else await saveClient();
+  }finally{
+    accountBusy=false;
+    if(submit){submit.disabled=false;submit.textContent=accountMode==='create'?'Crear cuenta y continuar':'Iniciar sesión';}
   }
-  activeClientId=client.id; localStorage.setItem('brussy_active_client',client.id); localStorage.setItem('brussy_active_client_data',JSON.stringify(client)); hideModal('registerModal'); saveState(); showToast(`Cuenta lista, ${client.firstName}.`); document.getElementById('reserva').scrollIntoView({behavior:'smooth'});
 }
-
+async function loginClient(){
+  const phone=digits(document.getElementById('phone').value),dni=digits(document.getElementById('dni').value),err=document.getElementById('registerError');
+  err.textContent='';err.classList.remove('show');
+  if(phone.length<8||dni.length<6){err.textContent='Ingresá un teléfono válido y el documento usado al crear la cuenta.';err.classList.add('show');return;}
+  try{
+    await loadCloudState({quiet:true});
+    const rows=await supabaseRequest('clients?select=*&phone=eq.'+encodeURIComponent(phone)+'&limit=20');
+    const row=(rows||[]).find(r=>digits(r.phone)===phone&&digits(r.dni)===dni);
+    const client=row?cloudClientFromRow(row):null;
+    if(!client){
+      err.textContent='No encontramos una cuenta con esa combinación de teléfono y documento. Revisá los datos o elegí “Crear mi cuenta” si todavía no te registraste.';
+      err.classList.add('show');return;
+    }
+    const idx=state.clients.findIndex(c=>c.id===client.id);
+    if(idx>=0)state.clients[idx]=client;else state.clients.push(client);
+    activeClientId=client.id;
+    localStorage.setItem('brussy_active_client',client.id);
+    localStorage.setItem('brussy_active_client_data',JSON.stringify(client));
+    clientHasBookedThisSession=state.appointments.some(a=>a.clientId===client.id&&['pending','confirmed'].includes(a.status));
+    hideModal('registerModal');renderAll();showToast('Bienvenido, '+client.firstName+'. Historial recuperado.');openCustomerPanel();
+  }catch(e){
+    console.warn('Error al iniciar sesión:',e);
+    err.textContent='No se pudo conectar con Supabase. Revisá tu conexión e intentá nuevamente.';
+    err.classList.add('show');
+  }
+}
+async function saveClient(){
+  const firstName=document.getElementById('firstName').value.trim(),lastName=document.getElementById('lastName').value.trim(),phone=digits(document.getElementById('phone').value),dni=digits(document.getElementById('dni').value),err=document.getElementById('registerError');
+  err.textContent='';err.classList.remove('show');
+  if(firstName.length<2||lastName.length<2||phone.length<8||dni.length<6){
+    err.textContent='Completá nombre, apellido, teléfono y documento con datos válidos.';
+    err.classList.add('show');return;
+  }
+  if(!/^[\p{L} .'-]{2,}$/u.test(firstName)||!/^[\p{L} .'-]{2,}$/u.test(lastName)){
+    err.textContent='Revisá el nombre y el apellido: usá al menos dos letras.';
+    err.classList.add('show');return;
+  }
+  try{
+    const client=await saveClientToCloud({id:uid('cli'),firstName,lastName,phone,dni,createdAt:new Date().toISOString()});
+    activeClientId=client.id;
+    localStorage.setItem('brussy_active_client',client.id);
+    localStorage.setItem('brussy_active_client_data',JSON.stringify(client));
+    await loadCloudState({quiet:true});
+    clientHasBookedThisSession=state.appointments.some(a=>a.clientId===client.id&&['pending','confirmed'].includes(a.status));
+    hideModal('registerModal');saveState();
+    showToast('Cuenta lista, '+client.firstName+'.');
+    document.getElementById('reserva').scrollIntoView({behavior:'smooth'});
+  }catch(e){
+    console.warn('Error al crear/recuperar la cuenta:',e);
+    const msg=String(e?.message||'');
+    err.textContent=/teléfono|documento|cuenta|asociado|pertenecen/i.test(msg)
+      ?msg
+      :'No se pudo guardar la cuenta online en Supabase. Revisá tu conexión e intentá de nuevo.';
+    err.classList.add('show');
+  }
+}
+document.querySelectorAll('#registerModal input').forEach(input=>{
+  input.addEventListener('keydown',event=>{
+    if(event.key==='Enter'){event.preventDefault();submitAccount();}
+  });
+});
 function logoutClient(){activeClientId=null;clientHasBookedThisSession=false;localStorage.removeItem('brussy_active_client');localStorage.removeItem('brussy_active_client_data');renderAll();showToast('Sesión de cliente cerrada.');}
 function selectService(){ document.getElementById('serviceMain').classList.add('active'); }
+let requestingAppointment=false;
 async function requestAppointment(){
-  const client=getClient(); if(!client){openRegister();showToast('Primero registrate o iniciá sesión.');return;}
-  /* Un cliente solo puede tener un turno activo a la vez. Esto evita que,
-     después de reservar, pueda pedir otro turno para sí mismo o para otra persona. */
-  const activeAppointment=state.appointments.find(a=>a.clientId===client.id&&['pending','confirmed'].includes(a.status));
-  if(activeAppointment){
-    clientHasBookedThisSession=true;
-    updateUserStatus();
-    openCustomerPanel();
-    showToast('Ya tenés un turno activo. No podés solicitar otro hasta cancelarlo o que Bruno lo registre como realizado.');
-    return;
-  }
-  if(!selectedDate||!selectedTime){showToast('Elegí un día y un horario.');return;}
-  if(isTaken(selectedDate,selectedTime)){showToast('Ese horario ya está ocupado. Elegí otro.');renderTimes();return;}
-  const price=currentPrice(client.id);
+  if(requestingAppointment)return;
+  const client=getClient();
+  if(!client){openRegister();showToast('Primero registrate o iniciá sesión.');return;}
+  const requestedDate=selectedDate,requestedTime=selectedTime;
+  if(!requestedDate||!requestedTime){showToast('Elegí un día y un horario.');return;}
+  const requestBtn=document.getElementById('requestAppointmentBtn');
+  requestingAppointment=true;
+  if(requestBtn){requestBtn.disabled=true;requestBtn.textContent='Verificando disponibilidad…';}
   try{
-    const ap=await createAppointmentOnline(client,selectedDate,selectedTime,price);
+    // Refrescar antes de guardar para no confiar únicamente en el estado del navegador.
+    await loadCloudState({quiet:true});
+    const refreshedClient=getClient();
+    if(!refreshedClient){openRegister();showToast('Volvé a iniciar sesión para reservar.');return;}
+    const activeAppointment=state.appointments.find(a=>a.clientId===refreshedClient.id&&['pending','confirmed'].includes(a.status));
+    if(activeAppointment){
+      clientHasBookedThisSession=true;updateUserStatus();openCustomerPanel();
+      showToast('Ya tenés un turno activo. No podés solicitar otro hasta cancelarlo o que Bruno lo registre como realizado.');
+      return;
+    }
+    if(isDayFullyBlocked(requestedDate)||isBlocked(requestedDate,requestedTime)){
+      selectedDate=requestedDate;selectedTime=null;renderCalendar();renderTimes();
+      showToast('Ese horario fue bloqueado por el barbero. Elegí otro.');
+      return;
+    }
+    if(isTaken(requestedDate,requestedTime)){
+      selectedDate=requestedDate;selectedTime=null;renderTimes();
+      showToast('Ese horario acaba de ocuparse. Elegí otro.');
+      return;
+    }
+    const price=currentPrice(refreshedClient.id);
+    const ap=await createAppointmentOnline(refreshedClient,requestedDate,requestedTime,price);
     state.appointments.push(ap);clientHasBookedThisSession=true;saveState();
     await loadCloudState({quiet:true});
-    const msg=`Hola Bruno! 👋\nSoy *${client.firstName} ${client.lastName}*.\n\nAcabo de solicitar un turno en *Brussy Barbería*:\n\n📅 Día: ${dateLabel(selectedDate)}\n🕐 Hora: ${selectedTime}\n✂️ Servicio: Corte completo\n\n¡Gracias!`;
+    const msg=`Hola Bruno! 👋\nSoy *${refreshedClient.firstName} ${refreshedClient.lastName}*.\n\nAcabo de solicitar un turno en *Brussy Barbería*:\n\n📅 Día: ${dateLabel(requestedDate)}\n🕐 Hora: ${requestedTime}\n✂️ Servicio: Corte completo\n\n¡Gracias!`;
     window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
     openCustomerPanel();showToast('Turno creado. Se abrió WhatsApp para avisar a Bruno.');
   }catch(e){
-    if(String(e.message||'').toLowerCase().includes('duplicate')||String(e.message||'').toLowerCase().includes('unique')){
-      await loadCloudState({quiet:true});renderTimes();showToast('Ese horario acaba de ocuparse. Elegí otro.');
-    }else{showToast('No se pudo crear el turno online. Revisá tu conexión e intentá de nuevo.');}
+    const message=String(e?.message||'').toLowerCase();
+    if(message.includes('duplicate')||message.includes('unique')||message.includes('bloqueado')||message.includes('block')){
+      await loadCloudState({quiet:true});selectedTime=null;renderCalendar();renderTimes();
+      showToast(message.includes('bloque')||message.includes('block')?'Ese horario está bloqueado por el barbero.':'Ese horario acaba de ocuparse. Elegí otro.');
+    }else{
+      console.error('No se pudo reservar el turno:',e);
+      showToast('No se pudo crear el turno online. Revisá tu conexión e intentá de nuevo.');
+    }
+  }finally{
+    requestingAppointment=false;
+    if(requestBtn){requestBtn.textContent='Solicitar este turno';updateUserStatus();}
   }
 }
 
@@ -1929,54 +1978,100 @@ async function copyText(v,quiet=false){ try{await navigator.clipboard.writeText(
 function openBarberLogin(){ if(barberLogged){openBarberPanel();return;} document.getElementById('barberPin').value='';document.getElementById('barberError').classList.remove('show');showModal('barberLoginModal'); }
 function loginBarber(){ const pin=document.getElementById('barberPin').value.trim(); if(pin!==state.settings.barberPin){document.getElementById('barberError').textContent='Contraseña incorrecta.';document.getElementById('barberError').classList.add('show');return;} barberLogged=true;sessionStorage.setItem('brussy_barber_logged','1');hideModal('barberLoginModal');openBarberPanel(); }
 function openBarberPanel(){ document.getElementById('barberPanel').classList.add('show');renderBarber();document.getElementById('barberPanel').scrollIntoView({behavior:'smooth'}); }
-function showBarberTab(tab,btn){ document.querySelectorAll('.panel-nav button').forEach(b=>b.classList.toggle('active',b===btn)); ['clients','appointments','history','scanner','backup','blocks'].forEach(x=>document.getElementById('tab-'+x).style.display=x===tab?'block':'none'); if(tab==='scanner') initScanner(); }
-
-function renderBlocksTab(){
- const box=document.getElementById('tab-blocks'); if(!box)return;
- const blocks=[...(state.scheduleBlocks||[])].sort((a,b)=>(a.date+(a.time||'')).localeCompare(b.date+(b.time||'')));
- const slotBlocks=blocks.filter(b=>b.time), dayBlocks=blocks.filter(b=>!b.time);
- const times=Array.from({length:23},(_,i)=>{const mins=540+i*30;const t=`${String(Math.floor(mins/60)).padStart(2,'0')}:${String(mins%60).padStart(2,'0')}`;return `<option value="${t}">${t} hs</option>`}).join('');
- const renderBlockList=(items,kind)=>items.length?items.map(b=>`<div class="block-active-item"><div class="block-active-icon">${kind==='slot'?'◷':'▦'}</div><div class="block-active-info"><strong>${dateLabel(b.date)}</strong><span>${kind==='slot'?'Horario bloqueado · '+b.time+' hs':'Día completo bloqueado'}</span></div><button class="btn btn-danger tiny" onclick="removeScheduleBlock('${b.id}')">Quitar</button></div>`).join(''):`<div class="block-empty">${kind==='slot'?'No hay horarios bloqueados.':'No hay días completos bloqueados.'}</div>`;
- box.innerHTML=`<div class="card-head"><div><div class="kicker">Administrar disponibilidad</div><h3>Bloqueos de agenda</h3><p class="small">Elegí qué querés bloquear. Cada opción funciona por separado y podés quitar los bloqueos cuando quieras.</p></div></div>
- <div class="block-options-grid">
-  <section class="block-option block-option-slot"><div class="block-option-top"><span class="block-option-symbol">◷</span><span class="block-option-tag">OPCIÓN 1</span></div><h3>Bloquear un horario</h3><p>Reservá para vos un horario puntual. El resto del día seguirá disponible para los clientes.</p>
-   <div class="block-fields"><div class="field"><label for="blockSlotDate">Elegí el día</label><input type="date" id="blockSlotDate" min="${isoDateLocal(new Date())}"></div><div class="field"><label for="blockSlotTime">Elegí el horario</label><select id="blockSlotTime">${times}</select></div></div>
-   <button class="btn btn-green block-submit" onclick="addScheduleBlock('slot')">Bloquear este horario <span aria-hidden="true">→</span></button>
-  </section>
-  <section class="block-option block-option-day"><div class="block-option-top"><span class="block-option-symbol">▦</span><span class="block-option-tag">OPCIÓN 2</span></div><h3>Bloquear el día entero</h3><p>Ese día no se podrán pedir turnos en ningún horario. Los demás días no se modifican.</p>
-   <div class="block-fields block-fields-one"><div class="field"><label for="blockDayDate">Elegí el día completo</label><input type="date" id="blockDayDate" min="${isoDateLocal(new Date())}"></div></div>
-   <button class="btn btn-yellow block-submit" onclick="addScheduleBlock('day')">Bloquear día completo <span aria-hidden="true">→</span></button>
-  </section>
- </div>
- <section class="block-active-section"><div class="block-section-heading"><div><div class="kicker">Tu agenda</div><h3>Bloqueos activos</h3></div><span class="block-count">${blocks.length} ${blocks.length===1?'bloqueo':'bloqueos'}</span></div>
-  <div class="block-active-groups"><div class="block-active-group"><h4>◷ Horarios bloqueados <span>${slotBlocks.length}</span></h4>${renderBlockList(slotBlocks,'slot')}</div><div class="block-active-group"><h4>▦ Días completos <span>${dayBlocks.length}</span></h4>${renderBlockList(dayBlocks,'day')}</div></div>
- </section>`;
-}
-async function addScheduleBlock(kind){
- if(!barberLogged){showToast('Ingresá al modo barbero para administrar bloqueos.');return;}
- const date=document.getElementById(kind==='slot'?'blockSlotDate':'blockDayDate').value;
- const time=kind==='slot'?document.getElementById('blockSlotTime').value:null;
- if(!date){showToast('Elegí una fecha.');return;}
- if(date<isoDateLocal(new Date())){showToast('No podés bloquear una fecha pasada.');return;}
- if(kind==='slot'&&!(buildTimes(date)||[]).includes(time)){showToast('Ese horario no está disponible en la agenda habitual.');return;}
- if((state.scheduleBlocks||[]).some(b=>b.date===date&&(!b.time||kind==='day'||b.time===time))){showToast('Ese horario o día ya está bloqueado.');return;}
- if(kind==='day'&&(state.appointments||[]).some(a=>a.date===date&&['pending','confirmed'].includes(a.status))){if(!confirm('Hay turnos pendientes o confirmados ese día. ¿Querés bloquear el día igualmente?'))return;}
- try{
-  const body={date,time,kind};
-  const rows=await supabaseRequest('schedule_blocks',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)});
-  const b=rows?.[0]||{...body,id:uid('block')}; state.scheduleBlocks.push({id:b.id,date:b.date,time:b.time?String(b.time).slice(0,5):null,kind:b.kind});
-  saveState();renderBlocksTab();renderCalendar();renderTimes();showToast(kind==='day'?'Día completo bloqueado.':'Horario bloqueado.');
- }catch(e){showToast('No se pudo guardar el bloqueo. Verificá que la tabla schedule_blocks esté creada en Supabase.');}
-}
-async function removeScheduleBlock(id){
- if(!confirm('¿Querés habilitar nuevamente este horario?'))return;
- try{await supabaseRequest('schedule_blocks?id=eq.'+encodeURIComponent(id),{method:'DELETE'});}
- catch(e){showToast('No se pudo quitar el bloqueo en Supabase.');return;}
- state.scheduleBlocks=(state.scheduleBlocks||[]).filter(b=>b.id!==id);saveState();renderBlocksTab();renderTimes();showToast('Bloqueo eliminado.');
-}
-function renderBarber(){ renderClientTab();renderAppointmentTab();renderHistoryTab();renderScannerTab();renderBackupTab(); }
+function showBarberTab(tab,btn){ document.querySelectorAll('.panel-nav button').forEach(b=>b.classList.toggle('active',b===btn)); ['clients','appointments','schedule','history','scanner','backup'].forEach(x=>document.getElementById('tab-'+x).style.display=x===tab?'block':'none'); if(tab==='scanner') initScanner(); if(tab==='schedule')renderScheduleTab(); }
+function renderBarber(){ renderClientTab();renderAppointmentTab();renderScheduleTab();renderHistoryTab();renderScannerTab();renderBackupTab(); }
 function renderClientTab(){ const box=document.getElementById('tab-clients'); const clients=[...state.clients].sort((a,b)=>normalize(a.lastName).localeCompare(normalize(b.lastName))); box.innerHTML=`<div class="card-head"><div><div class="kicker">Base de clientes</div><h3>Registrados · ${clients.length}</h3></div><span class="small">Historial incluido</span></div>`+(clients.length?clients.map(c=>{const cuts=clientCuts(c.id);const aps=clientAppointments(c.id).filter(a=>a.status==='pending'||a.status==='confirmed');return `<div class="client-card"><div><h4>${c.firstName} ${c.lastName}</h4><p>${c.phone} · DNI ${c.dni} · ${cuts.length} corte(s) · ${aps.length} turno(s) activo(s)</p></div><div class="client-actions"><button class="btn btn-ghost tiny" onclick="openHistory('${c.id}')">Historial</button><button class="btn btn-green tiny" onclick="openManualCut('${c.id}')">Registrar corte</button></div></div>`}).join(''):'<div class="empty">Todavía no hay clientes registrados.</div>'); }
 function renderAppointmentTab(){ const box=document.getElementById('tab-appointments'); const aps=[...state.appointments].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); box.innerHTML=`<div class="card-head"><div><div class="kicker">Agenda</div><h3>Turnos · ${aps.filter(a=>a.status!=='cancelled').length}</h3></div></div>`+(aps.length?`<div style="overflow:auto"><table class="table"><thead><tr><th>Fecha</th><th>Cliente</th><th>Precio</th><th>Estado</th><th></th></tr></thead><tbody>${aps.map(a=>{const c=state.clients.find(x=>x.id===a.clientId);return `<tr><td>${dateLabel(a.date)}<br>${a.time}</td><td><strong>${c?c.firstName+' '+c.lastName:'Cliente eliminado'}</strong><br><span style="color:#6f887c">${c?.phone||''}</span></td><td>${money(a.price)}</td><td><span class="tag-status ${a.status==='pending'?'tag-pending':a.status==='confirmed'?'tag-confirmed':a.status==='cancelled'?'tag-cancelled':'tag-completed'}">${statusLabel(a.status)}</span></td><td><div class="client-actions">${a.status==='pending'?`<button class="btn btn-green tiny" onclick="confirmAppointment('${a.id}')">Aceptar turno</button>`:''}${a.status==='confirmed'?`<button class="btn btn-blue tiny" onclick="completeAppointment('${a.id}')">Registrar corte realizado</button>`:''}${a.status==='pending'||a.status==='confirmed'?`<button class="btn btn-danger tiny" onclick="barberCancelAppointment('${a.id}')">Cancelar</button>`:''}${a.status!=='cancelled'&&a.status!=='completed'?`<button class="btn btn-ghost tiny" onclick="whatsappAppointmentFor('${a.id}')">WhatsApp</button>`:''}</div></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">No hay turnos cargados.</div>'); }
+function escapeHTML(value){
+  return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function renderScheduleTab(){
+  const box=document.getElementById('tab-schedule');if(!box)return;
+  const today=isoDateLocal(new Date());
+  const defaultDate=selectedDate||today;
+  const formState={
+    date:box.querySelector('#blockDate')?.value||defaultDate,
+    mode:box.querySelector('#blockMode')?.value||'time',
+    start:box.querySelector('#blockStartTime')?.value||'10:00',
+    end:box.querySelector('#blockEndTime')?.value||'10:30',
+    reason:box.querySelector('#blockReason')?.value||''
+  };
+  const blocks=[...(state.blocks||[])].sort((a,b)=>(a.date+(a.allDay?'00:00':a.startTime||'00:00')).localeCompare(b.date+(b.allDay?'00:00':b.startTime||'00:00')));
+  const setupNotice=scheduleBlocksTableAvailable?'':'<div class="closed" style="margin-bottom:14px">Para activar los bloqueos sincronizados, ejecutá el archivo <strong>supabase_bloqueos.sql</strong> en el SQL Editor de Supabase. El resto de la agenda sigue funcionando mientras tanto.</div>';
+  box.innerHTML=`
+    <div class="card-head"><div><div class="kicker">Disponibilidad</div><h3>Bloquear horarios</h3><p class="small" style="margin-top:5px">Impedí nuevas reservas en una franja horaria o cerrá un día completo.</p></div></div>
+    ${setupNotice}
+    <div class="card" style="padding:16px;margin-bottom:18px">
+      <div class="form-grid">
+        <div class="field"><label for="blockDate">Fecha</label><input id="blockDate" type="date" min="${today}" value="${escapeHTML(formState.date)}"></div>
+        <div class="field"><label for="blockMode">Qué querés bloquear</label><select id="blockMode" onchange="toggleBlockFields()"><option value="time" ${formState.mode==='time'?'selected':''}>Un horario / franja</option><option value="day" ${formState.mode==='day'?'selected':''}>Todo el día</option></select></div>
+      </div>
+      <div class="form-grid" id="blockTimeFields" style="margin-top:12px">
+        <div class="field"><label for="blockStartTime">Desde</label><input id="blockStartTime" type="time" step="1800" value="${escapeHTML(formState.start)}"></div>
+        <div class="field"><label for="blockEndTime">Hasta (sin incluir)</label><input id="blockEndTime" type="time" step="1800" value="${escapeHTML(formState.end)}"></div>
+      </div>
+      <div class="field" style="margin-top:12px"><label for="blockReason">Motivo (opcional)</label><input id="blockReason" maxlength="120" value="${escapeHTML(formState.reason)}" placeholder="Ej.: trámite, descanso, compromiso"></div>
+      <div class="actions"><button class="btn btn-danger" type="button" onclick="createScheduleBlock()">Bloquear disponibilidad</button></div>
+      <p class="notice">Los bloqueos impiden nuevas reservas, pero no cancelan turnos ya confirmados o pendientes. Si ya hay turnos en ese período, la página te va a pedir confirmación antes de bloquear.</p>
+    </div>
+    <div class="card-head"><div><div class="kicker">Agenda</div><h3>Bloqueos activos · ${blocks.length}</h3></div><button class="btn btn-ghost" type="button" onclick="loadCloudState({quiet:false})">Actualizar</button></div>
+    <div>${blocks.length?blocks.map(b=>`<div class="block-item"><div><strong>${escapeHTML(dateLabel(b.date))} · ${b.allDay?'Día completo':escapeHTML(b.startTime||'--:--')+' a '+escapeHTML(b.endTime||'--:--')}</strong><p>${escapeHTML(b.reason|| (b.allDay?'El local no toma turnos este día.':'Franja no disponible.'))}</p></div><button class="btn btn-danger tiny" type="button" onclick="removeScheduleBlock('${escapeHTML(b.id)}')">Desbloquear</button></div>`).join(''):'<div class="empty">Todavía no hay horarios bloqueados.</div>'}</div>`;
+  toggleBlockFields();
+}
+function toggleBlockFields(){
+  const mode=document.getElementById('blockMode')?.value;
+  const fields=document.getElementById('blockTimeFields');
+  if(fields)fields.style.display=mode==='day'?'none':'grid';
+  const button=document.querySelector('#tab-schedule .actions button');
+  if(button)button.textContent=mode==='day'?'Bloquear día completo':'Bloquear disponibilidad';
+}
+async function createScheduleBlock(){
+  if(!barberLogged){showToast('Ingresá al modo barbero para administrar la agenda.');return;}
+  if(!scheduleBlocksTableAvailable){showToast('Primero ejecutá supabase_bloqueos.sql en Supabase.');return;}
+  const date=document.getElementById('blockDate')?.value;
+  const mode=document.getElementById('blockMode')?.value||'time';
+  const allDay=mode==='day';
+  const startTime=document.getElementById('blockStartTime')?.value||'';
+  const endTime=document.getElementById('blockEndTime')?.value||'';
+  const reason=(document.getElementById('blockReason')?.value||'').trim().slice(0,120);
+  const today=isoDateLocal(new Date());
+  if(!date||date<today){showToast('Elegí una fecha de hoy en adelante.');return;}
+  if(!allDay&&(!startTime||!endTime||startTime>=endTime)){showToast('La hora “Hasta” debe ser posterior a “Desde”.');return;}
+  const overlaps=b=>b.date===date&&(b.allDay||allDay||(startTime<(b.endTime||'00:00')&&endTime>(b.startTime||'23:59')));
+  if((state.blocks||[]).some(overlaps)){showToast('Ese período ya está bloqueado o se superpone con otro bloqueo.');return;}
+  const affected=(state.appointments||[]).filter(a=>a.date===date&&['pending','confirmed'].includes(a.status)&&(allDay||(a.time>=startTime&&a.time<endTime)));
+  if(affected.length&&!confirm(`Hay ${affected.length} turno(s) pendiente(s) o confirmado(s) en ese período. El bloqueo no los cancela, solo impedirá nuevas reservas. ¿Querés continuar?`))return;
+  try{
+    const body={block_date:date,all_day:allDay,start_time:allDay?null:startTime,end_time:allDay?null:endTime,reason:reason||null};
+    const rows=await supabaseRequest('schedule_blocks',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)});
+    if(!rows?.[0])throw new Error('Supabase no devolvió el bloqueo creado.');
+    state.blocks.push(cloudBlockFromRow(rows[0]));
+    saveState();
+    await loadCloudState({quiet:true});
+    selectedDate=date;selectedTime=null;
+    renderCalendar();renderTimes();renderScheduleTab();
+    showToast(allDay?'Día bloqueado correctamente.':'Horario bloqueado correctamente.');
+  }catch(e){
+    console.error('No se pudo guardar el bloqueo:',e);
+    showToast('No se pudo guardar el bloqueo en Supabase. Revisá la tabla y sus permisos.');
+  }
+}
+async function removeScheduleBlock(id){
+  if(!barberLogged){showToast('Ingresá al modo barbero para administrar la agenda.');return;}
+  const block=(state.blocks||[]).find(b=>String(b.id)===String(id));if(!block)return;
+  const label=block.allDay?'el día completo':`el horario ${block.startTime} a ${block.endTime}`;
+  if(!confirm(`¿Desbloquear ${label} del ${dateLabel(block.date)}?`))return;
+  try{
+    await supabaseRequest('schedule_blocks?id=eq.'+encodeURIComponent(id),{method:'DELETE'});
+    state.blocks=state.blocks.filter(b=>String(b.id)!==String(id));
+    saveState();await loadCloudState({quiet:true});
+    renderCalendar();renderTimes();renderScheduleTab();
+    showToast('Disponibilidad restaurada.');
+  }catch(e){
+    console.error('No se pudo quitar el bloqueo:',e);
+    showToast('No se pudo quitar el bloqueo en Supabase. Revisá la conexión y los permisos.');
+  }
+}
 function renderHistoryTab(){
   const box=document.getElementById('tab-history');
   const cuts=[...state.cuts].sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
