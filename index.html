@@ -1415,7 +1415,6 @@ let clientHasBookedThisSession=false;
 
 let cloudSyncing=false;
 let cloudPollingTimer=null;
-let scheduleBlocksTableAvailable=false;
 let accountBusy=false;
 
 async function supabaseRequest(path, options={}){
@@ -1439,9 +1438,50 @@ async function supabaseRequest(path, options={}){
   }finally{clearTimeout(timeoutId);}
 }
 
+function isBlockSystemClientRow(r){return String(r?.first_name||'')==='__BRUSSY_BLOCK_SYSTEM__' && String(r?.last_name||'')==='INTERNAL';}
+function isBlockService(service){return typeof service==='string' && service.startsWith('__BRUSSY_BLOCK__|');}
+function isInternalSystemService(service){return typeof service==='string' && service.startsWith('__BRUSSY_');}
 function cloudClientFromRow(r){return {id:r.id,firstName:r.first_name,lastName:r.last_name,phone:r.phone,dni:r.dni,createdAt:r.created_at,updatedAt:r.updated_at};}
 function cloudAppointmentFromRow(r){return {id:r.id,clientId:r.client_id,date:r.date,time:String(r.time).slice(0,5),price:r.price,status:r.status,createdAt:r.created_at,confirmedAt:r.confirmed_at||undefined,cancelledAt:r.cancelled_at||undefined,completedAt:r.completed_at||undefined,cutId:r.cut_id||undefined,service:r.service||'Corte completo'};}
-function cloudBlockFromRow(r){return {id:r.id,date:r.block_date,allDay:!!r.all_day,startTime:r.start_time?String(r.start_time).slice(0,5):null,endTime:r.end_time?String(r.end_time).slice(0,5):null,reason:r.reason||'',createdAt:r.created_at||new Date().toISOString()};}
+function blocksFromAppointmentRows(rows){
+  const groups=new Map();
+  for(const r of rows||[]){
+    if(!isBlockService(r.service))continue;
+    const parts=String(r.service).split('|');
+    const id=parts[1],kind=parts[2];
+    if(!id || !['DAY','TIME'].includes(kind))continue;
+    let block=groups.get(id);
+    if(!block){
+      let reasonPart=kind==='DAY'?parts[3]:parts[4];
+      let reason='';try{reason=decodeURIComponent(reasonPart||'');}catch(_){reason=reasonPart||'';}
+      block={id,date:r.date,allDay:kind==='DAY',startTime:null,endTime:kind==='DAY'?null:(parts[3]||null),reason,createdAt:r.created_at||new Date().toISOString(),appointmentIds:[],_times:[]};
+      groups.set(id,block);
+    }
+    block.appointmentIds.push(r.id);
+    if(kind==='TIME')block._times.push(String(r.time||'').slice(0,5));
+    if(!block.createdAt&&r.created_at)block.createdAt=r.created_at;
+  }
+  return [...groups.values()].map(b=>{if(!b.allDay){b._times.sort();b.startTime=b._times[0]||null;delete b._times;}else{delete b._times;}return b;}).sort((a,b)=>(a.date+(a.allDay?'00:00':a.startTime||'00:00')).localeCompare(b.date+(b.allDay?'00:00':b.startTime||'00:00')));
+}
+async function getOrCreateBlockSystemClient(){
+  const existing=await supabaseRequest('clients?select=*&first_name=eq.__BRUSSY_BLOCK_SYSTEM__&last_name=eq.INTERNAL&limit=1');
+  if(existing?.[0])return existing[0];
+  let lastError;
+  for(let attempt=0;attempt<4;attempt++){
+    const phone='999'+String(Date.now()).slice(-8)+String(Math.floor(Math.random()*10));
+    const dni=String(90000000+Math.floor(Math.random()*9999999));
+    try{
+      const rows=await supabaseRequest('clients',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify({first_name:'__BRUSSY_BLOCK_SYSTEM__',last_name:'INTERNAL',phone,dni})});
+      if(rows?.[0])return rows[0];
+      throw new Error('Supabase no devolvió el registro interno.');
+    }catch(e){
+      lastError=e;
+      const again=await supabaseRequest('clients?select=*&first_name=eq.__BRUSSY_BLOCK_SYSTEM__&last_name=eq.INTERNAL&limit=1').catch(()=>[]);
+      if(again?.[0])return again[0];
+    }
+  }
+  throw lastError||new Error('No se pudo preparar el registro interno de bloqueos.');
+}
 
 async function migrateCurrentCompletedAppointments(appointments){
   const today=isoDateLocal(new Date());
@@ -1471,24 +1511,17 @@ async function loadCloudState({quiet=false}={}){
   if(cloudSyncing)return;
   cloudSyncing=true;
   try{
-    const [clients,appointments]=await Promise.all([
+    const [clients,appointmentRows]=await Promise.all([
       supabaseRequest('clients?select=*&order=created_at.asc'),
       supabaseRequest('appointments?select=*&order=date.asc,time.asc')
     ]);
-    let blocks=null;
-    try{
-      blocks=await supabaseRequest('schedule_blocks?select=*&order=block_date.asc,start_time.asc');
-      scheduleBlocksTableAvailable=true;
-    }catch(blockError){
-      scheduleBlocksTableAvailable=false;
-      if(!quiet)console.warn('La tabla schedule_blocks todavía no está instalada en Supabase:',blockError);
-    }
-    await migrateCurrentCompletedAppointments(appointments);
+    const normalRows=(appointmentRows||[]).filter(r=>!isInternalSystemService(r.service));
+    await migrateCurrentCompletedAppointments(normalRows);
     const currentClientId=activeClientId;
     const merged=normalizeState({
-      clients:clients.map(cloudClientFromRow),
-      appointments:appointments.map(cloudAppointmentFromRow),
-      blocks:Array.isArray(blocks)?blocks.map(cloudBlockFromRow):state.blocks,
+      clients:(clients||[]).filter(r=>!isBlockSystemClientRow(r)).map(cloudClientFromRow),
+      appointments:normalRows.map(cloudAppointmentFromRow),
+      blocks:blocksFromAppointmentRows(appointmentRows||[]),
       cuts:state.cuts,rewardRedemptions:state.rewardRedemptions,settings:state.settings
     });
     state=merged;
@@ -1695,6 +1728,8 @@ function isBlocked(date,time){
     return !!(b.startTime&&b.endTime&&time>=b.startTime&&time<b.endTime);
   });
 }
+function timeToMinutes(value){const [h,m]=String(value||'').split(':').map(Number);return (h*60)+(m||0);}
+function minutesToTime(value){return String(Math.floor(value/60)).padStart(2,'0')+':'+String(value%60).padStart(2,'0');}
 function renderCalendar(){
   const strip=document.getElementById('dateStrip');strip.innerHTML='';
   const now=new Date(),dates=[],months=new Set();
@@ -1834,7 +1869,7 @@ async function loginClient(){
   try{
     await loadCloudState({quiet:true});
     const rows=await supabaseRequest('clients?select=*&phone=eq.'+encodeURIComponent(phone)+'&limit=20');
-    const row=(rows||[]).find(r=>digits(r.phone)===phone&&digits(r.dni)===dni);
+    const row=(rows||[]).find(r=>!isBlockSystemClientRow(r)&&digits(r.phone)===phone&&digits(r.dni)===dni);
     const client=row?cloudClientFromRow(row):null;
     if(!client){
       err.textContent='No encontramos una cuenta con esa combinación de teléfono y documento. Revisá los datos o elegí “Crear mi cuenta” si todavía no te registraste.';
@@ -1997,7 +2032,7 @@ function renderScheduleTab(){
     reason:box.querySelector('#blockReason')?.value||''
   };
   const blocks=[...(state.blocks||[])].sort((a,b)=>(a.date+(a.allDay?'00:00':a.startTime||'00:00')).localeCompare(b.date+(b.allDay?'00:00':b.startTime||'00:00')));
-  const setupNotice=scheduleBlocksTableAvailable?'':'<div class="closed" style="margin-bottom:14px">Para activar los bloqueos sincronizados, ejecutá el archivo <strong>supabase_bloqueos.sql</strong> en el SQL Editor de Supabase. El resto de la agenda sigue funcionando mientras tanto.</div>';
+  const setupNotice='<div class="notice" style="margin:0 0 14px">Los bloqueos se sincronizan usando la tabla de turnos que ya tiene la página. No hace falta crear tablas ni modificar la configuración de Supabase.</div>';
   box.innerHTML=`
     <div class="card-head"><div><div class="kicker">Disponibilidad</div><h3>Bloquear horarios</h3><p class="small" style="margin-top:5px">Impedí nuevas reservas en una franja horaria o cerrá un día completo.</p></div></div>
     ${setupNotice}
@@ -2027,7 +2062,6 @@ function toggleBlockFields(){
 }
 async function createScheduleBlock(){
   if(!barberLogged){showToast('Ingresá al modo barbero para administrar la agenda.');return;}
-  if(!scheduleBlocksTableAvailable){showToast('Primero ejecutá supabase_bloqueos.sql en Supabase.');return;}
   const date=document.getElementById('blockDate')?.value;
   const mode=document.getElementById('blockMode')?.value||'time';
   const allDay=mode==='day';
@@ -2036,24 +2070,40 @@ async function createScheduleBlock(){
   const reason=(document.getElementById('blockReason')?.value||'').trim().slice(0,120);
   const today=isoDateLocal(new Date());
   if(!date||date<today){showToast('Elegí una fecha de hoy en adelante.');return;}
-  if(!allDay&&(!startTime||!endTime||startTime>=endTime)){showToast('La hora “Hasta” debe ser posterior a “Desde”.');return;}
-  const overlaps=b=>b.date===date&&(b.allDay||allDay||(startTime<(b.endTime||'00:00')&&endTime>(b.startTime||'23:59')));
-  if((state.blocks||[]).some(overlaps)){showToast('Ese período ya está bloqueado o se superpone con otro bloqueo.');return;}
-  const affected=(state.appointments||[]).filter(a=>a.date===date&&['pending','confirmed'].includes(a.status)&&(allDay||(a.time>=startTime&&a.time<endTime)));
-  if(affected.length&&!confirm(`Hay ${affected.length} turno(s) pendiente(s) o confirmado(s) en ese período. El bloqueo no los cancela, solo impedirá nuevas reservas. ¿Querés continuar?`))return;
+  if(!allDay){
+    if(!startTime||!endTime||startTime>=endTime){showToast('La hora “Hasta” debe ser posterior a “Desde”.');return;}
+    const duration=timeToMinutes(endTime)-timeToMinutes(startTime);
+    if(timeToMinutes(startTime)%CONFIG.slotMinutes!==0||timeToMinutes(endTime)%CONFIG.slotMinutes!==0||duration%CONFIG.slotMinutes!==0){showToast('Elegí horas alineadas con los turnos de 30 minutos.');return;}
+  }
   try{
-    const body={block_date:date,all_day:allDay,start_time:allDay?null:startTime,end_time:allDay?null:endTime,reason:reason||null};
-    const rows=await supabaseRequest('schedule_blocks',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)});
-    if(!rows?.[0])throw new Error('Supabase no devolvió el bloqueo creado.');
-    state.blocks.push(cloudBlockFromRow(rows[0]));
-    saveState();
+    // Refrescar antes de guardar para detectar bloqueos/turnos agregados desde otro dispositivo.
+    await loadCloudState({quiet:true});
+    const overlaps=b=>b.date===date&&(b.allDay||allDay|| (startTime<(b.endTime||'00:00')&&endTime>(b.startTime||'23:59')));
+    if((state.blocks||[]).some(overlaps)){showToast('Ese período ya está bloqueado o se superpone con otro bloqueo.');return;}
+    const affected=(state.appointments||[]).filter(a=>a.date===date&&['pending','confirmed'].includes(a.status)&&(allDay||(a.time>=startTime&&a.time<endTime)));
+    if(affected.length&&!confirm(`Hay ${affected.length} turno(s) pendiente(s) o confirmado(s) en ese período. El bloqueo no los cancela, solo impedirá nuevas reservas. ¿Querés continuar?`))return;
+
+    const systemClient=await getOrCreateBlockSystemClient();
+    const blockId=uid('blk');
+    const encodedReason=encodeURIComponent(reason||'');
+    const rowsToInsert=[];
+    if(allDay){
+      rowsToInsert.push({client_id:systemClient.id,date,time:'00:00',price:0,status:'cancelled',service:`__BRUSSY_BLOCK__|${blockId}|DAY|${encodedReason}`});
+    }else{
+      const endMinutes=timeToMinutes(endTime);
+      for(let minute=timeToMinutes(startTime);minute<endMinutes;minute+=CONFIG.slotMinutes){
+        rowsToInsert.push({client_id:systemClient.id,date,time:minutesToTime(minute),price:0,status:'cancelled',service:`__BRUSSY_BLOCK__|${blockId}|TIME|${endTime}|${encodedReason}`});
+      }
+    }
+    const created=await supabaseRequest('appointments',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(rowsToInsert)});
+    if(!Array.isArray(created)||created.length!==rowsToInsert.length)throw new Error('No se pudieron confirmar todos los registros de bloqueo.');
     await loadCloudState({quiet:true});
     selectedDate=date;selectedTime=null;
     renderCalendar();renderTimes();renderScheduleTab();
     showToast(allDay?'Día bloqueado correctamente.':'Horario bloqueado correctamente.');
   }catch(e){
     console.error('No se pudo guardar el bloqueo:',e);
-    showToast('No se pudo guardar el bloqueo en Supabase. Revisá la tabla y sus permisos.');
+    showToast('No se pudo guardar el bloqueo en Supabase. Revisá la conexión y los permisos de la tabla de turnos.');
   }
 }
 async function removeScheduleBlock(id){
@@ -2062,9 +2112,12 @@ async function removeScheduleBlock(id){
   const label=block.allDay?'el día completo':`el horario ${block.startTime} a ${block.endTime}`;
   if(!confirm(`¿Desbloquear ${label} del ${dateLabel(block.date)}?`))return;
   try{
-    await supabaseRequest('schedule_blocks?id=eq.'+encodeURIComponent(id),{method:'DELETE'});
-    state.blocks=state.blocks.filter(b=>String(b.id)!==String(id));
-    saveState();await loadCloudState({quiet:true});
+    // Se marcan como inactivos en lugar de borrarlos, para no requerir permiso DELETE.
+    const ids=block.appointmentIds||[];
+    if(!ids.length)throw new Error('No se encontraron registros asociados al bloqueo. Actualizá la agenda e intentá de nuevo.');
+    const updates=await Promise.all(ids.map(appointmentId=>supabaseRequest('appointments?id=eq.'+encodeURIComponent(appointmentId),{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify({service:`__BRUSSY_UNBLOCKED__|${id}`,status:'cancelled'})})));
+    if(updates.some(rows=>!Array.isArray(rows)||rows.length===0))throw new Error('Supabase no confirmó todos los cambios de desbloqueo.');
+    await loadCloudState({quiet:true});
     renderCalendar();renderTimes();renderScheduleTab();
     showToast('Disponibilidad restaurada.');
   }catch(e){
@@ -2072,6 +2125,7 @@ async function removeScheduleBlock(id){
     showToast('No se pudo quitar el bloqueo en Supabase. Revisá la conexión y los permisos.');
   }
 }
+
 function renderHistoryTab(){
   const box=document.getElementById('tab-history');
   const cuts=[...state.cuts].sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
