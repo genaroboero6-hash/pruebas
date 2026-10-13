@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -104,6 +105,7 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
   .info-card h3{font-size:1.3rem}
   .info-card p{font-size:.88rem}
 
+
   /* RESERVA - pensado para el dedo, sin zoom */
   .card{padding:14px;border-radius:16px}
   .card h3{font-size:1.25rem}
@@ -137,6 +139,7 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
   .payment{padding:14px}
   .fidelity{padding:16px}
 
+
   .panel-nav{grid-template-columns:repeat(2,1fr);gap:8px}
   .panel-nav button{min-height:44px;padding:12px 8px;font-size:.75rem}
   .client-card{flex-direction:column;align-items:flex-start}
@@ -144,12 +147,14 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
   .client-actions .tiny{min-height:44px;padding:10px 12px}
   .table th,.table td{padding:10px 6px;font-size:.74rem}
 
+
   .modal{padding:8px;padding-bottom:max(12px,env(safe-area-inset-bottom));align-items:flex-end}
   .modal-card{padding:18px 16px;border-radius:20px 20px 12px 12px;max-height:min(92vh,100dvh);width:100%}
   .modal h3{font-size:1.35rem}
   .modal-actions{flex-direction:column;gap:8px}
   .modal-actions .btn{width:100%;min-height:50px;font-size:1rem}
   .close{width:44px;height:44px}
+
 
   footer{padding:24px 0 calc(24px + env(safe-area-inset-bottom));font-size:.72rem}
   .toast{bottom:max(14px,env(safe-area-inset-bottom));width:calc(100% - 20px);font-size:.9rem;padding:14px 16px}
@@ -166,6 +171,7 @@ footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.foo
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-art img{animation:none}.btn,.day,.instagram-3d{transition:none}.instagram-3d,.instagram-3d:hover,.instagram-3d:active{transform:none}}
 
+
 /* Optimización uso móvil (sin cambiar diseño) */
 html,body{overscroll-behavior-y:contain}
 .date-strip{-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;touch-action:pan-x}
@@ -177,9 +183,12 @@ html,body{overscroll-behavior-y:contain}
 .topbar{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 body{padding-bottom:env(safe-area-inset-bottom)}
 
+
 /* Persistencia reforzada: mismo diseño, más protección de datos */
 .data-status{font-size:.72rem;color:var(--muted);margin-top:9px}
 .data-status.ok{color:var(--green-2)}
+
+
 
 
 /* =========================================================
@@ -188,11 +197,13 @@ body{padding-bottom:env(safe-area-inset-bottom)}
    visual ni la lógica de reservas/historial.
    ========================================================= */
 
+
 /* Evita que contenido interno fuerce el ancho de la pantalla */
 *,*::before,*::after{max-width:100%}
 img,svg,canvas,video{max-width:100%;height:auto}
 main,.section,.hero,.booking-grid,.panel-shell,.panel-grid,.card,.card-content{min-width:0}
 .container{min-width:0}
+
 
 /* Mejor comportamiento táctil */
 html{
@@ -211,6 +222,7 @@ button,a,input{
   -webkit-tap-highlight-color:transparent;
 }
 button,a{touch-action:manipulation}
+
 
 /* Barra superior: compacta y usable con una mano */
 .topbar{
@@ -235,12 +247,14 @@ button,a{touch-action:manipulation}
   min-width:0;
 }
 
+
 /* Los elementos con overflow horizontal se comportan como carruseles nativos */
 .date-strip,
 .table-wrap,
 .panel-content{
   -webkit-overflow-scrolling:touch;
 }
+
 
 /* =========================================================
    TABLET / CELULAR GRANDE
@@ -250,23 +264,28 @@ button,a{touch-action:manipulation}
     width:min(100% - 24px,720px);
   }
 
+
   .hero-grid,
   .booking-grid{
     gap:16px;
   }
 
+
   .hero{
     padding-top:36px;
   }
+
 
   .hero-art{
     min-height:280px;
   }
 
+
   .panel-content{
     width:100%;
     overflow-x:visible;
   }
+
 
   .table-wrap{
     width:100%;
@@ -276,14 +295,17 @@ button,a{touch-action:manipulation}
     overscroll-behavior-x:contain;
   }
 
+
   .table-wrap .table{
     min-width:620px;
   }
+
 
   .panel-grid{
     gap:12px;
   }
 }
+
 
 /* =========================================================
    CELULARES
@@ -293,14 +315,17 @@ button,a{touch-action:manipulation}
     --radius:18px;
   }
 
+
   body{
     font-size:15px;
   }
+
 
   .container{
     width:calc(100% - 20px);
     max-width:none;
   }
+
 
   /* ---------- HEADER ---------- */
   .topbar{
@@ -310,11 +335,13 @@ button,a{touch-action:manipulation}
     box-shadow:0 8px 25px rgba(0,0,0,.16);
   }
 
+
   .nav{
     height:auto;
     padding:9px 0 10px;
     gap:8px;
   }
+
 
   .brand{
     width:100%;
@@ -322,19 +349,23 @@ button,a{touch-action:manipulation}
     justify-content:flex-start;
   }
 
+
   .brand-icon{
     width:36px;
     height:46px;
     flex:none;
   }
 
+
   .brand-copy strong{
     font-size:.98rem;
   }
 
+
   .brand-copy span{
     font-size:.59rem;
   }
+
 
   .nav-actions{
     width:100%;
@@ -342,6 +373,7 @@ button,a{touch-action:manipulation}
     grid-template-columns:1fr 1.25fr 1fr;
     gap:7px;
   }
+
 
   .nav-actions .btn{
     width:100%;
@@ -357,27 +389,33 @@ button,a{touch-action:manipulation}
     text-align:center;
   }
 
+
   /* ---------- HERO ---------- */
   .hero{
     padding:26px 0 10px;
   }
 
+
   .hero-grid{
     gap:14px;
   }
 
+
   .hero-copy{
     width:100%;
   }
+
 
   .eyebrow{
     font-size:.66rem;
     letter-spacing:.13em;
   }
 
+
   .eyebrow::before{
     width:25px;
   }
+
 
   .hero h1{
     font-size:clamp(2.35rem,12vw,3.25rem);
@@ -385,11 +423,13 @@ button,a{touch-action:manipulation}
     margin:9px 0 13px;
   }
 
+
   .hero p{
     max-width:none;
     font-size:.91rem;
     line-height:1.58;
   }
+
 
   .hero-meta{
     display:grid;
@@ -398,6 +438,7 @@ button,a{touch-action:manipulation}
     margin-top:15px;
   }
 
+
   .pill{
     width:100%;
     padding:9px 11px;
@@ -405,10 +446,12 @@ button,a{touch-action:manipulation}
     line-height:1.35;
   }
 
+
   .hero-actions{
     margin-top:14px;
     width:100%;
   }
+
 
   .instagram-3d{
     width:100%;
@@ -417,10 +460,12 @@ button,a{touch-action:manipulation}
     font-size:.88rem;
   }
 
+
   .hero-art{
     min-height:190px;
     border-radius:20px;
   }
+
 
   .hero-art::before{
     width:145px;
@@ -429,10 +474,12 @@ button,a{touch-action:manipulation}
                0 0 0 36px rgba(85,243,155,.025);
   }
 
+
   .hero-art img{
     width:55%;
     max-width:190px;
   }
+
 
   .hero-art .stamp{
     left:12px;
@@ -440,45 +487,55 @@ button,a{touch-action:manipulation}
     font-size:.62rem;
   }
 
+
   /* ---------- SECCIONES ---------- */
   .section{
     padding:14px 0 5px;
   }
 
+
   .section-title{
     margin-bottom:11px;
   }
+
 
   .section-title h2{
     font-size:1.38rem;
   }
 
+
   .section-title p{
     font-size:.76rem;
   }
 
+
   .info-grid{
     gap:9px;
   }
+
 
   .info-card{
     padding:14px;
     border-radius:15px;
   }
 
+
   .info-card .mini{
     font-size:.65rem;
   }
+
 
   .info-card h3{
     font-size:1.25rem;
     margin:4px 0;
   }
 
+
   .info-card p{
     font-size:.83rem;
     line-height:1.52;
   }
+
 
   /* ---------- CARDS / RESERVA ---------- */
   .card{
@@ -487,18 +544,22 @@ button,a{touch-action:manipulation}
     border-radius:17px;
   }
 
+
   .card-head{
     gap:9px;
     margin-bottom:13px;
   }
 
+
   .card h3{
     font-size:1.24rem;
   }
 
+
   .small{
     font-size:.77rem;
   }
+
 
   /* Estado de usuario */
   .user-status{
@@ -508,9 +569,11 @@ button,a{touch-action:manipulation}
     padding:13px;
   }
 
+
   .user-status strong{
     font-size:.88rem;
   }
+
 
   .user-status span{
     display:block;
@@ -518,10 +581,12 @@ button,a{touch-action:manipulation}
     line-height:1.35;
   }
 
+
   .user-status .btn{
     width:100%;
     min-height:48px;
   }
+
 
   /* ---------- FECHAS ---------- */
   .date-strip{
@@ -534,9 +599,11 @@ button,a{touch-action:manipulation}
     overscroll-behavior-x:contain;
   }
 
+
   .date-strip::-webkit-scrollbar{
     display:none;
   }
+
 
   .date-strip .day{
     min-width:73px;
@@ -547,10 +614,12 @@ button,a{touch-action:manipulation}
     scroll-snap-align:center;
   }
 
+
   .day .dow{
     font-size:.62rem;
     letter-spacing:.11em;
   }
+
 
   .day .dom{
     font-size:1.7rem;
@@ -558,15 +627,18 @@ button,a{touch-action:manipulation}
     margin:3px 0;
   }
 
+
   .day .mon{
     font-size:.64rem;
   }
+
 
   /* ---------- HORARIOS ---------- */
   .times{
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:8px;
   }
+
 
   .time{
     width:100%;
@@ -577,15 +649,18 @@ button,a{touch-action:manipulation}
     font-weight:700;
   }
 
+
   .closed{
     font-size:.82rem;
     line-height:1.45;
   }
 
+
   /* ---------- SERVICIOS ---------- */
   .services{
     gap:8px;
   }
+
 
   .service{
     min-height:62px;
@@ -593,23 +668,28 @@ button,a{touch-action:manipulation}
     border-radius:14px;
   }
 
+
   .service strong{
     font-size:.91rem;
   }
+
 
   .service small{
     font-size:.75rem;
     line-height:1.35;
   }
 
+
   .price{
     flex:none;
     font-size:1.2rem;
   }
 
+
   .weekly{
     font-size:.67rem;
   }
+
 
   .price-box{
     grid-template-columns:1fr;
@@ -617,13 +697,16 @@ button,a{touch-action:manipulation}
     margin-top:12px;
   }
 
+
   .price-item{
     padding:13px;
   }
 
+
   .price-item strong{
     font-size:1.48rem;
   }
+
 
   /* ---------- FORMULARIOS ---------- */
   .form-grid{
@@ -631,10 +714,12 @@ button,a{touch-action:manipulation}
     gap:11px;
   }
 
+
   .field label{
     font-size:.69rem;
     margin-bottom:7px;
   }
+
 
   .field input{
     width:100%;
@@ -644,6 +729,7 @@ button,a{touch-action:manipulation}
     font-size:16px !important;
   }
 
+
   /* ---------- RESUMEN / ACCIONES ---------- */
   .summary{
     align-items:flex-start;
@@ -652,14 +738,17 @@ button,a{touch-action:manipulation}
     padding-top:15px;
   }
 
+
   .summary .amount{
     font-size:1.8rem;
   }
+
 
   .actions{
     gap:8px;
     margin-top:12px;
   }
+
 
   .actions .btn{
     min-height:50px;
@@ -667,10 +756,12 @@ button,a{touch-action:manipulation}
     font-size:.94rem;
   }
 
+
   .notice{
     font-size:.71rem;
     line-height:1.5;
   }
+
 
   /* ---------- PASOS / PAGO ---------- */
   .flow{
@@ -678,10 +769,12 @@ button,a{touch-action:manipulation}
     margin-top:11px;
   }
 
+
   .step{
     gap:9px;
     padding:12px;
   }
+
 
   .step .num{
     width:28px;
@@ -689,14 +782,17 @@ button,a{touch-action:manipulation}
     font-size:.74rem;
   }
 
+
   .step b{
     font-size:.81rem;
   }
+
 
   .step span{
     font-size:.71rem;
     line-height:1.4;
   }
+
 
   .payment{
     padding:13px;
@@ -704,14 +800,17 @@ button,a{touch-action:manipulation}
     border-radius:15px;
   }
 
+
   .payment h4{
     font-size:.91rem;
   }
+
 
   .badge{
     font-size:.61rem;
     padding:5px 7px;
   }
+
 
   .pay-row{
     flex-direction:column;
@@ -721,9 +820,11 @@ button,a{touch-action:manipulation}
     padding-top:9px;
   }
 
+
   .pay-row .label{
     font-size:.64rem;
   }
+
 
   .copy{
     width:100%;
@@ -734,6 +835,7 @@ button,a{touch-action:manipulation}
     font-size:.84rem;
   }
 
+
   /* ---------- FIDELIDAD / QR ---------- */
   .fidelity{
     margin-top:14px;
@@ -741,21 +843,25 @@ button,a{touch-action:manipulation}
     border-radius:16px;
   }
 
+
   .fidelity .progress{
     height:7px;
     margin:10px 0;
   }
+
 
   .reward{
     grid-template-columns:1fr;
     gap:9px;
   }
 
+
   .reward-note{
     padding:12px;
     font-size:.75rem;
     line-height:1.5;
   }
+
 
   .qr-card{
     width:100%;
@@ -764,6 +870,7 @@ button,a{touch-action:manipulation}
     border-radius:15px;
   }
 
+
   .qr-card canvas,
   .qr-card img{
     width:min(170px,100%);
@@ -771,17 +878,20 @@ button,a{touch-action:manipulation}
     image-rendering:auto;
   }
 
+
   /* ---------- PANEL BARBERO / CLIENTE ---------- */
   .panel-grid{
     grid-template-columns:1fr;
     gap:10px;
   }
 
+
   .panel-nav{
     width:100%;
     grid-template-columns:repeat(2,minmax(0,1fr));
     gap:7px;
   }
+
 
   .panel-nav button{
     width:100%;
@@ -793,11 +903,13 @@ button,a{touch-action:manipulation}
     text-align:center;
   }
 
+
   .panel-content{
     width:100%;
     min-width:0;
     overflow:visible;
   }
+
 
   .client-card{
     width:100%;
@@ -808,15 +920,18 @@ button,a{touch-action:manipulation}
     border-radius:14px;
   }
 
+
   .client-card h4{
     font-size:.88rem;
   }
+
 
   .client-card p{
     font-size:.69rem;
     line-height:1.45;
     overflow-wrap:anywhere;
   }
+
 
   .client-actions{
     width:100%;
@@ -826,12 +941,14 @@ button,a{touch-action:manipulation}
     justify-content:stretch;
   }
 
+
   .client-actions .tiny{
     width:100%;
     min-height:43px;
     padding:9px 7px;
     font-size:.68rem;
   }
+
 
   /* Las tablas se pueden desplazar lateralmente sin romper la página */
   .table-wrap{
@@ -844,10 +961,12 @@ button,a{touch-action:manipulation}
     overscroll-behavior-x:contain;
   }
 
+
   .table-wrap .table{
     min-width:600px;
     width:100%;
   }
+
 
   .table th,
   .table td{
@@ -856,14 +975,17 @@ button,a{touch-action:manipulation}
     white-space:normal;
   }
 
+
   .table th{
     font-size:.6rem;
   }
+
 
   .tag-status{
     white-space:nowrap;
     font-size:.61rem;
   }
+
 
   /* ---------- SCANNER ---------- */
   .scanner-box{
@@ -873,10 +995,12 @@ button,a{touch-action:manipulation}
     border-radius:15px;
   }
 
+
   .scanner-box #qr-reader{
     width:100% !important;
     max-width:100% !important;
   }
+
 
   .scanner-box #qr-reader video{
     width:100% !important;
@@ -885,10 +1009,12 @@ button,a{touch-action:manipulation}
     object-fit:cover;
   }
 
+
   .scanner-help{
     font-size:.72rem;
     line-height:1.5;
   }
+
 
   /* ---------- MODALES: estilo bottom sheet ---------- */
   .modal{
@@ -897,6 +1023,7 @@ button,a{touch-action:manipulation}
     padding-bottom:env(safe-area-inset-bottom);
     align-items:flex-end;
   }
+
 
   .modal-card{
     width:100%;
@@ -909,6 +1036,7 @@ button,a{touch-action:manipulation}
     box-shadow:0 -12px 60px rgba(0,0,0,.45);
   }
 
+
   .modal-head{
     position:sticky;
     top:-17px;
@@ -918,10 +1046,12 @@ button,a{touch-action:manipulation}
     background:linear-gradient(180deg,#0f2419 75%,rgba(15,36,25,0));
   }
 
+
   .modal h3{
     font-size:1.28rem;
     line-height:1.05;
   }
+
 
   .close{
     width:44px;
@@ -929,15 +1059,18 @@ button,a{touch-action:manipulation}
     flex:none;
   }
 
+
   .modal-actions{
     flex-direction:column;
     gap:7px;
   }
 
+
   .modal-actions .btn{
     width:100%;
     min-height:49px;
   }
+
 
   /* ---------- TOAST ---------- */
   .toast{
@@ -954,9 +1087,11 @@ button,a{touch-action:manipulation}
     border-radius:13px;
   }
 
+
   .toast.show{
     transform:translateY(0);
   }
+
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -966,6 +1101,7 @@ button,a{touch-action:manipulation}
   }
 }
 
+
 /* =========================================================
    CELULARES MUY CHICOS (320–380 px)
    ========================================================= */
@@ -974,10 +1110,12 @@ button,a{touch-action:manipulation}
     width:calc(100% - 14px);
   }
 
+
   .nav-actions{
     grid-template-columns:1fr 1.15fr 1fr;
     gap:5px;
   }
+
 
   .nav-actions .btn{
     min-height:44px;
@@ -985,26 +1123,32 @@ button,a{touch-action:manipulation}
     font-size:.65rem;
   }
 
+
   .hero h1{
     font-size:clamp(2.15rem,12.5vw,2.7rem);
   }
+
 
   .hero-art{
     min-height:175px;
   }
 
+
   .hero-art img{
     width:58%;
   }
+
 
   .times{
     gap:7px;
   }
 
+
   .time{
     min-height:48px;
     font-size:.88rem;
   }
+
 
   .date-strip .day{
     min-width:68px;
@@ -1013,14 +1157,17 @@ button,a{touch-action:manipulation}
     min-height:82px;
   }
 
+
   .client-actions{
     grid-template-columns:1fr;
   }
+
 
   .panel-nav button{
     font-size:.67rem;
   }
 }
+
 
 /* =========================================================
    LANDSCAPE EN CELULAR
@@ -1032,10 +1179,12 @@ button,a{touch-action:manipulation}
     flex-wrap:nowrap;
   }
 
+
   .brand{
     width:auto;
     flex:1 1 auto;
   }
+
 
   .nav-actions{
     width:auto;
@@ -1043,19 +1192,23 @@ button,a{touch-action:manipulation}
     display:flex;
   }
 
+
   .nav-actions .btn{
     width:auto;
     min-width:96px;
   }
 
+
   .hero-grid{
     grid-template-columns:1fr 1fr;
   }
+
 
   .hero-art{
     min-height:260px;
   }
 }
+
 
 /* Reducir animaciones en dispositivos que lo solicitan */
 @media (prefers-reduced-motion:reduce){
@@ -1064,11 +1217,138 @@ button,a{touch-action:manipulation}
   }
 }
 
+
 /* Soporte para iPhone con barra inferior */
 @supports (padding:max(0px)){
   body{
     padding-bottom:max(0px,env(safe-area-inset-bottom));
   }
+}
+
+
+
+/* Bloqueos de agenda: controles separados y cómodos en escritorio y móvil */
+.block-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 24px}
+.block-option{min-width:0;padding:20px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(16,39,29,.96),rgba(7,17,12,.98));box-shadow:0 14px 32px rgba(0,0,0,.14)}
+.block-option-slot{border-top:3px solid var(--green)}.block-option-day{border-top:3px solid #ffd166}
+.block-option-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.block-option-symbol{display:grid;place-items:center;width:43px;height:43px;border-radius:14px;background:rgba(85,243,155,.1);color:var(--green-2);font-size:1.65rem}
+.block-option-day .block-option-symbol{background:rgba(255,209,102,.1);color:#ffe09a}
+.block-option-tag{font-size:.65rem;font-weight:800;letter-spacing:.13em;color:var(--muted);border:1px solid var(--line);padding:6px 9px;border-radius:999px}
+.block-option h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:1.45rem;margin:0 0 6px}
+.block-option p{min-height:47px;color:#b4c8bf;font-size:.86rem;line-height:1.55;margin:0 0 18px}
+.block-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}.block-fields-one{grid-template-columns:1fr}
+.block-option .field input,.block-option .field select{display:block;width:100%;min-width:0;min-height:49px;padding:12px;border-radius:12px;border:1px solid var(--line);background:#07130d;color:#f3faf6;font-size:16px}
+.block-option .field select{appearance:auto}.block-submit{width:100%;min-height:49px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:800;padding:13px 15px}
+.block-active-section{border-top:1px solid var(--line);padding-top:20px}.block-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.block-section-heading h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:1.4rem;margin-top:3px}.block-count{font-size:.74rem;padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#d6e6dd;white-space:nowrap}
+.block-active-groups{display:grid;grid-template-columns:1fr 1fr;gap:16px}.block-active-group{padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.018);min-width:0}.block-active-group>h4{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.87rem;margin-bottom:10px}.block-active-group>h4 span{font-size:.7rem;color:var(--muted);padding:4px 7px;border-radius:999px;background:rgba(255,255,255,.05)}
+.block-active-item{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid rgba(255,255,255,.06);min-width:0}.block-active-icon{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:11px;background:rgba(85,243,155,.09);color:var(--green-2);font-size:1.15rem}.block-active-group:nth-child(2) .block-active-icon{background:rgba(255,209,102,.09);color:#ffe09a}.block-active-info{display:grid;gap:3px;min-width:0;flex:1}.block-active-info strong{font-size:.8rem}.block-active-info span{font-size:.72rem;color:var(--muted)}.block-empty{padding:13px 8px;text-align:center;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:.77rem}
+@media(max-width:720px){.block-options-grid,.block-active-groups{grid-template-columns:1fr}.block-option{padding:16px}.block-option p{min-height:0;margin-bottom:15px}.block-fields{grid-template-columns:1fr}.block-section-heading{align-items:flex-start}.block-active-item{gap:8px}.block-active-info strong{font-size:.78rem}.block-active-info span{font-size:.7rem}.block-active-item .btn{flex:none}}
+</style>
+<style id="responsive-device-optimization">
+
+/* Optimización adaptativa: conserva el diseño original y solo mejora la adaptación por dispositivo. */
+:root{scroll-padding-top:calc(82px + env(safe-area-inset-top))}
+img,video,canvas,svg{max-width:100%}
+button,input,select,textarea{font:inherit}
+button,a,input,select,textarea{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}
+.container,.card,.panel-content,.panel-grid,.booking-grid,.hero-grid,.form-grid,.block-options-grid,.block-active-groups{min-width:0}
+.table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+
+/* Escritorio: aprovechar el espacio disponible sin estirar los controles. */
+@media (min-width:1100px){
+  .panel-grid{grid-template-columns:minmax(220px,260px) minmax(0,1fr);align-items:start}
+  .panel-nav{position:sticky;top:92px}
+  .panel-content{min-width:0}
+  .table-wrap .table{min-width:0}
+  .block-options-grid,.block-active-groups{align-items:stretch}
+}
+
+/* Tablet y pantallas medianas. */
+@media (min-width:641px) and (max-width:1099px){
+  .container{width:min(100% - 28px,900px)}
+  .panel-grid{grid-template-columns:minmax(0,1fr)}
+  .panel-nav{display:flex;gap:8px;overflow-x:auto;max-width:100%;padding:2px 2px 8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+  .panel-nav button{flex:0 0 auto;min-height:44px;white-space:nowrap;text-align:center}
+  .panel-content{min-width:0}
+  .block-options-grid,.block-active-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Celular: controles cómodos con el pulgar, paneles compactos y sin desbordes. */
+@media (max-width:640px){
+  html{scroll-padding-top:76px}
+  body{width:100%;min-width:0;overflow-x:hidden;padding-bottom:calc(12px + env(safe-area-inset-bottom))}
+  .container{width:calc(100% - 24px);max-width:100%;padding-left:0;padding-right:0}
+  .nav{min-height:66px;height:auto;gap:8px;padding:8px 0;align-items:center}
+  .brand{gap:7px;min-width:0}
+  .brand-icon{width:34px;height:42px;flex:0 0 auto}
+  .brand-copy strong{font-size:1rem;letter-spacing:.06em}
+  .brand-copy span{font-size:.58rem;letter-spacing:.1em}
+  .nav-actions{gap:6px;align-items:center}
+  .nav-actions .btn{padding:9px 10px;font-size:.78rem;min-height:40px}
+  .hero-grid,.booking-grid,.panel-grid{grid-template-columns:minmax(0,1fr)}
+  .section{padding-top:26px;padding-bottom:26px}
+  .section-title{gap:10px;align-items:flex-start}
+  .section-title h2{font-size:clamp(1.45rem,6vw,2rem);line-height:1.12}
+  .section-title>.btn{flex:0 0 auto;padding:9px 11px;min-height:42px}
+  .card{padding:15px;border-radius:18px}
+  .form-grid{grid-template-columns:minmax(0,1fr);gap:12px}
+  .field input,.field select,.field textarea,input,select,textarea{font-size:16px;max-width:100%}
+  .field input,.field select,.field textarea{min-height:46px;padding:12px}
+  .btn,button{min-height:44px}
+  .actions,.hero-actions,.modal-actions{gap:8px}
+  .actions>.btn,.modal-actions>.btn{flex:1 1 140px;min-width:0}
+  .panel-grid{gap:12px}
+  .panel-nav{display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;max-width:100%;padding:2px 2px 9px;scrollbar-width:thin;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .panel-nav button{flex:0 0 auto;min-height:44px;padding:10px 13px;white-space:nowrap;text-align:center;scroll-snap-align:start}
+  .panel-content{width:100%;min-width:0;overflow:visible}
+  .panel-content>div{min-width:0}
+  .table-wrap{width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;border-radius:12px;scrollbar-width:thin}
+  .table-wrap .table{min-width:590px}
+  .client-card,.appointment-card,.block-active-item{min-width:0;overflow-wrap:anywhere}
+  .block-options-grid,.block-active-groups{grid-template-columns:minmax(0,1fr);gap:12px}
+  .block-option{padding:15px;border-radius:17px}
+  .block-option input,.block-option select{width:100%;min-width:0}
+  .block-option .btn{width:100%}
+  .block-active-group{min-width:0;padding:12px}
+  .block-active-item{align-items:flex-start;gap:8px}
+  .block-active-item>div{min-width:0;overflow-wrap:anywhere}
+  .times{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .times button,.day{min-height:44px}
+  .date-strip{max-width:100%;overscroll-behavior-x:contain}
+  .modal{padding:8px;align-items:end;place-items:end center;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+  .modal-card{width:100%;max-width:620px;max-height:min(88dvh,900px);overflow-y:auto;border-radius:22px 22px 14px 14px;padding:17px;overscroll-behavior:contain}
+  .modal h3{font-size:1.5rem}
+  .modal-head{position:sticky;top:-17px;z-index:2;background:linear-gradient(145deg,#0f2419,#0b1c14);padding:8px 0;margin-top:-8px}
+  .summary{align-items:flex-start;flex-wrap:wrap}
+  .summary .amount{font-size:1.9rem}
+  .user-status{align-items:flex-start;flex-direction:column;gap:5px}
+  .scanner-box{min-height:200px;padding:6px}
+  footer{padding:30px 0 40px}
+}
+
+/* Celulares angostos. */
+@media (max-width:380px){
+  .container{width:calc(100% - 18px)}
+  .brand-copy span{display:none}
+  .nav-actions .btn{padding:8px;font-size:.72rem}
+  .card{padding:12px}
+  .section-title>.btn{padding:8px}
+  .times{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .block-option-top{align-items:flex-start}
+  .block-count{white-space:normal;text-align:center}
+}
+
+/* Pantalla horizontal en móvil: mantener navegación y acciones accesibles. */
+@media (max-width:900px) and (orientation:landscape){
+  .modal-card{max-height:82dvh}
+  .panel-nav{position:sticky;left:0}
+  .hero{padding-top:22px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
 </style>
@@ -1084,6 +1364,7 @@ button,a{touch-action:manipulation}
     </div>
   </div>
 </div>
+
 
 <main>
 <section class="hero">
@@ -1104,6 +1385,7 @@ button,a{touch-action:manipulation}
   </div>
 </section>
 
+
 <section class="section">
   <div class="container">
     <div class="section-title"><div><div class="kicker">Información</div><h2>Antes de reservar</h2></div><p>Horarios actualizados</p></div>
@@ -1114,6 +1396,7 @@ button,a{touch-action:manipulation}
     </div>
   </div>
 </section>
+
 
 <section class="section" id="reserva">
   <div class="container">
@@ -1133,10 +1416,11 @@ button,a{touch-action:manipulation}
           </div>
           <div class="price-box"><div class="price-item selected" id="standardBox"><span>Precio base</span><strong>$12.000</strong></div><div class="price-item" id="weeklyBox"><span>Precio semanal</span><strong>$10.000</strong></div></div>
           <div class="summary"><div><div class="muted">Precio estimado</div><strong id="bookingPriceNote">$12.000</strong></div><div class="amount" id="bookingPrice">$12.000</div></div>
-          <div class="actions"><button class="btn btn-green" type="button" onclick="requestAppointment()">Solicitar este turno</button><button class="btn btn-ghost" type="button" onclick="openCustomerPanel()">Ver mis turnos</button></div>
+          <div class="actions"><button class="btn btn-green" id="requestAppointmentBtn" type="button" onclick="requestAppointment()">Solicitar este turno</button><button class="btn btn-ghost" type="button" onclick="openCustomerPanel()">Ver mis turnos</button></div>
           <div class="flow"><div class="step"><div class="num">1</div><div><b>Reservás</b><span>El turno queda pendiente de confirmación.</span></div></div><div class="step"><div class="num">2</div><div><b>Pagás la seña</b><span>Transferís por Mercado Pago al alias indicado.</span></div></div><div class="step"><div class="num">3</div><div><b>Mandás el comprobante</b><span>WhatsApp abre el chat con Bruno para confirmar.</span></div></div></div>
         </div>
       </section>
+
 
       <aside class="card">
         <div class="card-head"><div><div class="kicker">05 · Confirmación</div><h3>Seña y WhatsApp</h3></div><span class="badge">50% editable</span></div>
@@ -1151,6 +1435,7 @@ button,a{touch-action:manipulation}
         <div class="actions"><button class="btn btn-blue" type="button" onclick="payDeposit()">Pagar seña · Abrir Mercado Pago</button><button class="btn btn-green" type="button" onclick="confirmWhatsApp()">Enviar comprobante por WhatsApp</button></div>
         <p class="notice">Al solicitar el turno se abre WhatsApp con tu nombre, día y hora. Pagá la seña (50% del corte) por Mercado Pago y podés enviar el comprobante desde acá.</p>
 
+
         <div class="fidelity" id="fidelityCard">
           <div class="kicker">Programa de fidelidad</div><h3 style="margin-top:4px;font-family:Oswald,sans-serif;text-transform:uppercase">Cada 3 cortes · 10% OFF</h3>
           <div class="small" id="fidelityText" style="margin-top:7px">Registrate para ver tu progreso.</div>
@@ -1163,6 +1448,7 @@ button,a{touch-action:manipulation}
   </div>
 </section>
 
+
 <section class="section panel-shell" id="customerPanel">
   <div class="container">
     <div class="section-title"><div><div class="kicker">Área cliente</div><h2>Mis turnos y beneficios</h2></div><button class="btn btn-ghost" type="button" onclick="closeSection('customerPanel')">Cerrar</button></div>
@@ -1170,13 +1456,14 @@ button,a{touch-action:manipulation}
   </div>
 </section>
 
+
 <section class="section panel-shell" id="barberPanel">
   <div class="container">
     <div class="section-title"><div><div class="kicker">Modo barbero</div><h2>Panel de Bruno</h2></div><button class="btn btn-ghost" type="button" onclick="closeSection('barberPanel')">Cerrar</button></div>
     <div class="panel-grid">
-      <div class="panel-nav"><button class="active" data-tab="clients" onclick="showBarberTab('clients',this)">Clientes</button><button data-tab="appointments" onclick="showBarberTab('appointments',this)">Turnos</button><button data-tab="history" onclick="showBarberTab('history',this)">Historial</button><button data-tab="scanner" onclick="showBarberTab('scanner',this)">Escanear QR</button><button data-tab="backup" onclick="showBarberTab('backup',this)">Respaldo</button></div>
+      <div class="panel-nav"><button class="active" data-tab="clients" onclick="showBarberTab('clients',this)">Clientes</button><button data-tab="appointments" onclick="showBarberTab('appointments',this)">Turnos</button><button data-tab="history" onclick="showBarberTab('history',this)">Historial</button><button data-tab="scanner" onclick="showBarberTab('scanner',this)">Escanear QR</button><button data-tab="backup" onclick="showBarberTab('backup',this)">Respaldo</button><button data-tab="blocks" onclick="showBarberTab('blocks',this)">Bloquear horarios</button></div>
       <div class="panel-content">
-        <div id="tab-clients"></div><div id="tab-appointments" style="display:none"></div><div id="tab-history" style="display:none"></div><div id="tab-scanner" style="display:none"></div><div id="tab-backup" style="display:none"></div>
+        <div id="tab-clients"></div><div id="tab-appointments" style="display:none"></div><div id="tab-history" style="display:none"></div><div id="tab-scanner" style="display:none"></div><div id="tab-backup" style="display:none"></div><div id="tab-blocks" style="display:none"></div>
       </div>
     </div>
   </div>
@@ -1194,11 +1481,13 @@ Brussy Barbería · Turnos online con Bruno Pérez · Historial protegido con re
 </div>
 </div></footer>
 
+
 <div class="modal" id="registerModal"><div class="modal-card"><div class="modal-head"><div><div class="kicker">Cuenta</div><h3>Registro / inicio sesión</h3></div><button class="close" onclick="hideModal('registerModal')">×</button></div><div class="modal-actions" style="justify-content:flex-start;margin:0 0 14px"><button class="btn btn-green" type="button" id="accountModeCreate" onclick="setAccountMode('create')">Crear mi cuenta</button><button class="btn btn-ghost" type="button" id="accountModeLogin" onclick="setAccountMode('login')">Iniciar sesión</button></div><p class="small" id="accountModeText" style="margin-bottom:15px">Creá tu cuenta para reservar turnos, consultar tu historial y recibir tus beneficios.</p><div class="form-grid"><div class="field"><label>Nombre</label><input id="firstName" placeholder="Bruno" autocomplete="given-name"></div><div class="field"><label>Apellido</label><input id="lastName" placeholder="Pérez" autocomplete="family-name"></div><div class="field"><label>Teléfono</label><input id="phone" inputmode="tel" placeholder="342 555 0105" autocomplete="tel"></div><div class="field"><label>Documento</label><input id="dni" inputmode="numeric" placeholder="12345678"></div></div><p class="error" id="registerError"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('registerModal')">Cancelar</button><button class="btn btn-green" id="accountSubmit" onclick="submitAccount()">Crear cuenta y continuar</button></div></div></div>
 <div class="modal" id="barberLoginModal"><div class="modal-card" style="max-width:420px"><div class="modal-head"><div><div class="kicker">Acceso</div><h3>Modo barbero</h3></div><button class="close" onclick="hideModal('barberLoginModal')">×</button></div><p class="small">Introduzca contraseña</p><div class="field" style="margin-top:14px"><label>Contraseña</label><input id="barberPin" type="password" placeholder="Contraseña" autocomplete="current-password"></div><p class="error" id="barberError"></p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('barberLoginModal')">Cancelar</button><button class="btn btn-green" onclick="loginBarber()">Entrar</button></div></div></div>
 <div class="modal" id="manualCutModal"><div class="modal-card" style="max-width:520px"><div class="modal-head"><div><div class="kicker">Historial</div><h3>Registrar corte</h3></div><button class="close" onclick="hideModal('manualCutModal')">×</button></div><div id="manualCutInfo"></div><div class="form-grid" style="margin-top:14px"><div class="field"><label>Fecha</label><input type="date" id="cutDate"></div><div class="field"><label>Hora</label><input type="time" id="cutTime"></div></div><div class="price-box" style="margin-top:14px"><div class="price-item selected"><span>Precio vigente</span><strong id="manualPrice">$12.000</strong></div><div class="price-item" id="manualDiscountBox"><span>Fidelidad</span><strong id="manualDiscount">Sin descuento</strong></div></div><label style="display:flex;gap:9px;align-items:center;margin-top:14px;color:#cfe0d8;font-size:.82rem"><input type="checkbox" id="useReward"> Aplicar 10% del QR ya leído</label><p class="notice">El corte se agregará al historial del cliente y actualizará automáticamente su contador de fidelidad.</p><div class="modal-actions"><button class="btn btn-ghost" onclick="hideModal('manualCutModal')">Cancelar</button><button class="btn btn-green" onclick="saveManualCut()">Registrar corte</button></div></div></div>
 <div class="modal" id="historyModal"><div class="modal-card"><div class="modal-head"><div><div class="kicker">Cliente</div><h3 id="historyModalTitle">Historial</h3></div><button class="close" onclick="hideModal('historyModal')">×</button></div><div id="historyModalBody"></div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 
 <script>
 const CONFIG = {
@@ -1214,7 +1503,9 @@ const CONFIG = {
   rewardPercent: 10,
   slotMinutes: 30,
   barberDefaultPin: 'BrunoBarber2026',
-  storageKey: 'brussy_barberia_app_v3'
+  storageKey: 'brussy_barberia_app_v3',
+  supabaseUrl: 'https://dvsqsbzzwlarlqmhsbrq.supabase.co',
+  supabaseKey: 'sb_publishable_923LjLJm89c_CeB1gWaRYQ_Mxyp3Tya'
 };
 const DAYS=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
@@ -1226,11 +1517,130 @@ let barberLogged = sessionStorage.getItem('brussy_barber_logged') === '1';
 let manualClientId = null;
 let manualReward = false;
 let manualAppointmentId = null;
+let clientHasBookedThisSession=false;
 
-function defaultState(){ return {version:4, clients:[], appointments:[], cuts:[], rewardRedemptions:{}, settings:{barberPin:CONFIG.barberDefaultPin}}; }
+let cloudSyncing=false;
+let cloudPollingTimer=null;
+
+async function supabaseRequest(path, options={}){
+  const headers={
+    'apikey':CONFIG.supabaseKey,
+    'Authorization':'Bearer '+CONFIG.supabaseKey,
+    'Content-Type':'application/json',
+    'Accept':'application/json',
+    ...(options.headers||{})
+  };
+  const res=await fetch(CONFIG.supabaseUrl+'/rest/v1/'+path,{...options,headers});
+  const text=await res.text();
+  let data=null; try{data=text?JSON.parse(text):null;}catch(_){data=text;}
+  if(!res.ok){ const msg=data?.message||data?.hint||data?.details||res.statusText; throw new Error(msg); }
+  return data;
+}
+
+function cloudClientFromRow(r){return {id:r.id,firstName:r.first_name,lastName:r.last_name,phone:r.phone,dni:r.dni,createdAt:r.created_at,updatedAt:r.updated_at};}
+function cloudAppointmentFromRow(r){return {id:r.id,clientId:r.client_id,date:r.date,time:String(r.time).slice(0,5),price:r.price,status:r.status,createdAt:r.created_at,confirmedAt:r.confirmed_at||undefined,cancelledAt:r.cancelled_at||undefined,completedAt:r.completed_at||undefined,cutId:r.cut_id||undefined,service:r.service||'Corte completo'};}
+
+async function migrateCurrentCompletedAppointments(appointments){
+  const today=isoDateLocal(new Date());
+  const current=appointments.filter(a=>a.status==='completed' && a.date>=today);
+  if(!current.length)return appointments;
+
+  const cutIds=new Set(current.map(a=>a.cutId).filter(Boolean));
+  for(const a of current){
+    try{
+      await updateAppointmentOnline(a.id,{status:'confirmed',confirmed_at:a.confirmedAt||new Date().toISOString(),completed_at:null,cut_id:null});
+      a.status='confirmed';
+      a.completedAt=undefined;
+      a.cutId=undefined;
+    }catch(e){}
+  }
+  state.cuts=state.cuts.filter(c=>!cutIds.has(c.id) && !current.some(a=>a.clientId===c.clientId&&a.date===c.date&&a.time===c.time));
+  for(const clientId of Object.keys(state.rewardRedemptions||{})){
+    const maxCycle=Math.floor(clientCuts(clientId).length/CONFIG.rewardEvery);
+    for(const cycle of Object.keys(state.rewardRedemptions[clientId]||{})){
+      if(Number(cycle)>maxCycle)delete state.rewardRedemptions[clientId][cycle];
+    }
+  }
+  return appointments;
+}
+
+async function loadCloudState({quiet=false}={}){
+  if(cloudSyncing)return;
+  cloudSyncing=true;
+  try{
+    const [clients,appointments]=await Promise.all([
+      supabaseRequest('clients?select=*&order=created_at.asc'),
+      supabaseRequest('appointments?select=*&order=date.asc,time.asc')
+    ]);
+    await migrateCurrentCompletedAppointments(appointments);
+    const currentClientId=activeClientId;
+    const merged=normalizeState({clients:clients.map(cloudClientFromRow),appointments:appointments.map(cloudAppointmentFromRow),cuts:state.cuts,rewardRedemptions:state.rewardRedemptions,settings:state.settings});
+    state=merged;
+    try{ const blocks=await supabaseRequest('schedule_blocks?select=*&order=date.asc,time.asc'); state.scheduleBlocks=blocks.map(b=>({id:b.id,date:b.date,time:b.time?String(b.time).slice(0,5):null,kind:b.kind||(b.time?'slot':'day')})); }catch(blockError){}
+    if(currentClientId && !state.clients.some(c=>c.id===currentClientId)){
+      const old=JSON.parse(localStorage.getItem('brussy_active_client_data')||'null');
+      if(old){
+        const found=state.clients.find(c=>digits(c.phone)===digits(old.phone)&&digits(c.dni)===digits(old.dni));
+        if(found){activeClientId=found.id;localStorage.setItem('brussy_active_client',found.id);}
+      }
+    }
+    try{localStorage.setItem(CONFIG.storageKey,JSON.stringify(state));}catch(_){ }
+    renderAllPreserveScroll();
+  }catch(e){ if(!quiet) console.warn('No se pudo sincronizar con Supabase:',e); }
+  finally{cloudSyncing=false;}
+}
+
+async function saveClientToCloud(client){
+  const phone=digits(client.phone), dni=digits(client.dni);
+  let existing=null;
+  try{
+    const byPhone=await supabaseRequest('clients?select=*&phone=eq.'+encodeURIComponent(phone)+'&limit=1');
+    existing=byPhone?.[0]||null;
+    if(!existing){
+      const byDni=await supabaseRequest('clients?select=*&dni=eq.'+encodeURIComponent(dni)+'&limit=1');
+      existing=byDni?.[0]||null;
+    }
+    const body={first_name:client.firstName,last_name:client.lastName,phone,dni};
+    let row;
+    if(existing){
+      row=(await supabaseRequest('clients?id=eq.'+existing.id,{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)}))[0];
+    }else{
+      row=(await supabaseRequest('clients',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)}))[0];
+    }
+    const cloud=cloudClientFromRow(row);
+    const idx=state.clients.findIndex(c=>c.id===client.id||c.id===cloud.id);
+    if(idx>=0)state.clients[idx]=cloud;else state.clients.push(cloud);
+    activeClientId=cloud.id;
+    localStorage.setItem('brussy_active_client',cloud.id);
+    localStorage.setItem('brussy_active_client_data',JSON.stringify(cloud));
+    return cloud;
+  }catch(e){throw e;}
+}
+
+async function createAppointmentOnline(client,date,time,price){
+  const body={client_id:client.id,date,time,price,status:'pending',service:'Corte completo'};
+  const rows=await supabaseRequest('appointments',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)});
+  return cloudAppointmentFromRow(rows[0]);
+}
+
+async function updateAppointmentOnline(id,patch){
+  const rows=await supabaseRequest('appointments?id=eq.'+encodeURIComponent(id),{method:'PATCH',headers:{'Prefer':'return=representation'},body:JSON.stringify(patch)});
+  return rows?.[0]?cloudAppointmentFromRow(rows[0]):null;
+}
+
+async function syncCloudPeriodically(){
+  await loadCloudState({quiet:true});
+  if(activeClientId){clientHasBookedThisSession=state.appointments.some(a=>a.clientId===activeClientId&&['pending','confirmed'].includes(a.status));renderAllPreserveScroll();}
+  clearTimeout(cloudPollingTimer);
+  cloudPollingTimer=setTimeout(syncCloudPeriodically,5000);
+}
+
+function startCloudSync(){syncCloudPeriodically();}
+
+function defaultState(){ return {version:4, clients:[], appointments:[], cuts:[], rewardRedemptions:{}, settings:{barberPin:CONFIG.barberDefaultPin}, scheduleBlocks:[]}; }
 function normalizeState(parsed){
   const base=defaultState();
-  const merged = { ...base, ...(parsed||{}), version:4, clients:Array.isArray(parsed?.clients)?parsed.clients:[], appointments:Array.isArray(parsed?.appointments)?parsed.appointments:[], cuts:Array.isArray(parsed?.cuts)?parsed.cuts:[], rewardRedemptions:parsed?.rewardRedemptions||{}, settings:{...base.settings,...(parsed?.settings||{})} };
+  const merged = { ...base, ...(parsed||{}), version:4, clients:Array.isArray(parsed?.clients)?parsed.clients:[], appointments:Array.isArray(parsed?.appointments)?parsed.appointments:[], cuts:Array.isArray(parsed?.cuts)?parsed.cuts:[], rewardRedemptions:parsed?.rewardRedemptions||{}, scheduleBlocks:Array.isArray(parsed?.scheduleBlocks)?parsed.scheduleBlocks:[], settings:{...base.settings,...(parsed?.settings||{})} };
   // Contraseña fija del panel barbero
   merged.settings.barberPin = CONFIG.barberDefaultPin;
   return merged;
@@ -1251,6 +1661,12 @@ function saveState(){
     localStorage.setItem(CONFIG.storageKey+'_lastSave',new Date().toISOString());
   }catch(e){ console.error('No se pudo guardar el estado local:',e); }
   guardarEstadoIndexedDB(json);
+  /* Avisar inmediatamente a otras pestañas del mismo navegador. */
+  try{
+    if(brussySyncChannel){
+      brussySyncChannel.postMessage({type:'STATE_UPDATED',state:JSON.parse(json)});
+    }
+  }catch(_){}
   renderAll();
 }
 const PERSIST_DB='brussy_persistencia_v4';
@@ -1263,7 +1679,40 @@ async function restaurarRespaldoSiHaceFalta(){
   const recuperado=await recuperarEstadoIndexedDB();
   if(recuperado && (recuperado.clients.length||recuperado.appointments.length||recuperado.cuts.length)){state=recuperado;saveState();showToast('Se recuperó automáticamente un respaldo local.');}
 }
-window.addEventListener('storage',e=>{if(e.key!==CONFIG.storageKey||!e.newValue)return;try{const incoming=normalizeState(JSON.parse(e.newValue));if((incoming.clients.length+incoming.appointments.length+incoming.cuts.length)>=(state.clients.length+state.appointments.length+state.cuts.length)){state=incoming;renderAll();}}catch(_){}});
+/* Sincronización de turnos entre pestañas/ventanas del mismo dispositivo */
+let brussySyncChannel=null;
+try{
+  if('BroadcastChannel' in window){
+    brussySyncChannel=new BroadcastChannel('brussy_turnos_sync_v4');
+    brussySyncChannel.onmessage=e=>{
+      if(!e.data||e.data.type!=='STATE_UPDATED'||!e.data.state)return;
+      try{
+        state=normalizeState(e.data.state);
+        renderAllPreserveScroll();
+      }catch(_){}
+    };
+  }
+}catch(_){}
+
+window.addEventListener('storage',e=>{
+  if(e.key!==CONFIG.storageKey||!e.newValue)return;
+  try{
+    /* Siempre se actualiza: un turno puede cambiar de estado sin aumentar la cantidad total. */
+    state=normalizeState(JSON.parse(e.newValue));
+    renderAllPreserveScroll();
+  }catch(_){}
+});
+
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState!=='visible')return;
+  try{
+    const raw=localStorage.getItem(CONFIG.storageKey);
+    if(raw){
+      state=normalizeState(JSON.parse(raw));
+      renderAllPreserveScroll();
+    }
+  }catch(_){}
+});
 function uid(prefix='id'){ return prefix+'_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,9); }
 function money(n){ return '$'+Number(n).toLocaleString('es-AR'); }
 function normalize(s){ return String(s||'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
@@ -1312,7 +1761,7 @@ function buildTimes(dateStr){
   }
   return out;
 }
-function isTaken(date,time,ignoreId=null){ return state.appointments.some(a=>a.date===date&&a.time===time&&!['cancelled','completed'].includes(a.status)&&a.id!==ignoreId); }
+function isTaken(date,time,ignoreId=null){ return (state.scheduleBlocks||[]).some(b=>b.date===date&&(!b.time||b.time===time)) || state.appointments.some(a=>a.date===date&&a.time===time&&['pending','confirmed'].includes(a.status)&&a.id!==ignoreId); }
 function renderCalendar(){
   const strip=document.getElementById('dateStrip'); strip.innerHTML='';
   const now=new Date(); let firstValid=null; const months=new Set();
@@ -1325,19 +1774,31 @@ function renderCalendar(){
   }
   if(!selectedDate || !buildTimes(selectedDate).length) selectedDate=firstValid;
   document.getElementById('monthLabel').textContent=[...months].slice(0,2).join(' / ');
-  requestAnimationFrame(()=>document.querySelector('.day.active')?.scrollIntoView({inline:'center',block:'nearest'}));
+  /* No mover la página automáticamente al refrescar el calendario. */
 }
 function renderTimes(){
   const grid=document.getElementById('timeGrid'); grid.innerHTML='';
   if(!selectedDate){ grid.innerHTML='<div class="closed">Seleccioná una fecha.</div>'; return; }
+  if((state.scheduleBlocks||[]).some(b=>b.date===selectedDate&&!b.time)){ grid.innerHTML='<div class="closed">El barbero bloqueó este día completo. Elegí otra fecha.</div>'; return; }
   const slots=buildTimes(selectedDate);
   if(!slots.length){ grid.innerHTML='<div class="closed">Domingo: el local está cerrado.</div>'; return; }
   for(const t of slots){ const btn=document.createElement('button'); btn.type='button'; const taken=isTaken(selectedDate,t); btn.className='time'+(selectedTime===t?' active':'')+(taken?' taken':''); btn.disabled=taken; btn.textContent=t; if(!taken) btn.onclick=()=>{selectedTime=t;renderTimes();}; grid.appendChild(btn); }
 }
 function updateUserStatus(){
   const box=document.getElementById('userStatus'), client=getClient();
-  if(client){ box.innerHTML=`<div><strong>${client.firstName} ${client.lastName}</strong><span>${client.phone} · DNI ${client.dni}</span></div><button class="btn btn-ghost" type="button" onclick="logoutClient()">Cerrar sesión</button>`; document.getElementById('bookingHint').textContent='Podés elegir fecha y horario.'; }
-  else { box.innerHTML='<div><strong>No hay cliente conectado</strong><span>Necesitás registrarte para reservar.</span></div><button class="btn btn-green" type="button" onclick="openRegister()">Crear cuenta</button>'; document.getElementById('bookingHint').textContent='Primero registrate o iniciá sesión.'; }
+  const requestBtn=document.getElementById('requestAppointmentBtn');
+  if(client){
+    box.innerHTML=`<div><strong>${client.firstName} ${client.lastName}</strong><span>${client.phone} · DNI ${client.dni}</span></div>${clientHasBookedThisSession?'':'<button class="btn btn-ghost" type="button" onclick="logoutClient()">Cerrar sesión</button>'}`;
+    document.getElementById('bookingHint').textContent=clientHasBookedThisSession?'Ya tenés un turno pendiente o confirmado.':'Podés elegir fecha y horario.';
+    if(requestBtn){
+      requestBtn.disabled=clientHasBookedThisSession;
+      requestBtn.title=clientHasBookedThisSession?'Ya tenés un turno activo. Mirá “Ver mis turnos” para gestionarlo.':'';
+    }
+  } else {
+    box.innerHTML='<div><strong>No hay cliente conectado</strong><span>Necesitás registrarte para reservar.</span></div><button class="btn btn-green" type="button" onclick="openRegister()">Crear cuenta</button>';
+    document.getElementById('bookingHint').textContent='Primero registrate o iniciá sesión.';
+    if(requestBtn){requestBtn.disabled=false;requestBtn.title='';}
+  }
 }
 function renderPrice(){
   const client=getClient(); const weekly=client&&isWeeklyEligible(client); const price=client?currentPrice(client.id):CONFIG.standardPrice;
@@ -1378,46 +1839,61 @@ function openRegister(){
   const client=getClient(); document.getElementById('firstName').value=client?.firstName||''; document.getElementById('lastName').value=client?.lastName||''; document.getElementById('phone').value=client?.phone||''; document.getElementById('dni').value=client?.dni||''; document.getElementById('registerError').classList.remove('show'); setAccountMode(client?'login':'create'); showModal('registerModal');
 }
 function submitAccount(){ if(accountMode==='login') loginClient(); else saveClient(); }
-function loginClient(){
+async function loginClient(){
   const phone=digits(document.getElementById('phone').value), dni=digits(document.getElementById('dni').value), err=document.getElementById('registerError');
-  const client=state.clients.find(c=>digits(c.phone)===phone&&digits(c.dni)===dni);
-  if(!client){err.textContent='No encontramos una cuenta con esos datos. Elegí “Crear mi cuenta” si todavía no estás registrado.';err.classList.add('show');return;}
-  activeClientId=client.id;localStorage.setItem('brussy_active_client',client.id);hideModal('registerModal');saveState();showToast(`Bienvenido, ${client.firstName}. Historial recuperado.`);openCustomerPanel();
+  try{
+    const rows=await supabaseRequest('clients?select=*&phone=eq.'+encodeURIComponent(phone)+'&dni=eq.'+encodeURIComponent(dni)+'&limit=1');
+    const client=rows?.[0]?cloudClientFromRow(rows[0]):null;
+    if(!client){err.textContent='No encontramos una cuenta con esos datos. Elegí “Crear mi cuenta” si todavía no estás registrado.';err.classList.add('show');return;}
+    state.clients=state.clients.filter(c=>c.id!==client.id).concat(client);
+    activeClientId=client.id;localStorage.setItem('brussy_active_client',client.id);localStorage.setItem('brussy_active_client_data',JSON.stringify(client));hideModal('registerModal');renderAll();showToast(`Bienvenido, ${client.firstName}. Historial recuperado.`);openCustomerPanel();
+  }catch(e){err.textContent='No se pudo consultar la cuenta online. Revisá tu conexión e intentá de nuevo.';err.classList.add('show');}
 }
-function saveClient(){
+
+async function saveClient(){
   const firstName=document.getElementById('firstName').value.trim(), lastName=document.getElementById('lastName').value.trim(), phone=digits(document.getElementById('phone').value), dni=digits(document.getElementById('dni').value), err=document.getElementById('registerError');
   if(firstName.length<2||lastName.length<2||phone.length<8||dni.length<6){err.textContent='Completá nombre, apellido, teléfono y documento con datos válidos.';err.classList.add('show');return;}
-  let client=state.clients.find(c=>digits(c.phone)===phone&&digits(c.dni)===dni);
-  if(client){client.firstName=firstName;client.lastName=lastName;client.phone=phone;client.dni=dni;} else {client={id:uid('cli'),firstName,lastName,phone,dni,createdAt:new Date().toISOString()};state.clients.push(client);}
-  activeClientId=client.id; localStorage.setItem('brussy_active_client',client.id); hideModal('registerModal'); saveState(); showToast(`Cuenta lista, ${client.firstName}.`); document.getElementById('reserva').scrollIntoView({behavior:'smooth'});
+  let client=state.clients.find(c=>digits(c.phone)===phone&&digits(c.dni)===dni)||{id:uid('cli'),firstName,lastName,phone,dni,createdAt:new Date().toISOString()};
+  client={...client,firstName,lastName,phone,dni};
+  try{
+    client=await saveClientToCloud(client);
+  }catch(e){
+    err.textContent='No se pudo guardar la cuenta online. Revisá tu conexión e intentá de nuevo.';err.classList.add('show');return;
+  }
+  activeClientId=client.id; localStorage.setItem('brussy_active_client',client.id); localStorage.setItem('brussy_active_client_data',JSON.stringify(client)); hideModal('registerModal'); saveState(); showToast(`Cuenta lista, ${client.firstName}.`); document.getElementById('reserva').scrollIntoView({behavior:'smooth'});
 }
-function logoutClient(){activeClientId=null;localStorage.removeItem('brussy_active_client');renderAll();showToast('Sesión de cliente cerrada.');}
+
+function logoutClient(){activeClientId=null;clientHasBookedThisSession=false;localStorage.removeItem('brussy_active_client');localStorage.removeItem('brussy_active_client_data');renderAll();showToast('Sesión de cliente cerrada.');}
 function selectService(){ document.getElementById('serviceMain').classList.add('active'); }
-function requestAppointment(){
+async function requestAppointment(){
   const client=getClient(); if(!client){openRegister();showToast('Primero registrate o iniciá sesión.');return;}
+  /* Un cliente solo puede tener un turno activo a la vez. Esto evita que,
+     después de reservar, pueda pedir otro turno para sí mismo o para otra persona. */
+  const activeAppointment=state.appointments.find(a=>a.clientId===client.id&&['pending','confirmed'].includes(a.status));
+  if(activeAppointment){
+    clientHasBookedThisSession=true;
+    updateUserStatus();
+    openCustomerPanel();
+    showToast('Ya tenés un turno activo. No podés solicitar otro hasta cancelarlo o que Bruno lo registre como realizado.');
+    return;
+  }
   if(!selectedDate||!selectedTime){showToast('Elegí un día y un horario.');return;}
-  if(isTaken(selectedDate,selectedTime)){showToast('Ese horario acaba de ocuparse. Elegí otro.');renderTimes();return;}
+  if(isTaken(selectedDate,selectedTime)){showToast('Ese horario ya está ocupado. Elegí otro.');renderTimes();return;}
   const price=currentPrice(client.id);
-  const deposit=Math.round(price*CONFIG.depositRate);
-  const ap={id:uid('turno'),clientId:client.id,date:selectedDate,time:selectedTime,price,status:'pending',createdAt:new Date().toISOString(),service:'Corte completo'};
-  state.appointments.push(ap);saveState();
-
-  // Mensaje automático a Bruno por WhatsApp (solo info del turno)
-  const msg =
-`Hola Bruno! 👋
-Soy *${client.firstName} ${client.lastName}*.
-Acabo de solicitar un turno en *Brussy Barbería*:
-
-📅 Día: ${dateLabel(selectedDate)}
-🕐 Hora: ${selectedTime}
-✂️ Servicio: Corte completo
-
-¡Gracias!`;
-
-  window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
-  openCustomerPanel();
-  showToast('Turno creado. Se abrió WhatsApp para avisar a Bruno.');
+  try{
+    const ap=await createAppointmentOnline(client,selectedDate,selectedTime,price);
+    state.appointments.push(ap);clientHasBookedThisSession=true;saveState();
+    await loadCloudState({quiet:true});
+    const msg=`Hola Bruno! 👋\nSoy *${client.firstName} ${client.lastName}*.\n\nAcabo de solicitar un turno en *Brussy Barbería*:\n\n📅 Día: ${dateLabel(selectedDate)}\n🕐 Hora: ${selectedTime}\n✂️ Servicio: Corte completo\n\n¡Gracias!`;
+    window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
+    openCustomerPanel();showToast('Turno creado. Se abrió WhatsApp para avisar a Bruno.');
+  }catch(e){
+    if(String(e.message||'').toLowerCase().includes('duplicate')||String(e.message||'').toLowerCase().includes('unique')){
+      await loadCloudState({quiet:true});renderTimes();showToast('Ese horario acaba de ocuparse. Elegí otro.');
+    }else{showToast('No se pudo crear el turno online. Revisá tu conexión e intentá de nuevo.');}
+  }
 }
+
 function openCustomerPanel(){ renderCustomerPanel(); const sec=document.getElementById('customerPanel'); sec.classList.add('show'); sec.scrollIntoView({behavior:'smooth'}); }
 function renderCustomerPanel(){
   const apBox=document.getElementById('customerAppointments'), histBox=document.getElementById('customerHistory'), rewardBox=document.getElementById('customerReward'); const client=getClient();
@@ -1428,8 +1904,8 @@ function renderCustomerPanel(){
   const inner=document.getElementById('customerRewardInner'); const s=fidelityStats(client.id); const progress=s.count%CONFIG.rewardEvery===0&&s.count>0?CONFIG.rewardEvery:s.count%CONFIG.rewardEvery; inner.innerHTML=`<p class="small">${s.available?'Tenés un QR listo para presentar al barbero.':`Llevás ${s.count} corte(s). Te faltan ${s.next} para desbloquear el próximo QR.`}</p><div class="progress"><div class="bar" style="width:${(progress/CONFIG.rewardEvery)*100}%"></div></div>`;
   if(s.available){const wrap=document.createElement('div');wrap.className='reward';wrap.innerHTML='<div class="reward-note"><strong>10% OFF</strong><br>Mostrá el QR al barbero para canjear tu beneficio.</div><div class="qr-card" id="customerQrBig"></div>';inner.appendChild(wrap);generateRewardQR(client.id,wrap.querySelector('.qr-card'));}
 }
-function statusLabel(s){return s==='pending'?'Pendiente':s==='confirmed'?'Confirmado':s==='cancelled'?'Cancelado':'Realizado';}
-function cancelAppointment(id){ const a=state.appointments.find(x=>x.id===id); if(!a)return; if(!confirm('¿Cancelar este turno?'))return; a.status='cancelled';a.cancelledAt=new Date().toISOString();saveState();showToast('Turno cancelado.'); }
+function statusLabel(s){return s==='pending'?'Pendiente':s==='confirmed'?'Corte en proceso':s==='cancelled'?'Cancelado':'Realizado';}
+async function cancelAppointment(id){ const a=state.appointments.find(x=>x.id===id); if(!a)return; if(!confirm('¿Cancelar este turno?'))return; const cancelledAt=new Date().toISOString(); try{await updateAppointmentOnline(id,{status:'cancelled',cancelled_at:cancelledAt});a.status='cancelled';a.cancelledAt=cancelledAt;saveState();await loadCloudState({quiet:true});showToast('Turno cancelado.');}catch(e){showToast('No se pudo cancelar el turno online.');} }
 function whatsappAppointment(id){ const a=state.appointments.find(x=>x.id===id), c=getClient(); if(!a||!c)return; const msg=`Hola Bruno! Soy ${c.firstName} ${c.lastName}. Te envío/consulto por mi turno del ${dateLabel(a.date)} a las ${a.time}. Servicio: ${a.service}. Precio: ${money(a.price)}. Estado: ${statusLabel(a.status)}.`; window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer'); }
 function payDeposit(){ const c=getClient(); if(!c){openRegister();showToast('Registrate para continuar.');return;} const amount=currentDeposit(c.id); copyText(CONFIG.mpAlias,true); showToast(`Seña ${money(amount)}. Alias copiado: ${CONFIG.mpAlias}.`); const popup=window.open('https://www.mercadopago.com.ar/','_blank','noopener,noreferrer'); window.location.href='mercadopago://'; setTimeout(()=>{ if(popup&&!popup.closed) popup.focus?.(); },500); }
 function confirmWhatsApp(){
@@ -1440,9 +1916,11 @@ function confirmWhatsApp(){
 Soy *${c.firstName} ${c.lastName}*.
 Quiero confirmar mi turno en *Brussy Barbería*:
 
+
 📅 Día: ${dateLabel(selectedDate)}
 🕐 Hora: ${selectedTime}
 ✂️ Servicio: Corte completo
+
 
 Adjunto el comprobante de la seña (50% del corte). ¡Gracias!`;
   window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');
@@ -1451,10 +1929,54 @@ async function copyText(v,quiet=false){ try{await navigator.clipboard.writeText(
 function openBarberLogin(){ if(barberLogged){openBarberPanel();return;} document.getElementById('barberPin').value='';document.getElementById('barberError').classList.remove('show');showModal('barberLoginModal'); }
 function loginBarber(){ const pin=document.getElementById('barberPin').value.trim(); if(pin!==state.settings.barberPin){document.getElementById('barberError').textContent='Contraseña incorrecta.';document.getElementById('barberError').classList.add('show');return;} barberLogged=true;sessionStorage.setItem('brussy_barber_logged','1');hideModal('barberLoginModal');openBarberPanel(); }
 function openBarberPanel(){ document.getElementById('barberPanel').classList.add('show');renderBarber();document.getElementById('barberPanel').scrollIntoView({behavior:'smooth'}); }
-function showBarberTab(tab,btn){ document.querySelectorAll('.panel-nav button').forEach(b=>b.classList.toggle('active',b===btn)); ['clients','appointments','history','scanner','backup'].forEach(x=>document.getElementById('tab-'+x).style.display=x===tab?'block':'none'); if(tab==='scanner') initScanner(); }
+function showBarberTab(tab,btn){ document.querySelectorAll('.panel-nav button').forEach(b=>b.classList.toggle('active',b===btn)); ['clients','appointments','history','scanner','backup','blocks'].forEach(x=>document.getElementById('tab-'+x).style.display=x===tab?'block':'none'); if(tab==='scanner') initScanner(); }
+
+function renderBlocksTab(){
+ const box=document.getElementById('tab-blocks'); if(!box)return;
+ const blocks=[...(state.scheduleBlocks||[])].sort((a,b)=>(a.date+(a.time||'')).localeCompare(b.date+(b.time||'')));
+ const slotBlocks=blocks.filter(b=>b.time), dayBlocks=blocks.filter(b=>!b.time);
+ const times=Array.from({length:23},(_,i)=>{const mins=540+i*30;const t=`${String(Math.floor(mins/60)).padStart(2,'0')}:${String(mins%60).padStart(2,'0')}`;return `<option value="${t}">${t} hs</option>`}).join('');
+ const renderBlockList=(items,kind)=>items.length?items.map(b=>`<div class="block-active-item"><div class="block-active-icon">${kind==='slot'?'◷':'▦'}</div><div class="block-active-info"><strong>${dateLabel(b.date)}</strong><span>${kind==='slot'?'Horario bloqueado · '+b.time+' hs':'Día completo bloqueado'}</span></div><button class="btn btn-danger tiny" onclick="removeScheduleBlock('${b.id}')">Quitar</button></div>`).join(''):`<div class="block-empty">${kind==='slot'?'No hay horarios bloqueados.':'No hay días completos bloqueados.'}</div>`;
+ box.innerHTML=`<div class="card-head"><div><div class="kicker">Administrar disponibilidad</div><h3>Bloqueos de agenda</h3><p class="small">Elegí qué querés bloquear. Cada opción funciona por separado y podés quitar los bloqueos cuando quieras.</p></div></div>
+ <div class="block-options-grid">
+  <section class="block-option block-option-slot"><div class="block-option-top"><span class="block-option-symbol">◷</span><span class="block-option-tag">OPCIÓN 1</span></div><h3>Bloquear un horario</h3><p>Reservá para vos un horario puntual. El resto del día seguirá disponible para los clientes.</p>
+   <div class="block-fields"><div class="field"><label for="blockSlotDate">Elegí el día</label><input type="date" id="blockSlotDate" min="${isoDateLocal(new Date())}"></div><div class="field"><label for="blockSlotTime">Elegí el horario</label><select id="blockSlotTime">${times}</select></div></div>
+   <button class="btn btn-green block-submit" onclick="addScheduleBlock('slot')">Bloquear este horario <span aria-hidden="true">→</span></button>
+  </section>
+  <section class="block-option block-option-day"><div class="block-option-top"><span class="block-option-symbol">▦</span><span class="block-option-tag">OPCIÓN 2</span></div><h3>Bloquear el día entero</h3><p>Ese día no se podrán pedir turnos en ningún horario. Los demás días no se modifican.</p>
+   <div class="block-fields block-fields-one"><div class="field"><label for="blockDayDate">Elegí el día completo</label><input type="date" id="blockDayDate" min="${isoDateLocal(new Date())}"></div></div>
+   <button class="btn btn-yellow block-submit" onclick="addScheduleBlock('day')">Bloquear día completo <span aria-hidden="true">→</span></button>
+  </section>
+ </div>
+ <section class="block-active-section"><div class="block-section-heading"><div><div class="kicker">Tu agenda</div><h3>Bloqueos activos</h3></div><span class="block-count">${blocks.length} ${blocks.length===1?'bloqueo':'bloqueos'}</span></div>
+  <div class="block-active-groups"><div class="block-active-group"><h4>◷ Horarios bloqueados <span>${slotBlocks.length}</span></h4>${renderBlockList(slotBlocks,'slot')}</div><div class="block-active-group"><h4>▦ Días completos <span>${dayBlocks.length}</span></h4>${renderBlockList(dayBlocks,'day')}</div></div>
+ </section>`;
+}
+async function addScheduleBlock(kind){
+ if(!barberLogged){showToast('Ingresá al modo barbero para administrar bloqueos.');return;}
+ const date=document.getElementById(kind==='slot'?'blockSlotDate':'blockDayDate').value;
+ const time=kind==='slot'?document.getElementById('blockSlotTime').value:null;
+ if(!date){showToast('Elegí una fecha.');return;}
+ if(date<isoDateLocal(new Date())){showToast('No podés bloquear una fecha pasada.');return;}
+ if(kind==='slot'&&!(buildTimes(date)||[]).includes(time)){showToast('Ese horario no está disponible en la agenda habitual.');return;}
+ if((state.scheduleBlocks||[]).some(b=>b.date===date&&(!b.time||kind==='day'||b.time===time))){showToast('Ese horario o día ya está bloqueado.');return;}
+ if(kind==='day'&&(state.appointments||[]).some(a=>a.date===date&&['pending','confirmed'].includes(a.status))){if(!confirm('Hay turnos pendientes o confirmados ese día. ¿Querés bloquear el día igualmente?'))return;}
+ try{
+  const body={date,time,kind};
+  const rows=await supabaseRequest('schedule_blocks',{method:'POST',headers:{'Prefer':'return=representation'},body:JSON.stringify(body)});
+  const b=rows?.[0]||{...body,id:uid('block')}; state.scheduleBlocks.push({id:b.id,date:b.date,time:b.time?String(b.time).slice(0,5):null,kind:b.kind});
+  saveState();renderBlocksTab();renderCalendar();renderTimes();showToast(kind==='day'?'Día completo bloqueado.':'Horario bloqueado.');
+ }catch(e){showToast('No se pudo guardar el bloqueo. Verificá que la tabla schedule_blocks esté creada en Supabase.');}
+}
+async function removeScheduleBlock(id){
+ if(!confirm('¿Querés habilitar nuevamente este horario?'))return;
+ try{await supabaseRequest('schedule_blocks?id=eq.'+encodeURIComponent(id),{method:'DELETE'});}
+ catch(e){showToast('No se pudo quitar el bloqueo en Supabase.');return;}
+ state.scheduleBlocks=(state.scheduleBlocks||[]).filter(b=>b.id!==id);saveState();renderBlocksTab();renderTimes();showToast('Bloqueo eliminado.');
+}
 function renderBarber(){ renderClientTab();renderAppointmentTab();renderHistoryTab();renderScannerTab();renderBackupTab(); }
 function renderClientTab(){ const box=document.getElementById('tab-clients'); const clients=[...state.clients].sort((a,b)=>normalize(a.lastName).localeCompare(normalize(b.lastName))); box.innerHTML=`<div class="card-head"><div><div class="kicker">Base de clientes</div><h3>Registrados · ${clients.length}</h3></div><span class="small">Historial incluido</span></div>`+(clients.length?clients.map(c=>{const cuts=clientCuts(c.id);const aps=clientAppointments(c.id).filter(a=>a.status==='pending'||a.status==='confirmed');return `<div class="client-card"><div><h4>${c.firstName} ${c.lastName}</h4><p>${c.phone} · DNI ${c.dni} · ${cuts.length} corte(s) · ${aps.length} turno(s) activo(s)</p></div><div class="client-actions"><button class="btn btn-ghost tiny" onclick="openHistory('${c.id}')">Historial</button><button class="btn btn-green tiny" onclick="openManualCut('${c.id}')">Registrar corte</button></div></div>`}).join(''):'<div class="empty">Todavía no hay clientes registrados.</div>'); }
-function renderAppointmentTab(){ const box=document.getElementById('tab-appointments'); const aps=[...state.appointments].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); box.innerHTML=`<div class="card-head"><div><div class="kicker">Agenda</div><h3>Turnos · ${aps.filter(a=>a.status!=='cancelled').length}</h3></div></div>`+(aps.length?`<div style="overflow:auto"><table class="table"><thead><tr><th>Fecha</th><th>Cliente</th><th>Precio</th><th>Estado</th><th></th></tr></thead><tbody>${aps.map(a=>{const c=state.clients.find(x=>x.id===a.clientId);return `<tr><td>${dateLabel(a.date)}<br>${a.time}</td><td><strong>${c?c.firstName+' '+c.lastName:'Cliente eliminado'}</strong><br><span style="color:#6f887c">${c?.phone||''}</span></td><td>${money(a.price)}</td><td><span class="tag-status ${a.status==='pending'?'tag-pending':a.status==='confirmed'?'tag-confirmed':a.status==='cancelled'?'tag-cancelled':'tag-completed'}">${statusLabel(a.status)}</span></td><td><div class="client-actions">${a.status==='pending'?`<button class="btn btn-green tiny" onclick="completeAppointment('${a.id}')">Confirmar y registrar</button>`:''}${a.status==='confirmed'?`<button class="btn btn-blue tiny" onclick="completeAppointment('${a.id}')">Registrar corte</button>`:''}${a.status==='pending'||a.status==='confirmed'?`<button class="btn btn-danger tiny" onclick="barberCancelAppointment('${a.id}')">Cancelar</button>`:''}${a.status!=='cancelled'&&a.status!=='completed'?`<button class="btn btn-ghost tiny" onclick="whatsappAppointmentFor('${a.id}')">WhatsApp</button>`:''}</div></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">No hay turnos cargados.</div>'); }
+function renderAppointmentTab(){ const box=document.getElementById('tab-appointments'); const aps=[...state.appointments].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time)); box.innerHTML=`<div class="card-head"><div><div class="kicker">Agenda</div><h3>Turnos · ${aps.filter(a=>a.status!=='cancelled').length}</h3></div></div>`+(aps.length?`<div style="overflow:auto"><table class="table"><thead><tr><th>Fecha</th><th>Cliente</th><th>Precio</th><th>Estado</th><th></th></tr></thead><tbody>${aps.map(a=>{const c=state.clients.find(x=>x.id===a.clientId);return `<tr><td>${dateLabel(a.date)}<br>${a.time}</td><td><strong>${c?c.firstName+' '+c.lastName:'Cliente eliminado'}</strong><br><span style="color:#6f887c">${c?.phone||''}</span></td><td>${money(a.price)}</td><td><span class="tag-status ${a.status==='pending'?'tag-pending':a.status==='confirmed'?'tag-confirmed':a.status==='cancelled'?'tag-cancelled':'tag-completed'}">${statusLabel(a.status)}</span></td><td><div class="client-actions">${a.status==='pending'?`<button class="btn btn-green tiny" onclick="confirmAppointment('${a.id}')">Aceptar turno</button>`:''}${a.status==='confirmed'?`<button class="btn btn-blue tiny" onclick="completeAppointment('${a.id}')">Registrar corte realizado</button>`:''}${a.status==='pending'||a.status==='confirmed'?`<button class="btn btn-danger tiny" onclick="barberCancelAppointment('${a.id}')">Cancelar</button>`:''}${a.status!=='cancelled'&&a.status!=='completed'?`<button class="btn btn-ghost tiny" onclick="whatsappAppointmentFor('${a.id}')">WhatsApp</button>`:''}</div></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">No hay turnos cargados.</div>'); }
 function renderHistoryTab(){
   const box=document.getElementById('tab-history');
   const cuts=[...state.cuts].sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));
@@ -1464,29 +1986,170 @@ function renderHistoryTab(){
   box.innerHTML=`<div class="card-head"><div><div class="kicker">Registro</div><h3>Historial de cortes · ${cuts.length}</h3></div><span class="small">Turnos y cortes quedan relacionados</span></div>${cutsHtml}<div class="card-head" style="margin-top:22px"><div><div class="kicker">Agenda</div><h3>Historial de turnos · ${aps.length}</h3></div></div>${apsHtml}`;
 }
 function renderScannerTab(){ const box=document.getElementById('tab-scanner'); box.innerHTML=`<div class="card-head"><div><div class="kicker">Fidelidad</div><h3>Leer QR del cliente</h3></div></div><div class="scanner-box"><div id="qr-reader"></div></div><p class="scanner-help">El barbero debe leer el QR generado después de cada 3 cortes. Al validarlo, el beneficio de 10% queda marcado como usado para ese ciclo y se actualiza el historial del cliente.</p><div id="scanResult" class="notice"></div>`; }
-let qrScanner=null, scannerStarted=false;
-function initScanner(){ if(scannerStarted||!document.getElementById('qr-reader')||!window.Html5QrcodeScanner)return; try{qrScanner=new Html5QrcodeScanner('qr-reader',{fps:10,qrbox:{width:230,height:230},rememberLastUsedCamera:true},false);qrScanner.render(onQrSuccess,()=>{});scannerStarted=true;}catch(e){document.getElementById('scanResult').textContent='No se pudo iniciar el lector. Revisá permisos de cámara.';} }
-function onQrSuccess(decodedText){ if(!barberLogged)return; try{ const p=decodePayload(decodedText); if(p.type!=='BRUSSY_REWARD')throw new Error('QR desconocido'); const client=state.clients.find(c=>c.id===p.clientId); if(!client)throw new Error('Cliente no encontrado en este dispositivo.'); const cycle=rewardCycle(client.id); if(p.cycle!==cycle)throw new Error('QR desactualizado. Mostrá el QR más reciente.'); if(state.rewardRedemptions?.[client.id]?.[p.cycle])throw new Error('Este beneficio ya fue canjeado.'); if(!state.rewardRedemptions[client.id])state.rewardRedemptions[client.id]={}; state.rewardRedemptions[client.id][p.cycle]={redeemedAt:new Date().toISOString(),discountPercent:p.discount||10}; if(qrScanner){qrScanner.clear().catch(()=>{});qrScanner=null;scannerStarted=false;} manualClientId=client.id;manualReward=true;saveState(); document.getElementById('scanResult').textContent=`QR válido: ${client.firstName} ${client.lastName}. 10% activado para el próximo corte registrado.`; showToast(`QR válido · ${client.firstName} ${client.lastName}`); openManualCut(client.id,true); if(qrScanner){qrScanner.clear().catch(()=>{});scannerStarted=false;} }catch(e){document.getElementById('scanResult').textContent=e.message||'QR inválido.';} }
+let qrScanner=null, scannerStarted=false, qrScanBusy=false;
+
+async function initScanner(){
+  const reader=document.getElementById('qr-reader');
+  const result=document.getElementById('scanResult');
+  if(!reader || scannerStarted || qrScanBusy)return;
+
+  if(!window.isSecureContext && location.hostname!=='localhost' && location.hostname!=='127.0.0.1'){
+    if(result) result.textContent='La cámara requiere HTTPS. Abrí la página desde el dominio seguro.';
+    return;
+  }
+
+  if(typeof window.Html5Qrcode==='undefined'){
+    if(result) result.textContent='No se pudo cargar el lector QR. Recargá la página e intentá nuevamente.';
+    return;
+  }
+
+  qrScanBusy=true;
+  if(result) result.textContent='Solicitando acceso a la cámara…';
+
+  try{
+    qrScanner=new Html5Qrcode('qr-reader');
+
+    const config={
+      fps:10,
+      qrbox:(viewfinderWidth,viewfinderHeight)=>{
+        const size=Math.floor(Math.min(viewfinderWidth,viewfinderHeight)*0.68);
+        return {width:Math.max(180,Math.min(280,size)),height:Math.max(180,Math.min(280,size))};
+      },
+      aspectRatio:1
+    };
+
+    let started=false;
+
+    // Primero pedimos explícitamente la cámara trasera. Esto funciona mejor
+    // en Android/iPhone que depender del selector generado por Html5QrcodeScanner.
+    try{
+      await qrScanner.start({facingMode:{exact:'environment'}},config,onQrSuccess,()=>{});
+      started=true;
+    }catch(firstError){
+      // Algunos navegadores móviles no aceptan "exact". En ese caso
+      // probamos la variante normal y, si hace falta, una cámara enumerada.
+      try{
+        await qrScanner.start({facingMode:'environment'},config,onQrSuccess,()=>{});
+        started=true;
+      }catch(secondError){
+        if(typeof Html5Qrcode.getCameras==='function'){
+          const cameras=await Html5Qrcode.getCameras();
+          if(cameras && cameras.length){
+            const rear=cameras.find(c=>/back|rear|environment|trasera|posterior/i.test(c.label||''));
+            const cameraId=(rear||cameras[cameras.length-1]).id;
+            await qrScanner.start(cameraId,config,onQrSuccess,()=>{});
+            started=true;
+          }
+        }
+        if(!started) throw secondError;
+      }
+    }
+
+    scannerStarted=started;
+    if(result) result.textContent=started?'Apuntá el QR dentro del recuadro.':'No se pudo iniciar la cámara.';
+  }catch(e){
+    await detenerScannerQR();
+    if(result){
+      const name=String(e&&e.name||'');
+      const msg=String(e&&e.message||'');
+      result.textContent=/NotAllowedError|Permission|permission|denied/i.test(name+' '+msg)
+        ? 'Permiso de cámara bloqueado. Permití la cámara para este sitio y volvé a tocar “Escanear QR”.'
+        : 'No se pudo iniciar la cámara. Revisá los permisos del navegador y volvé a intentarlo.';
+    }
+  }finally{
+    qrScanBusy=false;
+  }
+}
+
+async function detenerScannerQR(){
+  const scanner=qrScanner;
+  qrScanner=null;
+  scannerStarted=false;
+  if(scanner){
+    try{
+      if(scanner.getState && scanner.getState()===2) await scanner.stop();
+    }catch(e){}
+    try{scanner.clear();}catch(e){}
+  }
+}
+
+async function onQrSuccess(decodedText){
+  if(!barberLogged || qrScanBusy)return;
+
+  try{
+    const p=decodePayload(decodedText);
+    if(p.type!=='BRUSSY_REWARD')throw new Error('QR desconocido');
+
+    const client=state.clients.find(c=>c.id===p.clientId);
+    if(!client)throw new Error('Cliente no encontrado en este dispositivo.');
+
+    const cycle=rewardCycle(client.id);
+    if(p.cycle!==cycle)throw new Error('QR desactualizado. Mostrá el QR más reciente.');
+    if(state.rewardRedemptions?.[client.id]?.[p.cycle])throw new Error('Este beneficio ya fue canjeado.');
+
+    qrScanBusy=true;
+    await detenerScannerQR();
+
+    if(!state.rewardRedemptions[client.id])state.rewardRedemptions[client.id]={};
+    state.rewardRedemptions[client.id][p.cycle]={
+      redeemedAt:new Date().toISOString(),
+      discountPercent:p.discount||10
+    };
+
+    manualClientId=client.id;
+    manualReward=true;
+    saveState();
+
+    const result=document.getElementById('scanResult');
+    if(result) result.textContent=`QR válido: ${client.firstName} ${client.lastName}. 10% activado para el próximo corte registrado.`;
+
+    showToast(`QR válido · ${client.firstName} ${client.lastName}`);
+    openManualCut(client.id,true);
+  }catch(e){
+    const result=document.getElementById('scanResult');
+    if(result) result.textContent=e.message||'QR inválido.';
+  }finally{
+    qrScanBusy=false;
+  }
+}
 function openManualCut(clientId,fromReward=false,appointmentId=null){ manualClientId=clientId;manualReward=fromReward;manualAppointmentId=appointmentId;const c=state.clients.find(x=>x.id===clientId);if(!c)return;document.getElementById('cutDate').value=isoDateLocal(new Date());document.getElementById('cutTime').value=new Date().toTimeString().slice(0,5);document.getElementById('useReward').checked=!!fromReward;document.getElementById('manualCutInfo').innerHTML=`<div class="user-status"><div><strong>${c.firstName} ${c.lastName}</strong><span>${c.phone} · ${clientCuts(c.id).length} corte(s)</span></div></div>`;updateManualPrice();showModal('manualCutModal'); }
 function updateManualPrice(){ const c=state.clients.find(x=>x.id===manualClientId); if(!c)return; const base=currentPrice(c.id); const reward=document.getElementById('useReward').checked; const price=reward?Math.round(base*(1-CONFIG.rewardPercent/100)):base;document.getElementById('manualPrice').textContent=money(price);document.getElementById('manualDiscount').textContent=reward?`-${CONFIG.rewardPercent}%`:'Sin descuento'; }
 document.getElementById('useReward').addEventListener('change',updateManualPrice);
 function saveManualCut(){ const c=state.clients.find(x=>x.id===manualClientId);if(!c)return; const date=document.getElementById('cutDate').value,time=document.getElementById('cutTime').value,reward=document.getElementById('useReward').checked;if(!date||!time){showToast('Completá fecha y hora.');return;} let price=currentPrice(c.id), discountPercent=0, cycle=null; if(reward){price=Math.round(price*(1-CONFIG.rewardPercent/100));discountPercent=CONFIG.rewardPercent;cycle=rewardCycle(c.id); if(!state.rewardRedemptions[c.id]?.[cycle]){if(!state.rewardRedemptions[c.id])state.rewardRedemptions[c.id]={};state.rewardRedemptions[c.id][cycle]={redeemedAt:new Date().toISOString(),discountPercent};}}
   state.cuts.push({id:uid('cut'),clientId:c.id,date,time,service:'Corte completo',price,discountPercent,rewardCycle:cycle,createdAt:new Date().toISOString()});
-  const linked=manualAppointmentId?state.appointments.find(a=>a.id===manualAppointmentId):state.appointments.find(a=>a.clientId===c.id&&a.date===date&&a.time===time&&['pending','confirmed'].includes(a.status)); if(linked){linked.status='completed';linked.completedAt=new Date().toISOString();linked.cutId=state.cuts[state.cuts.length-1].id;}
+  const linked=manualAppointmentId?state.appointments.find(a=>a.id===manualAppointmentId):state.appointments.find(a=>a.clientId===c.id&&a.date===date&&a.time===time&&['pending','confirmed'].includes(a.status)); if(linked){linked.status='completed';linked.completedAt=new Date().toISOString();linked.cutId=state.cuts[state.cuts.length-1].id; updateAppointmentOnline(linked.id,{status:'completed',completed_at:linked.completedAt,cut_id:linked.cutId}).catch(()=>{});}
   hideModal('manualCutModal');manualReward=false;manualClientId=null;manualAppointmentId=null;saveState();showToast('Corte registrado y turno enviado automáticamente al historial.'); }
-function confirmAppointment(id){const a=state.appointments.find(x=>x.id===id);if(!a)return;a.status='confirmed';a.confirmedAt=new Date().toISOString();saveState();showToast('Turno confirmado.');}
-function barberCancelAppointment(id){const a=state.appointments.find(x=>x.id===id);if(!a)return;if(!confirm('¿Cancelar este turno?'))return;a.status='cancelled';a.cancelledAt=new Date().toISOString();saveState();showToast('Turno cancelado por el barbero.');}
-function completeAppointment(id){const a=state.appointments.find(x=>x.id===id);if(!a)return;if(a.status==='pending'){a.status='confirmed';a.confirmedAt=new Date().toISOString();}openManualCut(a.clientId,false,id);document.getElementById('cutDate').value=a.date;document.getElementById('cutTime').value=a.time;saveState();}
+async function confirmAppointment(id){const a=state.appointments.find(x=>x.id===id);if(!a)return;const confirmedAt=new Date().toISOString();try{await updateAppointmentOnline(id,{status:'confirmed',confirmed_at:confirmedAt});a.status='confirmed';a.confirmedAt=confirmedAt;saveState();await loadCloudState({quiet:true});showToast('Turno confirmado.');}catch(e){showToast('No se pudo confirmar el turno online.');}}
+async function barberCancelAppointment(id){const a=state.appointments.find(x=>x.id===id);if(!a)return;if(!confirm('¿Cancelar este turno?'))return;const cancelledAt=new Date().toISOString();try{await updateAppointmentOnline(id,{status:'cancelled',cancelled_at:cancelledAt});a.status='cancelled';a.cancelledAt=cancelledAt;saveState();await loadCloudState({quiet:true});showToast('Turno cancelado por el barbero.');}catch(e){showToast('No se pudo cancelar el turno online.');}}
+async function completeAppointment(id){const a=state.appointments.find(x=>x.id===id);if(!a)return;if(a.status!=='confirmed'){showToast('Primero aceptá el turno.');return;}openManualCut(a.clientId,false,id);document.getElementById('cutDate').value=a.date;document.getElementById('cutTime').value=a.time;}
 function whatsappAppointmentFor(id){const a=state.appointments.find(x=>x.id===id),c=state.clients.find(x=>x.id===a?.clientId);if(!a||!c)return;const msg=`Hola Bruno! Soy ${c.firstName} ${c.lastName}. Te escribo por mi turno del ${dateLabel(a.date)} a las ${a.time}. Precio: ${money(a.price)}.`;window.open(`https://wa.me/${CONFIG.phoneWhatsApp}?text=${encodeURIComponent(msg)}`,'_blank','noopener,noreferrer');}
 function openHistory(clientId){const c=state.clients.find(x=>x.id===clientId);if(!c)return;document.getElementById('historyModalTitle').textContent=`${c.firstName} ${c.lastName}`;const cuts=clientCuts(clientId);document.getElementById('historyModalBody').innerHTML=cuts.length?`<div class="table-wrap"><table class="table"><thead><tr><th>Fecha</th><th>Servicio</th><th>Precio</th></tr></thead><tbody>${cuts.map(c=>`<tr><td>${dateLabel(c.date)}<br>${c.time||''}</td><td>${c.service}${c.discountPercent?`<br><span style="color:#6fe29b">-${c.discountPercent}% fidelidad</span>`:''}</td><td>${money(c.price)}</td></tr>`).join('')}</tbody></table></div>`:'<div class="empty">No hay cortes registrados.</div>';showModal('historyModal');}
 function deleteCut(id){if(!confirm('¿Borrar este corte del historial? Esta acción no se puede deshacer desde la interfaz.'))return;state.cuts=state.cuts.filter(c=>c.id!==id); for(const clientId of Object.keys(state.rewardRedemptions||{})){ const maxCycle=Math.floor(clientCuts(clientId).length/CONFIG.rewardEvery); for(const cycle of Object.keys(state.rewardRedemptions[clientId]||{})){ if(Number(cycle)>maxCycle) delete state.rewardRedemptions[clientId][cycle]; } } saveState();showToast('Corte borrado del historial.');}
+window.addEventListener('pagehide',()=>{ detenerScannerQR().catch(()=>{}); });
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden && scannerStarted) detenerScannerQR().catch(()=>{});
+});
+
 function renderBackupTab(){const box=document.getElementById('tab-backup');box.innerHTML=`<div class="card-head"><div><div class="kicker">Protección de datos</div><h3>Respaldo y ajustes</h3></div></div><div class="info-card" style="margin-bottom:12px"><span class="mini">Base actual</span><p style="margin-top:6px">${state.clients.length} clientes · ${state.appointments.length} turnos · ${state.cuts.length} cortes.</p></div><div class="actions"><button class="btn btn-green" onclick="exportBackup()">Descargar respaldo JSON</button><button class="btn btn-ghost" onclick="document.getElementById('backupInput').click()">Restaurar respaldo</button><button class="btn btn-yellow" onclick="changeBarberPin()">Cambiar contraseña del barbero</button><input id="backupInput" type="file" accept="application/json" style="display:none" onchange="importBackup(event)"></div><p class="notice">El sistema guarda una copia principal, una copia de respaldo y una copia adicional en IndexedDB. Las actualizaciones del HTML en GitHub no deberían borrar estos datos del mismo dominio y navegador. Para que el mismo historial aparezca automáticamente en otros dispositivos también hace falta una base online.</p>`;}
 function exportBackup(){const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`brussy-respaldo-${isoDateLocal(new Date())}.json`;a.click();URL.revokeObjectURL(a.href);showToast('Respaldo descargado.');}
 function importBackup(ev){const file=ev.target.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const incoming=JSON.parse(reader.result);if(!incoming.clients||!incoming.appointments||!incoming.cuts)throw new Error('Formato inválido');state={...defaultState(),...incoming,settings:{...defaultState().settings,...(incoming.settings||{})}};saveState();showToast('Respaldo restaurado.');}catch(e){showToast('No se pudo restaurar el respaldo.');}};reader.readAsText(file);}
 function changeBarberPin(){const next=prompt('Nueva contraseña del barbero:',state.settings.barberPin);if(next&&next.trim().length>=4){state.settings.barberPin=next.trim();saveState();showToast('Contraseña actualizada.');}}
-function renderAll(){updateUserStatus();renderCalendar();renderTimes();renderPrice();renderFidelity();renderCustomerPanel();if(barberLogged)renderBarber();}
+function renderAll(){
+  const sx=window.scrollX, sy=window.scrollY;
+  updateUserStatus();renderCalendar();renderTimes();renderPrice();renderFidelity();renderCustomerPanel();if(barberLogged)renderBarber();
+  /* El refresco de datos online no debe cambiar la posición del scroll del usuario. */
+  requestAnimationFrame(()=>{window.scrollTo(sx,sy);});
+}
+
+/* Las sincronizaciones en segundo plano actualizan datos sin mover la posición del usuario. */
+function renderAllPreserveScroll(){
+  const x=window.scrollX, y=window.scrollY;
+  renderAll();
+  requestAnimationFrame(()=>window.scrollTo(x,y));
+}
 renderAll();
 restaurarRespaldoSiHaceFalta();
+startCloudSync();
 </script>
 </body>
 </html>
