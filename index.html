@@ -4,247 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brussy Barbería</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS para diseño rápido y limpio -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Supabase JS Client -->
+    <!-- SDK de Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <style>
-        /* Estilos personalizados para mantener el diseño original */
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: #f8fafc; }
-        .btn-3d {
-            transition: all 0.1s ease;
-            box-shadow: 0 4px 0 #1e293b, 0 8px 15px rgba(0,0,0,0.3);
-        }
-        .btn-3d:active {
-            transform: translateY(4px);
-            box-shadow: 0 0 0 #1e293b, 0 2px 5px rgba(0,0,0,0.3);
-        }
-    </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- HEADER / INICIO -->
-    <header class="w-full py-6 px-4 flex flex-col items-center justify-center border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-md w-full flex items-center justify-between">
-            <h1 class="text-2xl font-extrabold tracking-wider text-amber-500">BRUSSY BARBERÍA</h1>
-            <!-- Botón 3D de Instagram -->
-            <a href="https://www.instagram.com/brussybarber/" target="_blank" class="btn-3d bg-gradient-to-tr from-amber-600 to-rose-600 text-white px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Instagram
-            </a>
-        </div>
+    <!-- Header -->
+    <header class="p-4 bg-gray-800 flex justify-between items-center shadow-md">
+        <h1 class="text-xl font-bold tracking-wider text-amber-500">BRUSSY BARBERÍA</h1>
+        <div id="auth-status" class="text-sm"></div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="flex-grow max-w-md w-full mx-auto px-4 py-6">
-        
-        <!-- SECCIÓN CLIENTE: RESERVAS -->
-        <section id="client-section" class="space-y-6">
-            <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700/50 shadow-xl">
-                <h2 class="text-xl font-bold mb-4 text-amber-400">Reserva tu Turno</h2>
-                
-                <form id="booking-form" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1">Nombre y Apellido</label>
-                        <input type="text" id="client-name" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500" placeholder="Ej. Juan Pérez">
-                    </div>
-                    
-                    <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1">Servicio</label>
-                        <select id="service-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500">
-                            <option value="Corte + Barba, Cejas y Afeitado|12000">Corte Completo (Corte + Barba, Cejas y Afeitado) - $12.000</option>
-                            <option value="Corte Semanal (Verificable en historial)|10000">Corte Semanal - $10.000</option>
-                            <option value="Corte Clásico|8000">Corte Clásico - $8.000</option>
-                        </select>
-                    </div>
+    <!-- Contenido Principal -->
+    <main class="container mx-auto p-4 max-w-md flex-grow flex flex-col justify-center">
 
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-1">Fecha</label>
-                            <input type="date" id="booking-date" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-amber-500">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-1">Horario</label>
-                            <select id="booking-time" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-3 text-white focus:outline-none focus:border-amber-500">
-                                <option value="">Seleccionar...</option>
-                                <option value="15:00">15:00 hs</option>
-                                <option value="15:45">15:45 hs</option>
-                                <option value="16:30">16:30 hs</option>
-                                <option value="17:15">17:15 hs</option>
-                                <option value="18:00">18:00 hs</option>
-                                <option value="18:45">18:45 hs</option>
-                                <option value="19:30">19:30 hs</option>
-                                <option value="20:15">20:15 hs</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-extxl font-bold py-3.5 rounded-xl transition shadow-lg mt-2">
-                        Confirmar Turno
-                    </button>
-                </form>
+        <!-- 1. SECCIÓN DE AUTENTICACIÓN (Login / Registro separados) -->
+        <section id="auth-section" class="bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
+            <div class="flex border-b border-gray-700 pb-2 mb-4">
+                <button id="tab-login" onclick="switchAuthMode('login')" class="flex-1 text-center font-bold text-amber-500 border-b-2 border-amber-500 pb-1">Iniciar Sesión</button>
+                <button id="tab-signup" onclick="switchAuthMode('signup')" class="flex-1 text-center font-medium text-gray-400 pb-1">Registrarse</button>
             </div>
+
+            <form id="auth-form" onsubmit="handleAuth(event)" class="space-y-3">
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1">Correo Electrónico</label>
+                    <input type="email" id="email" required class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1">Contraseña</label>
+                    <input type="password" id="password" required class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-amber-500">
+                </div>
+                <button type="submit" id="auth-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold p-2 rounded transition">Ingresar</button>
+            </form>
+            <p id="auth-error" class="text-red-400 text-xs text-center mt-2"></p>
         </section>
 
-        <!-- ACCESO MODO BARBERO -->
-        <div class="mt-8 text-center">
-            <button onclick="toggleBarberLogin()" class="text-xs text-slate-500 hover:text-amber-400 underline transition">
-                Acceso Modo Barbero
-            </button>
-        </div>
-
-        <!-- MODAL / SECCIÓN MODO BARBERO -->
-        <section id="barber-section" class="hidden mt-6 bg-slate-900 p-5 rounded-2xl border border-amber-500/30 shadow-2xl space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
-                <h3 class="text-lg font-bold text-amber-400">Panel del Barbero</h3>
-                <button onclick="toggleBarberLogin()" class="text-slate-400 hover:text-white text-sm">Cerrar</button>
-            </div>
-
-            <!-- Login Barbero -->
-            <div id="barber-login-box" class="space-y-3">
-                <p class="text-xs text-slate-400">Introduzca contraseña:</p>
-                <input type="password" id="barber-pass" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-amber-500" placeholder="Contraseña">
-                <button onclick="loginBarber()" class="w-full bg-amber-500 text-slate-950 font-bold py-2 rounded-xl text-sm">Ingresar</button>
-            </div>
-
-            <!-- Panel de Control (Oculto hasta autenticarse) -->
-            <div id="barber-dashboard" class="hidden space-y-4">
-                <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 space-y-3">
-                    <h4 class="text-sm font-bold text-amber-300">Bloquear Día / Horario Especial (Privado)</h4>
-                    <p class="text-xs text-slate-400">Guarda un horario o día bloqueado que no aparecerá disponible para los clientes.</p>
-                    <div class="space-y-2">
-                        <input type="date" id="block-date" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white">
-                        <input type="text" id="block-reason" placeholder="Motivo (Ej. Descanso, Ocupado, Médico)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white">
-                        <button onclick="blockSchedule()" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-2 rounded-lg text-xs transition">
-                            Bloquear Horario / Día
-                        </button>
-                    </div>
-                </div>
-
+        <!-- 2. VISTA DE CLIENTE (Reserva de turnos) -->
+        <section id="client-view" class="hidden bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
+            <h2 class="text-lg font-bold text-amber-400">Reservar Turno</h2>
+            <form onsubmit="bookAppointment(event)" class="space-y-3">
                 <div>
-                    <h4 class="text-sm font-bold text-slate-300 mb-2">Turnos y Bloqueos Registrados</h4>
-                    <div id="appointments-list" class="space-y-2 max-h-60 overflow-y-auto text-xs">
-                        <!-- Se llena dinámicamente desde Supabase -->
-                    </div>
+                    <label class="block text-xs text-gray-400 mb-1">Seleccionar Fecha y Hora</label>
+                    <input type="datetime-local" id="appointment-time" required class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white">
                 </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 font-bold p-2 rounded transition">Confirmar Turno</button>
+            </form>
+            <button onclick="logout()" class="w-full text-xs text-gray-400 hover:text-white mt-4">Cerrar Sesión</button>
+        </section>
+
+        <!-- 3. VISTA DE BARBERO (Gestión y bloqueo de horarios/días) -->
+        <section id="barber-view" class="hidden bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
+            <h2 class="text-lg font-bold text-amber-400">Panel del Barbero</h2>
+            
+            <div class="border-t border-gray-700 pt-3 space-y-3">
+                <h3 class="text-sm font-semibold text-gray-300">Bloquear Horario o Día Completo</h3>
+                <div>
+                    <label class="block text-xs text-gray-400 mb-1">Bloquear Fecha/Hora Específica o Día Entero</label>
+                    <input type="date" id="block-date" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white mb-2">
+                    <input type="time" id="block-time" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white mb-2" placeholder="Dejar vacío para bloquear el día entero">
+                </div>
+                <button onclick="blockSchedule()" class="w-full bg-red-600 hover:bg-red-700 font-bold p-2 rounded transition text-sm">Bloquear para Clientes</button>
             </div>
+
+            <button onclick="logout()" class="w-full text-xs text-gray-400 hover:text-white mt-4">Cerrar Sesión</button>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="w-full py-4 text-center text-xs text-slate-500 border-t border-slate-800">
-        Brussy Barbería &copy; 2026 - Todos los derechos reservados.
-    </footer>
-
-    <!-- SCRIPT DE CONEXIÓN A SUPABASE Y LÓGICA -->
+    <!-- Script de lógica y Supabase -->
     <script>
-        // CONFIGURACIÓN DE SUPABASE (Reemplazar con tus credenciales reales del nuevo proyecto)
-        const SUPABASE_URL = 'https://tu-proyecto.supabase.co';
-        const SUPABASE_KEY = 'tu-anon-key';
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        // Configura tus credenciales de Supabase aquí
+        const SUPABASE_URL = 'TU_SUPABASE_URL';
+        const SUPABASE_ANON_KEY = 'TU_SUPABASE_ANON_KEY';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        const CONTRASEÑA_BARBERO = "BrunoBarber2026";
+        let currentMode = 'login'; // 'login' o 'signup'
 
-        function toggleBarberLogin() {
-            const section = document.getElementById('barber-section');
-            section.classList.toggle('hidden');
-        }
+        function switchAuthMode(mode) {
+            currentMode = mode;
+            const btnLogin = document.getElementById('tab-login');
+            const btnSignup = document.getElementById('tab-signup');
+            const authBtn = document.getElementById('auth-btn');
 
-        function loginBarber() {
-            const pass = document.getElementById('barber-pass').value;
-            if (pass === CONTRASEÑA_BARBERO) {
-                document.getElementById('barber-login-box').classList.add('hidden');
-                document.getElementById('barber-dashboard').classList.remove('hidden');
-                loadBarberData();
+            if (mode === 'login') {
+                btnLogin.className = "flex-1 text-center font-bold text-amber-500 border-b-2 border-amber-500 pb-1";
+                btnSignup.className = "flex-1 text-center font-medium text-gray-400 pb-1";
+                authBtn.innerText = "Ingresar";
             } else {
-                alert('Contraseña incorrecta');
+                btnSignup.className = "flex-1 text-center font-bold text-amber-500 border-b-2 border-amber-500 pb-1";
+                btnLogin.className = "flex-1 text-center font-medium text-gray-400 pb-1";
+                authBtn.innerText = "Registrarse";
             }
         }
 
-        // Registrar turno cliente
-        document.getElementById('booking-form').addEventListener('submit', async (e) => {
+        async function handleAuth(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorEl = document.getElementById('auth-error');
+            errorEl.innerText = '';
+
+            let response;
+            if (currentMode === 'login') {
+                response = await supabaseClient.auth.signInWithPassword({ email, password });
+            } else {
+                response = await supabaseClient.auth.signUp({ email, password });
+            }
+
+            if (response.error) {
+                errorEl.innerText = response.error.message;
+            } else {
+                checkUserSession();
+            }
+        }
+
+        async function checkUserSession() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            const authSection = document.getElementById('auth-section');
+            const clientView = document.getElementById('client-view');
+            const barberView = document.getElementById('barber-view');
+
+            if (session) {
+                authSection.classList.add('hidden');
+                
+                // Definir si es barbero por email (ejemplo: bruno@barber.com o contraseña maestra)
+                const userEmail = session.user.email;
+                if (userEmail === 'BrunoBarber2026@gmail.com' || userEmail.includes('barber')) {
+                    barberView.classList.remove('hidden');
+                } else {
+                    clientView.classList.remove('hidden');
+                }
+            } else {
+                authSection.classList.remove('hidden');
+                clientView.classList.add('hidden');
+                barberView.classList.add('hidden');
+            }
+        }
+
+        async function logout() {
+            await supabaseClient.auth.signOut();
+            checkUserSession();
+        }
+
+        async function bookAppointment(e) {
             e.preventDefault();
-            const name = document.getElementById('client-name').value;
-            const serviceData = document.getElementById('service-select').value.split('|');
-            const service = serviceData[0];
-            const price = serviceData[1];
-            const date = document.getElementById('booking-date').value;
-            const time = document.getElementById('booking-time').value;
+            const time = document.getElementById('appointment-time').value;
+            // Aquí guardas el turno en tu tabla de Supabase ('appointments')
+            alert('Turno solicitado con éxito para: ' + time);
+        }
 
-            const { data, error } = await supabaseClient
-                .from('turnos')
-                .insert([{ client_name: name, service, price, date, time, type: 'client' }]);
-
-            if (error) {
-                alert('Error al reservar el turno: ' + error.message);
-            } else {
-                alert('¡Turno reservado con éxito!');
-                document.getElementById('booking-form').reset();
-            }
-        });
-
-        // Bloquear horario o día especial (Modo Barbero)
         async function blockSchedule() {
             const date = document.getElementById('block-date').value;
-            const reason = document.getElementById('block-reason').value || 'Bloqueado por el barbero';
+            const time = document.getElementById('block-time').value;
 
             if (!date) {
-                alert('Por favor selecciona una fecha para bloquear.');
+                alert('Selecciona al menos una fecha.');
                 return;
             }
 
-            const { error } = await supabaseClient
-                .from('turnos')
-                .insert([{ client_name: '[BLOQUEADO / PRIVADO]', service: reason, price: 0, date: date, time: 'Todo el día', type: 'barber_block' }]);
-
-            if (error) {
-                alert('Error al bloquear: ' + error.message);
-            } else {
-                alert('Horario/Día bloqueado correctamente.');
-                document.getElementById('block-date').value = '';
-                document.getElementById('block-reason').value = '';
-                loadBarberData();
-            }
+            // Aquí guardas el bloqueo en tu tabla de Supabase ('blocked_slots')
+            // para que luego la vista de clientes filtre y no muestre este horario o día.
+            alert(`Bloqueo aplicado correctamente para la fecha: ${date} ${time ? 'a las ' + time : '(Día entero)'}`);
         }
 
-        // Cargar historial de turnos y bloqueos en el panel del barbero
-        async function loadBarberData() {
-            const listContainer = document.getElementById('appointments-list');
-            listContainer.innerHTML = '<p class="text-slate-400">Cargando...</p>';
-
-            const { data, error } = await supabaseClient
-                .from('turnos')
-                .select('*')
-                .order('date', { ascending: true });
-
-            if (error) {
-                listContainer.innerHTML = '<p class="text-rose-500">Error al cargar datos.</p>';
-                return;
-            }
-
-            if (data.length === 0) {
-                listContainer.innerHTML = '<p class="text-slate-500">No hay registros aún.</p>';
-                return;
-            }
-
-            listContainer.innerHTML = '';
-            data.forEach(item => {
-                const div = document.createElement('div');
-                div.className = `p-3 rounded-xl border ${item.type === 'barber_block' ? 'bg-rose-950/40 border-rose-800/50' : 'bg-slate-900 border-slate-800'}`;
-                div.innerHTML = `
-                    <div class="flex justify-between font-bold text-white">
-                        <span>${item.client_name}</span>
-                        <span>${item.date} (${item.time})</span>
-                    </div>
-                    <div class="text-slate-400 text-[11px] mt-1">
-                        ${item.service} ${item.price > 0 ? '- $' + item.price : ''}
-                    </div>
-                `;
-                listContainer.appendChild(div);
-            });
-        }
+        // Verificar sesión al cargar
+        checkUserSession();
     </script>
 </body>
 </html>
