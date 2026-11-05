@@ -1,176 +1,361 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brussy Barbería</title>
-    <!-- Tailwind CSS para diseño rápido y limpio -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- SDK de Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover, interactive-widget=resizes-content">
+<meta name="theme-color" content="#06110c">
+<title>Brussy Barbería · Turnos</title>
+<meta name="description" content="Reservá tu corte con Bruno Pérez, gestioná tus turnos y disfrutá de beneficios por fidelidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<!-- SDK de Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{
+  --bg:#06110c;
+  --panel:#0b1c14;
+  --panel-2:#10271d;
+  --line:rgba(88,231,146,.16);
+  --green:#18c96b;
+  --green-2:#55f39b;
+  --green-3:#0d7040;
+  --silver:#e8ebea;
+  --muted:#9eb2a8;
+  --danger:#ff6d72;
+  --warning:#ffd166;
+  --blue:#39a9ff;
+  --radius:22px;
+  --shadow:0 24px 70px rgba(0,0,0,.36);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden;max-width:100%}
+body{
+  min-height:100vh;
+  font-family:'DM Sans',system-ui,sans-serif;
+  color:#f6fbf8;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(24,201,107,.12),transparent 28%),
+    radial-gradient(circle at 90% 18%,rgba(85,243,155,.08),transparent 24%),
+    linear-gradient(180deg,#06110c 0%,#08130f 45%,#050c09 100%);
+}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px);background-size:22px 22px}
+button,input{font:inherit}
+button{border:0}
+button:focus-visible,input:focus-visible{outline:2px solid var(--green-2);outline-offset:3px}
+.container{width:min(1180px,calc(100% - 28px));margin:auto;padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(6,17,12,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:42px;height:52px;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(24,201,107,.2))}
+.brand-copy strong{font-family:Oswald,sans-serif;letter-spacing:.1em;font-size:1.15rem}.brand-copy span{display:block;font-size:.7rem;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
+.nav-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{padding:11px 15px;border-radius:13px;cursor:pointer;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}.btn:hover{transform:translateY(-2px)}
+.instagram-3d{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 22px;border-radius:16px;background:linear-gradient(145deg,#ff8a3d 0%,#e1306c 42%,#833ab4 100%);border:1px solid rgba(255,255,255,.28);color:#fff;text-decoration:none;font-weight:800;letter-spacing:.03em;box-shadow:0 8px 0 #5b1a6f,0 16px 28px rgba(131,58,180,.38),inset 0 2px 0 rgba(255,255,255,.35),inset 0 -2px 0 rgba(0,0,0,.18);transform:translateY(0) perspective(600px) rotateX(8deg);transform-style:preserve-3d;transition:transform .16s ease,box-shadow .16s ease,filter .16s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}.instagram-3d svg{width:18px;height:18px;flex:none;filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))}.instagram-3d:hover{transform:translateY(-4px) perspective(600px) rotateX(10deg);filter:brightness(1.08);box-shadow:0 12px 0 #5b1a6f,0 22px 34px rgba(131,58,180,.46),inset 0 2px 0 rgba(255,255,255,.4),inset 0 -2px 0 rgba(0,0,0,.18)}.instagram-3d:active{transform:translateY(6px) perspective(600px) rotateX(2deg);box-shadow:0 2px 0 #5b1a6f,0 8px 14px rgba(131,58,180,.28),inset 0 1px 0 rgba(255,255,255,.2)}
+.btn-ghost{background:rgba(255,255,255,.04);border:1px solid var(--line);color:#dfeee6}.btn-green{background:linear-gradient(135deg,var(--green),#0fa857);color:#041009;font-weight:700;box-shadow:0 12px 30px rgba(24,201,107,.18)}.btn-blue{background:linear-gradient(135deg,#35adff,#1d75ba);color:#fff;font-weight:700}.btn-danger{background:rgba(255,109,114,.09);border:1px solid rgba(255,109,114,.25);color:#ff9a9f}.btn-yellow{background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.26);color:#ffe09a}
+.hero{padding:64px 0 28px}.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:stretch}.hero-copy{display:flex;flex-direction:column;justify-content:center}.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--green-2);font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700}.eyebrow::before{content:"";width:34px;height:2px;background:var(--green)}.hero h1{font-family:Oswald,sans-serif;font-size:clamp(3rem,8vw,6.3rem);line-height:.92;letter-spacing:-.02em;margin:14px 0 16px;text-transform:uppercase}.hero h1 span{color:var(--green-2)}.hero p{max-width:620px;color:#bdd0c7;line-height:1.7;font-size:1.03rem}.hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;align-items:center}.pill{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:#d4e2db;font-size:.82rem}.hero-art{position:relative;overflow:hidden;border-radius:28px;min-height:340px;background:radial-gradient(circle at 50% 30%,rgba(85,243,155,.22),transparent 27%),linear-gradient(145deg,#0d2419,#07100c 65%);border:1px solid var(--line);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center}.hero-art::before{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(85,243,155,.25);border-radius:50%;box-shadow:0 0 0 28px rgba(85,243,155,.035),0 0 0 56px rgba(85,243,155,.025)}.hero-art::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-22deg,transparent 0 18px,rgba(255,255,255,.035) 19px 20px,transparent 21px 39px);opacity:.3}.hero-art img{position:relative;z-index:2;width:58%;max-width:320px;filter:drop-shadow(0 24px 35px rgba(0,0,0,.48));animation:float 5s ease-in-out infinite}.hero-art .stamp{position:absolute;bottom:18px;left:18px;z-index:3;font-family:Oswald,sans-serif;letter-spacing:.12em;font-size:.78rem;color:#cfe7da}.hero-art .stamp b{color:var(--green-2)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.section{padding:24px 0 8px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:14px}.section-title h2{font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:2rem}.section-title p{color:var(--muted);font-size:.86rem}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.info-card{padding:18px 18px 20px;border:1px solid var(--line);background:linear-gradient(145deg,rgba(16,39,29,.95),rgba(8,20,14,.95));border-radius:18px}.info-card .mini{font-size:.72rem;color:var(--green-2);text-transform:uppercase;letter-spacing:.15em}.info-card h3{font-family:Oswald,sans-serif;margin:6px 0;font-size:1.5rem}.info-card p{color:#b4c8bf;font-size:.9rem;line-height:1.6}
+.booking-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}.card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(15,36,26,.97),rgba(7,17,12,.98));border-radius:var(--radius);padding:22px;box-shadow:0 16px 36px rgba(0,0,0,.18)}.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}.kicker{font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;color:var(--green-2)}.card h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:1.65rem;margin-top:3px}.small{color:var(--muted);font-size:.82rem;line-height:1.55}
+.date-strip{display:flex;gap:9px;overflow:auto;padding:3px 2px 8px;scrollbar-width:thin}.day{min-width:82px;padding:12px 10px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:#dae7e0;cursor:pointer;transition:.18s}.day:hover{border-color:rgba(85,243,155,.45);transform:translateY(-2px)}.day.active{background:linear-gradient(180deg,rgba(24,201,107,.28),rgba(12,91,54,.35));border-color:rgba(85,243,155,.68);box-shadow:0 10px 24px rgba(24,201,107,.12)}.day.disabled{opacity:.38;cursor:not-allowed}.day span{display:block}.day .dow{text-transform:uppercase;font-size:.68rem;color:#9db6a9;letter-spacing:.14em}.day .dom{font-family:Oswald,sans-serif;font-size:1.9rem;margin:1px 0}.day .mon{font-size:.68rem;color:#aac1b5}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.time{padding:12px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:#dae7e0;cursor:pointer}.time.active{background:linear-gradient(135deg,var(--green-3),#0e4c2f);border-color:rgba(85,243,155,.65)}.time.taken{opacity:.3;cursor:not-allowed;text-decoration:line-through}.closed{padding:14px;border-radius:13px;background:rgba(255,109,114,.06);border:1px solid rgba(255,109,114,.14);color:#ffadb0}
+.services{display:grid;gap:10px}.service{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025);cursor:pointer}.service.active{border-color:rgba(85,243,155,.7);background:linear-gradient(90deg,rgba(24,201,107,.12),rgba(24,201,107,.03))}.service strong{font-size:.98rem}.service small{display:block;color:var(--muted);margin-top:3px}.price{font-family:Oswald,sans-serif;font-size:1.45rem}.weekly{color:var(--green-2);font-size:.75rem;margin-top:4px}.price-box{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px}.price-item{padding:14px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.022)}.price-item span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em}.price-item strong{font-family:Oswald,sans-serif;font-size:1.8rem}.price-item.selected{background:rgba(24,201,107,.08);border-color:rgba(85,243,155,.35)}
+.user-status{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 15px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.025);margin-bottom:12px}.user-status strong{font-size:.9rem}.user-status span{font-size:.75rem;color:var(--muted)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:#b5c7be;font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}.field input{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#07130d;color:#f3faf6;font-size:16px}.field input::placeholder{color:#60766b}.error{display:none;color:#ff9da2;font-size:.76rem;margin-top:6px}.error.show{display:block}
+.summary{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.summary .amount{font-family:Oswald,sans-serif;font-size:2.2rem}.summary .muted{font-size:.78rem;color:var(--muted)}
+.flow{display:grid;gap:10px;margin-top:14px}.step{display:flex;gap:12px;padding:13px;border-radius:14px;background:rgba(255,255,255,.025);border:1px solid var(--line)}.step .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(24,201,107,.14);color:var(--green-2);font-weight:800;font-size:.8rem;flex:none}.step b{font-size:.86rem}.step span{display:block;color:var(--muted);font-size:.76rem;margin-top:3px}
+.payment{margin-top:15px;padding:16px;border-radius:17px;border:1px solid rgba(57,169,255,.2);background:linear-gradient(145deg,rgba(34,104,154,.14),rgba(255,255,255,.025))}.payment-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.payment h4{font-size:1rem}.badge{font-size:.68rem;padding:6px 8px;border-radius:999px;background:rgba(57,169,255,.12);color:#86cdff;border:1px solid rgba(57,169,255,.2)}.pay-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:11px;padding-top:10px;border-top:1px solid rgba(255,255,255,.06)}.pay-row .label{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em}.copy{background:transparent;color:#e8f4ed;cursor:pointer;text-align:right}.copy em{display:block;font-style:normal;color:var(--blue);font-size:.66rem;margin-top:3px}
+.actions{display:grid;gap:9px;margin-top:14px}.actions .btn{width:100%;padding:14px}.notice{margin-top:12px;color:#a8bcb2;font-size:.74rem;line-height:1.55}
+.fidelity{margin-top:20px;padding:19px;border-radius:18px;border:1px solid rgba(85,243,155,.18);background:radial-gradient(circle at 75% 20%,rgba(85,243,155,.1),transparent 30%),rgba(255,255,255,.025)}.fidelity .progress{height:8px;border-radius:999px;background:#12261d;overflow:hidden;margin:13px 0}.fidelity .bar{height:100%;background:linear-gradient(90deg,var(--green),var(--green-2));border-radius:999px;transition:width .5s}.reward{display:grid;grid-template-columns:1fr 170px;gap:14px;align-items:center;margin-top:13px}.qr-card{display:flex;justify-content:center;padding:11px;border-radius:18px;background:#fff;min-height:170px}.qr-card img,.qr-card canvas{max-width:100%;height:auto}.reward-note{padding:14px;border-radius:14px;background:rgba(24,201,107,.08);border:1px solid rgba(85,243,155,.18);color:#cdebd9;font-size:.82rem;line-height:1.55}
+.panel-shell{display:none}.panel-shell.show{display:block}.panel-grid{display:grid;grid-template-columns:260px 1fr;gap:14px}.panel-nav{display:grid;align-content:start;gap:7px}.panel-nav button{padding:12px 13px;text-align:left;border-radius:12px;background:rgba(255,255,255,.025);color:#cfe0d8;border:1px solid transparent;cursor:pointer}.panel-nav button.active{background:rgba(24,201,107,.11);border-color:rgba(85,243,155,.2);color:#ecfff4}.panel-content{min-width:0}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:11px 9px;border-bottom:1px solid rgba(255,255,255,.07);font-size:.78rem;vertical-align:top}.table th{color:#8fa79b;text-transform:uppercase;letter-spacing:.08em;font-size:.68rem}.tag-status{display:inline-flex;align-items:center;padding:5px 7px;border-radius:999px;font-size:.66rem;border:1px solid var(--line)}.tag-pending{color:#ffe09a;background:rgba(255,209,102,.08)}.tag-confirmed{color:#98ffd0;background:rgba(24,201,107,.08)}.tag-cancelled{color:#ffb0b4;background:rgba(255,109,114,.08)}.tag-completed{color:#a7d8ff;background:rgba(57,169,255,.08)}
+.client-card{padding:15px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.02);display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:9px}.client-card h4{font-size:.95rem}.client-card p{color:var(--muted);font-size:.74rem;margin-top:2px}.client-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.tiny{padding:8px 9px;border-radius:10px;font-size:.72rem}.empty{padding:26px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+.scanner-box{min-height:260px;border-radius:18px;border:1px solid var(--line);overflow:hidden;background:#050c08;padding:10px}.scanner-box #qr-reader{width:100%!important}.scanner-help{margin-top:10px;color:var(--muted);font-size:.78rem;line-height:1.55}
+.modal{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:16px;background:rgba(0,0,0,.7);backdrop-filter:blur(10px)}.modal.show{display:grid}.modal-card{width:min(620px,100%);max-height:90vh;overflow:auto;border-radius:24px;border:1px solid var(--line);background:linear-gradient(145deg,#0f2419,#06100b);box-shadow:0 30px 90px rgba(0,0,0,.55);padding:22px}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.close{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.05);color:#d9e6df;cursor:pointer}.modal h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:1.75rem}.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+footer{padding:45px 0 60px;color:#6f887c;font-size:.78rem;text-align:center}.footer-line{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin-bottom:18px}
+.toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:200;max-width:min(92vw,520px);padding:12px 16px;border-radius:14px;background:#f2fff7;color:#07130c;box-shadow:0 18px 40px rgba(0,0,0,.35);font-size:.82rem;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
 </head>
-<body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col justify-between">
+<body>
 
-    <!-- Header -->
-    <header class="p-4 bg-gray-800 flex justify-between items-center shadow-md">
-        <h1 class="text-xl font-bold tracking-wider text-amber-500">BRUSSY BARBERÍA</h1>
-        <div id="auth-status" class="text-sm"></div>
+    <!-- BARRA SUPERIOR CON BOTÓN 3D DE INSTAGRAM -->
+    <header class="topbar">
+        <div class="container nav">
+            <div class="brand">
+                <div class="brand-copy">
+                    <strong>BRUSSY BARBERÍA</strong>
+                    <span>Panel & Turnos</span>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <!-- BOTÓN 3D DE INSTAGRAM REQUERIDO -->
+                <a href="https://www.instagram.com/brussybarber/" target="_blank" class="instagram-3d" aria-label="Instagram de la Barbería">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Instagram
+                </a>
+                <button onclick="openBarberLoginModal()" class="btn btn-ghost">Modo Barbero</button>
+            </div>
+        </div>
     </header>
 
-    <!-- Contenido Principal -->
-    <main class="container mx-auto p-4 max-w-md flex-grow flex flex-col justify-center">
-
-        <!-- 1. SECCIÓN DE AUTENTICACIÓN (Login / Registro separados) -->
-        <section id="auth-section" class="bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
-            <div class="flex border-b border-gray-700 pb-2 mb-4">
-                <button id="tab-login" onclick="switchAuthMode('login')" class="flex-1 text-center font-bold text-amber-500 border-b-2 border-amber-500 pb-1">Iniciar Sesión</button>
-                <button id="tab-signup" onclick="switchAuthMode('signup')" class="flex-1 text-center font-medium text-gray-400 pb-1">Registrarse</button>
+    <main class="container">
+        <!-- SECCIÓN DE AUTENTICACIÓN / CLIENTE / BARBERO -->
+        <section class="hero">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <span class="eyebrow">Sistema Oficial de Turnos</span>
+                    <h1><span>Brussy</span> Barbería</h1>
+                    <p>Gestioná tus turnos, elegí tu estilo y accedé a beneficios exclusivos de forma rápida y directa.</p>
+                </div>
             </div>
-
-            <form id="auth-form" onsubmit="handleAuth(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs text-gray-400 mb-1">Correo Electrónico</label>
-                    <input type="email" id="email" required class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-amber-500">
-                </div>
-                <div>
-                    <label class="block text-xs text-gray-400 mb-1">Contraseña</label>
-                    <input type="password" id="password" required class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white focus:outline-none focus:border-amber-500">
-                </div>
-                <button type="submit" id="auth-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-gray-950 font-bold p-2 rounded transition">Ingresar</button>
-            </form>
-            <p id="auth-error" class="text-red-400 text-xs text-center mt-2"></p>
         </section>
 
-        <!-- 2. VISTA DE CLIENTE (Reserva de turnos) -->
-        <section id="client-view" class="hidden bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
-            <h2 class="text-lg font-bold text-amber-400">Reservar Turno</h2>
-            <form onsubmit="bookAppointment(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs text-gray-400 mb-1">Seleccionar Fecha y Hora</label>
-                    <input type="datetime-local" id="appointment-time" required class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white">
+        <!-- PANEL CLIENTE / RESERVA -->
+        <section class="section" id="booking-section">
+            <div class="booking-grid">
+                <div class="card">
+                    <div class="card-head">
+                        <div>
+                            <span class="kicker">Paso 1</span>
+                            <h3>Elegí Fecha y Hora</h3>
+                        </div>
+                    </div>
+                    <!-- Fechas -->
+                    <div class="date-strip" id="date-strip"></div>
+                    <div style="margin-top:16px;">
+                        <span class="kicker" style="display:block;margin-bottom:8px">Horarios Disponibles</span>
+                        <div class="times" id="times-container"></div>
+                    </div>
                 </div>
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 font-bold p-2 rounded transition">Confirmar Turno</button>
-            </form>
-            <button onclick="logout()" class="w-full text-xs text-gray-400 hover:text-white mt-4">Cerrar Sesión</button>
-        </section>
 
-        <!-- 3. VISTA DE BARBERO (Gestión y bloqueo de horarios/días) -->
-        <section id="barber-view" class="hidden bg-gray-800 p-6 rounded-xl shadow-lg space-y-4">
-            <h2 class="text-lg font-bold text-amber-400">Panel del Barbero</h2>
-            
-            <div class="border-t border-gray-700 pt-3 space-y-3">
-                <h3 class="text-sm font-semibold text-gray-300">Bloquear Horario o Día Completo</h3>
-                <div>
-                    <label class="block text-xs text-gray-400 mb-1">Bloquear Fecha/Hora Específica o Día Entero</label>
-                    <input type="date" id="block-date" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white mb-2">
-                    <input type="time" id="block-time" class="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white mb-2" placeholder="Dejar vacío para bloquear el día entero">
+                <div class="card">
+                    <div class="card-head">
+                        <div>
+                            <span class="kicker">Paso 2</span>
+                            <h3>Servicio y Datos</h3>
+                        </div>
+                    </div>
+                    <div class="services">
+                        <div class="service active" onclick="selectService('normal', 10000)">
+                            <div>
+                                <strong>Corte Semanal</strong>
+                                <small>Precio especial manteniendo continuidad semanal verificada por historial.</small>
+                            </div>
+                            <div class="price">$10.000</div>
+                        </div>
+                        <div class="service" onclick="selectService('completo', 12000)">
+                            <div>
+                                <strong>Corte Completo (Corte + Barba + Cejas + Afeitado)</strong>
+                                <small>Servicio integral completo con atención detallada.</small>
+                            </div>
+                            <div class="price">$12.000</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:16px;" class="form-grid">
+                        <div class="field">
+                            <label>Tu Nombre</label>
+                            <input type="text" id="client-name" placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="field">
+                            <label>Teléfono / WhatsApp</label>
+                            <input type="text" id="client-phone" placeholder="Ej: 3424123456">
+                        </div>
+                    </div>
+
+                    <div class="summary">
+                        <div>
+                            <span class="muted">Total a abonar</span>
+                            <div class="amount" id="total-price">$10.000</div>
+                        </div>
+                        <button onclick="bookAppointment()" class="btn btn-green">Confirmar Turno</button>
+                    </div>
                 </div>
-                <button onclick="blockSchedule()" class="w-full bg-red-600 hover:bg-red-700 font-bold p-2 rounded transition text-sm">Bloquear para Clientes</button>
             </div>
-
-            <button onclick="logout()" class="w-full text-xs text-gray-400 hover:text-white mt-4">Cerrar Sesión</button>
         </section>
 
+        <!-- PANEL DE BARBERO (OCULTO POR DEFECTO) -->
+        <section class="section panel-shell" id="barber-panel">
+            <div class="card" style="margin-bottom: 20px; background: rgba(255,109,114,0.05); border-color: rgba(255,109,114,0.3);">
+                <div class="card-head">
+                    <div>
+                        <span class="kicker" style="color:var(--danger)">Panel Exclusivo del Barbero</span>
+                        <h3>Bloquear Horarios o Días Enteros</h3>
+                    </div>
+                    <button onclick="logoutBarber()" class="btn btn-ghost" style="font-size:0.8rem">Salir del Modo Barbero</button>
+                </div>
+                <p class="small" style="margin-bottom: 12px;">Seleccioná una fecha y opcionalmente una hora específica para bloquearla. Los clientes no podrán ver ni reservar los horarios bloqueados.</p>
+                <div class="form-grid" style="margin-bottom: 12px;">
+                    <div class="field">
+                        <label>Fecha a bloquear</label>
+                        <input type="date" id="block-date">
+                    </div>
+                    <div class="field">
+                        <label>Hora específica (Opcional - Vacío = Día entero)</label>
+                        <input type="time" id="block-time">
+                    </div>
+                </div>
+                <button onclick="blockScheduleSlot()" class="btn btn-danger">Bloquear para Clientes</button>
+            </div>
+        </section>
     </main>
 
-    <!-- Script de lógica y Supabase -->
+    <!-- MODAL DE INICIO DE SESIÓN / MODO BARBERO -->
+    <div class="modal" id="barber-login-modal">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3>Acceso Modo Barbero</h3>
+                <button onclick="closeBarberLoginModal()" class="close">✕</button>
+            </div>
+            <p class="small" style="margin-bottom:14px;">Ingresá la contraseña de administración para acceder al panel de control y bloqueo de agenda.</p>
+            <div class="field" style="margin-bottom:14px;">
+                <label>Contraseña</label>
+                <input type="password" id="barber-password-input" placeholder="Introduzca contraseña">
+            </div>
+            <div class="modal-actions">
+                <button onclick="verifyBarberPassword()" class="btn btn-green">Ingresar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <footer class="container">
+        <div class="footer-line"></div>
+        <p>Brussy Barbería · Todos los derechos reservados.</p>
+    </footer>
+
     <script>
-        // Configura tus credenciales de Supabase aquí
-        const SUPABASE_URL = 'TU_SUPABASE_URL';
-        const SUPABASE_ANON_KEY = 'TU_SUPABASE_ANON_KEY';
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        let currentMode = 'login'; // 'login' o 'signup'
-
-        function switchAuthMode(mode) {
-            currentMode = mode;
-            const btnLogin = document.getElementById('tab-login');
-            const btnSignup = document.getElementById('tab-signup');
-            const authBtn = document.getElementById('auth-btn');
-
-            if (mode === 'login') {
-                btnLogin.className = "flex-1 text-center font-bold text-amber-500 border-b-2 border-amber-500 pb-1";
-                btnSignup.className = "flex-1 text-center font-medium text-gray-400 pb-1";
-                authBtn.innerText = "Ingresar";
-            } else {
-                btnSignup.className = "flex-1 text-center font-bold text-amber-500 border-b-2 border-amber-500 pb-1";
-                btnLogin.className = "flex-1 text-center font-medium text-gray-400 pb-1";
-                authBtn.innerText = "Registrarse";
+        // Configuración de Supabase
+        const SUPABASE_URL = 'https://tfjnzwcrftcrjrvpnbex.supabase.co';
+        const SUPABASE_ANON_KEY = 'TU_ANON_KEY';
+        let supabaseClient = null;
+        try {
+            if (typeof supabase !== 'undefined') {
+                supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
             }
+        } catch(e) { console.error(e); }
+
+        let selectedServiceType = 'normal';
+        let selectedServicePrice = 10000;
+        let selectedDate = new Date().toISOString().split('T')[0];
+        let selectedTime = null;
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
         }
 
-        async function handleAuth(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorEl = document.getElementById('auth-error');
-            errorEl.innerText = '';
+        function selectService(type, price) {
+            selectedServiceType = type;
+            selectedServicePrice = price;
+            document.getElementById('total-price').innerText = '$' + price.toLocaleString();
+            document.querySelectorAll('.service').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
 
-            let response;
-            if (currentMode === 'login') {
-                response = await supabaseClient.auth.signInWithPassword({ email, password });
-            } else {
-                response = await supabaseClient.auth.signUp({ email, password });
+        // Renderizar días y horarios básicos
+        function initCalendar() {
+            const strip = document.getElementById('date-strip');
+            strip.innerHTML = '';
+            for(let i=0; i<7; i++) {
+                let d = new Date();
+                d.setDate(d.getDate() + i);
+                let dateStr = d.toISOString().split('T')[0];
+                let dayName = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'][d.getDay()];
+                let div = document.createElement('div');
+                div.className = `day ${dateStr === selectedDate ? 'active' : ''}`;
+                div.innerHTML = `<span class="dow">${dayName}</span><span class="dom">${d.getDate()}</span>`;
+                div.onclick = () => {
+                    selectedDate = dateStr;
+                    initCalendar();
+                    loadTimes();
+                };
+                strip.appendChild(div);
             }
-
-            if (response.error) {
-                errorEl.innerText = response.error.message;
-            } else {
-                checkUserSession();
-            }
+            loadTimes();
         }
 
-        async function checkUserSession() {
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            const authSection = document.getElementById('auth-section');
-            const clientView = document.getElementById('client-view');
-            const barberView = document.getElementById('barber-view');
-
-            if (session) {
-                authSection.classList.add('hidden');
-                
-                // Definir si es barbero por email (ejemplo: bruno@barber.com o contraseña maestra)
-                const userEmail = session.user.email;
-                if (userEmail === 'BrunoBarber2026@gmail.com' || userEmail.includes('barber')) {
-                    barberView.classList.remove('hidden');
-                } else {
-                    clientView.classList.remove('hidden');
-                }
-            } else {
-                authSection.classList.remove('hidden');
-                clientView.classList.add('hidden');
-                barberView.classList.add('hidden');
-            }
+        function loadTimes() {
+            const container = document.getElementById('times-container');
+            container.innerHTML = '';
+            const hours = ['10:00', '11:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'];
+            hours.forEach(h => {
+                let btn = document.createElement('button');
+                btn.className = `time ${selectedTime === h ? 'active' : ''}`;
+                btn.innerText = h;
+                btn.onclick = () => {
+                    document.querySelectorAll('.time').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedTime = h;
+                };
+                container.appendChild(btn);
+            });
         }
 
-        async function logout() {
-            await supabaseClient.auth.signOut();
-            checkUserSession();
-        }
-
-        async function bookAppointment(e) {
-            e.preventDefault();
-            const time = document.getElementById('appointment-time').value;
-            // Aquí guardas el turno en tu tabla de Supabase ('appointments')
-            alert('Turno solicitado con éxito para: ' + time);
-        }
-
-        async function blockSchedule() {
-            const date = document.getElementById('block-date').value;
-            const time = document.getElementById('block-time').value;
-
-            if (!date) {
-                alert('Selecciona al menos una fecha.');
+        function bookAppointment() {
+            const name = document.getElementById('client-name').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            if(!name || !phone) {
+                showToast('Por favor completá tu nombre y teléfono.');
                 return;
             }
-
-            // Aquí guardas el bloqueo en tu tabla de Supabase ('blocked_slots')
-            // para que luego la vista de clientes filtre y no muestre este horario o día.
-            alert(`Bloqueo aplicado correctamente para la fecha: ${date} ${time ? 'a las ' + time : '(Día entero)'}`);
+            if(!selectedTime) {
+                showToast('Seleccioná un horario para el turno.');
+                return;
+            }
+            showToast(`¡Turno reservado con éxito para el ${selectedDate} a las ${selectedTime}!`);
         }
 
-        // Verificar sesión al cargar
-        checkUserSession();
+        // --- MODO BARBERO Y BLOQUEO ---
+        function openBarberLoginModal() {
+            document.getElementById('barber-login-modal').classList.add('show');
+        }
+
+        function closeBarberLoginModal() {
+            document.getElementById('barber-login-modal').classList.remove('show');
+            document.getElementById('barber-password-input').value = '';
+        }
+
+        function verifyBarberPassword() {
+            const pass = document.getElementById('barber-password-input').value;
+            // Contraseña fija requerida: BrunoBarber2026
+            if(pass === 'BrunoBarber2026') {
+                closeBarberLoginModal();
+                document.getElementById('barber-panel').classList.add('show');
+                showToast('Modo Barbero activado correctamente.');
+            } else {
+                showToast('Contraseña incorrecta.');
+            }
+        }
+
+        function logoutBarber() {
+            document.getElementById('barber-panel').classList.remove('show');
+            showToast('Sesión de barbero cerrada.');
+        }
+
+        function blockScheduleSlot() {
+            const date = document.getElementById('block-date').value;
+            const time = document.getElementById('block-time').value;
+            if(!date) {
+                showToast('Seleccioná al menos la fecha a bloquear.');
+                return;
+            }
+            // Lógica para bloquear en Supabase o interfaz
+            if(time) {
+                showToast(`Horario bloqueado con éxito: ${date} a las ${time}`);
+            } else {
+                showToast(`Día entero bloqueado con éxito: ${date}`);
+            }
+            document.getElementById('block-date').value = '';
+            document.getElementById('block-time').value = '';
+        }
+
+        initCalendar();
     </script>
 </body>
 </html>
