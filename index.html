@@ -270,7 +270,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--green-2); o
   position: relative;
   z-index: 2;
   width: 58%;
-  max-width: 300px;
+  max-width: 240px;
   filter: drop-shadow(0 20px 35px rgba(0,0,0,0.5));
   animation: float 5s ease-in-out infinite;
 }
@@ -611,15 +611,16 @@ footer { padding: 45px 0 60px; color: #6f887c; font-size: .78rem; text-align: ce
   <header class="topbar">
     <div class="container nav">
       <a href="#" class="brand">
-        <!-- Manteniendo IDs y clases originales intactas -->
-        <img src="logo.png" alt="Brussy Barbería" class="brand-icon" onerror="this.style.display='none'">
+        <!-- Logo integrado correctamente -->
+        <img src="logo barber bruno.png" alt="Brussy Barbería" class="brand-icon">
         <div class="brand-copy">
           <strong>BRUSSY BARBERÍA</strong>
           <span>Studio & Appointments</span>
         </div>
       </a>
       <div class="nav-actions">
-        <a href="https://instagram.com" target="_blank" class="instagram-3d" aria-label="Instagram">
+        <!-- Botón de Instagram funcional con tu enlace -->
+        <a href="https://www.instagram.com/brussybarber/" target="_blank" class="instagram-3d" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
           <span>Instagram</span>
         </a>
@@ -647,7 +648,8 @@ footer { padding: 45px 0 60px; color: #6f887c; font-size: .78rem; text-align: ce
           </div>
         </div>
         <div class="hero-art">
-          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Barbería Profesional" style="border-radius: 50%; object-fit: cover; width: 220px; height: 220px;">
+          <!-- Logo oficial de la barbería en el arte central -->
+          <img src="logo barber bruno.png" alt="Brussy Barbería Logo">
           <div class="stamp">Brussy Studio · <b>VIP</b></div>
         </div>
       </div>
@@ -674,7 +676,7 @@ footer { padding: 45px 0 60px; color: #6f887c; font-size: .78rem; text-align: ce
       </div>
     </section>
 
-    <!-- SECCIÓN DE RESERVAS (MANTENIENDO TODOS LOS IDS Y CLASES ORIGINALES) -->
+    <!-- SECCIÓN DE RESERVAS -->
     <section id="reservar" class="section">
       <div class="section-title">
         <div>
@@ -695,16 +697,12 @@ footer { padding: 45px 0 60px; color: #6f887c; font-size: .78rem; text-align: ce
 
           <div style="margin-bottom: 18px;">
             <label class="small" style="display:block; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">Días Disponibles</label>
-            <div id="dateStrip" class="date-strip">
-              <!-- Renderizado dinámico por JS -->
-            </div>
+            <div id="dateStrip" class="date-strip"></div>
           </div>
 
           <div>
             <label class="small" style="display:block; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em; font-weight:700;">Horarios Libres</label>
-            <div id="timesContainer" class="times">
-              <!-- Renderizado dinámico por JS -->
-            </div>
+            <div id="timesContainer" class="times"></div>
           </div>
         </div>
 
@@ -725,9 +723,7 @@ footer { padding: 45px 0 60px; color: #6f887c; font-size: .78rem; text-align: ce
             <button id="btnClearUser" class="btn btn-ghost tiny" style="display:none;">Cambiar</button>
           </div>
 
-          <div id="servicesContainer" class="services" style="margin-bottom: 16px;">
-            <!-- Renderizado dinámico por JS -->
-          </div>
+          <div id="servicesContainer" class="services" style="margin-bottom: 16px;"></div>
 
           <div class="form-grid">
             <div class="field">
@@ -802,7 +798,7 @@ footer { padding: 45px 0 60px; color: #6f887c; font-size: .78rem; text-align: ce
       </div>
     </section>
 
-    <!-- PANEL ADMINISTRATIVO / CLIENTES (OCULTO POR DEFECTO) -->
+    <!-- PANEL ADMINISTRATIVO / CLIENTES -->
     <section id="adminPanelShell" class="section panel-shell">
       <div class="section-title">
         <div>
@@ -878,6 +874,40 @@ footer { padding: 45px 0 60px; color: #6f887c; font-size: .78rem; text-align: ce
   </footer>
 
   <div id="toast" class="toast">Operación realizada con éxito</div>
+
+  <!-- SCRIPT DE ANIMACIONES FLUIDAS -->
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll(
+      '.hero-copy, .hero-art, .info-card, .card, .fidelity, .section-title'
+    );
+
+    animatedElements.forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      el.style.transitionDelay = `${Math.min(index * 0.08, 0.4)}s`;
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observerInstance.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    animatedElements.forEach(el => observer.observe(el));
+  });
+  </script>
 
 </body>
 </html>
